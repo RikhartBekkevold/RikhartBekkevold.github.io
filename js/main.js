@@ -4,363 +4,500 @@ Vue.component('flat-pickr', VueFlatpickr.default);
 var app = new Vue({
     el: '#app',
     data: {
-        currentPath: window.location.pathname,
-        //GUI
-        hideGUI: false,
-        showModal: 'none',
-        date: new Date(),
-        // color
-        colors: colorPickerDefaultProps,
-        entireForm: true,
-        nextPage: false,
-        prevPage: false,
-        //the state of the app is stored here and i localStorage
-        preferences: {
-            entireForm: true
+        // GUI
+        hideGUI:            false,
+        showModal:          'none',
+        showPlaceholder:    true,
+        toggle:             true,
+        show:               true,
+        hideMenuBackBtn:    false,
+        // COLORPICKER
+        entireForm:         false,
+        colors:             colorPickerDefaultProps,
 
+        // PAGES
+        currentPage:        1,
+        // pages:              ['1', '2', '3'],
+        nextPage:           false,
+        prevPage:           false,
+        isPagesStacked:     false,
+        questionsPerPage:   Infinity,
+        pageHeight:         document.getElementById('form-container').innerHeight + 400,
+        feedbackMsg:        'All changes saved',
+        pageRearrangeMode:  false,
+
+        // PREFERENCES
+        userPrefs: {
+            test: 'how form looks like',
+            test2: 'the state of the app itself',
+            colourAppliesToEntireForm: true
         },
 
-        currentPage: 1,
-        //nrOfPages: 1,
+        answerURL: '',
 
-        pages: ['1', '2', '3'],
+        //the var is in memory, but not the value. so mounted is during execution
+        pages: [],
+        pagesX: 0,
+        pagesY: 0,
+        //ask for obj in arg, because can loop it and then apply all the vars
+        currentZ: 0,
 
-        //operationType: ['removeQuestion', 'removeQuestionAlternative',  'typing', 'addQuestion', 'addAlternative' ],
-
-        currentUserAction: 'addQuestion', //sett this string to new value when user performs action. this way we can see what prev action was and
-
-        //time
-        time: true,
-        calendar: false,
-
-        title: '',
-        toggle: true,
-        show: true,
-        dragging: false,
-        playAnimations: false,
-        list:
-            [
-            {type: "Radiobutton", focused: false, bColorHex: '', label: '', alternatives: [{type: "Radiobutton", label: ''}]},
-            {type: "Checkbox", focused: false, bColorHex: '', alternatives: [{type: "Checkbox", label: ''}]},
-            {type: "Textfield", focused: false, bColorHex: '', alternatives: [{type: "Textfield", label: ''}]},
-            {type: "Textarea", focused: false, bColorHex: '', alternatives: [{type: "Textarea", label: '', height: parseInt(document.getElementById("form").style.width), width: parseInt(document.getElementById("form").style.width)}]},
-            {type: "List", focused: false, bColorHex: '', label: '', alternatives: [{type: "List", label: '', select: [{option: ''}]}]},
-            {type: "Video", focused: false, bColorHex: '', label: '', alternatives: [{type: "Video", label: '', url: ''}]},
-            {type: "Image", focused: false, bColorHex: '', alternatives: [{type: "Image"}]},
-            {type: "Audio", focused: false, bColorHex: '', alternatives: [{type: "Audio"}]},
-            {type: "Table", focused: false, bColorHex: '', alternatives: [{type: "Table"}]},
-            {type: "Date", focused: false, bColorHex: '', date: null, alternatives: [{type: "Date", isTimeEnabled: this.time, isCalendarEnabled: this.calendar, label: ''}]}
-            ],
+        // LEFT SIDE MENU
         advancedList:
-            [
-            {type: "Tittel", focused: false, bColorHex: '', label: '', desclabel: '', alternatives: [{type: "Tittel"}]}
-            ],
-        formList: []
+        [
+            new Question("Tittle", 'fa-header')
+        ],
+        list:
+        [
+            new Question("Radiobutton", 'fa-dot-circle-o'),
+            new Question("Checkbox", 'fa-check-square-o'),
+            new Question("Textfield", 'fa-font'),
+            new Question("Textarea", 'fa-align-justify'),
+            new Question("List", 'fa-th-list'),
+            new Question("Video", 'fa-film'),
+            new Question("Table", 'fa-table')
+        ],
+
+        formProperties: {isA4: false},      //list of all vars containing if pages is A4 etc
+        appState: [],                       //list of all vars containing the state of the app
+
+        operations: [],
+        // formURL
+        pageWidth: 500,
+        // FORM
+        title:    '',
+        formList: [],
+        formStyle:
+        {
+            borderradius:       'none',
+            bColorHex:          '',
+            fColorHex:          '',
+        },
+        pre: '',
+
+        //variable initilazation
+        past           :  [],
+        present        :  [],
+        future         :  [],
+        cIdx: 0
     },
     components: {
         'photoshop-picker': Photoshop,
         'swatches-picker': Swatch,
     },
-    created() {
-        var alt;
-        var self = this;
-        window.addEventListener('keydown', function(event) {
-            if(event.keyCode == 18) {
-                alt = true;
-            }
-
-            if (event.keyCode == 65 && alt == true) {
-                self.showModal = 'delete'
-            }
-            else if(event.keyCode == 83 && alt == true) {
-                self.deleteForm()
-            }
-        });
-
-        window.addEventListener('keyup', function(event) {
-            if(event.keyCode == 18) {    //event.ctrlKey
-                alt = false;
-            }
-        });
-
-        console.log(document.getElementById("form").clientWidth)
-        console.log(parseInt(document.getElementById("form").clientWidth))
-    },
     mounted() {
-        console.log(document.getElementById("form").clientWidth)
-        console.log( localStorage.getItem('form'))
-        // if(typeof localStorage.getItem('form') == 'undefined') {
-        //     console.log('das')
-        //     // return
-        // }
-        var count = 1;
-        if(localStorage.getItem('pageCount') != null) {
-            var count = localStorage.getItem('pageCount')
-            count++;
-            localStorage.setItem('pageCount', count)
-        }
-        localStorage.setItem('pageCount', count)
+        this.pages.push(new Page(1, this.pageHeight))
 
-        console.log('Number of times you have visited this site: ' + count)
+        window.addEventListener('keydown', deleteForm)
+        window.addEventListener('keyup', toggleAlt)
 
-        if(localStorage.getItem('form') == null) {
-            console.log('null')
-            return
-            //if null create var with empty array?
-            //den lagra tom array i GS?
-        }
-        this.formList = JSON.parse(localStorage.getItem('form'))
-        // this.formList = JSON.parse(localStorage.getItem('form'))
+        pre = document.createElement('pre')
+        document.getElementById('test').appendChild(pre);
+
+        this.onPageLoad();
+
     },
     watch: {
-        formList: {
-          handler: function() {
-            //   console.log('change')
-                // localStorage.form = this.formList;
-            // if (!window.localStorage) {
-            //     alert('This browser does not support Local Storage. Update your browser to store the forms temporary state.')
-            //     return
-            // }
-            if(this.operationType != 'addQuestionAlternative') {
-                localStorage.setItem('form', JSON.stringify(this.formList));
-            }
-            //   localStorage.setItem("username", "John");
-          },
-          deep: true
-      },
-      'colors.hex': {
-          handler: function (colors) {
-              var self = this;
-              this.formList.forEach(function(item){
-                  if(self.entireForm == true){
-                      console.log('ds')
-                      item.bColorHex = colors
-                      console.log(colors)
-                      var colorsString = JSON.stringify(colors).replace('#','')
-                      console.log(colorsString)
+        pages: {
+            handler: function(pages) {
 
+                // this.cIdx = this.cIdx + 1
 
-                        var r = parseInt(colorsString.substr(1,2),16);
-                        console.log(r)
-                        var g = parseInt(colorsString.substr(3,2),16);
-                        console.log(g)
-                        var b = parseInt(colorsString.substr(5,2),16);
-                        console.log(b)
-                        var yiq = ((r*299)+(g*587)+(b*114))/1000;
-                        console.log(yiq)
-                        item.fColorHex = ((yiq >= 128) ? 'black' : 'white');
-                        console.log(item.fColorHex)
-                      return
-                  }
-
-                  if(item.focused == true) {
-                      item.bColorHex = colors
-                      console.log(colors)
-                      var colorsString = JSON.stringify(colors).replace('#','')
-                      console.log(colorsString)
-
-
-                        var r = parseInt(colorsString.substr(1,2),16);
-                        console.log(r)
-                        var g = parseInt(colorsString.substr(3,2),16);
-                        console.log(g)
-                        var b = parseInt(colorsString.substr(5,2),16);
-                        console.log(b)
-                        var yiq = ((r*299)+(g*587)+(b*114))/1000;
-                        console.log(yiq)
-                        item.fColorHex = ((yiq >= 128) ? 'black' : 'white');
-                        console.log(item.fColorHex)
-
-                        //   item.fColorHex =  (parseInt(colorsString, 16) > 0xffffff/2) ? 'black':'white';
-                        //   console.log(item.fColorHex)
-
-                  }
-              })
-          },
-          deep: true
-      },
-    //   'colors.a': {
-    //       handler: function (colors) {
-    //           this.formList.forEach(function(item){
-    //               if(item.focused == true) {
-    //                   item.opacity = colors
-    //                   console.log(colors)
-    //               }
-    //           })
-    //       },
-    //       deep: true
-    //   },
-        'time': {
-            handler: function (time) {
-                this.formList.forEach(function(item){
-                    if(item.focused == true && item.type == 'Date') {
-                        item.alternatives.forEach(function(alt){
-                            alt.isTimeEnabled = time
-
-                            // console.log(alt.isTimeEnabled)
-                            // var index = item.alternatives.indexOf(alt)
-                            // var temp = item.alternatives.slice(alt)
-                            // console.log(temp)
-                            // console.log(index)
-                            // var s = item.alternatives.splice(index, 0, temp)
-                            // console.log(s)
-                        })
-                    }
-                })
+                pre.innerHTML = syntaxHighlight(this.pages)
             },
             deep: true
         },
-        'calendar': {
-          handler: function (calendar) {
-              this.formList.forEach(function(item){
-                  if(item.focused == true && item.type == 'Date') {
-                      item.alternatives.forEach(function(alt){
-                          alt.isCalendarEnabled = calendar
-                      })
-                  }
-              })
-          },
-          deep: true
-        }
-        //do different actions depending on what changed. this detects change. can it detect what changed?
+        // WATCH THE COLOUR PICKER
+        'colors.hex': {
+            handler: function (colors) {
+                var self = this;
 
+                this.pages.forEach(function(page) {
+                    page.questions.forEach(function(item) {
+                        if(self.entireForm == true){
+                            item.bColorHex = colors
+                            item.fColorHex =  getContrastingColor(colors)
+                            return
+                        }
+                        if(item.focused == true) {
+                            item.bColorHex = colors
+                            item.fColorHex =  getContrastingColor(colors)
+                        }
+                    })
+                })
+            },
+            deep: true
+        }
     },
     computed: {
-        nrOfPages: function(){
+        nrOfPages: function() {
             return this.pages.length
+        },
+        zindex: function() {
+            return this.pages.length - 1
         }
     },
     methods: {
-        undo: function() {
-
-        },
-        redo: function() {
-
-        },
-        saveFormState: function() {
-            //
-        },
-        focus: function(item) {
-            //rest all focuses
-            this.formList.forEach(function(item){
-                item.focused = false
+        matchPageHeight: function() {
+            var temp = 0;
+            this.pages.forEach(function(page) {
+                if(page.height > temp) {
+                    temp = page.height;
+                }
             })
-            //focus the element
-            item.focused = true
+            this.pages.forEach(function(page) {
+                page.height = temp;
+            })
         },
-        //adds a question to the form
-        addQuestion: function(type) {
-            switch (type) {
-                case "Radiobutton":
-                    this.formList.push({type: "Radiobutton", focused: false, bColorHex: '', fColorHex: '', label: '', alternatives: [{type: "Radiobutton", label: ''}]})
-                    break;
-                case "Checkbox":
-                    this.formList.push({type: "Checkbox", focused: false, bColorHex: '', label: '', alternatives: [{type: "Checkbox", label: ''}]})
-                    break;
-                case "Textfield":
-                    this.formList.push({type: "Textfield", focused: false, bColorHex: '', label: '', alternatives: [{type: "Textfield", label: ''}]})
-                    break;
-                case "Textarea":
-                    this.formList.push({type: "Textarea", focused: false, bColorHex: '', label: '', alternatives: [{type: "Textarea", label: '', height: 8, width: 55}]})
-                    //  width: parseInt(document.getElementById("form").clientWidth) - (10 * (parseInt(document.getElementById("form").clientWidth)/100))
-                    // console.log(parseInt(document.getElementById("form").clientWidth))
-                    break;
-                case "List":
-                    this.formList.push({type: "List", focused: false, bColorHex: '', label: '', alternatives: [{type: "List", label: '', select: [{option: ''}]}]})
-                    break;
-                case "Tittel":
-                    this.formList.push({type: "Tittel", focused: false, bColorHex: '', label: '', desclabel: '', alternatives: [{type: "Tittel"}]})
-                    break;
-                case "Table":
-                    this.formList.push({type: "Table",
-                                        focused: false,
-                                        bColorHex: '',
-                                        label: '',
-                                        alternatives: [{  type: "Table",
-                                                          rows: ['row', 'row',],
-                                                          columns:
-                                                               [
-                                                               { name: 'cell', name312: 'cell' },
-                                                               { name: 'cell', name312: 'cell' },
-                                                               { name: 'cell', name312: 'cell' },
-                                                               { name: 'cell', name312: 'cell'}
-                                                               ]
-                                                      }]
-                                      })
-                    break;
-                case "Video":
-                    this.formList.push({type: "Video", focused: false, bColorHex: '', label: '', alternatives: [{type: "Video", label: '', url: '', visible: false}]})
+        deletePage: function(page) {
+            this.pages.splice(this.pages.indexOf(page), 1)
+            if(this.pages.length == 0){
+                this.pages.push(new Page(1, this.pageHeight))
             }
+            this.saveFormToStack(this.pages)
         },
-        //removes the question
-        removeQuestion: function(question) {
-            this.formList.splice(this.formList.indexOf(question), 1)
+        addQuestion: function(type) {
+            this.pages[this.pages.length-1].questions.push(new Question(type))
+            this.saveFormToStack(this.pages)
         },
-        //clones a question
-        cloneQuestion: function(question) {
-            var clonedQuestion = JSON.stringify(question)
-            clonedQuestion = JSON.parse(clonedQuestion)
-            this.formList.splice(this.formList.indexOf(question) + 1, 0, clonedQuestion)
+        clone: function(el) {
+            return (new Question(el.type))
         },
-        //delete entire form
         deleteForm: function() {
-            this.formList = []
+            var app = this;
+            this.pageHeight = 500;
+            this.pages = []
+            this.pages.push(new Page(1, this.pageHeight))
             this.showModal = 'none'
+            this.saveFormToStack(this.pages)
         },
-        saveForm: function() {
-            var self = this;
+        generateAnswerURL: function(id) {
+            //in php, generate link before save, or just with php, and return the generated link with echo so i get it in response text
 
+                  var text = "";
+                  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+                  for (var i = 0; i < 60; i++)
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+                  return text;
+
+                console.log(generateAnswerURL());
+        },
+        /**
+         * Returns true if answer is elligable for submission, otherwise false
+         */
+        checkValidity: function() {
+            this.pages.forEach(function(page){
+                page.questions.forEach(function(question){
+                    if(question.isObligatory == true) {
+                        return false;
+                    }
+                })
+            })
+            return true;
+        },
+        /**
+         * Submits form if is valid for submission
+         */
+        submitAnswer: function() {
+            if(this.checkValidity()) { //if all obligatory questions answered
+                this.saveAnswer();
+            }
+            this.showModal = 'invalid' //must fill out all questions
+        },
+        // recreate() answer == radiobuttonlabel
+
+        extractAnswers: function() {
+            var answers = [];
+            this.pages.forEach(function(page){
+                page.questions.forEach(function(question){
+                    switch(question.type) {
+                        case 'Radiobutton':
+                                answers.push({value: question.selectedValue})
+                            break;
+                        case 'Checkbox':
+                                answers.push({value: question.selectedValues})
+                            break;
+                        case 'Textfield':
+                            question.alternatives.forEach(function(alt) {
+                                answers.push({value: alt.label})
+                            })
+                            break;
+                        case 'Textarea':
+                            question.alternatives.forEach(function(alt) {
+                                answers.push({id: alt.label})
+                            })
+                            break;
+                        case 'List':
+                            question.alternatives.forEach(function(alt) {
+                            })
+                            break;
+                        case 'Video':
+                            question.alternatives.forEach(function(alt) {
+                            })
+                            break;
+                        case 'Table':
+                            question.alternatives.forEach(function(alt) {
+
+                            })
+                            break;
+                    }
+                })
+            })
+            console.log(answers);
+        },
+        saveAnswer: function() {
+            var answers;
+            if(checkValidity() == true) {
+                 answers = this.extractAnswers();
+            }
+            var self = this;
             $.ajax({
-                url: "php/saveForm.php",
+                url: "server/saveForm.php",
                 method: 'POST',
-                data: {form: JSON.stringify(self.formList)},
+                data: {answer: answers},
                 success: function(result) {
                     console.log(result)
                 }
+                //return id her or php?
             })
         },
-        //returns the values to be cloned when dragged to another list
-        clone: function(el) {
-            if(el.type == 'Radiobutton' || el.type == 'Checkbox' || el.type == 'Textfield') {
-                return {
-                    type: el.type, label: '',
-                    alternatives: [{type: el.type, label: ''}]
+        saveForm: function() {
+            // this.trimForm();
+            var url = this.generateAnswerURL();
+            // url = window.location.href + url;
+            //append now or when returning? store url or id?
+
+            var self = this;
+            $.ajax({
+                url: "server/saveForm.php",
+                method: 'POST',
+                data: {form: JSON.stringify(self.pages), url_ID: url},
+                success: function(result) {
+                    console.log(result)
                 }
-            }
-            else if(el.type == 'Date') {
-                return {
-                    type: el.type, label: '', date: "today",
-                    alternatives: [{type: el.type, isTimeEnabled: this.time, isCalendarEnabled: this.calendar, label: ''}]
+            });
+
+            //give the user the link
+
+            this.answerURL = window.location.href + '?' + url;
+            //initiate the modal
+            this.showModal = 'share'
+
+        },
+        fetchFormFromDB: function(url) {  //window.location
+            //send request for form with id
+            self = this
+            $.ajax({
+                url: "server/saveForm.php",
+                type: "POST",
+                data: {formID: url},
+                complete: function(data) {
+                    console.log(data);
+                    if(data.status == 200) {
+
+                        // self.pages = []
+
+                        // if(data.responseText != '') {
+                            self.pages = JSON.parse(data.responseText)
+                        // }
+                    }
                 }
+            })
+        },
+
+        onPageLoad: function() {
+            if(window.location.search !== '') {
+                this.hideGUI = true;
+                this.hideMenuBackBtn = true;
+                this.fetchFormFromDB(window.location.href.split('?')[1]);
+                //retrive fetches something wrong, handle it too
+                // inside here we know the users has entered ? and SOMETHING after, so then...
+                // query db and see if form exists, return if it does, and if not, display message
             }
-            else if(el.type == 'List') {
-                return {
-                    type: el.type, label: '',
-                    alternatives: [{type: el.type, label: '', select: [{option: ''}]}]
+            else {
+                console.log("sda");
+            }
+        },
+        newPage: function() {
+            var app = this;
+
+            this.pages.push(new Page(this.pages.length + 1, this.pageHeight)) //if i dont pass index instead the page nr wont update if page rearranged
+
+            this.pages.forEach(function(page, index) {
+                if(page.pageNumber != index) {
+                    app.pages.splice(index, 1);
+                    app.pages.splice(page.pageNumber-1, 0, page);
                 }
+            });
+
+            this.createStackEffect();
+        },
+        stackPages: function() {
+            this.pagesX = 0;
+            this.pagesY = 10;
+            var app = this;
+            this.pages.forEach(function(page) {
+                //each page com must change their.. height since they already created
+                page.posX = app.pagesX;
+                page.posY = app.pagesY;
+            })
+        },
+        createStackEffect: function() {
+            var app = this;
+
+            //WHAT IS THE PURPOSE OF THIS?
+            this.pages.forEach(function(page) {
+                page.posY = 0;
+                page.posX = 0;
+            });
+
+            this.pagesY = -((this.pages.length-1) * 2);
+            this.pagesX = +((this.pages.length-1) * 2);
+
+            this.pages.forEach(function(page) {
+                page.posY -= app.pagesY;
+                app.pagesY += 2;
+
+                page.posX -= app.pagesX;
+                app.pagesX -= 2;
+            });
+        },
+        pageDown: function() {
+            var nextPage = this.pages.shift();  //takes the first out, shifts everything one index down
+            this.pages.push(nextPage);          //add the first to the last to display
+            this.matchIndexAndZ();
+            this.createStackEffect();
+        },
+        pageUp: function() {
+            var lastPage = this.pages.pop();    //remove the last page
+            this.pages.unshift(lastPage);       //insert in the front of the array pushing all other one index up
+            this.matchIndexAndZ();
+            this.createStackEffect();
+        },
+        setPageSize: function(size) {
+            this.pageHeight = size;
+            var app = this;
+            this.pages.forEach(function(page) {
+                page.height = app.pageHeight;
+            })
+        },
+        matchIndexAndZ: function() {
+            var app = this;
+            //loop all pages
+            this.pages.forEach(function(page) {
+                //set their z equal to their index
+                page.z = app.pages.indexOf(page);
+            });
+        },
+        shortenPages: function() {
+            var total = 0;
+            this.pages.forEach(function(page, index) {
+
+                page.questions.forEach(function(question) {
+                    total += question.height
+                });
+
+                page.height = total
+                total = 0
+            });
+        },
+        setPageSizeWidth: function(size) {
+            this.pageWidth = size;
+            var app = this;
+            this.pages.forEach(function(page) {
+                page.width = app.pageWidth;
+            })
+        },
+        showFinalForm: function() {
+            //u reverse everytime this is called
+            this.pages.reverse();
+            this.stackPages();
+            this.matchIndexAndZ();
+            this.createStackEffect();
+
+            this.hideGUI = !this.hideGUI;
+        },
+        initiatePageRearrangeMode: function() {
+            this.pageRearrangeMode = true;
+            this.setPageSize(250);
+            this.setPageSizeWidth(25);
+
+            //on drag set new size, :style takes care of rest, exactly like with the background color
+            var inc = 0;
+            this.pages.forEach(function(page) {
+                page.posX = inc;
+                inc =  inc + 230;
+            })
+        },
+
+
+
+        // HISTORY
+        informUserOfSave: function() {
+            this.feedbackMsg = 'Saving...'
+            var app = this;
+            setTimeout(function(){ app.feedbackMsg = 'All changes saved'; }, 1000);
+            //rather remove after a few seconds and then when data.status == ok
+        },
+        saveFormToStack: function(newState) {
+            var temp = JSON.stringify(this.pages);
+            this.past.push(JSON.parse(temp));
+            this.pages = newState;
+            this.informUserOfSave();
+        },
+        deleteHistory: function() {
+            this.future = [];
+            this.past   = [];
+            localStorage.clear();
+        },
+        undo: function() {
+            if(this.past.length > 0) {
+                var lastElement = this.past.pop();
+                this.future.unshift(this.pages);
+                this.pages = lastElement;
             }
-            else if(el.type == 'Tittel') {
-                return {
-                    type: el.type,
-                    label: '',
-                    desclabel: '',
-                    alternatives: [{type: el.type}]
-                }
+        },
+        redo: function() {
+            if(this.future.length > 0) {
+                var lastElement = this.future.shift();
+                this.past.push(this.pages);
+                this.pages = lastElement;
             }
-            else if(el.type == 'Video') {
-                return {
-                    type: el.type,
-                    label: '',
-                    alternatives: [{type: el.type, label: '', url: ''}]
-                }
-            }
-            else if(el.type == 'Textarea') {
-                return {
-                    type: el.type,
-                    label: '',
-                    alternatives: [{type: el.type, label: '', height: 8, width: 55}]
-                }
-            }
+        },
+        retrieve: function() {
+            this.past    = JSON.parse(localStorage.getItem('past'));
+            this.present = JSON.parse(localStorage.getItem('present'));
+            this.future  = JSON.parse(localStorage.getItem('future'));
+        },
+        save: function() {
+            localStorage.setItem('past', JSON.stringify(this.past));
+            localStorage.setItem('present', JSON.stringify(this.present));
+            localStorage.setItem('future', JSON.stringify(this.future));
+        },
+
+        copyLink: function() {
+          var copyText = document.getElementById("link");
+          copyText.select();
+          document.execCommand("Copy");
+        //   alert("Copied the text: " + copyText.value);
         }
     }
 })
+
+// function selectText(containerid) {
+//     if (document.selection) {
+//         var range = document.body.createTextRange();
+//         range.moveToElementText(document.getElementById(containerid));
+//         range.select();
+//     } else if (window.getSelection) {
+//         var range = document.createRange();
+//         range.selectNode(document.getElementById(containerid));
+//         window.getSelection().addRange(range);
+//     }
+// }
+
+
+
+//copy = just take the v-model/answerLink and copy to clipboard

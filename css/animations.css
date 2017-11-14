@@ -19,13 +19,28 @@
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
 .slide-fade-enter-active {
-  transition: all .3s ease;
+  transition: all .4s ease;
 }
 .slide-fade-leave-active {
   transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active for <2.1.8 */ {
-  transform: translateX(10px);
+  transform: translateX(800px);
+  opacity: 0;
+}
+
+
+
+
+.slide-fade2-enter-active {
+  transition: all .4s ease;
+}
+.slide-fade2-leave-active {
+  transition: all .4s cubic-bezier(0,.02,1,1);
+}
+.slide-fade2-enter, .slide-fade2-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(-800px);
   opacity: 0;
 }

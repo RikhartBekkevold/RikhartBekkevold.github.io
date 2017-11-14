@@ -3,10 +3,11 @@ Vue.directive('focus', {
   // When the bound element is inserted into the DOM...
   inserted: function (el, binding) {
 
-        if(binding.value == true){
+        // if(binding.value == true){
+            // el.change
             el.focus()
-            console.log(binding.value)
-        }
+            // console.log(binding.value)
+        // }
         // console.log(binding.value)
         // if(binding.value == true) {
         //     console.log('true')

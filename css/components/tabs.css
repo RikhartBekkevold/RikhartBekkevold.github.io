@@ -2,7 +2,7 @@
 .nav-tabs {
     border-radius: 4px 4px 0px 0px;
     background: #42b983;
-    border: 1px solid #42b983;
+    border: 1px solid #2EB276;
     box-sizing: border-box;
     /*opacity: 0.9;*/
     /*color: #000;
@@ -20,14 +20,14 @@
 
 .nav-tabs li a:hover, .nav-tabs li:hover {
     /*background: #ddd;*/
-    color: #000;
+    color: #fff;
 
     /*border-color: #ddd;*/
 }
 
 /* active tab color */
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-    color: #000;
+    color: #fff;
     background-color: #fff;
     border: 1px solid #fff;
 }

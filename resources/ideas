@@ -1,0 +1,53 @@
+IDEAS
+<!-- syntax highlight change that highlight only vue html attributes and values -->
+<!-- ability to tab in my table component -->
+<!-- set z index = index, set top: 0 for all of them  -->
+<!-- drag expand sizes -->
+<!-- pages displayed as minipages in rows and coloumns -->
+
+
+
+
+QUESTIONS
+why doesnt you need to add all the args it expects when calling a method?
+calling a function that doesnt return anything does return undefined. setting a var to 2 returns 2. the assignment operator is a function?
+
+
+TODO
+//this will only work if last index != array length - 1 - adds visual feedback whats possible, and physical
+//under it will aslong as index != 0
+//same height on pages, or slightly lower top +, on lower pages? need to change which that is dynamically?
+//only first page should have box shadow
+//lock all pages to same height
+
+
+
+CONSIDERATIONS
+make formlist/pages global so every component can manipulate it?
+
+
+
+//when making a framework. what do people not get about javascript?
+
+
+access to a var is usually done globally i js. or comp need to change something else. or get it passed somehow.
+
+
+utability shaped comps first?
+make a list for yourself.
+
+
+since js is immutable props only need to go down. not back up. events is only to tell of a chance in comp to outside that need to know to do something/interface/api.
+
+
+progress bar for how many pages/steps/questions left.
+
+ref example to get the element
+
+
+//to make it easier they use undefined, that way they can set values someone misses, for example with entering args?
+//do it like this. or add all of the differences through args, and set values that way
+
+
+
+what happens if have both index.php and index.html in one folder?

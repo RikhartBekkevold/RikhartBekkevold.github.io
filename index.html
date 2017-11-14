@@ -25,280 +25,252 @@
 </head>
 <body>
 	<div id="app" v-cloak>
-		<!-- NAVBAR -->
-		<div id="nav-row" class="row">
-		    <nav class="navbar navbar-fixed-top">
-		        <div class="container-fluid">
-		            <div class="navbar-header">
-		                <a class="navbar-brand" href="index.html">Vue Form Editor</img></a>
-		            </div>
-		            <ul class="nav navbar-nav" style="margin-left: 230px;" >
-		                <li v-if="hideGUI == false"><a href="#"><i style="color: white; font-size: 1.5em; " class="fa fa-undo" aria-hidden="true"></i></a></li>
-		                <li v-if="hideGUI == false"><a href="#"><i style="color: white; font-size: 1.5em" class="fa fa-repeat" aria-hidden="true"></i></a></li>
-						<li v-if="hideGUI == true" @click="hideGUI = !hideGUI"><a href="#"><i style="color: white; font-size: 1.5em" class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i></a></li>
-		            </ul>
-		        </div>
-		    </nav>
-		</div>
+		<custom-navbar
+			:hide="hideGUI"
+			:showbackbtn="hideMenuBackBtn"
+			:pagemode="pageRearrangeMode"
+			:feedback="feedbackMsg"
+			@undo="undo()"
+			@redo="redo()"
+			@show="showFinalForm()"
+			@delete="showModal = 'delete'"
+			@back="showFinalForm()">
+		</custom-navbar>
 
+<!--
+		<custom-navbar
+			:showLogo="hideGUI"
+			:showbackbtn="hideMenuBackBtn"
+			:showdeletebtn="pageRearrangeMode"
+			:showfeedback="feedbackMsg"
+			@undo="undo()"
+			@redo="redo()"
+			@show="showFinalForm()"
+			@delete="showModal = 'delete'"
+			@back="showFinalForm()">
+		</custom-navbar> -->
 
 		<div class="row-fluid">
-			<!-- LEFT SIDE MENU -->
-			<div class="col-lg-3 col-md-3 col-sm-3" v-if="hideGUI == false">
-				<div id="left-side-menu">
-					<div class="panel panel-default">
-						<div class="panel-heading" data-toggle="collapse" data-target="#advancedList">
-							<div class="row">
-								<div class="col-lg-10">
-									<span style="margin-right: 5px;">Avansert</span>
-								</div>
-								<div class="col-lg-2">
-									<i style="margin-top: 5px; margin-left: 10px;" class="glyphicon glyphicon-chevron-down"></i>
-								</div>
-							</div>
-						</div>
-						<div class="panel-body collapse" id="advancedList">
-						    <ul class="list-group">
-								<draggable v-model="advancedList" :clone="clone" :options="{group:{name: 'form', pull: 'clone', put: false, revertClone: false}, sort: false}">
-						            <li id="advlistitem" v-on:click="addQuestion(item.type)" v-for="item in advancedList" class="list-group-item question-types">
-										{{item.type}}
-										<span class="badge">
-											<i class="glyphicon glyphicon-move"></i>
-										</span>
-							        </li>
-								</draggable>
-						    </ul>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" style="" data-toggle="collapse" data-target="#list">
-							<div class="row">
-								<div class="col-lg-10">
-									<span style="margin-right: 5px;">Types</span>
-								</div>
-								<div class="col-lg-2">
-									<i style="margin-top: 5px; margin-left: 10px;" class="glyphicon glyphicon-chevron-down"></i>
+			<div class="col-lg-3 col-md-3 col-sm-3">
+				<transition name="slide-fade2">
+					<div id="left-side-menu" v-if="hideGUI == false &amp;&amp; pageRearrangeMode == false">
+						<div class="panel panel-default">
+							<div class="panel-heading" data-toggle="collapse" data-target="#advancedList">
+								<div class="row">
+									<div class="col-lg-10">
+										<span style="margin-right: 5px;">Sections</span>
+									</div>
+									<div class="col-lg-2">
+										<i style="margin-top: 5px; margin-left: 10px;" class="glyphicon glyphicon-chevron-down"></i>
+									</div>
 								</div>
 							</div>
+							<div class="panel-body" style="inset 0 0 10px #000000;" id="advancedList">
+							    <ul class="list-group" style="width: 100%; margin: auto;  inset 0 0 10px #000000;">
+									<draggable v-model="advancedList" :clone="clone"  @end="saveFormToStack(pages)" @start="showPlaceholder = false" :options="{group:{name: 'form', pull: 'clone', put: false, revertClone: false}, sort: false,
+									chosenClass: 'sortable-chosen', ghostClass: 'sortable-ghost', dragClass: 'drag2'}">
+							            <li id="advlistitem" style="box-shadow: 0 0 5px #ddd;" v-on:click="addQuestion(item.type)" v-for="item in advancedList" class="list-group-item question-types">
+											{{item.type}}
+											<span class="badge">
+												<i class="fa" :class="item.icon" style="font-size: 2em"></i>
+											</span>
+								        </li>
+									</draggable>
+							    </ul>
+							</div>
 						</div>
-						<div class="panel-body collapse in" id="list">
-						    <ul class="list-group">
-								<draggable v-model="list" :clone="clone" :options="{group:{name: 'form', pull: 'clone', put: false, revertClone: false}, sort: false}">
-										<transition-group name="fade">
-						            <li id="listitem" v-on:click="addQuestion(item.type)"  v-for="(item, index) in list" :key="index" class="list-group-item question-types">
-						                {{item.type}}
-										<span class="badge">
-											<i class="glyphicon glyphicon-move"></i>
-										</span>
-						            </li>
-									  </transition-group>
-								</draggable>
-						    </ul>
+						<div class="panel panel-default">
+							<div class="panel-heading"  data-toggle="collapse" data-target="#list">
+								<div class="row">
+									<div class="col-lg-10">
+										<span style="margin-right: 5px;">Types</span>
+									</div>
+									<div class="col-lg-2">
+										<i style="margin-top: 5px; margin-left: 10px;" class="glyphicon glyphicon-chevron-down"></i>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body collapse in" id="list">
+							    <ul class="list-group" style=" color: white; margin: auto" style="text-align: left">
+									<draggable v-model="list" :clone="clone" @end="saveFormToStack(pages)" @start="showPlaceholder = false"  :options="{group:{name: 'form', pull: 'clone', put: false, revertClone: false}, sort: false,
+									chosenClass: 'sortable-chosen', ghostClass: 'sortable-ghost', dragClass: 'drag2'}">
+							            <li id="listitem" style="margin-bottom: 10px; box-shadow: 0 0 5px #ddd;" v-on:click="addQuestion(item.type)"  v-for="(item, index) in list" :key="index" class="list-group-item question-types">
+
+										    <span style="font-size: 1.1em; padding-top: 10px">{{item.type}}</span>
+											<span class="badge" ><i class="fa" :class="item.icon" aria-hidden="true" style="font-size: 2em; "></i></span>
+											<!-- <span class="badge">  //it adds the value. link js something? python    what does this mean? how does it work under the hood.
+												<i class="glyphicon glyphicon-move" style="font-size: 2em"></i>
+											</span> -->
+							            </li>
+									</draggable>
+							    </ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				</transition>
 			</div>
 
 
+			<!-- FORM --> <!-- two loop inside eachother is the same as two loop inside eachother in js --><!-- emit a desire to be deleted --><!-- doesnt update through console?  detect-->
+			<div id="form-container" class="col-lg-6 col-md-9 col-sm-9" style="padding: 0px 40px 50px 40px;" v-if="hideGUI == false &amp;&amp; pageRearrangeMode == false">
+				<tabs>
+					<!-- FORM -->
+					<!-- {{past}}
+					<br>
+					<br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<!-- FORM -->
-			<div id="form-container" class="col-lg-5 col-md-9 col-sm-9" style="padding-bottom: 50px;" v-if="hideGUI == false">
-				<tabs :class="{ effect4: nextPage, effect3: prevPage }">
+					<br>
+					<br>
+					{{future}} -->
+						{{pages}}
 					<tab name="Edit" selected="true">
-						<div id="home" class="tab-pane fade in active">
-						    <div style="border-radius: 0px 0px 0px 0px;" class="panel panel-default">
-						        <div id="form" style="width: 100%; padding: 0px" class="panel-body">
-									<ul class="list-group" style="min-height: 700px;">
-										<draggable v-model="formList" @end="playAnimations = !playAnimations" :options="{group: 'form', animation: 250}" style="min-height: 700px;">
-										   <li style="border: 1px solid black;" v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex, 'border-color': question.fColorHex }" tabindex="0" @focus.prevent="focus(question)"
-										   		v-for="(question, index) in formList"
-										    	:key="index" class="list-group-item">
-											   <question :question="question" :key="index" :toggle="toggle" @clone="cloneQuestion(question)" @remove="removeQuestion(question)"></question>
-										  </li>
-									   </draggable>
-									</ul>
-						        </div>
-								<div class="row-fluid" style="height: 50px; padding-bottom: 10px;">
-
-									<div class="col-lg-3" >
-									</div>
-									<div class="col-lg-1" >
-										<div class="btn btn-default" @mouseleave="prevPage = false" @mouseover="prevPage = true">&#8249;</div>
-									</div>
-
-									<div class="col-lg-4" style="text-align: center;">
-										{{currentPage}}/{{nrOfPages}}
-									</div>
-
-
-									<div class="col-lg-1">
-										<div class="btn btn-default" @mouseleave="nextPage = false" @mouseover="nextPage = true">&#8250;</div>
-									</div>
-									<div class="col-lg-3">
-									</div>
-
-							  	</div>
-						    </div>
+						<div style="position: relative" id="home" class="tab-pane fade in active" style="">
+							<draggable  v-model="pages"
+							 :options="{group: 'page', animation: 100, ghostClass: 'back', dragClass: 'drag', chosenClass: 'sortable-ghost4', forceFallback: false, fallbackTolerance: 0, scroll:true, scrollSensitivity: 150, scrollSpeed: 10}"
+							 style="min-height: 1000px;">
+								<!-- <div style="border: 1px solid black" > -->
+									<!-- <div :style="{top: page.posY + 'px', left: page.posX + 'px', 'z-index': page.z}" :key="page.pageNumber" style="width: 100%; position: absolute;" v-for="(page, index) in pages"> -->
+										<page :key="page.pageNumber" v-for="(page, index) in pages" @removequestion="saveFormToStack(pages)" @clonequestion="saveFormToStack(pages)" @dragstart="setPageSize(0)" @remove="deletePage(page)" :hide="hideGUI" @nextpage="pageDown()" @pageDrag="pageOnDrag()" @prevpage="pageUp()" :pagedata="page"></page>
+									<!-- </div> handle: ".my-handle"-->
+									<!-- <div class="btn btn-default" @click="setPageSize(50)"></div> -->
+								<!-- </div> -->
+							</draggable>
 						</div>
 					</tab>
-					<tab name="Preview">
-						<div style="padding: 0px; margin: 0px" class="panel panel-default">
-							<div id="form" style="width: 100%; padding: 0px; min-height: 0px" class="panel-body">
-								<ul style="padding: 0px; margin: 0px" class="list-group">
-								   <li style="border: 1px solid black;" v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }" v-for="(question, index) in formList" v-bind:class="{smoke: question.type == 'Tittel'}" :key="index" class="list-group-item">
-									   <finished-question :key="index" :question="question"></finished-question>
-									    <!-- <div v-if="index != formList.length - 1" style=""></div> -->
-								   </li>
-								</ul>
-							</div>
-						</div>
+					<!-- JSON -->
+					<tab name="JSON export">
+						<div id="test"></div>
 					</tab>
-
 				</tabs>
 			</div>
 
-			<div class="col-lg-3" v-if="hideGUI == true">
-			</div>
-			<div class="col-lg-6" v-if="hideGUI == true">
-				<div id="form" style="width: 90%; margin: auto; padding-bottom: 40px; min-height: 0px" class="panel-body">
+			<!-- FINISHED FORM -->
+			<div class="col-lg-6" v-if="hideGUI == true &amp;&amp; pageRearrangeMode == false">
+				<div id="form" style="width: 100%; padding-bottom: 0px; min-height: 0px" class="panel-body">
 					<ul style="padding: 0px; margin: 0px" class="list-group">
-					   <li style="border: 1px solid black" v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }" v-for="(question, index) in formList" v-bind:class="{smoke: question.type == 'Tittel'}" :key="index" class="list-group-item">
-						   <finished-question :key="index" :question="question"></finished-question>
-					   </li>
+						<div v-for="(page, index) in pages">
+						   	<div :style="{top: page.posY + 'px', left: page.posX + 'px', 'z-index': page.z}" style="width: 100%; position: absolute;" :key="page.pageNumber">
+								<page :pagedata="page" :hide="hideGUI" :idx="index" :length="pages.length-1"   @send="submitAnswer()" @nextpage="pageDown()" @prevpage="pageUp()" @remove="deletePage(page)"></page>
+					   		</div>
+					   </div>
 					</ul>
 				</div>
 			</div>
-			<div class="col-lg-3" v-if="hideGUI == true">
+
+			<!-- PAGE SWITCH MODE -->
+			<div class="col-lg-6" v-if="pageRearrangeMode == true" style="border: 1px solid black">
+				<div id="form" style="width: 100%; padding-bottom: 0px; min-height: 0px" class="panel-body">
+					<ul style="padding: 0px; margin: 0px" class="list-group">
+
+								<div class="row-fluid">
+									<div class="col-lg-4">
+									</div>
+									<div class="col-lg-4">
+										<draggable  v-model="pages"
+										 :options="{group: 'pageRearrange', name: 'un', animation: 100, ghostClass: 'back', dragClass: 'drag', chosenClass: 'sortable-ghost4', forceFallback: false, fallbackTolerance: 0, scroll:true, scrollSensitivity: 150, scrollSpeed: 10}"
+										 style="min-height: 1000px;">
+											<div v-for="(page, index) in pages" style=" width: 100%">
+												<mini-page  :pagedata="page" :key="page.pageNumber">></mini-page>
+											</div>
+										</draggable>
+									</div>
+									<div class="col-lg-4">
+									</div>
+								</div>
+								<!-- if draggable/loop/componet is like that it understnad to drag up and down... does the same apply if -->
+					</ul>
+				</div>
 			</div>
 
-
+			<!-- <div :style="{top: page.posY + 'px', left: page.posX + 'px'}"  style="width: 100%; position: absolute;" :key="page.pageNumber"> -->
+		<!-- </div> -->
 			<!-- RIGHT SIDE MENU -->
-			<div class="col-lg-4 hidden-md hidden-sm">
-				<div id="right-side-menu" >
-					<tabs v-if="hideGUI == false">
+			<div class="col-lg-3 hidden-md hidden-sm" style="padding-left: 0px">
+				<div id="right-side-menu">
+					<transition name="slide-fade">
+					<tabs v-if="hideGUI == false &amp;&amp; pageRearrangeMode == false">
+						<!-- HOTKEYS TABLE -->
 						<tab name="Hotkeys">
-							<div id="home" class="tab-pane fade in active">
+							<div id="" class="tab-pane fade in active">
 								<div v-show="show == true" class="panel panel-default">
 									<div class="panel-body">
 										<div class="row-fluid">
-											<table style="" class="table">
-												<tr>
-													<th>Element</th>
-													<th>Function</th>
-													<th>Key</th>
-												</tr>
-												<tr>
-													<td>Input field</td>
-													<td>Add new field</td>
-													<td>Enter</td>
-												</tr>
-												<tr>
-													<td>Input field</td>
-													<td>Delete field content</td>
-													<td>Delete</td>
-												</tr>
-												<tr>
-													<td>Global</td>
-													<td>Delete form</td>
-													<td>alt + s</td>
-												</tr>
-												<tr>
-													<td>Global</td>
-													<td>Show delete form modal</td>
-													<td>alt + a</td>
-												</tr>
-												<tr>
-													<td>Input field</td>
-													<td>Focus previous field</td>
-													<td>Up arrow</td>
-												</tr>
-												<tr>
-													<td>Input field</td>
-													<td>Focus next field</td>
-													<td>Down arrow</td>
-												</tr>
-											</table>
+											<hotkey-table></hotkey-table>
 										</div>
 									</div>
 								</div>
 							</div>
 						</tab>
-						<tab name="Color" selected="true">
-							<div id="home" class="tab-pane fade in active">
+						<!-- COLOUR SELECT -->
+						<tab name="Colour" selected="true">
+							<div id="" class="tab-pane fade in active">
 								<div v-show="show == true" class="panel panel-default">
 									<div class="panel-body">
 										<div class="row-fluid">
 											<div class="col-lg-12" style="">
+												<h4 style="font-family: 'Alfa Slab One', cursive; border-bottom: 1px solid #ddd; text-align: center; padding-bottom: 10px;">Question background colour</h4>
 												<photoshop-picker v-model="colors" />
 											</div>
 										</div>
 										<div class="row-fluid">
 											<div class="col-lg-12" style="">
-												<form>
-													<div class="checkbox">
-														<label>
-															<input type="checkbox" v-model="entireForm" />
-															Apply colour to entire form
-														</label>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</tab>
-						<tab name="Edit form">
-							<div id="home" class="tab-pane fade in active">
-								<div v-show="show == true" class="panel panel-default">
-									<div class="panel-body">
-										<div class="row-fluid">
-											<div class="col-lg-10">
-												<form class="pure-form">
-													<label>Form title:</label>
-						                            <input v-focus type="text" v-model="title" style="width: 100%">
-													<h2>{{title}}</h2>
-						                        </form>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</tab>
-						<tab name="Edit question">
-							<div id="home" class="tab-pane fade in active">
-								<div v-show="show == true" class="panel panel-default">
-									<div class="panel-body">
-										<div class="row-fluid">
-											<div class="col-lg-10">
-												<form>
-													<div class="checkbox">
-														<label>
-															<input type="checkbox" v-model="time" />
-															Enable time
-														</label>
-													</div>
-													<div class="checkbox">
-														<label>
-															<input type="checkbox" v-model="calendar" />
-															Calendar
-														</label>
-													</div>
-												</form>
+												<div class="row-fluid">
+													<form class="pure-form">
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" v-model="entireForm" />
+																Apply colour to entire form
+															</label>
+														</div>
+													</form>
+													<h4 style="font-family: 'Alfa Slab One', cursive; margin-top: 30px; border-bottom: 1px solid #ddd; text-align: center; padding-bottom: 10px;">Text position</h4>
+												</div>
+												<div class="row-fluid">
+													<form class="pure-form">
+														<div class="col-lg-4">
+															<div class="radio">
+																<label>
+																	<input name="one" type="radio" />
+																	Left
+																</label>
+															</div>
+														</div>
+														<div class="col-lg-4">
+															<div class="radio">
+																<label>
+																	<input name="two" type="radio" />
+																	Middle
+																</label>
+															</div>
+														</div>
+														<div class="col-lg-4">
+															<div class="radio">
+																<label>
+																	<input name="three" type="radio" />
+																	Right
+																</label>
+															</div>
+														</div>
+													</form>
+												</div>
+
+												<div class="row-fluid">
+													<div class="btn btn-default" @click="newPage()">Add new page</div>
+												</div>
+												<div class="row-fluid">
+													<div class="btn btn-default" @click="initiatePageRearrangeMode()">Rearrange page</div>
+												</div>
+												<div class="row-fluid">
+													<div class="btn btn-default" @click="setPageSize(800)">A4</div>
+												</div>
+												<div class="row-fluid">
+													<div class="btn btn-default" @click="setPageSize(300)">A5</div>
+												</div>
+												<div class="row-fluid">
+													<div class="btn btn-default" @click="stackPages()">Stack pages</div>
+													<div class="btn btn-default" @click="pageUp()" >&#8249;</div>
+													<div class="btn btn-default" @click="pageDown()" >&#8250;</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -306,70 +278,79 @@
 							</div>
 						</tab>
 					</tabs>
-
-					<ul  v-if="hideGUI == false" class="list-group">
-						<li class="list-group-item">
-							<button @click="showModal = 'delete'" class="btn btn-default default-btn"><i class="glyphicon glyphicon-trash"></i></button>
-						</li>
-						<li class="list-group-item">
-							<button @click="hideGUI = !hideGUI"  class="btn btn-default default-btn"><i class="glyphicon glyphicon-share"></i></button>
-						</li>
-					</ul>
-				</div>
+				</transition>
 			</div>
+		</div>
 
-			<modal v-if="showModal == 'finish' || showModal == 'delete'" @close="saveForm">
-				<!-- HEADER -->
-				<h3 v-if="showModal == 'finish'" slot="header">Save and proceed?</h3>
-				<h3  v-if="showModal == 'delete'" slot="header" style="text-align: center;">Delete form?</h3>
-				<!-- MAIN -->
-				<p v-if="showModal == 'finish'" style="text-align: center" slot="body">This will save the form</p>
-				<p v-if="showModal == 'delete'" style="text-align: center" slot="body">This will delete the entire form permanently</p>
-				<!-- FOOTER -->
-				<div v-if="showModal == 'delete'" slot="footer">
-					<button style="background: #FF715B" class="btn" @click="deleteForm">Delete form <!-- FF715B B2301C--></button>
-					<button class="btn" @click="showModal = 'none'">Cancel</button>
-				</div>
-			</modal>
+
+		<!-- MODAL -->
+		<modal v-if="showModal == 'finish' || showModal == 'delete' || showModal == 'invalid' || showModal == 'share'" @close="showModal = 'none'">
+			<!-- HEADER -->
+			<h3 v-if="showModal == 'finish'" slot="header">Save and proceed?</h3>
+			<h3  v-if="showModal == 'delete'" slot="header" style="text-align: center;">Delete form?</h3>
+			<h3  v-if="showModal == 'invalid'" slot="header" style="text-align: center;">Unanswered questions</h3>
+			<h3  v-if="showModal == 'share'" slot="header" style="text-align: center;">Share link</h3>
+			<!-- MAIN -->
+			<p v-if="showModal == 'finish'" style="text-align: center" slot="body">This will save the form</p>
+			<p v-if="showModal == 'delete'" style="text-align: center" slot="body">This will delete the entire form permanently</p>
+			<p v-if="showModal == 'invalid'" style="text-align: center" slot="body">Answer all questions marked with <span style="color: red">*</span></p>
+			<p v-if="showModal == 'share'" style="text-align: center; overflow-wrap: break-word;" slot="body"><textarea class="form-control" id="link" style="background: white;" readonly v-model="answerURL"></textarea></p>
+
+
+			<!-- FOOTER  overflow-wrap: break-word-->
+			<div v-if="showModal == 'delete'" slot="footer">
+				<button style="background: #FF715B" class="btn" @click="deleteForm()">Delete form <!-- FF715B B2301C--></button>
+				<button class="btn" @click="showModal = 'none'">Cancel</button>
+			</div>
+			<!-- FOOTER -->
+			<div v-if="showModal == 'share'" slot="footer">
+				<button class="btn" @click="copyLink()">Copy</button>
+				<button class="btn" @click="showModal = 'none'">Cancel</button>
+			</div>
+		</modal>
 
 		</div>
 	</div>
-
-
 	</div>
 
 
 	<script src="https://unpkg.com/flatpickr@3.0.6/dist/flatpickr.min.js"></script>
-	<!-- Vue js -->
-	<!-- external libraries -->
 	<script src="https://unpkg.com/vue"></script>
-
-	<!-- Lastly add this package -->
 	<script src="https://unpkg.com/vue-flatpickr-component"></script>
-
-
-	<!-- <script src="https://unpkg.com/flatpickr"></script> -->
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-color/2.2.0/vue-color.js"></script>
-
 	<script>
 		var Photoshop = VueColor.Chrome;
 		var Swatch = VueColor.Swatches;
-
 	</script>
-	<!-- <script src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"></script> -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.11.0/vuedraggable.min.js"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js"></script> -->
+	<!-- Latest Sortable -->
+	<script src="//rubaxa.github.io/Sortable/Sortable.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+
 	<!-- internal libraries  -->
 	<script src="lib/lib.js"></script>
+	<script src="lib/hotkeys.js"></script>
+	<script src="js/localstorage.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/page.js"></script>
+
 	<!-- custom components -->
 	<script src="components/custom-input.js"></script>
 	<script src="components/custom-modal.js"></script>
+	<script src="components/key-table.js"></script>
+	<script src="components/custom-navbar.js"></script>
 	<script src="components/tab.js"></script>
 	<script src="components/tabs.js"></script>
+	<script src="components/table-component.js"></script>
+	<script src="components/questiontypes/textfield.js"></script>
+	<script src="components/page.js"></script>
+	<script src="components/mini-page.js"></script>
 	<script src="components/question.js"></script>
 	<script src="components/finished-question.js"></script>
+	<script src="components/input.js"></script>
+
 	<!-- custom directives -->
 	<script src="js/global-custom-directives.js"></script>
 
@@ -378,3 +359,6 @@
 
 </body>
 </html>
+<!-- <li style="border: 1px solid black" v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }" v-for="(question, index) in page.questions" v-bind:class="{smoke: question.type == 'Tittel'}" :key="index" class="list-group-item"> -->
+
+<!-- </li> -->

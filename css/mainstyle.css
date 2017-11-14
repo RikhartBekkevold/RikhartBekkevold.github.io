@@ -12,7 +12,7 @@ i {
 }
 
 .glyphicon-remove {
-    color: rgba(175, 47, 47, 0.5);
+    /*color: rgba(175, 47, 47, 0.5);*/
     margin-left: 10px;
 }
 
@@ -21,17 +21,8 @@ i {
 }
 
 i:hover {
-    color: #852020;
+    color: #852020; /*5E0E0C*/
     cursor: pointer;
-}
-
-
-/*navbar*/
-.navbar {
-    border-radius: 0px;
-    background: #2EB276;
-    /*border-bottom: 1px solid black;*/
-    box-shadow: 0px 0px 20px #888888;
 }
 
 .nav li a {
@@ -46,11 +37,6 @@ i:hover {
     color: #fff;
 }
 
-.option {
-    /*border-radius: 10px;*/
-
-}
-
 .nav>li>a:hover, .nav>li>a:focus {
     background-color: transparent;
     background-color: #B2301C;
@@ -61,14 +47,21 @@ i:hover {
    color: black;
 }
 
-
-/*tags*/
 body {
     background: #f1f1f1;
     font-family: 'Libre Baskerville', serif;
     padding-top: 70px;
     overflow-y: scroll;
 }
+
+/*JSON HIGHLIGHTER*/
+pre {outline: 1px solid #ccc; padding: 5px; background: white}
+.string { color: hsl( 95, 38%, 62%); }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: darkorange; }
+.key { color: hsl(355, 65%, 65%); }
+
 
 span {
     color: black;
@@ -88,12 +81,21 @@ td, th {
     display: none;
 }
 
-
 /*form*/
 #form {
-    min-height: 800px;
+    /*min-height: 700px;*/
     font-family: 'Libre Baskerville', serif;
     padding-bottom: 0px;
+    margin: 0px;
+    width: 791px;
+    -webkit-backface-visibility: hidden;
+}
+
+#shadow {
+    -webkit-box-shadow: 0 0 10px #777;
+    -moz-box-shadow: 0 0 10px #777;
+    box-shadow: 0 0 10px #777;
+    -webkit-backface-visibility: hidden;
 }
 
 #form li input {
@@ -102,6 +104,7 @@ td, th {
 
 #form-container {
     padding-bottom: 0px;
+    margin: 0px;
 }
 
 .badge {
@@ -109,11 +112,10 @@ td, th {
     background: white;
 }
 
-.question-types:hover {
+/*when hovering left menu*/
+.question-types:hover, .question-types .badge:hover {
     cursor: move;
-    /*opacity: .4;*/
     background: #F1F1F1;
-    /*height: 60px;*/
 }
 
 .form-control {
@@ -125,6 +127,10 @@ td, th {
     margin-right: 0px;
     padding-right: 0px;
 }
+
+/*#link {
+    border-bottom: 1px solid #42b983;
+}*/
 
 .col-lg-11 {
     padding: 0px;
@@ -155,17 +161,14 @@ td, th {
     box-shadow: none;
 }
 
-.panel-default > .panel-heading {
-    background: #42b983;
-    color: white;
-    cursor: pointer;
-    /*opacity: 0.9;*/
-}
-
 .panel-heading span, .panel-heading i {
     color: white;
 }
 
+.panel {
+    /*padding-bottom: 0px;*/
+    margin-bottom: 0px;
+}
 
 #listitem {
     height: 60px;
@@ -175,33 +178,16 @@ td, th {
     height: 60px;
 }
 
-/*433f4a*/
-/*975BFF*/
-/*.default-btn {
-    background: #B2301C;
-}
-
-.default-btn:hover {
-    background: #B2301C;
-    opacity: 0.5;
-}
-
-.default-btn:focus {
-    background: #B2301C;
-    opacity: 0.5;
-}*/
  #right-side-menu {
     position: fixed;
     width: inherit;
-    padding-right: 40px;
-    /*position: static;*/
+    padding-right: 15px;
 }
 
 #left-side-menu {
     position: fixed;
     width: inherit;
-    padding-right: 20px;
-    /*position: static;*/
+    padding-right: 15px;
 }
 
 .pure-form textarea:focus {
@@ -240,6 +226,7 @@ th {
 
 td {
   background-color: #f9f9f9;
+ border: 1px solid #ddd;
 }
 
 th, td {
@@ -254,6 +241,9 @@ th.active {
 th.active .arrow {
   opacity: 1;
 }
+/*tr {
+     border: 1px solid #42b983;
+}*/
 
 .arrow {
   display: inline-block;
@@ -270,17 +260,17 @@ th.active .arrow {
   border-bottom: 4px solid #fff;
 }
 
-.arrow.dsc {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #fff;
-}
-
 .arrow.asc:hover {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-bottom: 4px solid #000;
    color: #000;
+}
+
+.arrow.dsc {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
 }
 
 .arrow.dsc:hover {
@@ -291,8 +281,32 @@ th.active .arrow {
    color: #000;
 }
 
+textarea {
+    resize: none;
+}
+
+/*#form li:focus {
+    border: 1px solid red;
+    outline-color: red;
+}*/
+/*blue always applied as default for focus. so remove tabindex...?*/
 
 
+#form li {
+    border-radius: 0px;
+    border-color: black;
+    box-sizing: border-box;
+}
+
+.row-fluid {
+    display: block;
+    min-height: auto;
+    height: auto;
+    max-height: auto;
+    clear: both;
+}
+
+/*DRAG AND DROP CLASSSES*/
 .sortable-ghost2 {
     cursor: move;
     opacity: 0;
@@ -302,87 +316,65 @@ th.active .arrow {
     border: 1px solid #42b983;
 }
 
-textarea {
-    resize: none;
+.sortable-ghost4 {
+    /*box-sizing: border-box;
+    border: 5px solid black;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1000;
+    opacity: 1;*/
 }
 
-#form li:focus {
-    /*border: 1px solid red;*/
-    outline-color: #42b983;
-
+.back {
+    opacity: 1;
+    position: relative;
+    z-index: 1000;
 }
 
-#form li {
-    border: 0px;
+.drag {
+    position: relative;
+    z-index: 1000;
+    background: none;
+    opacity: 1;
+}
+
+.drag2 {
+    position: relative;
+    z-index: 1000;
     border-radius: 0px;
-    /*border-bottom: 1px solid #ddd;*/
-    /*border-radius: 0px;*/
-    box-sizing: border-box;
-    /*outline: none;*/
+    border: 1px solid black;
+    background-image: none;
+    background-color:orange;
+    filter: none;
+    gradient: none;
 }
 
-
-
-.row-fluid {
-        display: block;
-        min-height: auto;
-        height: auto;
-        max-height: auto;
-        clear: both;
+/*COLOR*/
+.panel-default > .panel-heading {
+    background: #2EB276;
+    color: black;
+    cursor: pointer;
 
 }
 
-
-
-.effect4
-{
-  position: relative;
-}
-.effect4:after
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 15px;
-  right: 10px;
-  left: auto;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #777;
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
-  -ms-transform: rotate(3deg);
-  transform: rotate(3deg);
+.list-group {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
-
-
-.effect3
-{
-  position: relative;
+.app-color {
+    background: #ddd;
 }
-.effect3:before
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 15px;
-  left: 10px;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #777;
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
-  -webkit-transform: rotate(-3deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-3deg);
-  -ms-transform: rotate(-3deg);
-  transform: rotate(-3deg);
+
+/*navbar*/
+.navbar {
+    border-radius: 0px;
+    background: #2EB276;
+    /*border-bottom: 1px solid black;*/
+    box-shadow: 0px 0px 20px #888888;
+    -webkit-backface-visibility: hidden;
+}
+
+.main_green {
+    background: #2EB276;
 }

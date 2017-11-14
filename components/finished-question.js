@@ -3,23 +3,23 @@
  Vue.component('finished-question', {
      template: `
 
- <div>
+ <div style="padding: 20px 0px 50px 20px">
       <!-- QUESTIONN -->
-      <div v-if="question.type != 'Tittel'" class="row" style="margin-bottom: 30px; font-family: 'Alfa Slab One', cursive; letter-spacing: 2px;">
+      <div v-if="question.type != 'Tittel'" class="row" style="margin-bottom: 30px; font-family: 'Merriweather', serif; font-weight: bold;  font-size: 1.05em">
           <div class="col-lg-11" style="padding-left: 8px; padding-top: 8px;">
               <div :style="{color: question.fColorHex}"  style="font-size: 1.5em; margin-left: 10px;" class="question-input">{{question.label}}</div>
           </div>
       </div>
 
       <!-- TITTEL -->
-       <div v-if="question.type == 'Tittel'" class="row">
-            <div class="row-fluid" style="padding: 0px">
-                <div class="col-lg-12" style="display: block; width: 100%; padding: 20px; text-align: center;">
-                    <div style="text-align: center; font-size: 1.9em; padding: 0px; margin: 0px;">{{question.label}}</div>
+       <div v-if="question.type == 'Tittel'" class="row" style=" padding-right: 20px; text-align: center;">
+            <div class="row-fluid">
+                <div class="col-lg-12">
+                    <div style="font-family: 'Merriweather', serif; font-size: 1.9em; padding: 0px; margin: 0px;">{{question.label}}</div>
                 </div>
             </div>
-            <div class="row">
-                <div v-if="question.desclabel != ''" class="col-lg-12" style="padding-bottom: 20px; text-align: center">
+            <div class="row-fluid" style="padding-top: 15px">
+                <div v-if="question.desclabel != ''" class="col-lg-12" style="padding-bottom: 0px;">
                     <div>{{question.desclabel}}</div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
 
                   <div class="col-lg-10"  style="margin-left: 15px">
                       <form class="pure-form">
-                          <input type="text" style="width: 100%">
+                          <input type="text" style="width: 100%; color: black">
                       </form>
                   </div>
                   <div class="col-lg-1" >
@@ -89,7 +89,7 @@
 
                   <div class="col-lg-10"  style="margin-left: 15px">
                       <form class="pure-form">
-                          <textarea class="pure-input-1-2" :rows="alt.height" :cols="alt.width" style="width: auto"></textarea>
+                          <textarea class="pure-input-1-2" :rows="alt.height" :cols="alt.width" style="width: auto; color: black"></textarea>
                       </form>
                   </div>
                   <div class="col-lg-1" >

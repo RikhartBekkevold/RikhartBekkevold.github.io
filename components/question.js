@@ -5,13 +5,13 @@ Vue.component('question', {
 
 
         <!-- QUESTIONN -->
-        <div v-if="question.type !='Tittel'" class="row" style="margin-bottom: 50px; font-family: 'Alfa Slab One', cursive; letter-spacing: 5px;">
-         <div class="col-lg-11">
-            <input v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }" v-model="question.label" type="text" style="margin-left: 10px; color: white" class="form-control question-input" placeholder="Write your question here..."></input>
+        <div v-if="question.type !='Tittel'" class="row" style="margin-bottom: 50px; font-family: 'Merriweather', serif; font-weight: bold;  font-size: 1.2em">
+         <div class="col-lg-11" style="padding-left: 10px">
+            <input-div msg="Write a question here..." v-model="question.label" :bColorHex="question.bColorHex" :fColorHex="question.fColorHex"></input-div>
          </div>
          <div style="padding-top: 9px;" class="col-lg-1">
-             <div style="border-bottom: 1px solid black" v-on:click="$emit('remove')">
-                 <i class="glyphicon glyphicon-remove"></i>
+             <div style="border-bottom: 1px solid black; color: #AD170F; opacity: 0.6;" v-on:click="$emit('remove')">
+                 <i class="glyphicon glyphicon-remove" style="color: #AD170F; opacity: 0.6;"></i>
              </div>
              <div style="padding-top: 10px;" v-on:click="$emit('clone')">
                  <i v-bind:style="{ color: question.fColorHex }" class="fa fa-clone"></i>
@@ -22,18 +22,18 @@ Vue.component('question', {
         <!-- TITTEL -->
         <div v-if="question.type == 'Tittel'" class="row">
           <div class="col-lg-11">
-            <input v-demo="{color: 'white', text: false}" v-focus="focus" v-model="question.label" type="text" style="margin-left: 10px; font-size: 1.5em;" class="form-control question-input" placeholder="Write a title here..."></input>
-            <div class="row">
+            <input  :style="{ 'background-color': question.bColorHex, color: question.fColorHex }" v-demo="{color: 'white', text: false}" v-focus="focus" v-model="question.label" type="text" style="margin-left: 10px; font-size: 1.5em;" class="form-control question-input" placeholder="Write a title here..."></input>
+            <div class="row-fluid">
                 <div class="col-lg-1">
-                    <i v-if="question.type == 'Tittel'" v-on:click="toggleTitleDesc = !toggleTitleDesc" style="padding-top: 9px; color: #4b4f56; margin-left: 10px;" class="fa fa-plus" aria-hidden="true"></i>
+                    <i v-if="question.type == 'Tittel'" v-on:click="toggleTitleDesc = !toggleTitleDesc" style="padding-top: 9px; color: #AD170F; opacity: 0.6; margin-left: 10px;" class="fa fa-plus" aria-hidden="true"></i>
                 </div>
                 <div class="col-lg-11">
-                    <input v-model="question.desclabel" v-bind:class="{hide: toggleTitleDesc}" type="text" style="margin-left: 10px;" class="form-control question-input" placeholder="Add a description here..."></input>
+                    <input :style="{ 'background-color': question.bColorHex, color: question.fColorHex }" v-model="question.desclabel" v-bind:class="{hide: toggleTitleDesc}" type="text" style="margin-left: 10px;" class="form-control question-input" placeholder="Add a description here..."></input>
                 </div>
             </div>
           </div>
           <div style="padding-top: 9px;" class="col-lg-1">
-              <div style="border-bottom: 1px solid black" v-on:click="$emit('remove')">
+              <div style="border-bottom: 1px solid black; color: #5E0E0C" v-on:click="$emit('remove')">
                  <i class="glyphicon glyphicon-remove"></i>
              </div>
              <div style="padding-top: 10px;" v-on:click="$emit('clone')">
@@ -44,26 +44,26 @@ Vue.component('question', {
 
         <!-- ALTERNATIVES -->
         <div class="row">
-        <draggable  @end="" @start="focus = false" :move="checkMove" :options="{animation: 50, ghostClass: 'choosenDragClass', dragClass: 'sortable-ghost2'}" v-model="question.alternatives">
+        <draggable  @end="" @start="focus = false" :options="{animation: 50, ghostClass: 'choosenDragClass', dragClass: 'sortable-ghost2'}" v-model="question.alternatives">
             <div v-for="(alt, index) in question.alternatives" :key="index" class="alternatives">
 
                 <!-- RADIOBUTTON -->
                 <div v-if="alt.type == 'Radiobutton'" class="row-fluid clearfix clearfix">
                     <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                        <i class="glyphicon glyphicon-remove"></i>
+                        <i class="glyphicon glyphicon-remove" style="color: #AD170F; opacity: 0.6;"></i>
                     </div>
                     <div style="padding-top: 9px;" v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
                         <i style="margin-left: 0px; padding-left: 0px" v-bind:style="{ color: question.fColorHex }" class="fa fa-clone"></i>
                     </div>
                     <div class="col-lg-1" style="padding-top: 7px;">
-                        <input type="radio" name="index"></input>
+                        <input type="radio" :value="alt.label" v-model="question.selectedValue" name="index"></input>
                     </div>
                     <div class="col-lg-9">
-                        <input 	type="text"
+                        <input-div v-bind:ref="alt.type" @downarrow="focusNext(index, alt.type, alt)" @enter="addQuestionAlternative(question)" msg="Alternative" v-model="alt.label" :bColorHex="question.bColorHex" :fColorHex="question.fColorHex"></input-div>
+                        <!-- <input 	type="text"
                                 class="form-control"
                                 style="width: 90%;"
                                 v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }"
-
                                 placeholder="Alternative"
                                 v-model="alt.label"
                                 v-bind:ref="alt.type"
@@ -72,23 +72,24 @@ Vue.component('question', {
                                 v-focus
                                 @keyup.46="alt.label = ''"
                                 @keyup.enter="addQuestionAlternative(question)">
-                        </input>
+                        </input> -->
                     </div>
                 </div>
 
                 <!-- CHECKBOX -->
                 <div v-if="alt.type == 'Checkbox'" class="row-fluid clearfix">
                     <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                        <i class="glyphicon glyphicon-remove"></i>
+                        <i class="glyphicon glyphicon-remove"  style="color: #AD170F; opacity: 0.6;"></i>
                     </div>
                     <div style="padding-top: 9px;"  v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
                         <i style="margin-left: 0px; padding-left: 0px" v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }" class="fa fa-clone"></i>
                     </div>
                     <div class="col-lg-1" style="padding-top: 7px;">
-                        <input type="checkbox" name="index"></input>
+                        <input type="checkbox" :value="alt.label" v-model="question.selectedValues" name="index"></input>
                     </div>
                     <div class="col-lg-9">
-                        <input 	type="text"
+                        <input-div @enter="addQuestionAlternative(question)" msg="Alternative" v-model="alt.label" :bColorHex="question.bColorHex" :fColorHex="question.fColorHex"></input-div>
+                    <!--    <input 	type="text"
                                 class="form-control"
                                 style="width: 90%"
                                 v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }"
@@ -100,14 +101,14 @@ Vue.component('question', {
                                 @keydown.38="focusPrev(index, 'Checkbox')"
                                 @keydown.40="focusNext(index, 'Checkbox')"
                                 @keyup.enter="addQuestionAlternative(question)">
-                        </input>
+                        </input> -->
                     </div>
                  </div>
 
                  <!-- DATE -->
                  <div v-if="alt.type == 'Date'" class="row-fluid clearfix">
                      <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                         <i class="glyphicon glyphicon-remove"></i>
+                         <i class="glyphicon glyphicon-remove"  style="color: #AD170F; opacity: 0.6;"></i>
                      </div>
                      <div style="padding-top: 9px;"  v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
                          <i style="margin-left: 0px; padding-left: 0px" v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }" class="fa fa-clone"></i>
@@ -122,41 +123,12 @@ Vue.component('question', {
                      </div>
                   </div>
 
-                <!-- TEXTFIELD -->
+                 <!-- TEXTFIELD -->
                 <div v-if="alt.type == 'Textfield'" class="row-fluid clearfix textfield">
-                    <div class="row-fluid clearfix" style="margin-bottom: 20px">
-                        <div class="col-lg-2">
-                        </div>
-                        <div class="col-lg-10" style="padding-left: 15px; padding-right: 35px;">
-                            <input 	type="text"
-                                    class="form-control"
-                                    style="width: 90%"
-                                    v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }"
-                                    placeholder="Write an optional description here..."
-                                    v-model="alt.label"
-                                    v-bind:ref="alt.type"
-                                    @keydown.38="focusPrev(index, alt.type)"
-                                    @keydown.40="focusNext(index, alt.type)"
-                                    v-focus
-                                    @keyup.46="alt.label = ''"
-                                    @keyup.enter="addQuestionAlternative(question)">
-                            </input>
-                        </div>
-                    </div>
-                    <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                        <i class="glyphicon glyphicon-remove"></i>
-                    </div>
-                    <div style="padding-top: 9px;"  v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
-                        <i style="margin-left: 0px; padding-left: 0px" class="fa fa-clone"></i>
-                    </div>
-                    <div class="col-lg-9">
-                        <form class="pure-form">
-                            <input v-focus type="text" style="width: 100%">
-                        </form>
-                    </div>
-                    <div class="col-lg-1">
-                    </div>
+                    <textfield-question :alternative="alt"></textfield-question>
                 </div>
+
+
 
                 <!-- TEXTAREA -->
                 <div v-if="alt.type == 'Textarea'" class="row-fluid clearfix textarea">
@@ -164,7 +136,8 @@ Vue.component('question', {
                         <div class="col-lg-2">
                         </div>
                         <div class="col-lg-10" style="padding-left: 15px; padding-right: 35px;">
-                            <input 	type="text"
+                        <input-div @enter="addQuestionAlternative(question)" msg="Write an optional description here..." v-model="alt.label" :bColorHex="question.bColorHex" :fColorHex="question.fColorHex"></input-div>
+                        <!--    <input 	type="text"
                                     class="form-control"
                                     style="width: 90%"
                                     v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }"
@@ -174,19 +147,19 @@ Vue.component('question', {
                                     v-focus
                                     @keyup.46="alt.label = ''"
                                     @keyup.enter="addQuestionAlternative(alts)">
-                            </input>
+                            </input> -->
                         </div>
                     </div>
                     <div class="row-fluid clearfix">
                         <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-remove"  style="color: #AD170F; opacity: 0.6;"></i>
                         </div>
                         <div style="padding-top: 9px;" v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
                             <i style="margin-left: 0px; padding-left: 0px" class="fa fa-clone"></i>
                         </div>
                         <div class="col-lg-9">
                             <form class="pure-form">
-                                <textarea :rows="alt.height" :cols="alt.width" v-focus class="pure-input" v-bind:style="{ width: width + 'px' }"></textarea>
+                                <textarea :rows="alt.height" :cols="alt.width" class="pure-input" style="color: black" ></textarea>
                             </form>
                         </div>
                         <div class="col-lg-1">
@@ -198,7 +171,7 @@ Vue.component('question', {
                 <div v-if="alt.type == 'List'" class="row-fluid clearfix">
                     <div class="row-fluid clearfix">
                         <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px; padding-left: 30px;" class="col-lg-1">
-                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-remove"  style="color: #AD170F; opacity: 0.6;"></i>
                         </div>
                         <div style="padding-top: 9px; padding-left: 30px;"  v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
                             <i style="margin-left: 0px; padding-left: 0px" class="fa fa-clone"></i>
@@ -214,7 +187,7 @@ Vue.component('question', {
                     <div class="row-fluid clearfix" v-for="(select, index) in alt.select"  style="margin-top: 7px; margin-bottom: 0px">
                         <div class="col-lg-1">
                             <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                                <i class="glyphicon glyphicon-remove"></i>
+                                <i class="glyphicon glyphicon-remove"  style="color: #AD170F; opacity: 0.6;"></i>
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -224,7 +197,8 @@ Vue.component('question', {
 
                         </div>
                         <div class="col-lg-10" style="padding-left: 20px; margin: 0px">
-                            <input
+                        <input-div msg="Alternative" v-model="alt.label" :bColorHex="question.bColorHex" :fColorHex="question.fColorHex"></input-div>
+                            <!-- <input
                                 v-focus
                                 v-bind:ref="alt.type"
                                 v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }"
@@ -232,7 +206,7 @@ Vue.component('question', {
                                 @keydown.40="focusNext(index, alt.type)"
                                 @keyup.46="select.option = ''"
                                 @keyup.enter="addListOption(alt)"
-                                v-model="select.option" class="form-control listinputfield" type="text" style="width: 100%" placeholder="Add option to list"></input>
+                                v-model="select.option" class="form-control listinputfield" type="text" style="width: 100%" placeholder="Add option to list"></input> -->
                         </div>
                     </div>
                     <div class="row-fluid clearfix" style="margin-bottom: 30px">
@@ -269,14 +243,14 @@ Vue.component('question', {
                             </input>
                         </div>
                     </div>
-                    <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                        <i class="glyphicon glyphicon-remove"></i>
+                    <div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px; color: red" class="col-lg-1">
+                        <i class="glyphicon glyphicon-remove"  style="color: #AD170F; opacity: 0.6;"></i>
                     </div>
                     <div style="padding-top: 9px;" v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
                         <i style="margin-left: 0px; padding-left: 0px" class="fa fa-clone"></i>
                     </div>
                     <div class="col-lg-9">
-                        <input class="form-control" v-focus type="text" v-model="alt.url"
+                        <input class="form-control" type="text" v-model="alt.url"
                         v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }"
                         placeholder="Paste a video url here..." style="width: 100%; border-bottom: 2px solid #42b983; border-radius: 0px">
                         <iframe v-if="alt.url != ''" width="" height="300" style="width: 100%" :src="alt.url.toString().replace('watch?v=','embed/')" frameBorder="0" allowfullscreen></iframe>
@@ -291,36 +265,45 @@ Vue.component('question', {
 
                 	<div class="row-fluid clearfix" style="padding-left: 55px">
                 		<div v-on:click="removeQuestionAlternative(question, alt)" style="padding-top: 9px;" class="col-lg-1">
-                			<i class="glyphicon glyphicon-remove"></i>
+                			<i class="glyphicon glyphicon-remove"  style="color: #AD170F; opacity: 0.6;"></i>
                 		</div>
                 		<div style="padding-top: 9px;" v-on:click="cloneQuestionAlternative(question, alt)" class="col-lg-1">
                 			<i style="margin-left: 0px; padding-left: 0px" class="fa fa-clone"></i>
                 		</div>
                 	</div>
 
+
+
+
+
                 	<div class="row-fluid clearfix" style="padding: 20px 0px 0px 30px">
                 		<div class="col-lg-12">
                 			<div class="row">
-                				<div class="col-lg-1">
-                					<i style="color: rgb(75, 79, 86); padding-top: 12px;padding-left: 34px" @click="addTableRow(alt)" class="fa fa-plus" aria-hidden="true"></i>
-                				</div>
-                				<div class="col-lg-11">
-                					<table class="table-bordered" style=" overflow-x: scroll;">
+                            <table-component></table-component>
+
+                                <!-- <div class="col-lg-12" style="overflow-x: scroll;">
+                					<table class="table-bordered" >
                 						<thead>
                 							<tr>
                 								<th v-for="(row, key, index) in alt.rows">
-                									{{row}}
+                									<input-div msg="Row" v-model="alt.label" bColorHex="#42b983"></input-div>
                 								</th>
                 							</tr>
                 						</thead>
                 						<tbody>
                 							<tr v-for="(column, index) in alt.columns">
-                								<td v-for="(item, key) in column">{{column[key]}}</td>
+                								<td v-for="(item, key) in column">
+                                                    <input-div msg="Column" v-model="column.label" bColorHex="#f9f9f9" :fColorHex="question.fColorHex"></input-div>
+                                                </td>
                 							</tr>
                 						</tbody>
                 					</table>
-                					<i style="color: rgb(75, 79, 86);" @click="addTableColumn(alt)" class="fa fa-plus" aria-hidden="true"></i>
-                				</div>
+                				</div> -->
+
+
+                            <!--    <button @click="addTableRow(alt)" class="btn btn-default">Add row</button>
+                                <button @click="addTableColumn(alt)" class="btn btn-default">Add column</button> -->
+
                 			</div>
                 		</div>
                 	</div>
@@ -335,7 +318,7 @@ Vue.component('question', {
             <!--<button  class=""> -->
 
             <!-- </button> -->
-            <button v-if="question.type != 'Tittel'" style="margin-top: 80px; margin-left: 10px;" v-on:click="addQuestionAlternative(question)" class="btn btn-default">
+            <button v-if="question.type != 'Tittel'" style="margin-bottom: 80px; margin-left: 20px; margin-top: 10px" v-on:click="addQuestionAlternative(question)" class="btn btn-default">
                 <i style="color: #4b4f56" class="fa fa-plus" aria-hidden="true"></i>
             </button>
         </div>
@@ -348,34 +331,12 @@ Vue.component('question', {
     data() {
         return {
             toggleTitleDesc: false,
-            width: parseInt(document.getElementById("form").clientWidth) - (29 * (parseInt(document.getElementById("form").clientWidth)/100)),
+            // width: parseInt(document.getElementById("form").clientWidth) - (29 * (parseInt(document.getElementById("form").clientWidth)/100)),
             focus: true
         }
     },
     created() {
-        this.toggleTitleDesc = this.toggle;
-
-        // var pixels = 10*(1000/100);
-        //
-        // 100
-        // 10/100*
-        //
-        // parentwidth = 761
-        //
-        // document.querySelector('textarea').addEventListener('resize', function(event) {
-        //     alert(event.target)
-        // });
-
-
-        // var tenPercentOfFormInPixels = 10 * (parseInt(document.getElementById("form").clientWidth)/100)
-// 10 * 761/100;
-
-        // alert(pixels); // will print "100"
-    },
-    computed: {
-        embedURL: function() {
-            // return this.question.alternatives[0].url
-        }
+        // this.toggleTitleDesc = this.toggle;
     },
     filters: {
         formatURL: function(value) {
@@ -386,64 +347,54 @@ Vue.component('question', {
             console.log(value);
             return value;
         }
-        //the attr/bind always recieve the element as first argument?
-        //fordelen med componenter. operasjoner her inne skjer på en og riktig component
     },
-    //datasammenheng
-    //må attache refs på elementet/html for at $refs skal funke?
     methods: {
-        onFocus: function(el) {
-            console.log(el)
-
-
-
-        },
-        // startDrag: function (evt) {
-		// 	console.log(evt)
-		// },
-        checkMove: function(evt){
-            // return (evt.draggedContext.element.name!=='apple');
-            // console.log(evt);
-        console.log(    evt.draggedContext.index); // dragged HTMLElement
-        console.log(    evt.relatedContext.index); // dragged HTMLElement
-    	// 	console.log(evt.draggedRect); // TextRectangle {left, top, right и bottom}
-    	// console.log(	evt.related); // HTMLElement on which have guided
-    	// 	console.log(evt.relatedRect); // TextRectangle
-
-        },
         focusPrev: function(idx, prop) {
             Vue.nextTick(() => {
                 if(idx >= 1) {
                     this.$refs[prop][idx-1].focus()
                 }
             })
+            //$emit('focusnext', questions)
+            //$emit('focusprev', questions)
+            //in main: focus(question+1)
         },
-        focusNext: function(idx, prop) {
+        focusNext: function(idx, prop, alt) {
+            // this.addQuestionAlternative(prop)
+            // console.log(this.$refs[prop][idx+1].$el);
             Vue.nextTick(() => {
                 if(idx < this.question.alternatives.length-1) {
-                    this.$refs[prop][idx+1].focus()
+                    // this.$refs[prop][idx+1].focus()
+                    // this.alternatives[alt+1].isFocused = true
+
+                    //           page,      draggable,  question,     input div
+                    this.$refs.page_ref[0].$children[0].$children[0].$children[0].focus()
+
+                    //alter something that tells the child comp + 1 thourgh prop to focus the input element
+                    // alt.isFocused = true
+                    //inside input-div blur isFocused = false.. emit again?  it can only focus one thing, so no prob
                 }
             })
         },
         addQuestionAlternative: function(question) {
             switch (question.type) {
                 case "Radiobutton":
-                    var newLength = question.alternatives.push({type: "Radiobutton",  label: ''})
+                    var newLength = question.alternatives.push({type: "Radiobutton",  label: '', isFocused: true})
                     break;
                 case "Checkbox":
-                    question.alternatives.push({type: "Checkbox", label: ''})
+                    question.alternatives.push({type: "Checkbox", label: '', isFocused: true})
                     break;
                 case "Textfield":
-                    question.alternatives.push({type: "Textfield", label: ''})
+                    question.alternatives.push({type: "Textfield", label: '', isFocused: true})
                     break;
                 case "Textarea":
-                    question.alternatives.push({type: "Textarea", label: '', height: 8, width: 55})
+                    question.alternatives.push({type: "Textarea", label: '', height: 8, width: 55, isFocused: true})
                     break;
                 case "List":
-                    question.alternatives.push({type: "List", label: '', select: [{option: ''}]})
+                    question.alternatives.push({type: "List", label: '', isFocused: true, select: [{option: ''}]})
                     break;
                 case "Video":
-                    question.alternatives.push({type: "Video", label: '', url: '', visible: false})
+                    question.alternatives.push({type: "Video", label: '', url: '', visible: false, isFocused: true})
             }
         },
         removeQuestionAlternative: function(question, alternative) {
@@ -470,7 +421,6 @@ Vue.component('question', {
 
         },
         addTableColumn: function(alternative) {
-
             var nrOfRows = alternative.rows.length;
             var nr = 0;
             var varName = 'cell' + nr;
@@ -483,19 +433,6 @@ Vue.component('question', {
                 varName = 'cell' + nr;
             }
             alternative.columns.push(objToPush)
-            // alternative.columns.forEach(item => {
-
-
-            //if table size is longer then form - something add dynamic class overflow-x
-
-                //push the same number as the first, at the end of columns array
-
-
-                // al
-                // console.log(name)
-                // item['new' + name] = 'new'
-                //push another item to the end of each object
-            // })
         },
         cloneQuestionAlternative: function(question, alternative) {
             var clonedQuestionAlternative = JSON.stringify(alternative)
