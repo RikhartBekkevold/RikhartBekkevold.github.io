@@ -25,7 +25,7 @@ const PATHS = {
     endmessage:  "img/endScreen.png",
     retryBtn:    "img/retryBtn.png",
     startBtn:    "img/startBtn.png",
-    settingsBtn: "img/settingsBtn.png",
+    settingsBtn: "img/settingsbtn.png",
     quitBtn:     "img/quitBtn.png",
     cogwheel:    "img/cogwheel.png",
 
