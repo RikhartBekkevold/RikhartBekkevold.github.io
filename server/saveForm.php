@@ -27,8 +27,6 @@ if(isset($_POST['form'])){
 
         $last_id = $conn->lastInsertId();
         echo $last_id . $url;
-
-
     }
     catch(PDOException $e) {
         echo '<b>Operation that failed:</b> ' . $sql . "<br><b>Error Message:</b> " . $e->getMessage();
@@ -60,8 +58,5 @@ if(isset($_POST['formID'])){
 
 if(isset($_POST['urlrequest'])){
     $id = $_POST['urlrequest'];
-
     echo generateUniqueURL(50);
-
-
 }
