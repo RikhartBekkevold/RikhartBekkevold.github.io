@@ -4,361 +4,216 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/forms-min.css">
-	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/mainstyle.css">
-	<link rel="stylesheet" href="css/alternatives.css">
-	<link rel="stylesheet" href="css/components/modal.css">
-	<link rel="stylesheet" href="css/components/tabs.css">
-	<link rel="stylesheet" href="css/vue.css">
-	<link rel="stylesheet" href="css/animations.css">
-	<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
-	<!-- Flatpickr related files -->
-	<!-- <link href="https://unpkg.com/flatpickr@3.0.6/dist/flatpickr.min.css" rel="stylesheet"> -->
 
+
+	<style>
+		body {
+			/* font-family: 'Fira Mono', monospace; */
+			/* font-family: 'Roboto Mono', monospace; */
+			font-family: 'Roboto', sans-serif;
+
+			/* background: hsl(220, 13%, 18%); */
+			background: whitesmoke;
+			padding-left: 10px;
+			color: hsl(286, 60%, 67%);
+		}
+		h1 {
+			font-family: 'Roboto Slab', serif;
+
+		}
+		h2 {
+			font-family: 'Roboto Slab', serif;
+			color: hsl(286, 60%, 67%);
+
+		}
+		a {
+			/* margin-left: 0;
+			padding-left: 0; */
+			color: hsl(220, 14%, 71%);
+
+		}
+		ul {
+			padding-left: 0px;
+			color: hsl(220, 14%, 71%);
+		}
+		li {
+			list-style-type: none;
+			color: hsl(220, 14%, 71%);
+		}
+
+
+		.card {
+			-webkit-box-shadow: 10px 10px 5px -10px rgba(0,0,0,0.75);
+			-moz-box-shadow: 10px 10px 5px -10px rgba(0,0,0,0.75);
+			box-shadow: 10px 10px 5px -10px rgba(0,0,0,0.75);
+			text-align: center;
+			padding: 0px;
+			min-width: 400px;
+			margin-right: 40px;
+			cursor: pointer;
+			padding-bottom: 10px;
+			line-height: 200%;
+		}
+
+		.card-image1 {
+			height: 205px;
+			position: relative;
+			overflow: hidden;
+		}
+		.card-image2 {
+			height: 205px;
+			position: relative;
+			overflow: hidden;
+		}
+		.card-image3 {
+			height: 205px;
+			position: relative;
+			overflow: hidden;
+		}
+		.card-image1 img {
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			filter: grayscale(0);
+			transition-property: filter width;
+			transition-duration: .3s;
+		}
+		.card-image2 img {
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			filter: grayscale(0);
+			transition-property: filter width;
+			transition-duration: .3s;
+		}
+		.card-image3 img {
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			filter: grayscale(0);
+			transition-property: filter width;
+			transition-duration: .3s;
+		}
+		.card:hover .card-image1 img {
+			width: 110%;
+			filter: grayscale(0);
+			cursor: pointer;
+		}
+		.card:hover .card-image2 img {
+			width: 110%;
+			filter: grayscale(0);
+			cursor: pointer;
+		}
+		.card:hover .card-image3 img {
+			width: 110%;
+			filter: grayscale(0);
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-	<div id="app" v-cloak>
-		<custom-navbar
-			:hide="hideGUI"
-			:showbackbtn="hideMenuBackBtn"
-			:pagemode="pageRearrangeMode"
-			:feedback="feedbackMsg"
-			@undo="undo()"
-			@redo="redo()"
-			@show="showFinalForm()"
-			@delete="showModal = 'delete'"
-			@back="showFinalForm()">
-		</custom-navbar>
+	<!-- make this into a tab menu -->
+	<h1 style="border-bottom: 1px solid #ddd; padding: 5px">Portfolio</h1>
 
-<!--
-		<custom-navbar
-			:showLogo="hideGUI"
-			:showbackbtn="hideMenuBackBtn"
-			:showdeletebtn="pageRearrangeMode"
-			:showfeedback="feedbackMsg"
-			@undo="undo()"
-			@redo="redo()"
-			@show="showFinalForm()"
-			@delete="showModal = 'delete'"
-			@back="showFinalForm()">
-		</custom-navbar> -->
-
-		<div class="row-fluid">
-			<div class="col-lg-3 col-md-3 col-sm-3">
-				<transition name="slide-fade2">
-					<div id="left-side-menu" v-if="hideGUI == false &amp;&amp; pageRearrangeMode == false">
-						<div class="panel panel-default">
-							<div class="panel-heading" data-toggle="collapse" data-target="#advancedList">
-								<div class="row">
-									<div class="col-lg-10">
-										<span style="margin-right: 5px;">Sections</span>
-									</div>
-									<div class="col-lg-2">
-										<i style="margin-top: 5px; margin-left: 10px;" class="glyphicon glyphicon-chevron-down"></i>
-									</div>
-								</div>
-							</div>
-							<div class="panel-body" style="inset 0 0 10px #000000;" id="advancedList">
-							    <ul class="list-group" style="width: 100%; margin: auto;  inset 0 0 10px #000000;">
-									<draggable v-model="advancedList" :clone="clone"  @end="saveFormToStack(pages)" @start="showPlaceholder = false" :options="{group:{name: 'form', pull: 'clone', put: false, revertClone: false}, sort: false,
-									chosenClass: 'sortable-chosen', ghostClass: 'sortable-ghost', dragClass: 'drag2'}">
-							            <li id="advlistitem" style="box-shadow: 0 0 5px #ddd;" v-on:click="addQuestion(item.type)" v-for="item in advancedList" class="list-group-item question-types">
-											{{item.type}}
-											<span class="badge">
-												<i class="fa" :class="item.icon" style="font-size: 2em"></i>
-											</span>
-								        </li>
-									</draggable>
-							    </ul>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading"  data-toggle="collapse" data-target="#list">
-								<div class="row">
-									<div class="col-lg-10">
-										<span style="margin-right: 5px;">Types</span>
-									</div>
-									<div class="col-lg-2">
-										<i style="margin-top: 5px; margin-left: 10px;" class="glyphicon glyphicon-chevron-down"></i>
-									</div>
-								</div>
-							</div>
-							<div class="panel-body collapse in" id="list">
-							    <ul class="list-group" style=" color: white; margin: auto" style="text-align: left">
-									<draggable v-model="list" :clone="clone" @end="saveFormToStack(pages)" @start="showPlaceholder = false"  :options="{group:{name: 'form', pull: 'clone', put: false, revertClone: false}, sort: false,
-									chosenClass: 'sortable-chosen', ghostClass: 'sortable-ghost', dragClass: 'drag2'}">
-							            <li id="listitem" style="margin-bottom: 10px; box-shadow: 0 0 5px #ddd;" v-on:click="addQuestion(item.type)"  v-for="(item, index) in list" :key="index" class="list-group-item question-types">
-
-										    <span style="font-size: 1.1em; padding-top: 10px">{{item.type}}</span>
-											<span class="badge" ><i class="fa" :class="item.icon" aria-hidden="true" style="font-size: 2em; "></i></span>
-											<!-- <span class="badge">  //it adds the value. link js something? python    what does this mean? how does it work under the hood.
-												<i class="glyphicon glyphicon-move" style="font-size: 2em"></i>
-											</span> -->
-							            </li>
-									</draggable>
-							    </ul>
-							</div>
-						</div>
-					</div>
-				</transition>
+	<ul>
+		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
+			<div class="card-image1">
+				<a href="cardflip-game/index.html">
+					<img src="thumbcardflip.png" alt="Orange" />
+				</a>
 			</div>
 
+			<h2>Memoryflip</h2>
+			<p>A card flipping memorization game</p>
+			<p style="font-size: 0.9em">#frontend, #javascript, #pixi.js</p>
+			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/Memoryflip"><i class="fab fa-github"></i></a>
+			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/Memoryflip">here</a></p> -->
+			<!-- <a><i class="fab fa-github"></i></a> -->
+		</div>
 
-			<!-- FORM --> <!-- two loop inside eachother is the same as two loop inside eachother in js --><!-- emit a desire to be deleted --><!-- doesnt update through console?  detect-->
-			<div id="form-container" class="col-lg-6 col-md-9 col-sm-9" style="padding: 0px 40px 50px 40px;" v-if="hideGUI == false &amp;&amp; pageRearrangeMode == false">
-				<tabs>
-					<!-- FORM -->
-					<!-- {{past}}
-					<br>
-					<br>
+		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white;">
+			<div class="card-image2">
+				<a  href="colourexperiment/index.html">
+					<img src="thumbexperiment.png"
+					alt="Orange" />
+				</a>
+	        </div>
+			<h2>Experiment</h2>
+			<p> A colour experiment from IMT 4315 </p>
+			<!-- description and link to source code . title: projects instead? -->
+			<p style="font-size: 0.9em">#frontend, #javascript</p>
+			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/colourexperiment"><i class="fab fa-github"></i></a>
+			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/colourexperiment">here</a></p> -->
+		</div>
 
-					<br>
-					<br>
-					{{future}} -->
-						<!-- {{pages}} -->
-					<tab name="Edit" selected="true">
-						<div style="position: relative" id="home" class="tab-pane fade in active" style="">
-							<draggable  v-model="pages"
-							 :options="{group: 'page', animation: 100, ghostClass: 'back', dragClass: 'drag', chosenClass: 'sortable-ghost4', forceFallback: false, fallbackTolerance: 0, scroll:true, scrollSensitivity: 150, scrollSpeed: 10}"
-							 style="min-height: 1000px;">
-								<!-- <div style="border: 1px solid black" > -->
-									<!-- <div :style="{top: page.posY + 'px', left: page.posX + 'px', 'z-index': page.z}" :key="page.pageNumber" style="width: 100%; position: absolute;" v-for="(page, index) in pages"> -->
-										<page :key="page.pageNumber" v-for="(page, index) in pages" @removequestion="saveFormToStack(pages)" @clonequestion="saveFormToStack(pages)" @dragstart="setPageSize(0)" @remove="deletePage(page)" :hide="hideGUI" @nextpage="pageDown()" @pageDrag="pageOnDrag()" @prevpage="pageUp()" :pagedata="page"></page>
-									<!-- </div> handle: ".my-handle"-->
-									<!-- <div class="btn btn-default" @click="setPageSize(50)"></div> -->
-								<!-- </div> -->
-							</draggable>
-						</div>
-					</tab>
-					<!-- JSON -->
-					<tab name="JSON export">
-						<div id="test"></div>
-					</tab>
-				</tabs>
+		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
+			<div class="card-image3">
+				<a	href="colourexperiment/index.html">
+					<img src="thumbeditor.png"
+					alt="Orange" />
+				</a>
 			</div>
+			<h2>Form Editor</h2>
+			<p> A vue built form editor </p>
+			<!-- description and link to source code . title: projects instead? -->
+			<p style="font-size: 0.9em">#frontend, #backend, #javascript, #vue.js, #vuetify.js </p>
+			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/VuEditor"><i class="fab fa-github"></i></a>
+			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/VuEditor">here</a></p> -->
+		</div>
 
-			<!-- FINISHED FORM -->
-			<div class="col-lg-6" v-if="hideGUI == true &amp;&amp; pageRearrangeMode == false">
-				<div id="form" style="width: 100%; padding-bottom: 0px; min-height: 0px" class="panel-body">
-					<ul style="padding: 0px; margin: 0px" class="list-group">
-						<div v-for="(page, index) in pages">
-						   	<div :style="{top: page.posY + 'px', left: page.posX + 'px', 'z-index': page.z}" style="width: 100%; position: absolute;" :key="page.pageNumber">
-								<page :pagedata="page" :hide="hideGUI" :idx="index" :length="pages.length-1"   @send="submitAnswer()" @nextpage="pageDown()" @prevpage="pageUp()" @remove="deletePage(page)"></page>
-					   		</div>
-					   </div>
-					</ul>
-				</div>
+		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
+			<div class="card-image3">
+				<a	href="">
+					<img src="thumbpymatch.png"
+					alt="Orange" />
+				</a>
 			</div>
-
-			<!-- PAGE SWITCH MODE -->
-			<div class="col-lg-6" v-if="pageRearrangeMode == true" style="border: 1px solid black">
-				<div id="form" style="width: 100%; padding-bottom: 0px; min-height: 0px" class="panel-body">
-					<ul style="padding: 0px; margin: 0px" class="list-group">
-
-								<div class="row-fluid">
-									<div class="col-lg-4">
-									</div>
-									<div class="col-lg-4">
-										<draggable  v-model="pages"
-										 :options="{group: 'pageRearrange', name: 'un', animation: 100, ghostClass: 'back', dragClass: 'drag', chosenClass: 'sortable-ghost4', forceFallback: false, fallbackTolerance: 0, scroll:true, scrollSensitivity: 150, scrollSpeed: 10}"
-										 style="min-height: 1000px;">
-											<div v-for="(page, index) in pages" style=" width: 100%">
-												<mini-page  :pagedata="page" :key="page.pageNumber">></mini-page>
-											</div>
-										</draggable>
-									</div>
-									<div class="col-lg-4">
-									</div>
-								</div>
-								<!-- if draggable/loop/componet is like that it understnad to drag up and down... does the same apply if -->
-					</ul>
-				</div>
-			</div>
-
-			<!-- <div :style="{top: page.posY + 'px', left: page.posX + 'px'}"  style="width: 100%; position: absolute;" :key="page.pageNumber"> -->
-		<!-- </div> -->
-			<!-- RIGHT SIDE MENU -->
-			<div class="col-lg-3 hidden-md hidden-sm" style="padding-left: 0px">
-				<div id="right-side-menu">
-					<transition name="slide-fade">
-					<tabs v-if="hideGUI == false &amp;&amp; pageRearrangeMode == false">
-						<!-- HOTKEYS TABLE -->
-						<tab name="Hotkeys">
-							<div id="" class="tab-pane fade in active">
-								<div v-show="show == true" class="panel panel-default">
-									<div class="panel-body">
-										<div class="row-fluid">
-											<hotkey-table></hotkey-table>
-										</div>
-									</div>
-								</div>
-							</div>
-						</tab>
-						<!-- COLOUR SELECT -->
-						<tab name="Colour" selected="true">
-							<div id="" class="tab-pane fade in active">
-								<div v-show="show == true" class="panel panel-default">
-									<div class="panel-body">
-										<div class="row-fluid">
-											<div class="col-lg-12" style="">
-												<h4 style="font-family: 'Alfa Slab One', cursive; border-bottom: 1px solid #ddd; text-align: center; padding-bottom: 10px;">Question background colour</h4>
-												<photoshop-picker v-model="colors" />
-											</div>
-										</div>
-										<div class="row-fluid">
-											<div class="col-lg-12" style="">
-												<div class="row-fluid">
-													<form class="pure-form">
-														<div class="checkbox">
-															<label>
-																<input type="checkbox" v-model="entireForm" />
-																Apply colour to entire form
-															</label>
-														</div>
-													</form>
-													<h4 style="font-family: 'Alfa Slab One', cursive; margin-top: 30px; border-bottom: 1px solid #ddd; text-align: center; padding-bottom: 10px;">Text position</h4>
-												</div>
-												<div class="row-fluid">
-													<form class="pure-form">
-														<div class="col-lg-4">
-															<div class="radio">
-																<label>
-																	<input name="one" type="radio" />
-																	Left
-																</label>
-															</div>
-														</div>
-														<div class="col-lg-4">
-															<div class="radio">
-																<label>
-																	<input name="two" type="radio" />
-																	Middle
-																</label>
-															</div>
-														</div>
-														<div class="col-lg-4">
-															<div class="radio">
-																<label>
-																	<input name="three" type="radio" />
-																	Right
-																</label>
-															</div>
-														</div>
-													</form>
-												</div>
-
-												<div class="row-fluid">
-													<div class="btn btn-default" @click="newPage()">Add new page</div>
-												</div>
-												<div class="row-fluid">
-													<div class="btn btn-default" @click="initiatePageRearrangeMode()">Rearrange page</div>
-												</div>
-												<div class="row-fluid">
-													<div class="btn btn-default" @click="setPageSize(800)">A4</div>
-												</div>
-												<div class="row-fluid">
-													<div class="btn btn-default" @click="setPageSize(300)">A5</div>
-												</div>
-												<div class="row-fluid">
-													<div class="btn btn-default" @click="stackPages()">Stack pages</div>
-													<div class="btn btn-default" @click="pageUp()" >&#8249;</div>
-													<div class="btn btn-default" @click="pageDown()" >&#8250;</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</tab>
-					</tabs>
-				</transition>
-			</div>
+			<h2>PyMatch</h2>
+			<p> A game built with Python </p>
+			<!-- description and link to source code . title: projects instead? -->
+			<p style="font-size: 0.9em"> #python </p>
+			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/PyMatch"><i class="fab fa-github"></i></a>
+			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/VuEditor">here</a></p> -->
 		</div>
 
 
-		<!-- MODAL -->
-		<modal v-if="showModal == 'finish' || showModal == 'delete' || showModal == 'invalid' || showModal == 'share'" @close="showModal = 'none'">
-			<!-- HEADER -->
-			<h3 v-if="showModal == 'finish'" slot="header">Save and proceed?</h3>
-			<h3  v-if="showModal == 'delete'" slot="header" style="text-align: center;">Delete form?</h3>
-			<h3  v-if="showModal == 'invalid'" slot="header" style="text-align: center;">Unanswered questions</h3>
-			<h3  v-if="showModal == 'share'" slot="header" style="text-align: center;">Share link</h3>
-			<!-- MAIN -->
-			<p v-if="showModal == 'finish'" style="text-align: center" slot="body">This will save the form</p>
-			<p v-if="showModal == 'delete'" style="text-align: center" slot="body">This will delete the entire form permanently</p>
-			<p v-if="showModal == 'invalid'" style="text-align: center" slot="body">Answer all questions marked with <span style="color: red">*</span></p>
-			<p v-if="showModal == 'share'" style="text-align: center; overflow-wrap: break-word;" slot="body"><textarea class="form-control" id="link" style="background: white;" readonly v-model="answerURL"></textarea></p>
 
+	<footer style="">
+		&copy; Rikhart Bekkevold 2018 <a href="https://github.com/RikhartBekkevold"><i class="fab fa-github"></i></a>
+	</footer>
 
-			<!-- FOOTER  overflow-wrap: break-word-->
-			<div v-if="showModal == 'delete'" slot="footer">
-				<button style="background: #FF715B" class="btn" @click="deleteForm()">Delete form <!-- FF715B B2301C--></button>
-				<button class="btn" @click="showModal = 'none'">Cancel</button>
+	<!--
+	<div class="card" style="background: white; border: 1px solid black;">
+		<div class="header">
+			<div class="subheader">
+				<div class="content">
+					sdads
+				</div>
+				<div class="underline"></div>
 			</div>
-			<!-- FOOTER -->
-			<div v-if="showModal == 'share'" slot="footer">
-				<button class="btn" @click="copyLink()">Copy</button>
-				<button class="btn" @click="showModal = 'none'">Cancel</button>
-			</div>
-		</modal>
-
 		</div>
 	</div>
-	</div>
+	-->
 
-
-	<script src="https://unpkg.com/flatpickr@3.0.6/dist/flatpickr.min.js"></script>
-	<script src="https://unpkg.com/vue"></script>
-	<script src="https://unpkg.com/vue-flatpickr-component"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-color/2.2.0/vue-color.js"></script>
-	<script>
-		var Photoshop = VueColor.Chrome;
-		var Swatch = VueColor.Swatches;
-	</script>
-	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js"></script> -->
-	<!-- Latest Sortable -->
-	<script src="//rubaxa.github.io/Sortable/Sortable.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-
-	<!-- internal libraries  -->
-	<script src="lib/lib.js"></script>
-	<script src="lib/hotkeys.js"></script>
-	<script src="js/localstorage.js"></script>
-	<script src="js/question.js"></script>
-	<script src="js/question.js"></script>
-	<script src="js/page.js"></script>
-
-	<!-- custom components -->
-	<script src="components/custom-input.js"></script>
-	<script src="components/custom-modal.js"></script>
-	<script src="components/key-table.js"></script>
-	<script src="components/custom-navbar.js"></script>
-	<script src="components/tab.js"></script>
-	<script src="components/tabs.js"></script>
-	<script src="components/table-component.js"></script>
-	<script src="components/questiontypes/textfield.js"></script>
-	<script src="components/page.js"></script>
-	<script src="components/mini-page.js"></script>
-	<script src="components/question.js"></script>
-	<script src="components/finished-question.js"></script>
-	<script src="components/input.js"></script>
-
-	<!-- custom directives -->
-	<script src="js/global-custom-directives.js"></script>
-
-	<!-- vue root instance -->
-	<script src="js/main.js"></script>
-
+				<!--
+				"contact me"
+				make the boxes fall down. 2 for each row on tablet etc
+				make them cards instead of list? -->
+		<!-- // about = a list of skills i have. front end etc. tags for each project to show what its about/keywords
+		"with passion for"
+	-->
+	</ul>
 </body>
 </html>
-<!-- <li style="border: 1px solid black" v-bind:style="{ 'background-color': question.bColorHex, color: question.fColorHex }" v-for="(question, index) in page.questions" v-bind:class="{smoke: question.type == 'Tittel'}" :key="index" class="list-group-item"> -->
-
-<!-- </li> -->
