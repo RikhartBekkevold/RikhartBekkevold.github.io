@@ -58,7 +58,7 @@
 			margin-right: 40px;
 			cursor: pointer;
 			padding-bottom: 10px;
-			line-height: 200%;
+			/* line-height: 200%; */
 		}
 
 		.card-image1 {
@@ -121,11 +121,14 @@
 			filter: grayscale(0);
 			cursor: pointer;
 		}
+		footer {
+			color: hsl(220, 14%, 71%);
+		}
 	</style>
 </head>
 <body>
 	<!-- make this into a tab menu -->
-	<h1 style="border-bottom: 1px solid #ddd; padding: 5px">Portfolio</h1>
+	<h1 style="border-bottom: 1px solid  #ddd; padding: 5px">Projects</h1>
 
 	<ul>
 		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
@@ -136,8 +139,10 @@
 			</div>
 
 			<h2>Memoryflip</h2>
-			<p>A card flipping memorization game</p>
-			<p style="font-size: 0.9em">#frontend, #javascript, #pixi.js</p>
+			<p style="margin-bottom: 40px">A card flipping memorization game</p>
+			<p><b>Keywords</b></p>
+			<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript,  pixi.js</p>
+			<p><b>Code</b></p>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/Memoryflip"><i class="fab fa-github"></i></a>
 			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/Memoryflip">here</a></p> -->
 			<!-- <a><i class="fab fa-github"></i></a> -->
@@ -151,24 +156,29 @@
 				</a>
 	        </div>
 			<h2>Experiment</h2>
-			<p> A colour experiment from IMT 4315 </p>
+			<p style="margin-bottom: 40px"> A colour experiment from IMT 4315 </p>
 			<!-- description and link to source code . title: projects instead? -->
-			<p style="font-size: 0.9em">#frontend, #javascript</p>
+			<p><b>Keywords</b></p>
+			<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript</p>
+			<p><b>Code</b></p>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/colourexperiment"><i class="fab fa-github"></i></a>
 			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/colourexperiment">here</a></p> -->
 		</div>
 
 		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
 			<div class="card-image3">
-				<a	href="colourexperiment/index.html">
+				<a href="colourexperiment/index.html">
 					<img src="thumbeditor.png"
 					alt="Orange" />
 				</a>
 			</div>
 			<h2>Form Editor</h2>
-			<p> A vue built form editor </p>
+			<p style="margin-bottom: 40px"> A vue built form editor </p>
 			<!-- description and link to source code . title: projects instead? -->
-			<p style="font-size: 0.9em">#frontend, #backend, #javascript, #vue.js, #vuetify.js </p>
+			<p><b>Keywords</b></p>
+			<p style="font-size: 0.9em; margin-bottom: 30px">frontend,  backend, php, javascript,  vue.js,  vuetify.js </p>
+
+			<p><b>Code</b></p>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/VuEditor"><i class="fab fa-github"></i></a>
 			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/VuEditor">here</a></p> -->
 		</div>
@@ -181,31 +191,17 @@
 				</a>
 			</div>
 			<h2>PyMatch</h2>
-			<p> A game built with Python </p>
+			<p style="margin-bottom: 40px"> A game built with Python </p>
 			<!-- description and link to source code . title: projects instead? -->
-			<p style="font-size: 0.9em"> #python </p>
+			<p><b>Keywords</b></p>
+			<p style="font-size: 0.9em; margin-bottom: 30px">  python </p>
+
+			<p><b>Code</b></p>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/PyMatch"><i class="fab fa-github"></i></a>
 			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/VuEditor">here</a></p> -->
 		</div>
 
-
-
-	<footer style="">
-		&copy; Rikhart Bekkevold 2018 <a href="https://github.com/RikhartBekkevold"><i class="fab fa-github"></i></a>
-	</footer>
-
-	<!--
-	<div class="card" style="background: white; border: 1px solid black;">
-		<div class="header">
-			<div class="subheader">
-				<div class="content">
-					sdads
-				</div>
-				<div class="underline"></div>
-			</div>
-		</div>
-	</div>
-	-->
+		<!-- "view project" -->
 
 				<!--
 				"contact me"
@@ -215,5 +211,8 @@
 		"with passion for"
 	-->
 	</ul>
+	<footer style="">
+		&copy; Rikhart Bekkevold 2018 <a href="https://github.com/RikhartBekkevold"><i class="fab fa-github"></i></a>
+	</footer>
 </body>
 </html>
