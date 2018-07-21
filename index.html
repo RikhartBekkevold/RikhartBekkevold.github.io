@@ -4,215 +4,229 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-
-
-
-	<style>
-		body {
-			/* font-family: 'Fira Mono', monospace; */
-			/* font-family: 'Roboto Mono', monospace; */
-			font-family: 'Roboto', sans-serif;
-
-			/* background: hsl(220, 13%, 18%); */
-			background: whitesmoke;
-			padding-left: 10px;
-			color: hsl(286, 60%, 67%);
-		}
-		h1 {
-			font-family: 'Roboto Slab', serif;
-
-		}
-		h2 {
-			font-family: 'Roboto Slab', serif;
-			color: hsl(286, 60%, 67%);
-
-		}
-		a {
-			/* margin-left: 0;
-			padding-left: 0; */
-			color: hsl(220, 14%, 71%);
-
-		}
-		ul {
-			padding-left: 0px;
-			color: hsl(220, 14%, 71%);
-		}
-		li {
-			list-style-type: none;
-			color: hsl(220, 14%, 71%);
-		}
-
-
-		.card {
-			-webkit-box-shadow: 10px 10px 5px -10px rgba(0,0,0,0.75);
-			-moz-box-shadow: 10px 10px 5px -10px rgba(0,0,0,0.75);
-			box-shadow: 10px 10px 5px -10px rgba(0,0,0,0.75);
-			text-align: center;
-			padding: 0px;
-			min-width: 400px;
-			margin-right: 40px;
-			cursor: pointer;
-			padding-bottom: 10px;
-			/* line-height: 200%; */
-		}
-
-		.card-image1 {
-			height: 205px;
-			position: relative;
-			overflow: hidden;
-		}
-		.card-image2 {
-			height: 205px;
-			position: relative;
-			overflow: hidden;
-		}
-		.card-image3 {
-			height: 205px;
-			position: relative;
-			overflow: hidden;
-		}
-		.card-image1 img {
-			width: 100%;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			filter: grayscale(0);
-			transition-property: filter width;
-			transition-duration: .3s;
-		}
-		.card-image2 img {
-			width: 100%;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			filter: grayscale(0);
-			transition-property: filter width;
-			transition-duration: .3s;
-		}
-		.card-image3 img {
-			width: 100%;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			filter: grayscale(0);
-			transition-property: filter width;
-			transition-duration: .3s;
-		}
-		.card:hover .card-image1 img {
-			width: 110%;
-			filter: grayscale(0);
-			cursor: pointer;
-		}
-		.card:hover .card-image2 img {
-			width: 110%;
-			filter: grayscale(0);
-			cursor: pointer;
-		}
-		.card:hover .card-image3 img {
-			width: 110%;
-			filter: grayscale(0);
-			cursor: pointer;
-		}
-		footer {
-			color: hsl(220, 14%, 71%);
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
-<body>
-	<!-- make this into a tab menu -->
-	<h1 style="border-bottom: 1px solid  #ddd; padding: 5px">Projects</h1>
 
-	<ul>
-		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
-			<div class="card-image1">
+<body>
+
+	<!-- MENU -->
+	<div style="cursor: pointer;  display: flex; justify-content: center; margin-bottom: 10px;">
+		<h1 id="homebtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px;  margin-right: 2.5px; margin-left: 2.5px;">About</h1>
+		<h1 id="projectbtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px;  margin-right: 2.5px; margin-left: 2.5px;">Projects</h1>
+		<h1 id="contactbtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px; margin-right: 2.5px; margin-left: 2.5px;">Contact</h1>
+	</div>
+
+	<!-- CARD CONTAINER -->
+	<div id="project">
+
+		<!-- FIRST CARD -->
+		<div class="card" style=" margin-bottom: 40px; background: white; ">
+			<div class="card-image">
 				<a href="cardflip-game/index.html">
 					<img src="thumbcardflip.png" alt="Orange" />
 				</a>
 			</div>
-
-			<h2>Memoryflip</h2>
+			<a href="cardflip-game/index.html"><h2>Memoryflip</h2></a>
 			<p style="margin-bottom: 40px">A card flipping memorization game</p>
 			<p><b>Keywords</b></p>
 			<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript,  pixi.js</p>
-			<p><b>Code</b></p>
+			<a  href="https://github.com/RikhartBekkevold/Memoryflip"><p><b>Code</b></p></a>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/Memoryflip"><i class="fab fa-github"></i></a>
-			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/Memoryflip">here</a></p> -->
-			<!-- <a><i class="fab fa-github"></i></a> -->
 		</div>
 
-		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white;">
-			<div class="card-image2">
-				<a  href="colourexperiment/index.html">
+		<!-- SECOND CARD -->
+		<div class="card" style=" margin-bottom: 40px; background: white;">
+			<div class="card-image">
+				<a href="colourexperiment/index.html">
 					<img src="thumbexperiment.png"
 					alt="Orange" />
 				</a>
 	        </div>
-			<h2>Experiment</h2>
+			<a href="colourexperiment/index.html"><h2>Experiment</h2></a>
 			<p style="margin-bottom: 40px"> A colour experiment from IMT 4315 </p>
-			<!-- description and link to source code . title: projects instead? -->
 			<p><b>Keywords</b></p>
-			<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript</p>
-			<p><b>Code</b></p>
+			<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript, research, interaction design</p>
+			<a  href="https://github.com/RikhartBekkevold/colourexperiment"><p><b>Code</b></p></a>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/colourexperiment"><i class="fab fa-github"></i></a>
-			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/colourexperiment">here</a></p> -->
 		</div>
 
-		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
-			<div class="card-image3">
+		<!-- THIRD CARD -->
+		<div class="card" style=" margin-bottom: 40px; background: white; ">
+			<div class="card-image">
 				<a href="colourexperiment/index.html">
 					<img src="thumbeditor.png"
 					alt="Orange" />
 				</a>
 			</div>
-			<h2>Form Editor</h2>
+			<a href="colourexperiment/index.html"><h2>Form Editor</h2></a>
 			<p style="margin-bottom: 40px"> A vue built form editor </p>
-			<!-- description and link to source code . title: projects instead? -->
 			<p><b>Keywords</b></p>
 			<p style="font-size: 0.9em; margin-bottom: 30px">frontend,  backend, php, javascript,  vue.js,  vuetify.js </p>
-
-			<p><b>Code</b></p>
+			<a href="https://github.com/RikhartBekkevold/VuEditor"><p><b>Code</b></p></a>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/VuEditor"><i class="fab fa-github"></i></a>
-			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/VuEditor">here</a></p> -->
 		</div>
 
-		<div class="card" style="display: inline-block; margin-bottom: 40px; background: white; ">
-			<div class="card-image3">
-				<a	href="">
+		<!-- FOURTH CARD -->
+		<div class="card" style=" margin-bottom: 40px; background: white; ">
+			<div class="card-image">
+				<a href="colourexperiment/index.html">
 					<img src="thumbpymatch.png"
 					alt="Orange" />
 				</a>
 			</div>
-			<h2>PyMatch</h2>
-			<p style="margin-bottom: 40px"> A game built with Python </p>
-			<!-- description and link to source code . title: projects instead? -->
+			<a href="colourexperiment/index.html"><h2>PyMatch</h2></a>
+			<p style="margin-bottom: 40px"> A desktop game built with Python </p>
 			<p><b>Keywords</b></p>
-			<p style="font-size: 0.9em; margin-bottom: 30px">  python </p>
-
-			<p><b>Code</b></p>
+			<p style="font-size: 0.9em; margin-bottom: 30px">python</p>
+			<a href="https://github.com/RikhartBekkevold/PyMatch"><p><b>Code</b></p></a>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/PyMatch"><i class="fab fa-github"></i></a>
-			<!-- <p style="font-size: 0.9em">Source code on github <a href="https://github.com/RikhartBekkevold/VuEditor">here</a></p> -->
 		</div>
 
-		<!-- "view project" -->
+	</div>
 
-				<!--
-				"contact me"
-				make the boxes fall down. 2 for each row on tablet etc
-				make them cards instead of list? -->
-		<!-- // about = a list of skills i have. front end etc. tags for each project to show what its about/keywords
-		"with passion for"
-	-->
-	</ul>
-	<footer style="">
+
+
+	<div style="color: #363636; text-align: center; min-height: 529px;" id="home">
+		<div class="card" style="padding-bottom: 30px;line-height: 1.5em;
+			margin-bottom: 40px; max-width: 25%; max-width: 25%; background: white;">
+			<!-- <p>Interaction design</p>
+			<p>Design research</p>
+			<p>Frontend development</p>
+			<p>photo of me. <br> percentage of my skills. mostly frontend</p> -->
+			<img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width: 100%">
+			<h1>Rikhart Bekkevold</h1>
+			Web Developer, Interaction Designer<br>
+			<div style="margin-bottom: 30px"><i class="fas fa-map-marker-alt"></i> Gjøvik, Norway</div>
+
+
+
+			<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
+					box-sizing: border-box; margin: 40px 20px 0px 20px">Education</h2>
+			<br>
+			<i class="fas fa-graduation-cap"></i>
+			<i>2014 - 2017</i>
+			<br>
+			<b>Bachelor in Web development</b>
+			<br>
+			Norwegian University of Science and Technology
+			<br>
+			<br>
+			<i class="fas fa-graduation-cap"></i>
+			<i>2017 - 2019</i>
+			<br>
+			<b>Masters in Interaction Design</b>
+			<br>
+			Norwegian University of Science and Technology
+			<br>
+
+
+
+			<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
+					   margin: 40px 20px 10px 20px">Skills</h2>
+
+			<div style="margin-bottom: 30px">
+				<div class="tag">Frontend</div>
+				<div class="tag">Backend</div>
+				<div class="tag">Javascript</div>
+				<div class="tag">PHP</div>
+				<div class="tag">Python</div>
+				<div class="tag">IxDesign</div>
+				<div class="tag">UX design</div>
+				<div class="tag">Design research</div>
+			</div>
+
+
+
+<div class="flex-wrapper">
+	<div class="single-chart">
+		<svg viewbox="0 0 36 36" class="circular-chart orange">
+		<path class="circle-bg"
+		d="M18 2.0845
+		a 15.9155 15.9155 0 0 1 0 31.831
+		a 15.9155 15.9155 0 0 1 0 -31.831"
+		/>
+		<path class="circle"
+		stroke-dasharray="75, 100"
+		d="M18 2.0845
+		a 15.9155 15.9155 0 0 1 0 31.831
+		a 15.9155 15.9155 0 0 1 0 -31.831"
+		/>
+		<text x="18" y="20.35" class="percentage">75%</text>
+		</svg>
+		<span class="title">Frontend</span>
+	</div>
+
+<div class="single-chart">
+<svg viewbox="0 0 36 36" class="circular-chart green">
+<path class="circle-bg"
+d="M18 2.0845
+a 15.9155 15.9155 0 0 1 0 31.831
+a 15.9155 15.9155 0 0 1 0 -31.831"
+/>
+<path class="circle"
+stroke-dasharray="25, 100"
+d="M18 2.0845
+a 15.9155 15.9155 0 0 1 0 31.831
+a 15.9155 15.9155 0 0 1 0 -31.831"
+/>
+<text x="18" y="20.35" class="percentage">25%</text>
+</svg>
+<span class="title">Backend</span>
+</div>
+
+<div class="single-chart">
+<svg viewbox="0 0 36 36" class="circular-chart blue">
+<path class="circle-bg"
+d="M18 2.0845
+a 15.9155 15.9155 0 0 1 0 31.831
+a 15.9155 15.9155 0 0 1 0 -31.831"
+/>
+<path class="circle"
+stroke-dasharray="50, 100"
+d="M18 2.0845
+a 15.9155 15.9155 0 0 1 0 31.831
+a 15.9155 15.9155 0 0 1 0 -31.831"
+/>
+<text x="18" y="20.35" class="percentage">50%</text>
+</svg>
+<span class="title">UX Design</span>
+
+</div>
+</div>
+</div>
+</div>
+
+	<!-- CONTACT CARD -->
+	<div style="color: #363636; text-align: center; min-height: 529px;" id="contact">
+		<div class="card" style="padding: 30px; padding-top: 0px; padding-bottom: 60px; margin-bottom: 40px; background: white;">
+			<h1>Contact information</h1>
+
+			<h2 style="color: #363636;">Email</h2>
+			<p>rikhartb@stud.ntnu.no</p>
+
+			<h2 style="color: #363636;">Find me on</h2>
+			<a style="color: #363636;" href="https://github.com/RikhartBekkevold"><i style="font-size: 1.2em;" class="icon fab fa-github"></i></a>
+			<a style="color: #363636;" href="https://github.com/RikhartBekkevold"><i style="font-size: 1.2em" class="icon fas fa-envelope"></i></a>
+			<a style="color: #363636;" href="https://www.facebook.com/rikhart.bekkevold"><i style="font-size: 1.2em" class=" icon fab fa-facebook"></i></a>
+			<a style="color: #363636;" href="https://www.facebook.com/rikhart.bekkevold"><i style="font-size: 1.2em" class=" icon fab fa-linkedin"></i></a>
+		</div>
+	</div>
+
+
+	<!-- FOOTER -->
+	<footer>
 		&copy; Rikhart Bekkevold 2018 <a href="https://github.com/RikhartBekkevold"><i class="fab fa-github"></i></a>
 	</footer>
+
+	<script src="main.js"></script>
 </body>
 </html>
+
+
+
+
+			<!-- it jumps because of scrollbar -->
+			<!-- loved the resposnibility  and do what i want -->

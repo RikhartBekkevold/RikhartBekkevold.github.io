@@ -1,0 +1,193 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: whitesmoke;
+    /* padding-left: 10px; */
+    /* color: hsl(286, 60%, 67%); */
+    color: #a89898;
+    overflow-y: scroll;
+}
+h1 {
+    font-family: 'Roboto Slab', serif;
+}
+h2 {
+    font-family: 'Roboto Slab', serif;
+    /* color: hsl(286, 60%, 67%); */
+    color: #a89898;
+
+}
+a {
+    text-decoration: none;
+    color: hsl(220, 14%, 71%);
+}
+li {
+    list-style-type: none;
+    color: hsl(220, 14%, 71%);
+}
+footer {
+    margin-top: 40px;
+    color: hsl(220, 14%, 71%);
+    text-align: center;
+}
+
+#project {
+    color: hsl(220, 14%, 71%);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#home {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#contact {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.circle {
+    border: 1px solid black;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+.outer {
+    border: 1px solid black;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+
+}
+.inner {
+    border: 1px solid red;
+    border-radius: 80px;
+    width: 80px;
+    height: 80px;
+    margin: 9px 0 0 9px;
+
+}
+
+
+.tag {
+    color: white;
+    background: #a89898;
+    padding: 7px;
+    margin: 2.5px 2.5px 2.5px 2.5px;
+    border-radius: 7px;
+    display: inline-block;
+    border: 1px solid #ddd;
+}
+
+.icon {
+    margin: 0 5px 0 5px;
+}
+
+.card {
+    -webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+    text-align: center;
+    padding: 0px;
+    min-width: 400px;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+
+.card-image {
+    height: 205px;
+    position: relative;
+    overflow: hidden;
+}
+.card-image img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: grayscale(0);
+    transition-property: filter width;
+    transition-duration: .3s;
+}
+.card:hover .card-image img {
+    width: 110%;
+    filter: grayscale(0);
+    cursor: pointer;
+}
+
+
+.flex-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+}
+
+.single-chart {
+  width: 25%;
+  justify-content: space-around;
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  /* animation: progress 1s ease-out forwards; */
+}
+
+/* @keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+} */
+
+
+.percentage {
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+
+.title {
+    fill: #666;
+    font-family: sans-serif;
+
+    text-anchor: middle;
+}
+
+
+.circular-chart.orange .circle {
+  stroke: #a89898;
+}
+
+.circular-chart.green .circle {
+  stroke: #F7F6DE;
+}
+
+.circular-chart.blue .circle {
+  stroke: #AFBBC2;
+}
+
+
+
+
+
+
+/* CONTACT CARD  */
