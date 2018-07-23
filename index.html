@@ -7,13 +7,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 	<!-- MENU -->
-	<div style="cursor: pointer;  display: flex; justify-content: center; margin-bottom: 10px;">
+	<div style="cursor: pointer;  display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
 		<h1 id="homebtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px;  margin-right: 2.5px; margin-left: 2.5px;">About</h1>
 		<h1 id="projectbtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px;  margin-right: 2.5px; margin-left: 2.5px;">Projects</h1>
 		<h1 id="contactbtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px; margin-right: 2.5px; margin-left: 2.5px;">Contact</h1>
@@ -23,7 +23,7 @@
 	<div id="project">
 
 		<!-- FIRST CARD -->
-		<div class="card" style=" margin-bottom: 40px; background: white; ">
+		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
 			<div class="card-image">
 				<a href="cardflip-game/index.html">
 					<img src="thumbcardflip.png" alt="Orange" />
@@ -38,7 +38,7 @@
 		</div>
 
 		<!-- SECOND CARD -->
-		<div class="card" style=" margin-bottom: 40px; background: white;">
+		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
 			<div class="card-image">
 				<a href="colourexperiment/index.html">
 					<img src="thumbexperiment.png"
@@ -54,7 +54,7 @@
 		</div>
 
 		<!-- THIRD CARD -->
-		<div class="card" style=" margin-bottom: 40px; background: white; ">
+		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
 			<div class="card-image">
 				<a href="colourexperiment/index.html">
 					<img src="thumbeditor.png"
@@ -70,7 +70,7 @@
 		</div>
 
 		<!-- FOURTH CARD -->
-		<div class="card" style=" margin-bottom: 40px; background: white; ">
+		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
 			<div class="card-image">
 				<a href="colourexperiment/index.html">
 					<img src="thumbpymatch.png"
@@ -84,149 +84,162 @@
 			<a href="https://github.com/RikhartBekkevold/PyMatch"><p><b>Code</b></p></a>
 			<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/PyMatch"><i class="fab fa-github"></i></a>
 		</div>
-
 	</div>
 
 
-
+	<!-- ABOUT ME CARD  -->
 	<div style="color: #363636; text-align: center; min-height: 529px;" id="home">
-		<div class="card" style="padding-bottom: 30px;line-height: 1.5em;
-			margin-bottom: 40px; max-width: 25%; max-width: 25%; background: white;">
-			<!-- <p>Interaction design</p>
-			<p>Design research</p>
-			<p>Frontend development</p>
-			<p>photo of me. <br> percentage of my skills. mostly frontend</p> -->
+		<div class="card" style=" line-height: 2em; margin-bottom: 40px;">
+
+			<!-- TOP IMAGE -->
 			<img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width: 100%">
-			<h1>Rikhart Bekkevold</h1>
-			Web Developer, Interaction Designer<br>
-			<div style="margin-bottom: 30px"><i class="fas fa-map-marker-alt"></i> Gjøvik, Norway</div>
 
+			<!-- PERSONAL INFO -->
+			<div id="personal_info_wrapper">
+				<h1>Rikhart Bekkevold</h1>
+				<span>Web Developer, Interaction Designer</span>
+				<div><i class="fas fa-map-marker-alt"></i> Gjøvik, Norway</div>
+			</div>
 
+			<!-- EDUCATION SECTION -->
+			<div id="edu_wrapper">
+				<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
+						box-sizing: border-box; margin: 40px 20px 0px 20px">Education</h2>
 
-			<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
-					box-sizing: border-box; margin: 40px 20px 0px 20px">Education</h2>
-			<br>
-			<i class="fas fa-graduation-cap"></i>
-			<i>2014 - 2017</i>
-			<br>
-			<b>Bachelor in Web development</b>
-			<br>
-			Norwegian University of Science and Technology
-			<br>
-			<br>
-			<i class="fas fa-graduation-cap"></i>
-			<i>2017 - 2019</i>
-			<br>
-			<b>Masters in Interaction Design</b>
-			<br>
-			Norwegian University of Science and Technology
-			<br>
+				<i class="fas fa-graduation-cap"></i>
+				<i>2014 - 2017</i>
+				<br>
+				<b>Bachelor in Web development</b>
+				<br>
+				Norwegian University of Science and Technology
+				<br>
+				<br>
+				<i class="fas fa-graduation-cap"></i>
+				<i>2017 - 2019</i>
+				<br>
+				<b>Masters in Interaction Design</b>
+				<br>
+				Norwegian University of Science and Technology
+				<br>
+			</div>
 
+			<!-- TAGS SECTION -->
+			<div id="tags_wrapper">
+				<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
+						   margin: 40px 20px 10px 20px; padding: 30px;">Skills</h2>
 
-
-			<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
-					   margin: 40px 20px 10px 20px">Skills</h2>
-
-			<div style="margin-bottom: 30px">
-				<div class="tag">Frontend</div>
-				<div class="tag">Backend</div>
-				<div class="tag">Javascript</div>
-				<div class="tag">PHP</div>
-				<div class="tag">Python</div>
-				<div class="tag">IxDesign</div>
-				<div class="tag">UX design</div>
-				<div class="tag">Design research</div>
+				<div style="margin-bottom: 30px">
+					<div class="tag">Frontend</div>
+					<div class="tag">Backend</div>
+					<div class="tag">Javascript</div>
+					<div class="tag">PHP</div>
+					<div class="tag">Python</div>
+					<div class="tag">IxDesign</div>
+					<div class="tag">UX design</div>
+					<div class="tag">Design research</div>
+				</div>
 			</div>
 
 
+			 <!-- PERCENTAGE WHEELS -->
+			<div class="flex-wrapper" id="flex_wrapper">
+				<div class="single-chart">
+					<svg viewbox="0 0 36 36" class="circular-chart orange">
+					<path class="circle-bg"
+					d="M18 2.0845
+					a 15.9155 15.9155 0 0 1 0 31.831
+					a 15.9155 15.9155 0 0 1 0 -31.831"
+					/>
+					<path class="circle"
+					stroke-dasharray="75, 100"
+					d="M18 2.0845
+					a 15.9155 15.9155 0 0 1 0 31.831
+					a 15.9155 15.9155 0 0 1 0 -31.831"
+					/>
+					<text x="18" y="20.35" class="percentage">75%</text>
+					</svg>
+					<span class="title">Frontend</span>
+				</div>
 
-<div class="flex-wrapper">
-	<div class="single-chart">
-		<svg viewbox="0 0 36 36" class="circular-chart orange">
-		<path class="circle-bg"
-		d="M18 2.0845
-		a 15.9155 15.9155 0 0 1 0 31.831
-		a 15.9155 15.9155 0 0 1 0 -31.831"
-		/>
-		<path class="circle"
-		stroke-dasharray="75, 100"
-		d="M18 2.0845
-		a 15.9155 15.9155 0 0 1 0 31.831
-		a 15.9155 15.9155 0 0 1 0 -31.831"
-		/>
-		<text x="18" y="20.35" class="percentage">75%</text>
-		</svg>
-		<span class="title">Frontend</span>
+				<div class="single-chart">
+					<svg viewbox="0 0 36 36" class="circular-chart green">
+						<path class="circle-bg"
+						d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831"
+						/>
+						<path class="circle"
+						stroke-dasharray="25, 100"
+						d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831"
+						/>
+						<text x="18" y="20.35" class="percentage">25%</text>
+					</svg>
+					<span class="title">Backend</span>
+				</div>
+
+				<div class="single-chart">
+					<svg viewbox="0 0 36 36" class="circular-chart blue">
+						<path class="circle-bg"
+						d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831"
+						/>
+						<path class="circle"
+						stroke-dasharray="50, 100"
+						d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831"
+						/>
+						<text x="18" y="20.35" class="percentage">50%</text>
+					</svg>
+					<span class="title">UX Design</span>
+				</div>
+			</div>
+		</div>
 	</div>
 
-<div class="single-chart">
-<svg viewbox="0 0 36 36" class="circular-chart green">
-<path class="circle-bg"
-d="M18 2.0845
-a 15.9155 15.9155 0 0 1 0 31.831
-a 15.9155 15.9155 0 0 1 0 -31.831"
-/>
-<path class="circle"
-stroke-dasharray="25, 100"
-d="M18 2.0845
-a 15.9155 15.9155 0 0 1 0 31.831
-a 15.9155 15.9155 0 0 1 0 -31.831"
-/>
-<text x="18" y="20.35" class="percentage">25%</text>
-</svg>
-<span class="title">Backend</span>
-</div>
-
-<div class="single-chart">
-<svg viewbox="0 0 36 36" class="circular-chart blue">
-<path class="circle-bg"
-d="M18 2.0845
-a 15.9155 15.9155 0 0 1 0 31.831
-a 15.9155 15.9155 0 0 1 0 -31.831"
-/>
-<path class="circle"
-stroke-dasharray="50, 100"
-d="M18 2.0845
-a 15.9155 15.9155 0 0 1 0 31.831
-a 15.9155 15.9155 0 0 1 0 -31.831"
-/>
-<text x="18" y="20.35" class="percentage">50%</text>
-</svg>
-<span class="title">UX Design</span>
-
-</div>
-</div>
-</div>
-</div>
-
 	<!-- CONTACT CARD -->
-	<div style="color: #363636; text-align: center; min-height: 529px;" id="contact">
-		<div class="card" style="padding: 30px; padding-top: 0px; padding-bottom: 60px; margin-bottom: 40px; background: white;">
-			<h1>Contact information</h1>
-
-			<h2 style="color: #363636;">Email</h2>
-			<p>rikhartb@stud.ntnu.no</p>
-
-			<h2 style="color: #363636;">Find me on</h2>
-			<a style="color: #363636;" href="https://github.com/RikhartBekkevold"><i style="font-size: 1.2em;" class="icon fab fa-github"></i></a>
-			<a style="color: #363636;" href="https://github.com/RikhartBekkevold"><i style="font-size: 1.2em" class="icon fas fa-envelope"></i></a>
-			<a style="color: #363636;" href="https://www.facebook.com/rikhart.bekkevold"><i style="font-size: 1.2em" class=" icon fab fa-facebook"></i></a>
-			<a style="color: #363636;" href="https://www.facebook.com/rikhart.bekkevold"><i style="font-size: 1.2em" class=" icon fab fa-linkedin"></i></a>
+	<div style="color: #363636; text-align: center;" id="contact">
+		<div class="card" >
+			<h2 style="border-bottom: 1px solid #ddd; margin: 30px 10px 40px 10px; color: #363636;">Find me</h2>
+			<div>
+				<div style="display: flex; justify-content: center; flex-wrap: wrap; font-size: 4em;">
+					<i style="margin-top: 20px" class="icon fab fa-github"></i>
+					<i style="margin-top: 20px" class="icon fab fa-facebook"></i>
+					<i style="margin-top: 20px" class="icon fab fa-linkedin"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 
 
 	<!-- FOOTER -->
-	<footer>
-		&copy; Rikhart Bekkevold 2018 <a href="https://github.com/RikhartBekkevold"><i class="fab fa-github"></i></a>
+	<footer> &copy; Rikhart Bekkevold 2018
+		<div style="display: flex; justify-content: center; margin-top: 10px;">
+			<a  href="https://github.com/RikhartBekkevold"><i  class="icon fab fa-github"></i></a>
+			<a  href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
+			<a  href="https://www.facebook.com/rikhart.bekkevold"><i  class="icon fab fa-linkedin"></i></a>
+		</div>
 	</footer>
+
 
 	<script src="main.js"></script>
 </body>
 </html>
 
 
+<!-- less min width, but word wrap with enough padding? when that low different heights dont matter -->
+
+<!-- literatur review.
+dishonest review.
+læringsmetoder - hvordan vi lærer. hvilken måte er mest effektive. hva funker og hva funker ikke
+games. sc2.
+when playing game. behaviour
+VR - gui. attention
+dyslexia -->
 
 
-			<!-- it jumps because of scrollbar -->
-			<!-- loved the resposnibility  and do what i want -->
+<!-- it jumps because of scrollbar -->
+<!-- loved the resposnibility  and do what i want -->
