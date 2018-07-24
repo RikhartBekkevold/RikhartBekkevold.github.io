@@ -1,0 +1,22 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: whitesmoke;
+    color: #a89898;
+    overflow-y: scroll;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: black;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: black;
+    color: #a89898;
+}
+
+a {
+    text-decoration: none;
+    color: hsl(220, 14%, 71%);
+}

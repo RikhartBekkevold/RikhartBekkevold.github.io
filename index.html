@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title></title>
+	<title>Rikhart Bekkevold</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -9,21 +9,22 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
 	<!-- MENU -->
-	<div style="cursor: pointer;  display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
-		<h1 id="homebtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px;  margin-right: 2.5px; margin-left: 2.5px;">About</h1>
-		<h1 id="projectbtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px;  margin-right: 2.5px; margin-left: 2.5px;">Projects</h1>
-		<h1 id="contactbtn" style="display: inline-block; border-bottom: 1px solid #ddd; padding: 5px; margin-right: 2.5px; margin-left: 2.5px;">Contact</h1>
+	<div id="nav_menu">
+		<h1 id="homebtn">About</h1>
+		<h1 id="projectbtn">Projects</h1>
+		<h1 id="contactbtn">Contact</h1>
 	</div>
 
 	<!-- CARD CONTAINER -->
 	<div id="project">
 
 		<!-- FIRST CARD -->
-		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
+		<div class="card" style=" margin-bottom: 40px; max-width: 400px;">
 			<div class="card-image">
 				<a href="cardflip-game/index.html">
 					<img src="thumbcardflip.png" alt="Orange" />
@@ -38,7 +39,7 @@
 		</div>
 
 		<!-- SECOND CARD -->
-		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
+		<div class="card" style=" margin-bottom: 40px; max-width: 400px; ">
 			<div class="card-image">
 				<a href="colourexperiment/index.html">
 					<img src="thumbexperiment.png"
@@ -54,7 +55,7 @@
 		</div>
 
 		<!-- THIRD CARD -->
-		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
+		<div class="card" style=" margin-bottom: 40px; max-width: 400px; ">
 			<div class="card-image">
 				<a href="colourexperiment/index.html">
 					<img src="thumbeditor.png"
@@ -70,7 +71,7 @@
 		</div>
 
 		<!-- FOURTH CARD -->
-		<div class="card" style=" margin-bottom: 40px; min-width: 400px; ">
+		<div class="card" style=" margin-bottom: 40px; max-width: 400px; ">
 			<div class="card-image">
 				<a href="colourexperiment/index.html">
 					<img src="thumbpymatch.png"
@@ -216,11 +217,12 @@
 
 
 	<!-- FOOTER -->
-	<footer> &copy; Rikhart Bekkevold 2018
-		<div style="display: flex; justify-content: center; margin-top: 10px;">
-			<a  href="https://github.com/RikhartBekkevold"><i  class="icon fab fa-github"></i></a>
-			<a  href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
-			<a  href="https://www.facebook.com/rikhart.bekkevold"><i  class="icon fab fa-linkedin"></i></a>
+	<footer>
+		<span>&copy; Rikhart Bekkevold 2018</span>
+		<div id="footer_buttons_wrapper">
+			<a href="https://github.com/RikhartBekkevold"><i  class="icon fab fa-github"></i></a>
+			<a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
+			<a href="https://www.facebook.com/rikhart.bekkevold"><i  class="icon fab fa-linkedin"></i></a>
 		</div>
 	</footer>
 
@@ -229,9 +231,8 @@
 </body>
 </html>
 
-
+<!-- improved screen readers -->
 <!-- less min width, but word wrap with enough padding? when that low different heights dont matter -->
-
 <!-- literatur review.
 dishonest review.
 læringsmetoder - hvordan vi lærer. hvilken måte er mest effektive. hva funker og hva funker ikke
@@ -239,7 +240,5 @@ games. sc2.
 when playing game. behaviour
 VR - gui. attention
 dyslexia -->
-
-
 <!-- it jumps because of scrollbar -->
 <!-- loved the resposnibility  and do what i want -->

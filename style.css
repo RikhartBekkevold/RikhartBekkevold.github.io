@@ -1,92 +1,49 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background: whitesmoke;
-    color: #a89898;
-    overflow-y: scroll;
+/* NAVIGATION MENU */
+#nav_menu {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
-h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: black;
-}
-
-h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: black;
-    color: #a89898;
-}
-
-a {
-    text-decoration: none;
-    color: hsl(220, 14%, 71%);
+#homebtn, #projectbtn, #contactbtn {
+    display: inline-block;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
 }
 
 
-
-
-/* ICONS */
-.icon {
-    margin: 0 10px 0 5px;
-    font-size: 1.2em;
-    color: black;
-}
-
-#contact .fa-facebook {
-    color: #3B5998;
-    font-size: 1.5em;
-    text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
-    transition: all ease-in-out 150ms;
-    margin: 0 20px 0 20px;
-}
-#contact .fa-linkedin {
-    color: #0077B5;
-    font-size: 1.5em;
-    text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
-    transition: all ease-in-out 150ms;
-    margin: 0 20px 0 20px;
-}
-#contact .fa-github {
-    color: #211F1F;
-    font-size: 1.5em;
-    text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
-    transition: all ease-in-out 150ms;
-    margin: 0 20px 0 20px;
-}
-
-#contact .fa-github:hover,
-#contact .fa-linkedin:hover,
-#contact  .fa-facebook:hover {
-    margin-top: -7px;
-    text-shadow: 0px 16px 10px rgba(0, 0, 0, 0.3);
-    transform: translate(0, -8);
-}
-
-
+/* FOOTER */
 footer {
     margin-top: 40px;
     color: hsl(220, 14%, 71%);
     text-align: center;
 }
+
+#footer_buttons_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: 0.6;
+    font-size: 1.2em;
+}
+
 footer .fa-facebook {
     color: #3B5998;
-    opacity: 0.6;
-    font-size: 1.2em;
 }
+
 footer .fa-linkedin {
     color: #0077B5;
-    opacity: 0.6;
-    font-size: 1.2em;
 }
+
 footer .fa-github {
     color: #211F1F;
-    opacity: 0.6;
-    font-size: 1.2em;
 }
-footer .fa-envelope {
-    color: #211F1F;
-    opacity: 0.6;
-    font-size: 1.2em;
-}
+
+
 
 
 .tag {
@@ -156,34 +113,32 @@ footer .fa-envelope {
 }
 
 
-#project .card {
-    min-width: 400px;
-}
-
 
 #home .card {
-    min-width: 200px;
-    max-width: 35%;
+    /* min-width: 200px; */
+    /* max-width: 35%; */
     padding-bottom: 50px;
 }
 
-    #personal_info_wrapper {
-        padding: 30px;
-    }
+#personal_info_wrapper {
+    padding: 30px;
+}
 
-    #edu_wrapper {
-        padding: 30px;
-    }
+#edu_wrapper {
+    padding: 30px;
+}
 
-    #tags_wrapper {
-        padding: 30px;
-    }
+#tags_wrapper {
+    padding: 30px;
+}
 
-    #flex_wrapper {
-        padding: 30px;
-    }
+#flex_wrapper {
+    padding: 30px;
+}
 
-
+#project .card {
+    min-width: 400px;
+}
 
 #contact .card {
     padding: 20px 30px 60px 30px;
@@ -192,6 +147,39 @@ footer .fa-envelope {
 
 
 
+/* ICONS */
+.icon {
+    margin: 0 10px 0 5px;
+    font-size: 1.2em;
+    color: black;
+}
+
+#contact .fa-facebook,
+#contact .fa-linkedin,
+#contact .fa-github
+{
+    color: #3B5998;
+    font-size: 1.5em;
+    text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
+    transition: all ease-in-out 150ms;
+    margin: 0 20px 0 20px;
+}
+
+#contact .fa-linkedin {
+    color: #0077B5;
+}
+
+#contact .fa-github {
+    color: #211F1F;
+}
+
+#contact .fa-github:hover,
+#contact .fa-linkedin:hover,
+#contact  .fa-facebook:hover {
+    margin-top: -7px;
+    text-shadow: 0px 16px 10px rgba(0, 0, 0, 0.3);
+    transform: translate(0, -8);
+}
 
 /* PERCENTAGE WHEELS */
 .flex-wrapper {
