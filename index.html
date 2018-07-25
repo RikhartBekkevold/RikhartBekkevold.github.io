@@ -4,104 +4,29 @@
 	<title>Rikhart Bekkevold</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<!-- MENU -->
 	<div id="nav_menu">
-		<h1 id="homebtn">About</h1>
-		<h1 id="projectbtn">Projects</h1>
-		<h1 id="contactbtn">Contact</h1>
-	</div>
-
-	<!-- CARD CONTAINER -->
-	<div id="project">
-
-		<!-- FIRST CARD -->
-		<div class="card" style="margin-bottom: 40px; ">
-			<div class="card-image">
-				<a href="cardflip-game/index.html">
-					<img src="thumbcardflip.png" alt="thumb" />
-				</a>
-			</div>
-			<div class="card_content">
-				<a href="cardflip-game/index.html"><h2>Memoryflip</h2></a>
-				<p style="margin-bottom: 40px">A card flipping memorization game</p>
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript,  pixi.js</p>
-				<a  href="https://github.com/RikhartBekkevold/Memoryflip"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/Memoryflip"><i class="fab fa-github"></i></a>
-			</div>
-		</div>
-
-		<!-- SECOND CARD -->
-		<div class="card" style="margin-bottom: 40px;">
-			<div class="card-image">
-				<a href="colourexperiment/index.html">
-					<img src="thumbexperiment.png"
-					alt="thumb" />
-				</a>
-	        </div>
-			<div class="card_content">
-				<a href="colourexperiment/index.html"><h2>Experiment</h2></a>
-				<p style="margin-bottom: 40px"> A colour experiment from IMT 4315 </p>
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript, research, interaction design</p>
-				<a  href="https://github.com/RikhartBekkevold/colourexperiment"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/colourexperiment"><i class="fab fa-github"></i></a>
-			</div>
-		</div>
-
-		<!-- THIRD CARD -->
-		<div class="card" style=" margin-bottom: 40px;  ">
-			<div class="card-image">
-				<a href="colourexperiment/index.html">
-					<img src="thumbeditor.png"
-					alt="thumb" />
-				</a>
-			</div>
-			<div class="card_content">
-				<a href="colourexperiment/index.html"><h2>Form Editor</h2></a>
-				<p style="margin-bottom: 40px"> A vue built form editor </p>
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px">frontend,  backend, php, javascript,  vue.js,  vuetify.js </p>
-				<a href="https://github.com/RikhartBekkevold/VuEditor"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/VuEditor"><i class="fab fa-github"></i></a>
-			</div>
-		</div>
-
-		<!-- FOURTH CARD -->
-		<div class="card" style=" margin-bottom: 40px; ">
-			<div class="card-image">
-				<a href="colourexperiment/index.html">
-					<img src="thumbpymatch.png"
-					alt="thumb" />
-				</a>
-			</div>
-			<div class="card_content">
-				<a href="colourexperiment/index.html"><h2>PyMatch</h2></a>
-				<p style="margin-bottom: 40px"> A desktop game built with Python </p>
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px">python</p>
-				<a href="https://github.com/RikhartBekkevold/PyMatch"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/PyMatch"><i class="fab fa-github"></i></a>
-			</div>
-		</div>
+		<h1 id="home_btn">About</h1>
+		<h1 id="project_btn">Projects</h1>
+		<h1 id="contact_btn">Contact</h1>
 	</div>
 
 
 	<!-- ABOUT ME CARD  -->
-	<div style="color: #363636; text-align: center; min-height: 529px;" id="home">
-		<div class="card" style="line-height: 2em; margin-bottom: 40px;">
+	<div id="home">
+		<div class="card">
 
 			<!-- TOP IMAGE -->
-			<img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width: 100%">
+			<img id="aboutme_img" src="https://www.w3schools.com/w3images/team2.jpg" alt="John">
 
 			<!-- PERSONAL INFO -->
 			<div id="personal_info_wrapper">
@@ -207,6 +132,80 @@
 			</div>
 		</div>
 	</div>
+
+
+	<!-- CARD CONTAINER -->
+	<div id="project">
+		<!-- FIRST CARD -->
+		<div class="card">
+			<div class="card-image">
+				<a href="cardflip-game/index.html">
+					<img src="thumbnails/thumbcardflip.png" alt="thumb" />
+				</a>
+			</div>
+			<div class="card_content">
+				<a href="cardflip-game/index.html"><h2>Memoryflip</h2></a>
+				<p style="margin-bottom: 40px">A card flipping memorization game</p>
+				<p><b>Keywords</b></p>
+				<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript,  pixi.js</p>
+				<a  href="https://github.com/RikhartBekkevold/Memoryflip"><p><b>Code</b></p></a>
+				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/Memoryflip"><i class="fab fa-github"></i></a>
+			</div>
+		</div>
+
+		<!-- SECOND CARD -->
+		<div class="card">
+			<div class="card-image">
+				<a href="colourexperiment/index.html">
+					<img src="thumbnails/thumbexperiment.png" alt="thumb" />
+				</a>
+	        </div>
+			<div class="card_content">
+				<a href="colourexperiment/index.html"><h2>Experiment</h2></a>
+				<p style="margin-bottom: 40px"> A colour experiment from IMT 4315 </p>
+				<!-- an experiment ment to answer the question. is it faster to read code with CC? -->
+				<p><b>Keywords</b></p>
+				<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript, research, interaction design</p>
+				<a  href="https://github.com/RikhartBekkevold/colourexperiment"><p><b>Code</b></p></a>
+				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/colourexperiment"><i class="fab fa-github"></i></a>
+			</div>
+		</div>
+
+		<!-- THIRD CARD -->
+		<div class="card">
+			<div class="card-image">
+				<a href="colourexperiment/index.html">
+					<img src="thumbnails/thumbeditor.png" alt="thumb" />
+				</a>
+			</div>
+			<div class="card_content">
+				<a href="colourexperiment/index.html"><h2>Form Editor</h2></a>
+				<p style="margin-bottom: 40px"> A vue built form editor </p>
+				<p><b>Keywords</b></p>
+				<p style="font-size: 0.9em; margin-bottom: 30px">frontend,  backend, php, javascript,  vue.js,  vuetify.js </p>
+				<a href="https://github.com/RikhartBekkevold/VuEditor"><p><b>Code</b></p></a>
+				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/VuEditor"><i class="fab fa-github"></i></a>
+			</div>
+		</div>
+
+		<!-- FOURTH CARD -->
+		<div class="card">
+			<div class="card-image">
+				<a href="colourexperiment/index.html">
+					<img src="thumbnails/thumbpymatch.png" alt="thumb" />
+				</a>
+			</div>
+			<div class="card_content">
+				<a href="colourexperiment/index.html"><h2>PyMatch</h2></a>
+				<p style="margin-bottom: 40px"> A desktop game built with Python </p>
+				<p><b>Keywords</b></p>
+				<p style="font-size: 0.9em; margin-bottom: 30px">python</p>
+				<a href="https://github.com/RikhartBekkevold/PyMatch"><p><b>Code</b></p></a>
+				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/PyMatch"><i class="fab fa-github"></i></a>
+			</div>
+		</div>
+	</div>
+
 
 	<!-- CONTACT CARD -->
 	<div style="color: #363636; text-align: center;" id="contact">

@@ -7,7 +7,7 @@
     margin-bottom: 10px;
 }
 
-#homebtn, #projectbtn, #contactbtn {
+#home_btn, #project_btn, #contact_btn {
     display: inline-block;
     border-bottom: 1px solid #ddd;
     padding: 5px;
@@ -54,7 +54,6 @@ footer .fa-github {
     border-radius: 7px;
     display: inline-block;
     border: 1px solid #ddd;
-
     flex: 1 0 20%;
     /*display: flex; justify-content: center; flex-wrap: wrap;  */
 }
@@ -108,6 +107,9 @@ footer .fa-github {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    color: #363636;
+    text-align: center;
+    min-height: 529px;
 }
 #contact {
     display: flex;
@@ -115,42 +117,42 @@ footer .fa-github {
     flex-wrap: wrap;
 }
 
-
-
 #home .card {
-    /* min-width: 200px; */
     max-width: 500px;
     padding-bottom: 50px;
+    line-height: 2em;
+    margin-bottom: 40px;
 }
-    #personal_info_wrapper {
-        padding: 30px;
-    }
 
-    #edu_wrapper {
-        padding: 30px;
-    }
+#personal_info_wrapper {
+    padding: 30px;
+}
 
-    #tags_wrapper {
-        padding: 30px;
-    }
+#edu_wrapper {
+    padding: 30px;
+}
 
-    #flex_wrapper {
-        padding: 0 30px 30px 30px;
-    }
+#tags_wrapper {
+    padding: 30px;
+}
+
+#flex_wrapper {
+    padding: 0 30px 30px 30px;
+}
 
 #project .card {
     /* min-width: 400px; */
     width: 400px;
-
+    margin-bottom: 40px;
     /* max-width: 400px; */
     /* use padding somehow?
     its easier to manipulate height
     must move start coords of img
     */
 }
+
 .card_content {
     padding: 0 30px 30px 30px;
-
 }
 
 #contact .card {
@@ -158,6 +160,9 @@ footer .fa-github {
     margin-bottom: 40px;
 }
 
+#aboutme_img {
+     width: 100%;
+}
 
 
 /* ICONS */
@@ -188,11 +193,13 @@ footer .fa-github {
 
 #contact .fa-github:hover,
 #contact .fa-linkedin:hover,
-#contact  .fa-facebook:hover {
+#contact  .fa-facebook:hover
+{
     margin-top: -7px;
     text-shadow: 0px 16px 10px rgba(0, 0, 0, 0.3);
     transform: translate(0, -8);
 }
+
 
 /* PERCENTAGE WHEELS */
 .flex-wrapper {
