@@ -27,7 +27,6 @@
 </head>
 <body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi-filters/1.0.8/filters.js"></script> -->
 	<script>
 		var game = new PIXI.Application(
 			document.body.clientWidth,
@@ -36,7 +35,6 @@
 		document.body.appendChild(game.view);
 	</script>
 	<script src="js/global_consts.js"></script>
-	<script src="js/localization.js"></script>
 	<script src="js/sceneManager.js"></script>
 	<script src="js/userSettings.js"></script>
 	<script src="lib/utility.js"></script>
@@ -49,8 +47,17 @@
 	<script src="js/endscreen.js"></script>
 	<script src="js/settingsscreen.js"></script>
 	<script>
+
+		function loadAssets() {
+			
+		}
+
+		loadAssets();
+
+
+
+
 		const SM = new SceneManager();
-		// SM.nextScene('start');
 	</script>
 </body>
 </html>

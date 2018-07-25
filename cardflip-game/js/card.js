@@ -1,14 +1,16 @@
-function Card(v, b, canvas, x, y) {
+function Card(v, b, f, canvas, x, y) {
     this.canvas     =   canvas;
-    this.height     =   0;
-    this.width      =   0;
+
     this.value      =   v;
     this.x          =   x;
     this.y          =   y;
     this.flipped    =   false;
     this.inactive   =   false;
-    this.backView   =   PIXI.Sprite.fromImage(b);
-    this.frontView  =   PIXI.Sprite.fromImage(PATHS.cardFG);
+    this.backView   =   new PIXI.Sprite(PIXI.loader.resources[b].texture);//b; //PIXI.Sprite.fromImage(b);
+    this.frontView  =   new PIXI.Sprite(PIXI.loader.resources[PATHS.cardFG].texture);//f; //PIXI.Sprite.fromImage(PATHS.cardFG);
+
+    // this.height     =   backView.height;
+    // this.width      =   backView.width;
 
     this.backView.interactive = true;
     this.backView.buttonMode = true;
@@ -18,6 +20,8 @@ function Card(v, b, canvas, x, y) {
     this.frontView.interactive = true;
     this.frontView.buttonMode = true;
     this.frontView.anchor.set(0.5);
+
+
 };
 
 
@@ -137,13 +141,13 @@ Card.prototype.startMove = function(x, y) {
         if(this.x > x && sameColumn === false && biggerX === false) {
             this.stopMove(move, x, y);
         }
-        if(this.x < x && sameColumn === false && biggerX === true) {
+        else if(this.x < x && sameColumn === false && biggerX === true) {
             this.stopMove(move, x, y);
         }
-        if(this.y > y && sameColumn === true && biggerY === true) {
+        else if(this.y > y && sameColumn === true && biggerY === true) {
             this.stopMove(move, x, y);
         }
-        if(this.y < y && sameColumn === true && biggerY === false) {
+        else if(this.y < y && sameColumn === true && biggerY === false) {
             this.stopMove(move, x, y);
         }
 

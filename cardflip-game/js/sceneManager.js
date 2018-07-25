@@ -1,16 +1,18 @@
+//////////////////////////////////////////////////////////////////
 /**
  * Centralized handler for scene switching.
+ * @returns undefined
  */
 function SceneManager() {
     this.formattedScenes  = '';
 
-    this.WARNING     =   'You did not provide a scene to destroy. Always destroy the previous ' +
+    this.WARNING     =    'You did not provide a scene to destroy. Always destroy the previous ' +
                           'scene, unless this is called on load.';
 
-    this.DEST_ERROR  =   'Could not destroy current scene. Scene did ' +
+    this.DEST_ERROR  =    'Could not destroy current scene. Scene did ' +
                           'not contain a destroySelf function';
 
-    this.VALID_ERR   =   ' is not a valid scene name. ' +
+    this.VALID_ERR   =    ' is not a valid scene name. ' +
                           '\n\n\tAvailable options: ';
     this.SCENES = [
         "start",
@@ -29,10 +31,12 @@ function SceneManager() {
 
 //////////////////////////////////////////////////////////////////
 /**
+     Deletes current scene and starts next scene.
      @param scene type {string} name identifier for scene to initiate
      @param current the current scene (that calls the function)
      @param data any optional data to be passed to the new scene
-     Deletes current scene and starts next scene.
+     @returns undefined
+
  */
 SceneManager.prototype.nextScene = function(scene, data) {
 

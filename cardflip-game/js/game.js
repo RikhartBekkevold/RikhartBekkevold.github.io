@@ -1,3 +1,7 @@
+/**
+ * @function call as constructor to initialize the game
+ * @param canvas the canvas to draw the game unto
+ */
 function Game(canvas) {
     this.canvas                 = canvas;
     this.CARDS_WIDTH            = 138;
@@ -39,23 +43,60 @@ function Game(canvas) {
 
 
 ///////////////////////////////////////
+/**
+ * Starts the game
+ * @param delay the time in milliseconds before the cards starts drawing
+ * @returns undefined
+ */
 Game.prototype.init = function(delay) {
-    this.canvas.addChild(this.cardContainer);
-    this.createCards();
-    this.cards = shuffleCards(this.cards);
-    this.setCardCoordinates();
-    this.drawCards(delay, this.canvas);
-    this.cards.forEach((card) => {
-        card.frontView.on('pointerup', () => this.onCardClick(card));
-    });
 
-    if(this.enableEvents) {
-       this.randomEvent();
-    }
+    // load resoruces here. when loaded.. call create cards
+    PIXI.loader.reset();
+    PIXI.loader.add(PATHS.cardFG)
+               .add(PATHS.cardBGs)
+
+               .load(() => {
+
+                   //if using [] method one uses string to refer always?
+
+                   // if using [] i can use string?
+                   // if i can refer by path...  conconation
+
+                    var fg; //  =   new PIXI.Sprite(PIXI.loader.resources.front.texture);
+                   var bg; //  =    new PIXI.Sprite(PIXI.loader.resources.back.texture);
+
+
+                   this.canvas.addChild(this.cardContainer);
+                   // this.createCards();
+                   for(let i = 0; i < 2; i++) { //rows
+                       for(let j = 0; j < this.nrOfCards/2; j++) { //columns
+                           this.cards.push(new Card(j, PATHS.cardBGs[j], fg, this.cardContainer)); //(j*CARDS_WIDTH) + (PADDING*j) + 30, (i*CARDS_HEIGHT) + (PADDING*i) + 30)
+                       } //PATHS.cardBGs[j]
+                   }
+
+                   this.cards = shuffleCards(this.cards);
+                   this.setCardCoordinates();
+                   this.drawCards(delay, this.canvas);
+                   this.cards.forEach((card) => {
+                       card.frontView.on('pointerup', () => this.onCardClick(card));
+                   });
+                    console.log(this.cards);
+
+                   if(this.enableEvents) {
+                      this.randomEvent();
+                   }
+               });
+
+
 };
 
 
 ///////////////////////////////////////
+/**
+ * Shows the backsides of all cards
+ * @param none
+ * @return undefined
+ */
 Game.prototype.showAll = function() {
     this.cards.forEach((card) => {
         card.flipOver();
@@ -65,6 +106,11 @@ Game.prototype.showAll = function() {
 
 
 ///////////////////////////////////////
+/**
+ * Shows the frontside of all cards
+ * @param none
+ * @returns undefined
+ */
 Game.prototype.hideAll = function() {
     this.cards.forEach((card) => {
         card.flipBack();
@@ -74,6 +120,12 @@ Game.prototype.hideAll = function() {
 
 
 ///////////////////////////////////////
+/**
+ * Shows the backside of all cards for 1 second before
+ * flipping back
+ * @param none
+ * @returns undefined
+ */
 Game.prototype.peek = function () {
     // peeking should punish the score
     this.nrOfMovesMade += 4;
@@ -88,6 +140,10 @@ Game.prototype.peek = function () {
 
 
 ///////////////////////////////////////
+/**
+ * Checks if a card matches the previous card
+ * @param card the card to check
+ */
 Game.prototype.onCardClick = function(card) {
     // can't use arrow function with prototype
     var self = this;
@@ -111,6 +167,11 @@ Game.prototype.onCardClick = function(card) {
 
 
 ///////////////////////////////////////
+/**
+ * Removes two cards from the board and array
+ * @param card first card to remove
+ * @param prevClickedCard second card to remove
+ */
 Game.prototype.removeCards = function (card, prevClickedCard) {
     var self = this;
     self.allowFlip = false;
@@ -126,6 +187,11 @@ Game.prototype.removeCards = function (card, prevClickedCard) {
 
 
 ///////////////////////////////////////
+/**
+ * Resets the state of the two flipped cards
+ * @param card first card to remove
+ * @param prevClickedCard second card to remove
+ */
 Game.prototype.resetCards = function(card, prevClickedCard) {
     var self = this;
     self.allowFlip = false;
@@ -140,7 +206,10 @@ Game.prototype.resetCards = function(card, prevClickedCard) {
 
 
 ///////////////////////////////////////
-Game.prototype.checkIfGameOver = function () {
+/**
+ * Determines of game is over and initiates end screen if so
+ */
+Game.prototype.checkIfGameOver = function() {
     //check if game is over
     var self = this;
 
@@ -154,6 +223,11 @@ Game.prototype.checkIfGameOver = function () {
 
 
 ///////////////////////////////////////
+/**
+ * Draws the cards unto the canvas
+ * @param delay the time before the cards is drawn
+ * @param canvas the canvas to draw the cards unto
+ */
 Game.prototype.drawCards = function(delay, canvas) {
     var self = this;
     var time = 0;
@@ -177,6 +251,11 @@ Game.prototype.drawCards = function(delay, canvas) {
 
 
 ///////////////////////////////////////
+/**
+ * Creates 18/12/8 card objects
+ * @param none
+ * @returns undefined
+ */
 Game.prototype.createCards = function() {
     // create 16 cards. pairs of cards share index
     for(let i = 0; i < 2; i++) { //rows
@@ -225,7 +304,13 @@ Game.prototype.destroySelf = function() {
 
 ///////////////////////////////////////
 Game.prototype.resetGame = function() {
-    this.destroySelf();
+    // this.destroySelf();  //(this calls slide out and remove)
+    this.cards.forEach(function(card) {
+        card.removeView();
+    });
+    // must remove buttons though
+    this.cards = [];
+
     this.canvas.removeChild(this.score);
     new Game(this.canvas).init(0);
 };
@@ -244,12 +329,15 @@ Game.prototype.switchTwoCards = function() {
 
 ///////////////////////////////////////
 Game.prototype.randomEvent = function() {
-    const MAX_SEC   =   30 * 1000;
+    const MAX_SEC   =   20 * 1000;
     const MIN_SEC   =   5;
+
+    // generate random time between 5 seconds and 30 seconds
     var randomTime  =   Math.round(MIN_SEC + Math.random() * MAX_SEC);
 
     console.log('Seconds to next card switch: ' + Math.round(randomTime / 1000));
 
+    // switch cards after random time
     setTimeout(() => {
             this.switchTwoCards();
             this.randomEvent();

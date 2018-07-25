@@ -29,6 +29,36 @@ var Slider = function(width, length, notCentered, valueText, slideColour, knobCo
     slide.lineStyle( this.SLIDE_WIDTH, this.SLIDE_COLOUR, 1);
     slide.moveTo( this.SLIDE_X0, this.SLIDE_Y0);
     slide.lineTo( this.SLIDE_X0 + this.SLIDE_LENGTH, this.SLIDE_Y0);
+    slide.interactive = true;
+    slide.buttonMode = true;
+    slide.alpha = 0.2;
+
+    // Add a hit area..
+    slide.hitArea = new PIXI.Rectangle(this.SLIDE_X0, this.SLIDE_Y0 - this.SLIDE_WIDTH / 2, this.SLIDE_LENGTH, this.SLIDE_WIDTH);
+
+    slide.click = function (e) {
+        console.log(e);
+        var newPosition = e.data.global;
+        handle.view.x = newPosition.x;
+        if(self.getSliderVal() < 33) {
+            Settings.num_cards = 8;
+            Settings.num_rows = 2;
+            valueText.text =  Settings.num_cards + ' cards';
+        }
+        else if (self.getSliderVal() < 66) {
+            Settings.num_cards = 12;
+            Settings.num_rows = 3;
+            valueText.text = Settings.num_cards + ' cards';
+            // valueText.text = 'Medium: ' + self.getSliderVal() + '%';
+        }
+        else if(self.getSliderVal() < 100) {
+            Settings.num_cards = 16;
+            Settings.num_rows = 4;
+            valueText.text = Settings.num_cards + ' cards';
+            // valueText.text = 'Hard: ' + self.getSliderVal() + '%';
+        }
+    }
+
 
     var handle = new Knob(width, this.KNOB_COLOUR, this.SLIDE_X0, this.SLIDE_Y0);
 
@@ -86,6 +116,7 @@ var Slider = function(width, length, notCentered, valueText, slideColour, knobCo
     this.setSliderVal = function(x){
         handle.view.position.x = parseInt(x * self.SLIDE_LENGTH / 100 + self.SLIDE_X0);
     };
+
 
     return this; // this, toegether with fucntion decl, makes it so you can only create one instance?
 };
