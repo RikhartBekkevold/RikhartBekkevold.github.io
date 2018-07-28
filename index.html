@@ -5,11 +5,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/percentage_wheels.css">
 </head>
 
 <body>
@@ -37,8 +41,7 @@
 
 			<!-- EDUCATION SECTION -->
 			<div id="edu_wrapper">
-				<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
-						box-sizing: border-box; margin: 40px 20px 30px 20px">Education</h2>
+				<h2>Education</h2>
 
 				<i class="fas fa-graduation-cap"></i>
 				<i>2014 - 2017</i>
@@ -59,9 +62,8 @@
 
 			<!-- TAGS SECTION -->
 			<div id="tags_wrapper">
-				<h2 style="line-height: 1.5em; border-bottom: 1px solid #ddd;
-						   margin: 40px 20px 30px 20px;">Skills</h2>
-						  <!-- percent not px on the border margin? -->
+				<h2>Skills</h2>
+
 				<div style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 30px">
 					<div class="tag">Frontend</div>
 					<div class="tag">Backend</div>
@@ -78,53 +80,63 @@
 			<div class="flex-wrapper" id="flex_wrapper">
 				<div class="single-chart">
 					<svg viewbox="0 0 36 36" class="circular-chart orange">
-					<path class="circle-bg"
-					d="M18 2.0845
-					a 15.9155 15.9155 0 0 1 0 31.831
-					a 15.9155 15.9155 0 0 1 0 -31.831"
-					/>
-					<path class="circle"
-					stroke-dasharray="75, 100"
-					d="M18 2.0845
-					a 15.9155 15.9155 0 0 1 0 31.831
-					a 15.9155 15.9155 0 0 1 0 -31.831"
-					/>
-					<text x="18" y="20.35" class="percentage">75%</text>
+						<path class="circle-bg"
+							d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
+						/>
+						<path class="circle"
+							stroke-dasharray="75, 100"
+							d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
+						/>
+						<text x="18" y="20.35" class="percentage">75%</text>
 					</svg>
+					<!-- <object type="image/svg+xml" data="test.svg"></object> -->
 					<span class="title">Frontend</span>
 				</div>
+
+
+
+
+
 
 				<div class="single-chart">
 					<svg viewbox="0 0 36 36" class="circular-chart green">
 						<path class="circle-bg"
-						d="M18 2.0845
-						a 15.9155 15.9155 0 0 1 0 31.831
-						a 15.9155 15.9155 0 0 1 0 -31.831"
+							d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
 						/>
 						<path class="circle"
-						stroke-dasharray="25, 100"
-						d="M18 2.0845
-						a 15.9155 15.9155 0 0 1 0 31.831
-						a 15.9155 15.9155 0 0 1 0 -31.831"
+							stroke-dasharray="25, 100"
+							d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
 						/>
 						<text x="18" y="20.35" class="percentage">25%</text>
 					</svg>
+					<!-- <object  type="image/svg+xml" data="test.svg"></object> -->
+
 					<span class="title">Backend</span>
 				</div>
 
 				<div class="single-chart">
 					<svg viewbox="0 0 36 36" class="circular-chart blue">
 						<path class="circle-bg"
-						d="M18 2.0845
-						a 15.9155 15.9155 0 0 1 0 31.831
-						a 15.9155 15.9155 0 0 1 0 -31.831"
+							d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
 						/>
 						<path class="circle"
-						stroke-dasharray="50, 100"
-						d="M18 2.0845
-						a 15.9155 15.9155 0 0 1 0 31.831
-						a 15.9155 15.9155 0 0 1 0 -31.831"
+							stroke-dasharray="50, 100"
+							d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
 						/>
+						<!-- <object  type="image/svg+xml" data="test.svg"></object> -->
+
 						<text x="18" y="20.35" class="percentage">50%</text>
 					</svg>
 					<span class="title">UX Design</span>
@@ -137,19 +149,42 @@
 	<!-- CARD CONTAINER -->
 	<div id="project">
 		<!-- FIRST CARD -->
-		<div class="card">
+		<div class="card" style=" padding-bottom: 0px;">
 			<div class="card-image">
 				<a href="cardflip-game/index.html">
 					<img src="thumbnails/thumbcardflip.png" alt="thumb" />
 				</a>
 			</div>
 			<div class="card_content">
-				<a href="cardflip-game/index.html"><h2>Memoryflip</h2></a>
-				<p style="margin-bottom: 40px">A card flipping memorization game</p>
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript,  pixi.js</p>
-				<a  href="https://github.com/RikhartBekkevold/Memoryflip"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/Memoryflip"><i class="fab fa-github"></i></a>
+
+				<!-- DESCRIPTION -->
+				<div class="card_desc">
+					<a href="cardflip-game/index.html"><h2>Memoryflip</h2></a>
+					<p>A card flipping browser memorization game. Made with the help of Pixi.js. Not for mobile.</p>
+				</div>
+
+				<!-- TAGS -->
+				<div class="tags_container">
+					<div class="tag white_tag">frontend</div>
+					<div class="tag white_tag">javascript</div>
+					<div class="tag white_tag">pixi.js</div>
+				</div>
+
+				<!-- LINK BUTTONS -->
+				<div class="buttons_container">
+					<div style="padding: 10px">
+						<a href="https://github.com/RikhartBekkevold/Memoryflip">
+							<div class="tag btn github_btn">
+							<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div>
+						</a>
+					</div>
+
+					<div style="padding: 10px">
+						<a href="cardflip-game/index.html"><div class="tag btn">
+						<i style="margin-right: 5px;" class="fas fa-globe"></i>WEBSITE</div></a>
+					</div>
+				</div>
+
 			</div>
 		</div>
 
@@ -161,47 +196,118 @@
 				</a>
 	        </div>
 			<div class="card_content">
-				<a href="colourexperiment/index.html"><h2>Experiment</h2></a>
-				<p style="margin-bottom: 40px"> A colour experiment from IMT 4315 </p>
-				<!-- an experiment ment to answer the question. is it faster to read code with CC? -->
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px"> frontend,  javascript, research, interaction design</p>
-				<a  href="https://github.com/RikhartBekkevold/colourexperiment"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/colourexperiment"><i class="fab fa-github"></i></a>
+
+				<!-- DESCRIPTION -->
+				<div class="card_desc">
+					<a href="colourexperiment/index.html"><h2>Experiment</h2></a>
+					<p>
+					A syntax highlighter experiment. The project include a website
+					used to conduct the experiment and an academic report on the findings.
+					</p>
+				</div>
+
+
+				<!-- TAGS -->
+				<div class="tags_container">
+					<div class="tag white_tag">frontend</div>
+					<div class="tag white_tag">javascript</div>
+					<div class="tag white_tag">research</div>
+					<div class="tag white_tag">interaction design</div>
+				</div>
+
+
+				<!-- LINKS BUTTONS -->
+				<div class="buttons_container">
+					<div style="padding: 10px">
+						<a href="https://github.com/RikhartBekkevold/colourexperiment"><div class="tag btn github_btn">
+						<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div></a>
+					</div>
+
+					<div style="padding: 10px">
+						<a href="colourexperiment/paper.html"><div class="tag btn">
+						<i style="margin-right: 5px;" class="fas fa-file-pdf"></i>PAPER</div></a>
+					</div>
+
+					<div style="padding: 10px">
+						<a href="colourexperiment/index.html"><div class="tag btn">
+						<i style="margin-right: 5px;" class="fas fa-globe"></i>WEBSITE</div></a>
+					</div>
+				</div>
+
 			</div>
 		</div>
 
 		<!-- THIRD CARD -->
 		<div class="card">
 			<div class="card-image">
-				<a href="colourexperiment/index.html">
+				<a href="vueditor/index.html">
 					<img src="thumbnails/thumbeditor.png" alt="thumb" />
 				</a>
 			</div>
 			<div class="card_content">
-				<a href="colourexperiment/index.html"><h2>Form Editor</h2></a>
-				<p style="margin-bottom: 40px"> A vue built form editor </p>
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px">frontend,  backend, php, javascript,  vue.js,  vuetify.js </p>
-				<a href="https://github.com/RikhartBekkevold/VuEditor"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/VuEditor"><i class="fab fa-github"></i></a>
+
+				<!-- DESCRIPTION -->
+				<div class="card_desc">
+					<a href="vueditor/index.html"><h2>Form Editor</h2></a>
+					<p> A vue built form editor. Vuetify used for material design components and responsivt design.</p>
+				</div>
+
+				<!-- TAGS -->
+				<div class="tags_container">
+					<div class="tag white_tag">frontend</div>
+					<div class="tag white_tag">backend</div>
+					<div class="tag white_tag">php</div>
+					<div class="tag white_tag">javascript</div>
+					<div class="tag white_tag">vue.js</div>
+					<div class="tag white_tag">vuetify.js</div>
+				</div>
+
+				<!-- LINK BUTTONS -->
+				<div class="buttons_container">
+					<div style="padding: 10px">
+						<a href="https://github.com/RikhartBekkevold/VuEditor">
+							<div class="tag btn github_btn">
+							<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div>
+						</a>
+					</div>
+
+					<div style="padding: 10px">
+						<a href="vueditor/index.html"><div class="tag btn">
+						<i style="margin-right: 5px;" class="fas fa-globe"></i>WEBSITE</div></a>
+					</div>
+				</div>
+
 			</div>
 		</div>
 
 		<!-- FOURTH CARD -->
 		<div class="card">
 			<div class="card-image">
-				<a href="colourexperiment/index.html">
+				<a href="pyMatch/index.html">
 					<img src="thumbnails/thumbpymatch.png" alt="thumb" />
 				</a>
 			</div>
 			<div class="card_content">
-				<a href="colourexperiment/index.html"><h2>PyMatch</h2></a>
-				<p style="margin-bottom: 40px"> A desktop game built with Python </p>
-				<p><b>Keywords</b></p>
-				<p style="font-size: 0.9em; margin-bottom: 30px">python</p>
-				<a href="https://github.com/RikhartBekkevold/PyMatch"><p><b>Code</b></p></a>
-				<a style="font-size: 1.3em" href="https://github.com/RikhartBekkevold/PyMatch"><i class="fab fa-github"></i></a>
+
+				<!-- DESCRIPTION -->
+				<div class="card_desc">
+					<a href="pyMatch/index.html"><h2>PyMatch</h2></a>
+					<p> A desktop game built with Python. Originally ran on the rasberry pie with floor tile input. Requires download to run. </p>
+				</div>
+
+				<!-- TAGS -->
+				<div class="tags_container">
+					<div class="tag white_tag">python</div>
+					<div class="tag white_tag">rasberry pi</div>
+				</div>
+
+				<!-- LINK BUTTONS -->
+				<div class="buttons_container">
+					<div style="padding: 10px">
+						<a href="https://github.com/RikhartBekkevold/PyMatch"><div class="tag btn github_btn">
+						<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -209,8 +315,8 @@
 
 	<!-- CONTACT CARD -->
 	<div style="color: #363636; text-align: center;" id="contact">
-		<div class="card" >
-			<h2 style="border-bottom: 1px solid #ddd; margin: 30px 10px 40px 10px; color: #363636;">Find me</h2>
+		<div class="card">
+			<h2>Find me</h2>
 			<div>
 				<div style="display: flex; justify-content: center; flex-wrap: wrap; font-size: 4em;">
 					<i style="margin-top: 20px" class="icon fab fa-github"></i>
@@ -226,11 +332,12 @@
 	<footer>
 		<span>&copy; Rikhart Bekkevold 2018</span>
 		<div id="footer_buttons_wrapper">
-			<a href="https://github.com/RikhartBekkevold"><i  class="icon fab fa-github"></i></a>
+			<a href="https://github.com/RikhartBekkevold"><i class="icon fab fa-github"></i></a>
 			<a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
-			<a href="https://www.facebook.com/rikhart.bekkevold"><i  class="icon fab fa-linkedin"></i></a>
+			<a href="https://www.linkedin.com/"><i class="icon fab fa-linkedin"></i></a>
 		</div>
 	</footer>
+
 
 
 	<script src="main.js"></script>
