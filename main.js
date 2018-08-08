@@ -43,5 +43,11 @@ contact_btn.addEventListener('pointerdown', function() {
 github_buttons.forEach(function(btn) {
     btn.addEventListener('pointerdown', function() {
         btn.innerHTML = '<i style="margin-right: 5px;" class="fa fa-spinner fa-spin"></i>Wait..';
+        // setTimeout(function() {
+        //     btn.innerHTML = '<i class=""></i>Try again';
+        //     setTimeout(function() {
+        //         btn.innerHTML = '<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div></a>';
+        //     }, 1200);
+        // }, 2600);
     });
 });

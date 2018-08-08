@@ -1,3 +1,10 @@
+/**
+ *  Creates a square (knob) using pixi graphics.
+ *  @param width width of the knob, height set to same value to create a square
+ *  @param knobColour colour of knob
+ *  @param x x position of knob
+ *  @param y y position of knob
+ */
 function Knob(width, knobColour, x, y) {
     this.view = new PIXI.Graphics();
     this.view.interactive = true;
@@ -10,7 +17,17 @@ function Knob(width, knobColour, x, y) {
     this.view.drawRect(-25 , -25, 50 , 50);
 };
 
-//https://github.com/KIvanow/PIXISliderInput/blob/master/PIXISlider.js
+/**
+ * Based on https://github.com/KIvanow/PIXISliderInput/blob/master/PIXISlider.js
+ * with many alterations. (PS: github code not doesn't work anymore)
+ * @param width length of knob
+ * @param length length of slider
+ * @param notCentered true to make slider centered on screen
+ * @param valueText the text beneath the slider
+ * @param slideColour the colour of the bar
+ * @param knobColour the colour of the knob
+ * @returns slider
+ */
 var Slider = function(width, length, notCentered, valueText, slideColour, knobColour){
     this.visual = new PIXI.Container();
     this.SLIDE_LENGTH = length;
@@ -33,11 +50,9 @@ var Slider = function(width, length, notCentered, valueText, slideColour, knobCo
     slide.buttonMode = true;
     slide.alpha = 0.2;
 
-    // Add a hit area..
     slide.hitArea = new PIXI.Rectangle(this.SLIDE_X0, this.SLIDE_Y0 - this.SLIDE_WIDTH / 2, this.SLIDE_LENGTH, this.SLIDE_WIDTH);
 
     slide.click = function (e) {
-        console.log(e);
         var newPosition = e.data.global;
         handle.view.x = newPosition.x;
         if(self.getSliderVal() < 33) {
@@ -118,5 +133,5 @@ var Slider = function(width, length, notCentered, valueText, slideColour, knobCo
     };
 
 
-    return this; // this, toegether with fucntion decl, makes it so you can only create one instance?
+    return this;
 };

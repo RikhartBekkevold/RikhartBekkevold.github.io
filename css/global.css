@@ -1,6 +1,5 @@
+/* GLOBAL */
 body {
-    /* font-family: 'Roboto', sans-serif; */
-    /* font-family: 'Roboto Mono', monospace; */
     font-family: 'Fira Mono', monospace;
     background: whitesmoke;
     color: #a89898;
@@ -28,6 +27,8 @@ a {
 }
 
 
+
+/* UTILITY */
 .card {
     -webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
@@ -39,7 +40,7 @@ a {
     background: white;
 }
 
-/* UTILITY */
+
 .tag {
     color: white;
     background: #a89898;
@@ -59,21 +60,20 @@ a {
 
 .btn {
     font-size: 0.8em;
-    border-radius: 0px;
+    border-radius: 5px;
     padding: 10px;
     background: white;
-    color: white;
-    border: 2px solid white;
-    background: #98A2A8;
+    color: #87A890;
+    border: 1px solid #87A890;
+    background: white;
     transition: 0.5s ease;
 }
 
 .btn:hover {
-    background: #7c8991;
+    background: #87A890;
+    color: white;
 }
 
-
-/* ICONS */
 .icon {
     margin: 0 10px 0 5px;
     font-size: 1.2em;

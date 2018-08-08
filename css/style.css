@@ -1,15 +1,16 @@
 /* NAVIGATION MENU */
 #nav_menu {
-    cursor: pointer;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 10px;
+    /* color: #363636; */
 }
 
 #home_btn, #project_btn, #contact_btn {
+    cursor: pointer;
     display: inline-block;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
     padding: 5px;
     margin-right: 2.5px;
     margin-left: 2.5px;
@@ -18,7 +19,7 @@
 
 
 
-/* HOME */
+/* HOME SECTION */
 #home {
     display: flex;
     justify-content: center;
@@ -60,7 +61,7 @@
 
 
 
-/* PROJECT */
+/* PROJECT SECTION */
 #project {
     color: hsl(220, 14%, 71%);
     display: flex;
@@ -109,7 +110,7 @@
 
 .buttons_container {
     padding: 20px 0px 20px 0px;
-    background: #98A2A8;
+    background: white;
     margin: 0px;
     display: flex;
     justify-content: center;
@@ -119,7 +120,7 @@
 
 
 
-/* CONTACT */
+/* CONTACT SECTION */
 #contact {
     display: flex;
     justify-content: center;
