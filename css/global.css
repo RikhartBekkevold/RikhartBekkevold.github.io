@@ -45,7 +45,7 @@ a {
     color: black;
     background: white;
     padding: 3px;
-    font-size: 0.9em;
+    font-size: 0.86em;
     margin: 2.5px 2.5px 2.5px 2.5px;
     border-radius: 7px;
     display: inline-block;
@@ -55,6 +55,7 @@ a {
 
 .white_tag {
     font-size: 0.7em;
+    padding: 7px;
     color: black;
     background: white;
 }
