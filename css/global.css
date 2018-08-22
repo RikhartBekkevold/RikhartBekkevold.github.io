@@ -44,7 +44,8 @@ a {
 .tag {
     color: black;
     background: white;
-    padding: 7px;
+    padding: 3px;
+    font-size: 0.9em;
     margin: 2.5px 2.5px 2.5px 2.5px;
     border-radius: 7px;
     display: inline-block;

@@ -15,8 +15,8 @@ project_btn.addEventListener('pointerdown', function() {
     contact.style.display 	= 'none';
 
     project_btn.style.borderBottom 	= '1px solid #56535D';
-    home_btn.style.borderBottom 	= '1px solid #ddd';
-    contact_btn.style.borderBottom 	= '1px solid #ddd';
+    home_btn.style.borderBottom 	= '0px solid #ddd';
+    contact_btn.style.borderBottom 	= '0px solid #ddd';
 });
 
 home_btn.addEventListener('pointerdown', function() {
@@ -24,9 +24,9 @@ home_btn.addEventListener('pointerdown', function() {
     project.style.display 	= 'none';
     contact.style.display 	= 'none';
 
-    project_btn.style.borderBottom 	= '1px solid #ddd';
+    project_btn.style.borderBottom 	= '0px solid #ddd';
     home_btn.style.borderBottom 	= '1px solid #56535D';
-    contact_btn.style.borderBottom 	= '1px solid #ddd';
+    contact_btn.style.borderBottom 	= '0px solid #ddd';
 });
 
 contact_btn.addEventListener('pointerdown', function() {
@@ -34,8 +34,8 @@ contact_btn.addEventListener('pointerdown', function() {
     home.style.display 		= 'none';
     project.style.display 	= 'none';
 
-    project_btn.style.borderBottom  = '1px solid #ddd';
-    home_btn.style.borderBottom     = '1px solid #ddd';
+    project_btn.style.borderBottom  = '0px solid #ddd';
+    home_btn.style.borderBottom     = '0px solid #ddd';
     contact_btn.style.borderBottom  = '1px solid #56535D';
 });
 
