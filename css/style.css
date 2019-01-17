@@ -81,6 +81,7 @@
     overflow: hidden;
 }
 
+/*the project thumbnails*/
 .card-image img {
     width: 100%;
 }
@@ -121,16 +122,55 @@
 
 
 /* CONTACT SECTION */
+
+
 #contact {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
 }
 
 #contact .card {
     padding: 20px 30px 60px 30px;
     margin-bottom: 40px;
+    width: 400px;
 }
+
+/* .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+
+form label,
+form input,
+form textarea,
+form select,
+form button {
+    width: 100%;
+    /* margin: 10px;
+    margin-bottom: 20px; */
+}
+
+form input {
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+form textarea {
+    height: 100px;
+    margin-bottom: 20px;
+    resize: none;
+}
+
+form button {
+    height: 30px;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+
 
 #contact .fa-facebook,
 #contact .fa-linkedin,

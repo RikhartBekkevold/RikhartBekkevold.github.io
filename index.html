@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/percentage_wheels.css">
@@ -26,7 +27,7 @@
 		<div class="card">
 
 			<!-- TOP IMAGE -->
-			<img id="aboutme_img" src="https://www.w3schools.com/w3images/team2.jpg" alt="John">
+			<!-- <img id="aboutme_img" src="https://www.w3schools.com/w3images/team2.jpg" alt="John"> -->
 
 			<!-- PERSONAL INFO -->
 			<div id="personal_info_wrapper">
@@ -48,7 +49,7 @@
 				<br>
 				<br>
 				<i class="fas fa-graduation-cap"></i>
-				<i>2017 - 2019</i>
+				<i>2017 -</i>
 				<br>
 				<b>Masters in Interaction Design</b>
 				<br>
@@ -136,7 +137,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<!-- CARD CONTAINER -->
 	<div id="project">
@@ -274,56 +274,76 @@
 		</div>
 
 		<!-- FOURTH CARD -->
-		<div class="card">
-			<div class="card-image">
-				<a href="project_sources/pyMatch/index.html">
-					<img src="thumbnails/thumbpymatch.png" alt="thumb" />
-				</a>
-			</div>
-			<div class="card_content">
 
-				<!-- DESCRIPTION -->
-				<div class="card_desc">
-					<a href="project_sources/pyMatch/index.html"><h2>PyMatch</h2></a>
-					<p> A desktop game built with Python. Originally ran on the rasberry pie with floor tile input. Requires download to run. </p>
-				</div>
-
-				<!-- TAGS -->
-				<div class="tags_container">
-					<div class="tag white_tag">python</div>
-					<div class="tag white_tag">rasberry pi</div>
-				</div>
-
-				<!-- LINK BUTTONS -->
-				<div class="buttons_container">
-					<div style="padding: 10px">
-						<a href="https://github.com/RikhartBekkevold/PyMatch"><div class="tag btn github_btn">
-						<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div></a>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 
 
 	<!-- CONTACT CARD -->
 	<div style="color: #363636; text-align: center;" id="contact">
 		<div class="card">
-			<h2>Find me</h2>
+			<h2 style="font-family: 'Montserrat', sans-serif; font-size: 2em;">Contact me</h2>
+			<div class="container">
+
+				<!-- <div style="display: flex; justify-content: center; flex-wrap: wrap;"> -->
+					<!-- <form method="post" action="mailto:ikhart.v.bekkevold@gmail.com"  enctype="text/plain"> -->
+
+						<!-- <label for="fname">First Name</label>
+						<input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+						<label for="lname">Last Name</label>
+						<input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+						<label for="lname">Your Email</label>
+						<input type="text" id="email" name="email" placeholder="Your email..">
+
+						<label for="country">Country</label>
+						<select id="country" name="country">
+						  <option value="australia">Australia</option>
+						  <option value="canada">Canada</option>
+						  <option value="usa">USA</option>
+						</select>
+
+
+
+						<label for="subject">Subject</label>
+						<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+
+
+						<input type="submit" value="Submit"> -->
+
+
+						<form method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com" onsubmit="validate()">
+							<label for="lname">Your Email</label>
+							<input type="email" name="email">
+
+							<label for="lname">Subject</label>
+							<input type="email" name="subject">
+
+							<label for="lname">Message</label>
+							<textarea name="message"></textarea>
+
+							<button type="submit">Send</button>
+						</form>
+					<!-- </form> -->
+				<!-- </div> -->
+			</div>
+
+			<!-- <h2>Find me</h2>
 			<div>
 				<div style="display: flex; justify-content: center; flex-wrap: wrap; font-size: 4em;">
 					<i style="margin-top: 20px" class="icon fab fa-github"></i>
 					<i style="margin-top: 20px" class="icon fab fa-facebook"></i>
 					<i style="margin-top: 20px" class="icon fab fa-linkedin"></i>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
 
 	<!-- FOOTER -->
 	<footer>
-		<span>&copy; Rikhart Bekkevold 2018</span>
+		<span>&copy; Rikhart Bekkevold 2019</span>
 		<div id="footer_buttons_wrapper">
 			<a href="https://github.com/RikhartBekkevold"><i class="icon fab fa-github"></i></a>
 			<a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
@@ -334,5 +354,37 @@
 
 
 	<script src="main.js"></script>
+
+	<script>
+	// <div class="card">
+	// 	<div class="card-image">
+	// 		<a href="project_sources/pyMatch/index.html">
+	// 			<img src="thumbnails/thumbpymatch.png" alt="thumb" />
+	// 		</a>
+	// 	</div>
+	// 	<div class="card_content">
+	//
+	// 		<!-- DESCRIPTION -->
+	// 		<div class="card_desc">
+	// 			<a href="project_sources/pyMatch/index.html"><h2>PyMatch</h2></a>
+	// 			<p> A desktop game built with Python. Originally ran on the rasberry pie with floor tile input. Requires download to run. </p>
+	// 		</div>
+	//
+	// 		<!-- TAGS -->
+	// 		<div class="tags_container">
+	// 			<div class="tag white_tag">python</div>
+	// 			<div class="tag white_tag">rasberry pi</div>
+	// 		</div>
+	//
+	// 		<!-- LINK BUTTONS -->
+	// 		<div class="buttons_container">
+	// 			<div style="padding: 10px">
+	// 				<a href="https://github.com/RikhartBekkevold/PyMatch"><div class="tag btn github_btn">
+	// 				<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div></a>
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// </div>
+</script>
 </body>
 </html>

@@ -51,3 +51,12 @@ github_buttons.forEach(function(btn) {
         // }, 2600);
     });
 });
+
+
+function validate() {
+    // if( === '') {
+    //
+    //
+    // }
+
+}
