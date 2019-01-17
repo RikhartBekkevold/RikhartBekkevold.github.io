@@ -134,7 +134,7 @@
 #contact .card {
     padding: 20px 30px 60px 30px;
     margin-bottom: 40px;
-    width: 400px;
+    max-width: 400px;
 }
 
 /* .container {
