@@ -1,4 +1,4 @@
--> the_battle
+-> your_room_1
 
 == your_room_1
 You wake up and jolt yourself into a sitting position. 
