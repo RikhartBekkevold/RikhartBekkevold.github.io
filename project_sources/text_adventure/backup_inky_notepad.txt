@@ -1,0 +1,870 @@
+VAR gathered_all_info = false
+VAR how_many_you_talked_to = 0 
+VAR done_gnome = false
+VAR forest_clue = true
+
+VAR player_gold = 100
+
+VAR player_weapon = "axe"
+VAR player_gear = "leather"
+
+VAR ally_race = "Dwarf"
+VAR ally_name  = "Aelinor"
+VAR ally_sex = "her"
+VAR ally_weapon = "bow"    
+
+VAR agility = 0
+VAR strength = 0
+VAR inventory = 0
+
+VAR potion = false 
+VAR bandage = false
+VAR player_current_health = "healthy"
+
+VAR time_of_day = "day"
+
+INCLUDE your_room.ink
+INCLUDE the_inn.ink
+INCLUDE the_town.ink
+INCLUDE the _outskirts.ink
+INCLUDE the_path.ink
+INCLUDE the_village.ink
+INCLUDE the_battle.ink
+INCLUDE endings.ink
+
+-> END
+
+// stats at the end of the game, who you talked to. array? possible. list maybe.
+// list of NPCs list of inventory items etc, equipment 
+
+
+-------------
+== the_battle
+    THE BATTLE - FINAL CHAPTER #CLASS: test 
+-> desc_monster
+
+== desc_monster 
+//You sneak carefully through the forest. Between the trees. Listening for any sound as you go. You eventually reach a clearing, //and you see it. The monster. 
+
+You peak over the edge of the rock, {ally_name} likewise, and assess the situation. 
+
+In front of you stands /*or sleep*/ a huge creature, a few yards away. It becomes instantly clear to you why the reward was so unusually high. You have never seen a more threatening monster. It is hideous, large and with claw-like hands. Around its feet lay several dead goats, with claw marks on their sides. The remnants of its breakfast, no doubt. And, no doubt, taken from the village. You feel your knees weaken, but you tell yourself to get a grip. No turning back now. You've come too far.  
+
+//time_of_day
+//It's dark 
+
+* [Next] -> monster_1
+
+== monster_1
+Both you and {ally_name} stand and stare for a second, before regaining your senses.  
+"So, whats the plan?" {ally_name} asks, visibly shaken at the sight of the hideous creature. 
+* [Next] -> fight_start
+
+== fight_start
+* [You motion to: Attack one leg each] 
+    You attack the left leg with your {player_weapon}. {ally_name} attacks the right leg with her {ally_weapon}. 
+    
+{ 
+
+    // set var here to remove message above? 
+    
+    // weapon decides attack . and strategy choosen. 
+
+    - ally_race == "Dwarf":
+        The dwarf lunged at the beast. Axe in hand, striking repeatedly at the beast legs. 
+        You attacked the other leg. 
+    - else: 
+        The elf lunged at the beast. Axe in hand, striking repeatedly at the beast legs. 
+}
+
+* [Attack the same leg] 
+    You both charge at the same leg. Hacking and slashing. 
+
+
+* { ally_weapon == "bow" } [Distract it while {ally_name} shoots from a distance] 
+    You distract the monster while. {ally_name} shoots arrows from a distance until it dies. 
+
+
+* { time_of_day == "night" } [Sneak up on it] 
+    You sneak up on the monster. You land a few blows, but the skin is too thick to cause serious damage. The monster awakens immedately, but at least you got some damage in before it could.  
+-
+* [Next]
+    You move on to the midfight. 
+-> fight_mid
+
+
+
+
+
+
+
+
+You meet monsters 
+you fight. there is outcome. 
+
+continue travel 
+
+repeat fight 
+
+
+
+weakspot - reveal from village? 
+inn is just to find out where? 
+
+
+ if dark .. more tactics availiable 
+ 
+ Ambush? Sneak attack? 
+
+
+
+because of the wounds. You feel tired and battle less good 
+
+
+you are after the monster..
+you know you can do alone.. dont say why
+they dont know 
+you get there, there is mystery. they know it matters to You
+when you fight it, you die, and all is revealed. or the locklet it has in pocekt, matches your from 
+your daughter then you are chasing a man instead
+
+
+== fight_mid
+    You fight the 
+    soemthign happened in first phase.. depending on potion and health, do different things 
+    and bow of the oppoenet.
+->fight_end
+
+== fight_end
+ * [Epilogue]
+-> ending_1
+
+decide tactic here
+distraction
+attack from distance 
+the npc is supposed to help. situations where it can help
+mosnter traits that make it possible to create situations for chocie
+
+"the monster has been terrorizing the villager stealing goats, and is considered a threat to the local wildlife, and must therefore be dispatched of."
+
+
+
+war blocaked, etc 
+norse dungeons skyrim
+
+monster stats: 
+low intelligence
+high strength 
+sluggish, slow 
+attack = 
+defense =
+no magic 
+
+
+the gnome told you  
+
+the dwarfs expert 
+falls info, they choose 
+
+the name was: 
+
+choose tactic: depends on weapon you have and if elf or dwarf? 
+attack one leg each
+
+
+
+ask about the monster earlier 
+knowing this will let you predict attacks  
+
+
+mid fight: 
+if potion, use potion 
+
+
+diplsay info in text, puzzle, choose the correct one? 
+attack 
+run away
+
+the feeling right before the fight - how does your partner act?
+desc the monster 
+different weapons means different battles dagger_battle sword_tactic
+
+if() ally race is this do this battle 
+if ally race is this do the other one 
+
+
+when desc your actions use right weapon - you swing you {player_weapon}
+rapid fire boss fight? select what to attack etc? swing sword or block? like in a pattern?
+shield
+cant parry with an axe 
+fight tactis with weapon
+questions - mystery of the world
+repeating content - loops for more, easy, gameplay
+write "standard sections"/answers 
+
+
+
+
+
+-------
+
+== the_inn 
+CHAPTER 1 - THE INN 
+
+You look around, taking in the sights of the room. It is a typical inn. It is filled with people. 
+
+The inn is bustling with noise and movemement. Some people where sitting quitly, looking tired, having their breakfast. Others where merrily playing cards or talking to each other. A chatty bunch of dwarfs where sitting at a table close to you. In the corner across the room a solitary hooded figure sipped on a mug. The innkeeper, behind his table, where cleaning a similar looking mug. The meek looking girl was serving a gnome sitting by himself.  
+-> INFO
+
+== INFO
+Before you left the inn on your way to look for the beast you figured that you better ask around for some information. It never hurt to gather information first. Besides, you need to figure out the location of the village mentioned in the announcement. Perhaps someone in the inn would know. 
+-> TALK_TO_NPCs
+
+== TALK_TO_NPCs
+    // mute, silent - write the personality of the npc 
+    + [Talk to shady figure in the corner] 
+    
+        You motion to sit down. He nods in confirmation.
+        ++ [Have you seen this? Show poster.]
+            You show him the poster. He shakes his head.
+        ++ [Ask about him]
+            How do you do? you ask. He remains silent.
+            // give the forest clue here 
+        --
+    // -
+     -> END     
+    
+    
+    + { not done_gnome} [Talk to solitary gnome]
+        You approach the gnome and introduce yourself.
+        ** [Have you seen this? Show poster.]
+            Yes.
+            *** Do you know the location of the village?
+                Yes. On the otherside of the lake.
+                // add picutere of map 
+            **** How do I get there?
+                Go through the forest, it is the fastest way. 
+                ~ gathered_all_info = true
+                ~ done_gnome = true 
+        // move back with not divert, talking to gnome disapear?
+        // * * ds 
+        
+        // i want to go back to prev options, not all the wat to start, so i guess gather is correct? need back button? 
+        // or is knots the way? 
+        
+    -> TALK_TO_NPCs
+    
+    
+    + [Talk to the mug cleaning innkeeper]
+        whats new in town?
+        Forst is faster, but 
+        Stick to the road. bandits in the forest 
+    -> END 
+    
+    
+    + [Sit down and call the waitress over] you ask soemthing  
+        You sit down and talk to 
+    -
+        
+        
+    + [Talk to chatty table of merry dwarfs] 
+        the meryr becauyse drinkign despite this time of day 
+        one oif them getting married, they found some 
+        can i sit donw?
+    -
+    
+    
+    + { gathered_all_info } [Exit the inn] 
+        You think you have enough information now. You could continue to talk to the people in the inn, or you could head outside.
+    -> outside
+
+
+
+== outside ==
+On the outside, waiting, was your partner. 
+
+* Your partner was an elf  
+    ~ ally_name = "Aelinor"
+    ~ ally_race = "elf" 
+    ~ ally_sex = "her"
+* Your partner was a dwarf
+    ~ ally_name = "Bangrim"
+    ~ ally_race = "dwarf" 
+    ~ ally_sex = "his"
+-
+
+Since you knew you couldn't defeat the monster on your own, you had partnered with the {ally_race}. Agreeing to split the reward. 
+
+* The {ally_race} was wielding an axe[.]
+    ~ ally_weapon = "axe"
+* The {ally_race} was wielding a bow 
+  ~ ally_weapon = "bow"
+* The {ally_race} was wielding a polearm 
+  ~ ally_weapon = "polearm"
+* The {ally_race} was wielding a sword 
+    ~ ally_weapon = "sword"
+-
+
+* The {ally_race} was female 
+    ~ ally_sex = "her"
+* The {ally_race} was male 
+    ~ ally_sex = "his"
+-
+
+Your partner looked away from {ally_sex} conversation as you approached, and instead turned to you. 
+"Ready to leave?" {ally_sex} inquired.
+* [Next] 
+-> town_description
+
+respons to event. respons to dialog. 
+one picture in body bg for each chapter - the village etc - immersive? 
+
+ink as dialog engine for unity 3d game
+
+Ask about him - different questions - choice to question about thier background?
+    you never told me where you are from
+    ask for name 
+    why did you choose to join me? 
+    Ready  init next chapter, the town 
+
+
+
+
+
+
+--------
+
+
+-> town_description
+
+== your_room_1
+You wake up. Next to the bed, on the night stand, lies a piece of parchement. You pick it up and read it, like you have so many times before. It reads: 
+* [Next] -> your_room_2 
+
+== your_room_2
+"The King herby offers the reward of 200 gold for the head of the beast know as 'Shadowfang'. Bring the head of the beast to the Guard. Head must be in condition to identify by. The beast was last seen around the village of Mournstead"
+* [Next]  -> your_room_3 
+
+== your_room_3
+You fold the parchment back and stand up. Despite the words, you know this declaration, although simple, means more to you than the 200 gold. It offers you a chance to restore you honor, and your reputation. And for this reason, successfully slaying the beast matters more to you than some earthly gold.  
+* [Next] -> weapon_choices 
+
+== weapon_choices
+You can hear the merry talk of the inn below you. You dress yourself. Before you head downstair you also grab your:  
+* [Axe]
+    ~ player_weapon = "axe" 
+    Dressed, and with your {player_weapon} equipped, you..
+    * * ..head downstairs 
+    -> desc_monster 
+
+* [Sword] 
+    ~ player_weapon = "sword" 
+    Dressed, and with your {player_weapon} equipped, you..
+   * * ..head downstairs 
+   -> the_inn 
+* [Polearm] 
+    ~ player_weapon = "polearm" 
+    Dressed, and with your {player_weapon} equipped, you.. 
+    * * ..head downstairs 
+    -> the_inn 
+* [Dagger]
+    ~ player_weapon = "dagger" 
+    Dressed, and with your {player_weapon} equipped, you.. 
+    * * ..head downstairs
+    -> the_inn
+
+// clear here? so fresh start on "the inn"?
+// go for next? so that you can better control text amount? 
+// remove text align center on options 
+// can create the variable now, then dont have to replace value 
+// one option = next/progress story
+
+
+
+
+
+
+you have a burning desire
+you stayed here after arriving last night?
+make it feel like what yoyu choose will determine the end? 
+during battle, read the variable to decide the pronoun and the battle tactics? 
+weapons are for battle, therefore fits in the battle tactics section 
+the importance of making choices ambiguous - all attractive to some 
+the choice shouldnt be leading. should be about the players actual preference.
+dont need to explain why its important to you? just make sure it is 
+restore ytour honor and reputation - these contract means more to you than the gold, you know this. 
+when choosing go into mem/variable, not branching
+impress the importance of the journey to the player. "you have to do this"
+
+npcs informs you of this?
+forest or road - faster safer - give good reasosn for both, argue well for both, makes it hard
+to - make good, retional case for both. make you reall 
+
+not important to make player take a stand on issues 
+it more fun when they just choose cool things 
+"intervene?" 
+
+write about something you know
+easier to fall back to something 
+read withcer books for language tips
+humor
+myself passionate and angry
+this format/standard rpg tasks and choices makes it more applicalbe to rpghs? generalizxale valid
+iterate - rewrite
+keep it simple, add detail later 
+dividing is the key to clearity and order 
+they can't decide my life how much they try. only I can. 
+mystery. make squest clear, but have some qustions open? make the player wonder?
+
+
+talk about the design. you are mixd
+more about the design, then the coding since mixd - different prototype versons?
+
+make choices hard 
+make choices represent player personality/preference
+
+fun = 
+picking up items, getting stronger, getting answers to questions
+
+they call me samael
+personality, character - "he rapped out"
+
+choose who to talk to 
+choose how to get there - path  
+choose the order of things 
+choose which class to be 
+choose the gear and weapon, preference basically, class/plkaystlye preference
+other rpg choices you would make 
+
+the dwarf theme is something they are familiar with 
+
+
+third wall
+humor
+varied language
+
+
+
+THE TOWN OF Vir Doruhl, year 1202 
+following trail with the clues you got .. you choose who to talk to, you choose who to ally, you choose which weapong and armor to pick up (aka class). feks "you put on the leather, after all, its best to be agile." you choose to buy items. you choose to talk to ppl whhich makes you notice things later. you choose who to side with in the on going conflict in the city: 
+
+kings visiting? 
+
+
+
+
+---------------------
+
+== town_description  
+As you where making your way through the town towards the gate, you looked around. 
+The town of Vir Doruhl was an ancient dwarf town that was situated up against a mountain wall, where the dwarfs had been mining for centuries, and was indeed the original reasons for its construction. Most of the buildings near the mountain wall was made of stone, but the building further away was made of wood.- next? 
+-> desc_surroundings
+
+
+== desc_surroundings
+You walk through the trade district. On each side there are vendors selling a variety of goods and items. Some with makeshift wooden roofs and table. Others in proper buildings with fancy signs.  
+
+
+-> vendors
+
+== vendors 
+    + Talk to the potions vendor 
+       The potions vendor a middle aged man, looked at you as you approached.  -> potions_vendor 
+    // if text is here, intro stuff about vendor, it wont repeat when buying, only be presented once
+    + Enter the clothing store -> cloth_vendor
+    + Talk to the blacksmith 
+        The blacksmith, a dirty man, welcomed you as you came close. -> blacksmith
+    //+ Buy fish from the stall -> blacksmith 
+    + [Exit the trade district and go to the front gate]
+-> gate
+
+// add a number for how many of each item you have 
+// look at functions
+// count  
+// if gold <= 10 dont buy
+// some way to earn money? selling? 
+
+== potions_vendor 
+// add the potion to inventory or variable 
+You currently have {player_gold} gold left.
+    + [Buy a health potion (-10 gold)]
+        { 
+            - player_gold >= 10:
+                ~ player_gold -= 10
+                You bought a health potion.  -> potions_vendor // You now have {player_gold} gold left.
+            - else: 
+                You don't have enough to buy more. 
+        }
+    + [Buy bandage (-5 gold)]
+        { 
+            - player_gold >= 5:
+                ~ player_gold = player_gold - 5 
+                You bought a health potion.  -> potions_vendor
+            -else: 
+                You don't have enough gold to buy more. -> potions_vendor
+        }
+    + [Buy a strength potion (- 10)]
+        { 
+            - player_gold >= 10:
+                ~ player_gold = player_gold - 10 
+                You bought a health potion.  -> potions_vendor
+             -else: 
+                You don't have enough gold to buy more. -> potions_vendor
+        }
+    -
+    + [Back] ->
+-> vendors
+
+
+== blacksmith 
+// add the potion to inventory or variable 
+You currently have {player_gold} gold left.
+    + [Sharpen your weapon (-10 gold)]
+        { 
+            - player_gold >= 10:
+                ~ player_gold -= 10
+                The blacksmith sharpened your weapon -> blacksmith // You now have {player_gold} gold left.
+            - else: 
+                You don't have enough gold to buy more. -> blacksmith
+        }
+    + [Sharpen {ally_name}'s weapon (-10 gold)]
+        { 
+            - player_gold >= 5:
+                ~ player_gold = player_gold - 5 
+                The blacksmith sharpened {ally_name}'s weapon  -> potions_vendor
+            - else: 
+                You don't have enough gold to buy more. -> potions_vendor
+        }
+    -
+    + [Back] ->
+-> vendors
+
+== cloth_vendor 
+    You tried to enter the store, but on the door hung a sign that said: "Out of town." You turned your back to the store.  
+-> vendors
+
+
+
+
+// pointing to knot work. as long as not the last divert. and as long as there is alwyas one option left, when all is gone.
+// last can be avoided with the use of +, or fallback, or atleast one *
+
+//The design allows for NPC to accompany you. both in dialog actions it changes. 
+
+== gate
+    You walked on and reached the gate.
+    * [Go back to the trade district] 
+        You walk back the way you came, and soon enough find yourself back where the marchants are. 
+        -> vendors
+    * [Exit gate and start your journey] 
+        You walked through the huge gate and found yourself on the outside. In front of you: three possible paths to take. 
+    //* Start journey? Or go back to buy more?
+-> the_path
+
+exhaust dialog 
+write down the impoirtnat one/goal? 
+    
+// how to go back and forth to town etc? 
+
+
+go back and forth between "zones" aka chapters
+
+// loop or back button?
+// can achive it all with only knots and diverts
+
+VENDORS 
+vendor 1
+"Do you want to buy something?" (you have "var" money) 
+
+        buy this (10 gold) - might be handy for later 
+        buy a potion (10 gold) - might come in handy later 
+        buy that 
+        leave - save money for something else
+
+if buy, remember it for later 
+variable - add to mem
+
+vendor 2
+get your weapong reinforced 
+vendor 3
+
+metaphorical journey 
+
+you know its a trap 
+the way the npc answers your questions about themsvles 
+the way the partner fights with you ... dont make the init chocie about how they fight, just if you like dwarfs over elfs
+can add npc behaviour in the already created story/journey after
+
+
+EXIT GATE 
+You reach the gate and exit. Leaving the bustle of the town behind. 
+
+
+
+
+
+roach and roche
+
+
+
+
+
+variable for remebering axe etc 
+if(var == 'axe')
+lock picking 
+stats? inventory? looping? open world? 
+deal with a trap on the way 
+scene setting, desc tips
+they play it out in their mind an dnot screen. the choices and actions are the same. 
+
+choose between 3 vendors? only time for one? 
+buy things -- more move on - more open ended? 
+
+write the vendors here, what you buy as you are moving towards the gates. 
+you also see and comment on things here, buildings you pass
+maybe some crimes going down - interrupt? 
+you talk to the dwarf (or elf) about your adventure.
+
+
+------------------------
+
+== ending_1
+Back in Vir Doruhl # CLASS: test 
+The day after the battle
+You return to town and collect your reward.  
+# CLASS: test 
+THE END 
+-> END
+
+
+// twist
+// revenge 
+
+--------------------------
+
+
+== the_path
+    + {forest_clue} [Go through the forest] -> forest_path 
+    + [Take the road] -> road_path
+    + [Take a boat across the lake] -> boat_path
+
+== road_path
+    You take the road. The road is safe. Occasionally you meet other travelers. Mostly merchants passing you on their way to Vir Doruhl with their goods. The road passes through several small villages on the way to Mournstead and thus takes a bit longer. By the end of the 
+    
+    and arrive without problems at the village of Mournstead.
+     * [Last chapter]
+-> the_village 
+
+== forest_path
+    You take the path through the forest.
+    You meet an ambush. A group attacks from behind some trees. You can see the shady figure from the inn amongst them. Figures. How could you fall for such an obvious trap?  
+    What now?
+        * [Flee]
+            You run away successfully, but sustain minor injuries.
+        * [Fight]
+            You stand your ground and fight. You win, but not without major injuries. You do, however, pick up a strength potion as you rummage through the satchels of your ambushers. The ambushers where also wielding daggers. 
+                * * [Replace your {player_weapon } with a dagger instead? (you can't carry both)]
+                    You replace your {player_weapon} with a dagger instead.
+                     ~ player_weapon = "dagger"
+                * * [Replace {ally_name}'s {ally_weapon} with a dagger instead? ({ally_name} can't carry both)]
+                    {ally_name} replaces {ally_sex} {ally_weapon} with a dagger instead.   
+                    ~ ally_weapon  = "dagger"
+                * * [Keep current weapon]
+                    You both keep the weapons that you have, {player_weapon}'s and {ally_weapon}'s are better, anyway.
+                --
+        -
+        * { bandage } Use bandage to heal? 
+            You used the bandage and feel better.
+        * { potion } Use health potion to heal? 
+            You used the health potion and feel better.
+        * { bandage or potion } Save for later
+            You elected to save { potion: your potion } { bandage: and bandage} for later.
+        * { not bandage and not potion } [Move on] 
+            If you only you had some bandages or a health potion to heal your injuries with. You do not, however.  
+            // look up fallback option here...
+        -       
+    You press forward on your journey.
+    * [Next chapter]
+    -> the_village
+
+== boat_path    // meet a sea monster?
+    You talk to a fisherman. You ask if he can take you across the lake. He agrees to do so for a fee. 
+    + [Pay boat fee (-50 gold)]
+        ~ player_gold -= 50
+        You pay the fee, you have {player_gold} gold left. 
+        You let the fisherman take you across the lake.
+        //You get in the boat, and the fisherman starts rowing.
+        //** [Next] 
+         //   Halfway across you hear a sound. Suddenly the boat rocks. A tentacle extends out of the water.    
+        //-- 
+    + [Deny] -> the_path
+    -
+    * [Next chapter]
+-> the_village
+
+
+the intro is like character select - should you choose partner? - trad. rpg
+
+make it clear that decisions now will affect what you can do later. 
+
+rpg, npc both dialog, and playstlye and help or not
+
+reading takes time 
+making decisions that are hard, takes time 
+iterated content takes time 
+replayability takes time 
+
+what makes hard choice: 
+obvious flaw with both - equllity 
+ambiguity 
+
+ask for where the village. not the monster is 
+
+//== fight
+  //  bhmbbnma
+  // repeatedly slash until the health is at bottom 
+  // reward for fighting? 
+
+==  bonfire 
+
+    You decide to set up camp for the night. 
+    
+    
+    Ask for a story from here homeland
+    
+    
+
+    How old are you 
+    Where from 
+    Why here 
+    
+-> END
+
+
+
+next changed to move on? 
+
+You weak legs do not allow to do that move 
+You tried to cut, but your current health is {player_current_health} so your swing is weak and the {player_weapon} won't cut very deep. 
+
+generic, repeating fights in the middle? so can use battling? to extend journey. 
+more convo with partner 
+camping and bonfire convo?
+need name before its used
+
+
+// use bandages on self or partner?
+
+don quinte ... you night in shining armor, but twiest is your not? how others treat you reveal this? 
+
+// [Next chapter]? #clear?
+
+//next
+  //  you moved on or no text
+//-
+
+
+you wake up. it is the last leg of your journey. you're so close. 
+
+// loop and get rid of dialog options, but not npcs  
+// if returned, change the initation 
+
+search 
+
+what you answer her, she will renemember
+find a lotioh bottle, finds a coin
+
+Search the ground?
+You find noithing (luck++`?). You find 5 coins.
+
+
+there needs to be a qustion in players head that want to be answered by playing the gmae/story. the ending has a twist. or the answer. if twist it needs to be "obiovus the outcome", as journey goes along 
+
+
+----------------
+
+== the_village
+THE VILLAGE OF MOURNSTEAD #CLASS: test 
+
+At dawn you arrive at the quaint little village of Mournstead. There is no one around except an old man hurrying across the street. You talk to the sole villager. 
+-> old_man
+== old_man
+    //* [Ask the man for vendors] 
+    * [Ask the man where everyone is]  
+        "Inside" the man answers. 
+        "With the current monster roaming about, it's not safe outside at night" he finishes. -> old_man
+    * [Ask about the monsters location] 
+        The elderly man points towards the west, at a cave far in the distance. -> old_man
+    * ->  // this gets triggered when no options left? when all options exhausted, move on..
+    - // loop here?  it only works once because no fall back=?
+    
+    // - after each would create the same result? 
+    
+    // if + dont need fall back... but with * i do? so it know what to do when list is over? because error is after last 
+    // option is done?
+    
+    // its not good to divert at end, because its infinte loop? fallback must always be - or lead to new knot?
+    
+    // one goes back, the others move on? 
+    // find out where monster last seen from NPC to move on. mark it with some red or something? "mission"
+    
+It's late, the sun is setting. 
+"Should we stay and rest until the morning, or go now in the dark?" {ally_name} asks you.
+    * [Move on]
+        You decide it's best to move now. Maybe the darkness can be used to your advantage.   
+        ~ time_of_day = "night" 
+    * [Stay and Rest] 
+        ** [Rent a room at the local inn (50 gold)]
+            { 
+                - player_gold < 50:
+                    You don't have enough money to rent a room. 
+                - else:
+                    ~ player_gold -= 50
+                    You rent a room for the night. You now have {player_gold} gold left.
+                    The next morning you feel rested.  
+            }  
+        ** [Sleep outside] 
+            You sleep outside on the hard ground.
+            The next morning you don't feel very rested.  
+        --
+        // something after move on 
+    -
+     Your party of two set foot in the direction of west, towards the cave.
+     After an hour you reach the goal. You crouch behind a rock. 
+    * [Next]
+-> the_battle
+
+
+
+
+
+make stanard functions? for talking to NPC? and battle.
+
+//back at where you left off    
+    
+    
+   
+
+
+make a deal to get the points before presentation? or do i not need, just cant recieve imidately? 
+if i admit didnt know, and go to them, after a while, they can fix work aroudn that? knowing my situation.
+i probably could have forced myself. so annoying.
+he has time nopw obviously.
+see on studentweb, not homepage.
+can discuss the problem without him. can continue working. dont know if i cant continue.
+may take a long time? i am not priority. can take long before sign contract.
+more forgiving if i have worked for a long time.
+if he cant next semester. no one else can take his place. only he knows games. 
+can always work alone tbh. can manage now? statistic analysis   
+
+choose own adv. and gameplay. 
+NPC needs to act in convo and battle.
+and after you are hurt, it might do something? 
+
+
+gameplay, story choices 
+
+NPC involvment and differences 
+
+its fairly versatile. it's just a journey. but need ideas for NPC involvement and potential for 
+differetions.  

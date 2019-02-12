@@ -1,0 +1,550 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1044{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang20 VAR gathered_all_info = false\par
+VAR how_many_you_talked_to = 0 \par
+VAR done_gnome = false\par
+\par
+VAR gold = 200\par
+VAR ally_race = "Dwarf"\par
+\par
+VAR player_weapon = "axe"\par
+VAR player_gear = "leather"\par
+\par
+VAR ally_name  = "Aelinor"\par
+VAR ally_sex = "her"\par
+VAR agility = 0\par
+VAR strength = 0\par
+\par
+VAR forest_clue = true\par
+VAR inventory = 0\par
+\par
+\par
+INCLUDE your_room.ink\par
+INCLUDE the_inn.ink\par
+INCLUDE the_town.ink\par
+INCLUDE the _outskirts.ink\par
+INCLUDE the_path.ink\par
+INCLUDE the_village.ink\par
+INCLUDE the_battle.ink\par
+INCLUDE endings.ink\par
+\par
+-> END\par
+\par
+// stats at the end of the game, who you talked to. array? possible. list maybe.\par
+// list of NPCs list of inventory items etc, equipment \par
+--------------------------------------\par
+== the_battle\par
+    dsada\par
+-> desc_monster\par
+\par
+== desc_monster \par
+In front of you stood a wierd creature. It became instantly clear to you why the reward was so unusually high. You had never seen a more threatening monster. It was hideous, large and with claw-like hands. Around its feet lay several dead goats, with claw marks on their sides. The remnants of its breakfast, no doubt. \par
+* [Next] -> monster_1\par
+\par
+== monster_1\par
+Both you and \{ally_name\} stood and stared for a second before regaining your senses.  \par
+"It's large, and sluggish lets attack one leg each." \par
+"1..\par
+2..\par
+3.. \par
+"Now!", you shouted. \par
+* [Next] -> fight_start\par
+\par
+== fight_start\par
+* [Attack one leg each] \par
+\{ \par
+    - ally_race == "Dwarf":\par
+        The dwarf lunged at the beast. Axe in hand, striking repeatedly at the beast legs. \par
+        You attacked the other leg. \par
+    - else: \par
+        The elf lunged at the beast. Axe in hand, striking repeatedly at the beast legs. \par
+\}\par
+\par
+-> fight_mid\par
+\par
+* [Attack the same leg] \par
+\par
+-> fight_mid\par
+* [Distract it] \par
+    You distract the monster while. \{ally_name\} shoots arrows at it until it dies. \par
+-> fight_mid\par
+* [Attack from distance] \par
+    \par
+-> fight_mid\par
+\par
+\par
+== fight_mid\par
+\par
+->fight_end\par
+\par
+==fight_end\par
+\par
+->END\par
+\par
+decide tactic here\par
+distraction\par
+attack from distance \par
+the npc is supposed to help. situations where it can help\par
+mosnter traits that make it possible to create situations for chocie\par
+\par
+"the monster has been terrorizing the villager stealing goats, and is considered a threat to the local wildlife, and must therefore be dispatched of."\par
+\par
+\par
+\par
+war blocaked, etc \par
+norse dungeons skyrim\par
+\par
+monster stats: \par
+low intelligence\par
+high strength \par
+sluggish, slow \par
+attack = \par
+defense =\par
+no magic \par
+\par
+\par
+the gnome told you  \par
+\par
+the dwarfs expert \par
+falls info, they choose \par
+\par
+the name was: \par
+\par
+choose tactic: depends on weapon you have and if elf or dwarf? \par
+attack one leg each\par
+\par
+\par
+\par
+ask about the monster earlier \par
+knowing this will let you predict attacks  \par
+\par
+\par
+mid fight: \par
+if potion, use potion \par
+\par
+\par
+diplsay info in text, puzzle, choose the correct one? \par
+attack \par
+run away\par
+\par
+the feeling right before the fight - how does your partner act?\par
+desc the monster \par
+different weapons means different battles dagger_battle sword_tactic\par
+\par
+if() ally race is this do this battle \par
+if ally race is this do the other one \par
+\par
+\par
+when desc your actions use right weapon - you swing you \{player_weapon\}\par
+rapid fire boss fight? select what to attack etc? swing sword or block? like in a pattern?\par
+shield\par
+cant parry with an axe \par
+fight tactis with weapon\par
+questions - mystery of the world\par
+repeating content - loops for more, easy, gameplay\par
+write "standard sections"/answers \par
+\par
+\par
+---------------------------\par
+\par
+== the_inn \par
+CHAPTER 1 - THE INN \par
+\par
+You look around, taking in the sights of the room. It is a typical inn. It is filled with people. \par
+\par
+The inn is bustling with noise and movemement. Some people where sitting quitly, looking tired, having their breakfast. Others where merrily playing cards or talking to each other. A chatty bunch of dwarfs where sitting at a table close to you. In the corner across the room a solitary hooded figure sipped on a mug. The innkeeper, behind his table, where cleaning a similar looking mug. The meek looking girl was serving a gnome sitting by himself.  \par
+-> INFO\par
+\par
+== INFO\par
+Before you left the inn on your way to look for the beast you figured that you better ask around for some information. It never hurt to gather information first. Besides, you need to figure out the location of the beast, the contract did not mention this. Perhaps someone in the inn would know. \par
+-> TALK_TO_NPCs\par
+\par
+== TALK_TO_NPCs\par
+// mute, silent - write the personality of the npc \par
++ [Talk to shady figure in the corner] \par
+\par
+    You motion to sit down. He nods in confirmation.\par
+    ++ [Have you seen this? Show poster.]\par
+        You show him the poster. He shakes his head.\par
+    ++ [Ask about him]\par
+        How do you do? you ask. He remains silent.\par
+    --\par
+ -> END     \par
+\par
+     // defiently need back buttons. otherwise the last line disapear immidatly? no it get displayed, but \par
+     //optns get back\par
+\par
+\par
+\par
+    // LOOP IS THE ANSWER  \par
+    // write more \par
+\par
+\par
+    // inventory \par
+    // more fancy writing, like cheeky \par
+\par
+\par
++ \{ not done_gnome\} [Talk to solitary gnome]\par
+    You approach the gnome and introduce yourself.\par
+    ** [Have you seen this? Show poster.]\par
+        Yes. The monster. He's just past the forest, not far from the silver mine.  \par
+        *** How do I get there?\par
+            Go through the forest, it is the fastest way. \par
+            ~ gathered_all_info = true\par
+            ~ done_gnome = true \par
+    // move back with not divert, talking to gnome disapear?\par
+    // * * ds \par
+    \par
+    // i want to go back to prev options, not all the wat to start, so i guess gather is correct? need back button? \par
+    // or is knots the way? \par
+    \par
+-> TALK_TO_NPCs\par
+\par
+\par
++ [Talk to the mug cleaning innkeeper]\par
+    whats new in town?\par
+    Forst is faster, but \par
+    Stick to the road. bandits in the forest \par
+-> END \par
+\par
+\par
++ [Sit down and call the waitress over] you ask soemthing  \par
+    You sit down and talk to \par
+-> END \par
+    \par
+    \par
++ [Talk to chatty table of merry dwarfs] \par
+    the meryr becauyse drinkign despite this time of day \par
+    one oif them getting married, they found some \par
+    can i sit donw?\par
+-> END\par
+\par
+\par
++ \{ gathered_all_info \} [Exit the inn] \par
+    You think you have enough information now. You could continue to talk to the people in the inn, or you could head outside.\par
+-> outside\par
+\par
+\par
+\par
+== outside ==\par
+Your partner..\par
+\par
+* an elf with a bow on her back \par
+    ~ ally_name = "Aelinor"\par
+    ~ ally_race = "Elf" \par
+    ~ ally_sex = "her"\par
+* an axe wielding dwarf\par
+    ~ ally_name = "Bangrim"\par
+    ~ ally_race = "Dwarf" \par
+    ~ ally_sex = "his"\par
+-\par
+\par
+was waiting for you. You knew you couldn't defeat the monster on your own, so last night you had partnered with the \{ally_race\}. Agreeing to split the reward. \par
+\par
+Your partner looked away from \{ally_sex\} conversation as you approached, and looked at you. \par
+"Ready to leave?" \{ally_sex\} inquired.\par
+\par
+-> town_description\par
+\par
+\par
+Ask about him - different questions - choice to question about thier background?\par
+    you never told me where you are from\par
+    ask for name \par
+    why did you choose to join me? \par
+    Ready  init next chapter, the town \par
+\par
+\par
+is there a way to mark an option as something as mandatory? \par
+move on  - loop until all options exausted or you have the infromation - loop - just decide to move on? \par
+talking to npcs for information - the information you get, depending on who you talk to, if you talk to not all changes how the path unfolds - what informationm you can go by, if something appears or not\par
+# clear and then new chapter? \par
+make the player talk to an elf and dwarf in the inn? \par
+\par
+-----------------------------------------\par
+-> your_room_1\par
+\par
+== your_room_1\par
+You wake up. Next to the bed, on the night stand, lies a piece of parchement. You pick it up and read it, like you have so many times before. It reads: \par
+* [Next] -> your_room_2 \par
+\par
+== your_room_2\par
+"The King herby offers the reward of 200 gold for the head of the beast know as 'Shadowfang'. Bring the head of the beast to the Guard. Head must be in condition to identify by."\par
+* [Next]  -> your_room_3 \par
+\par
+== your_room_3\par
+You fold the parchment back and stand up. Despite the words, you know this declaration, although simple, means more to you than the 200 gold. It offers you a chance to restore you honor, and your reputation. And for this reason, successfully slaying the beast matters more to you than some earthly gold.  \par
+* [Next] -> weapon_choices \par
+\par
+== weapon_choices\par
+You can hear the merry talk of the inn below you. You dress yourself. Before you head downstair you also grab your:  \par
+* [Axe]\par
+    ~ player_weapon = "axe" \par
+    Dressed, and with your \{player_weapon\} equipped, you..\par
+    * * ..head downstairs \par
+    -> desc_monster \par
+\par
+* [Sword] \par
+    ~ player_weapon = "sword" \par
+    Dressed, and with your \{player_weapon\} equipped, you..\par
+   * * ..head downstairs \par
+   -> the_inn \par
+* [Polearm] \par
+    ~ player_weapon = "polearm" \par
+    Dressed, and with your \{player_weapon\} equipped, you.. \par
+    * * ..head downstairs \par
+    -> the_inn \par
+* [Dagger]\par
+    ~ player_weapon = "dagger" \par
+    Dressed, and with your \{player_weapon\} equipped, you.. \par
+    * * ..head downstairs\par
+    -> the_inn\par
+\par
+// clear here? so fresh start on "the inn"?\par
+// go for next? so that you can better control text amount? \par
+// remove text align center on options \par
+// can create the variable now, then dont have to replace value \par
+// one option = next/progress story\par
+\par
+\par
+\par
+\par
+\par
+\par
+you have a burning desire\par
+you stayed here after arriving last night?\par
+make it feel like what yoyu choose will determine the end? \par
+during battle, read the variable to decide the pronoun and the battle tactics? \par
+weapons are for battle, therefore fits in the battle tactics section \par
+the importance of making choices ambiguous - all attractive to some \par
+the choice shouldnt be leading. should be about the players actual preference.\par
+dont need to explain why its important to you? just make sure it is \par
+restore ytour honor and reputation - these contract means more to you than the gold, you know this. \par
+when choosing go into mem/variable, not branching\par
+impress the importance of the journey to the player. "you have to do this"\par
+\par
+npcs informs you of this?\par
+forest or road - faster safer - give good reasosn for both, argue well for both, makes it hard\par
+to - make good, retional case for both. make you reall \par
+\par
+not important to make player take a stand on issues \par
+it more fun when they just choose cool things \par
+"intervene?" \par
+\par
+write about something you know\par
+easier to fall back to something \par
+read withcer books for language tips\par
+humor\par
+myself passionate and angry\par
+this format/standard rpg tasks and choices makes it more applicalbe to rpghs? generalizxale valid\par
+iterate - rewrite\par
+keep it simple, add detail later \par
+dividing is the key to clearity and order \par
+they can't decide my life how much they try. only I can. \par
+mystery. make squest clear, but have some qustions open? make the player wonder?\par
+\par
+\par
+talk about the design. you are mixd\par
+more about the design, then the coding since mixd - different prototype versons?\par
+\par
+make choices hard \par
+make choices represent player personality/preference\par
+\par
+fun = \par
+picking up items, getting stronger, getting answers to questions\par
+\par
+they call me samael\par
+personality, character - "he rapped out"\par
+\par
+choose who to talk to \par
+choose how to get there - path  \par
+choose the order of things \par
+choose which class to be \par
+choose the gear and weapon, preference basically, class/plkaystlye preference\par
+other rpg choices you would make \par
+\par
+the dwarf theme is something they are familiar with \par
+\par
+\par
+third wall\par
+humor\par
+varied language\par
+\par
+\par
+\par
+THE TOWN OF Vir Doruhl, year 1202 \par
+following trail with the clues you got .. you choose who to talk to, you choose who to ally, you choose which weapong and armor to pick up (aka class). feks "you put on the leather, after all, its best to be agile." you choose to buy items. you choose to talk to ppl whhich makes you notice things later. you choose who to side with in the on going conflict in the city: \par
+\par
+kings visiting? \par
+-----------------------------------\par
+fields, farmers like outside withcer town \par
+\par
+DESC \par
+The quiteness hits you. In front of you, stretching far and wide, is farmers fields. \par
+\par
+\par
+CHOICE - conditional choices/list\par
+take the road\par
+go through the forest \par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+depending on what npcs have said - the list is different. if didnt talk to one of them, the "forest" choice is \par
+not there or is. \par
+\par
+investigate a trail\par
+\par
+each witcher quest can be a mini story with new characters etc. and gameplay/sotry elemetns. but it needs more importance.\par
+\par
+repeating content creates more gameplay.\par
+several playthroughs.\par
+\par
+more braches - choose your own adventure\par
+shortere scaene setting\par
+shorter branches - weaves\par
+more selecting paths \par
+\par
+variables...\par
+npc\par
+\par
+\par
+\par
+develop several layers deep in the npc dialogs - give option hoiw to answer\par
+and what to ask \par
+looping? \par
+-------------------------------------\par
+== ending_1\par
+You return to town and collect your reward.  \par
+-> END\par
+------------------------------------------\par
+== the_path \par
+    * \{forest_clue\} Go through the forest -> forest_path \par
+    * Take the road -> road_path\par
+\par
+== road_path\par
+    You take the safe road and arrive without problems at the village near the place.  \par
+-> the_village \par
+\par
+== forest_path\par
+    You take the path through the forest.\par
+    You meet an ambush.\par
+        * Flee\par
+            You run away successfully, but sustain minor injuries.\par
+        * Fight\par
+            You stand your ground and fight. You win, but not without major injuries. \par
+        -\par
+    You move on, towards the village where the monster was last seen.\par
+-> the_village\par
+\par
+.--------------------------------------\par
+== the_village\par
+You arrive at the quaint little village. You talk to a villager. An elderly man. You ask about the monster in the contract. The elder man points towards the west. \par
+It's late, the sun is setting. \par
+"Should we stay and rest until the morning, or go now in the dark?" \{ally_name\} asks you.\par
+    * Move on -> the_battle\par
+    * Stay and Rest \par
+        The next morning Your party of two set foot towards the west. \par
+-> the_battle\par
+\par
+\par
+go east, go west, go back \par
+you are a mercenery. thats what you do. protect people. \par
+--------------------------------------------------\par
+\par
+== town_description  \par
+As you where making your way through the town towards the gate, you looked around. \par
+The town of Vir Doruhl was an ancient dwarf town that was situated up against a mountain wall, where the dwarfs had been mining for centuries, and was indeed the original reasons for its construction. Most of the buildings near the mountain wall was made of stone, but the building further away was made of wood.- next? \par
+-> END\par
+\par
+\par
+== desc_surroundings\par
+You walk through the trade district. On each side there are vendors selling a variety of goods and items. One such vendor at the side of the road, under a makeshift wooden roof, where selling potions. \par
+-> vendors\par
+\par
+\par
+\par
+\par
+== vendors \par
+\par
+-> END\par
+\par
+// how to go back and forth to town etc? \par
+\par
+// loop or back button?\par
+// can achive it all with only knots and diverts\par
+\par
+VENDORS \par
+vendor 1\par
+"Do you want to buy something?" (you have "var" money) \par
+\par
+        buy this (10 gold) - might be handy for later \par
+        buy a potion (10 gold) - might come in handy later \par
+        buy that \par
+        leave - save money for something else\par
+\par
+if buy, remember it for later \par
+variable - add to mem\par
+\par
+vendor 2\par
+get your weapong reinforced \par
+vendor 3\par
+\par
+metaphorical journey \par
+\par
+you know its a trap \par
+the way the npc answers your questions about themsvles \par
+the way the partner fights with you ... dont make the init chocie about how they fight, just if you like dwarfs over elfs\par
+can add npc behaviour in the already created story/journey after\par
+\par
+\par
+EXIT GATE \par
+You reach the gate and exit. Leaving the bustle of the town behind. \par
+\par
+\par
+\par
+\par
+\par
+roach and roche\par
+\par
+\par
+\par
+\par
+\par
+variable for remebering axe etc \par
+if(var == 'axe')\par
+lock picking \par
+stats? inventory? looping? open world? \par
+deal with a trap on the way \par
+scene setting, desc tips\par
+they play it out in their mind an dnot screen. the choices and actions are the same. \par
+\par
+choose between 3 vendors? only time for one? \par
+buy things -- more move on - more open ended? \par
+\par
+write the vendors here, what you buy as you are moving towards the gates. \par
+you also see and comment on things here, buildings you pass\par
+maybe some crimes going down - interrupt? \par
+you talk to the dwarf (or elf) about your adventure.\par
+\par
+--------\par
+}
+ 
