@@ -4,7 +4,17 @@
     + [Take a boat across the lake] -> boat_path
 
 == road_path
-    You take the road. The road is safe. Occasionally you meet other travelers. Mostly merchants passing you on their way to Vir Doruhl with their goods. The road passes through several small villages on the way to Mournstead and thus takes a bit longer. By the time you reach Mournstead the sun has set. 
+    You take the road. The road is safe. Occasionally you meet other travelers. Mostly merchants passing you on their way to Vir Doruhl with their goods. The road passes through several small villages on the way to Mournstead and thus takes a bit longer than going through the forest would have.
+    
+    You meet a merchant and the three of you set up camp for the night. 
+    
+    
+    ask for clue? 
+    At night, you set up camp.  
+    You talk to some of these     
+    
+    
+ By the time you reach Mournstead the sun has set. 
      * [Next chapter]
 -> the_village 
 

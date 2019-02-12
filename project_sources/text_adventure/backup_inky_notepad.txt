@@ -868,3 +868,54 @@ NPC involvment and differences
 
 its fairly versatile. it's just a journey. but need ideas for NPC involvement and potential for 
 differetions.  
+
+
+----The game design----
+the design of the game NPC wise
+
+the game was designed, like a traditional NPC.
+this allowed the NPC to express differences in 3 main ways. through actions. eg. how they fight.
+thoruh how they respond to events. and help player.
+through dialog. how they answered the players question. 
+through the creation of the character itself. character creation.
+
+the game had 1 battle for action. 
+- explain in detail how the game is designed for different PT actcions. they need to perform same actions?
+for control of variables? cant be wastly different. just different in the ways that is neccessary to 
+express difference. but they still need to abide the same game rules? 
+the char creation allowed to customize the preferences of players. 
+How we describe the looks of the NPC feks? and then playstyle.. like bow, and "defensive player/agressive" 
+and her stats.
+other rpg games has this aswell, but not automated. 
+
+
+the witcher choices. have buy ikon in front of some options. 
+
+"model the NPC" which then really tells us how they would act in the situations we have created/the game
+creates.
+
+story isolated. should have done alone. then model NPC. and also create the game with it's action.
+he did mentioned choices. for moving forward that is..?
+you can only ask one quesion out of your curiosity
+elaborate  char creation build an rpg profile  - automatic so no need for many questiosns
+give it to me. do not give it to me.  yes or no starts  small weave
+recruit ppl along way for final battle.
+pay for inbformation
+use charms
+make money useful inthe game
+make story more meaningful
+the villagerrs are vampires too. the monter was a trap to lure mercenaries for blood. learn during sleepover.
+ talking to ppl for  clues is the journey
+
+gameplay:
+loot
+char creation. change this.
+find information/talk to ppl
+exhaust all options forced - old man  
+by stuff for inventory
+go back
+replace weaponm
+choose path/action
+
+export to wesbite where i can incoropote automated cration based on pt test?
+need ideas for npc action 

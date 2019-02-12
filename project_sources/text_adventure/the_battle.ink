@@ -11,7 +11,7 @@
 You peak over the edge of the rock, {ally_name} likewise, and assess the situation. 
 
 In front of you stands /*or sleep*/ a huge creature, a few yards away. It becomes instantly clear to you why the reward was so unusually high. You have never seen a more threatening monster. It was hideous, large and with hands the size of buckets. Around its feet lay several dead goats. The remnants of its breakfast, no doubt. And, no doubt, taken from the village. 
-You felt your knees weaken, but you told yourself to get a grip. No turning back now.  
+You feel your knees weaken, but you tell yourself to get a grip. No turning back now.  
 
 * [Continue] -> monster_1
 
@@ -29,11 +29,20 @@ Both you and {ally_name} stand and stare for a second, before regaining your sen
     * [You charge in to attack the right leg] 
         You attack the right leg with your {player_weapon}. Landing a few blows. {ally_name} attacks the left leg from a distance.
         -
-    The monster strikes back with a quick swing of its enourmous hammer.           
+        
+    The monster grabs a nearby rock and throws it at {ally_name}, clearly bothered by the flurry of arrows from {ally_sex} distant attack, {ally_pronoun} dodges the attack with ease and resumes. // or defense
+    
+    // distance, close, defensive, attacking 
+    //{ally_name} continues to attack 
+     
+    The monster turns its attention to you and strikes back at you with a quick swing of its enourmous hammer.           
+           
+            // there isnt a sense that she changes the outcome... 
+            // must see that the world is changing and that the players action changes the world - even if just for fun
             
     * [Parry] 
-        You parry, it hurt to do so. The blow was powerful. 
-        However, the parry allows you a chance to counter attack. You seize the opportunity and manage to land a successful blow. 
+        You parry. The blow was powerful. Your arm hurts.  
+        The parry allows you a chance to counter attack. You seize the opportunity and manage to land a successful blow deep in its leg. 
     * [Dodge] 
         You dodge successfully.
         The monster's weapon is buried in the ground from the force of the impact. You seize the opportunity and manage to land a successful blow.  
@@ -41,12 +50,25 @@ Both you and {ally_name} stand and stare for a second, before regaining your sen
     
     {ally_name} continues to launch attacks from the distance.
     * [Continue to fight]
-        The repeated blows and attacks from both of you finally brings the monster to its knees. You take advantage of the lowered body to plunge your {player_weapon} into its chest. The monster sighs and falls over. 
+        The repeated blows and attacks from both of you finally brings the monster to its knees. 
+        ** [Stab throat]
+            You take advantage of the lowered body to plunge your {player_weapon} into its throat with all your strength. The monster gurgle and falls over.
+        ** [Stab heart]
+            You take advantage of the lowered body to plunge your {player_weapon} into its heart.
+                You miss the heart. What now? 
+                    *** [Try again]
+                        This time you hit. The monster sigh and falls over.
+                    *** [Stab chest instead]
+                        You plunge your weapon into its chest instead. The first strike hit the chest, this second strike, now with more force does too. The strikes combined does significant damage. The monster sighs and falls over.  
+                    ---
+        ** [Plunge chest]
+            You take advantage of the lowered body to plunge your {player_weapon} into its chest with all your strength. You back off. The monster looks fine at first, but then it sighs and falls over.
+        --
         Dead. 
     -
-    
+    //[Recruit for later]
 * [End fight]
-    Panting, you walk over to each other.   
+    Panting, you walk over to each other. Tired, but happy.   
 -> fight_end
 
 

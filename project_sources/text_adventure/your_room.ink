@@ -1,7 +1,7 @@
--> your_room_1
+-> the_battle
 
 == your_room_1
-You wake up and jolt yourself into a sitting position. 
+You wake up abruptly and jolt yourself into a sitting position. 
 Next to your bed, on the night stand, lies a piece of parchement. You pick it up and read it for the umpteenth time. 
 * [Read] -> your_room_2 
 
