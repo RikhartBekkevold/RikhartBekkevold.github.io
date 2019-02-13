@@ -4,19 +4,46 @@
     + [Take a boat across the lake] -> boat_path
 
 == road_path
-    You take the road. The road is safe. Occasionally you meet other travelers. Mostly merchants passing you on their way to Vir Doruhl with their goods. The road passes through several small villages on the way to Mournstead and thus takes a bit longer than going through the forest would have.
+    You take the road. The road is the safe option. Occasionally you meet other travelers. Mostly merchants passing you on their way to Vir Doruhl with their goods. The road passes through several small villages on the way to Mournstead and thus takes longer than going through the forest would have.
     
-    You meet a merchant and the three of you set up camp for the night. 
+    * [Continue]
+    The sun sets and you decide to set up a camp for the night. One of the traveling merchants joins you for the night.
+        You introduce yourself and {ally_name}. He introduces himself as Bartholomew. 
+        You sit around the campfire.
+-> ask  
+
+        
+  
+== ask    
+
+    + [Ask him a question] 
+        ++ [Where are you headed?]
+            Vir Doruhl for now. Then north to Hinerum when i've traded all I can there. 
+            "Vir Doruhl is a nice town" you reply.  
+            {ally_name} nods in agreement.
+        //++ []
+           // He answers. 
+            //You reply  
+            //{ally_name} reply 
+        //--
+    -> ask 
     
+    + [Listen to Bartholomew tell a story from his travels]
+        He tells you an incredibly awesome story.
+    -> ask
     
-    ask for clue? 
-    At night, you set up camp.  
-    You talk to some of these     
+    + [Go to bed] 
+        You go to bed for the night. 
+        ++ [Next morning]
+            You pack up the camp and set out again. Your guest the way you came. You, the way he came. 
+            By the time you reach Mournstead the sun has set again. 
+            +++ [Enter village] -> the_village
     
-    
- By the time you reach Mournstead the sun has set. 
-     * [Next chapter]
--> the_village 
+     
+     
+    // * Ask {ally_name} a question 
+     
+
 
 == forest_path
     You take the path through the forest.
@@ -146,6 +173,28 @@ ask for where the village. not the monster is
 -> END
 
 
+
+NPC model:
+    weapon: bow 
+    hair color: 
+    height: 
+    weight: 
+    race: 
+    traits: timid, etc, shy
+    which stats would each PT prefer? what type of character? 
+    replace the select process with the description of npc
+    change variables. not story. the story then must work for all variables. all types of weapons etc. easy control.
+
+
+
+//You meet a merchant and the three of you set up camp for the night. 
+    //pick up object/look at
+    // ask for clue? 
+    //At night, you set up camp.  
+    // You talk to some of these     
+    // you pick up, you die - story about dying. restart with more this time?
+    
+    
 
 
 next changed to move on? 

@@ -32,7 +32,9 @@ Before you leave the inn, on your way to look for the beast, you figured that yo
     * [Ask about him] 
         You ask about him. He remains silent.  -> shady_figure
     * [Ask about the village] 
-       You ask about the village in the contract. He remains silent. -> shady_figure
+       You ask about the village in the contract. He tells you the location. He says the quickest way is through the forest. 
+        ~ forest_clue = true
+       He remains silent. -> shady_figure
     * [Ask about the monster]
        He remains silent. Well, this is useless.. -> shady_figure
     + [Leave]

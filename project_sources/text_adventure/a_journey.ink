@@ -1,7 +1,7 @@
 VAR gathered_all_info = false
 VAR how_many_you_talked_to = 0 
 VAR done_gnome = false
-VAR forest_clue = true
+VAR forest_clue = false
 
 VAR player_gold = 100
 

@@ -1,7 +1,8 @@
 == the_village
 THE VILLAGE OF MOURNSTEAD #CLASS: test 
     // the reason why MOURNSTEAD was on the same line is because the divert was not on the line below
-    At dawn you arrive at the quaint little village of Mournstead. Several of the windows have been bared. There is almost no sound. 
+    // At time_of_day 
+    You arrive at the quaint little village of Mournstead. Several of the windows have been bared. There is almost no sound. 
     There is no one around except an old man hurrying across the street. You talk to the sole villager. 
 -> old_man
 
