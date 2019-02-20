@@ -904,7 +904,7 @@ pay for inbformation
 use charms
 make money useful inthe game
 make story more meaningful
-the villagerrs are vampires too. the monter was a trap to lure mercenaries for blood. learn during sleepover.
+the villagerrs are vampires _too_. the monster was a trap to lure mercenaries for blood. learn during sleepover.
  talking to ppl for  clues is the journey
 
 gameplay:
@@ -917,5 +917,48 @@ go back
 replace weaponm
 choose path/action
 
+the first step is the hardest
+the raven - zeke play 
+
+choices to prob more. to get more info. do all of them. just choose order. 
+dialog the player would say as choices. 
 export to wesbite where i can incoropote automated cration based on pt test?
 need ideas for npc action 
+
+
+the convo in between meeting and battle
+
+
+fixed locations. limits the scope. 
+can only ask one question. if select "a" need to do something later to solve the problem
+
+
+overcoming challenges makes stronger
+challenges now become small and easy 
+
+wheel chair guys fucked up
+polio
+my problems are much smaller
+
+its my head
+
+Ways for the NPC to express personality. The challenge right now. 
+Hard making a game not to long. Reasons why I made what I made. 
+
+get hugs
+
+give player choice to be agreeive or not - the NPC is then defensive...
+
+lie, tell the truth, deny, avoid - different responses
+
+
+
+
+money:
+website with ads on it
+starcraft and other tournaments 
+stream with sponsorships
+alexa as intro, and the current context, and why it matters. what has been done.
+research like what he linked for background. 
+write about the design and logic behind it
+ - the game is designed to allow for NPCs to be different

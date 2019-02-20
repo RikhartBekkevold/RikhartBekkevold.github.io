@@ -3,6 +3,13 @@
     // Create ink story from the content using inkjs
     var story = new inkjs.Story(storyContent);
 
+    var gold = story.variablesState._globalVariables.player_gold._value;
+    var health = story.variablesState._globalVariables.player_health._value;
+    var days = story.variablesState._globalVariables.days_passed._value;
+
+
+    // health_el.innerHTML = story.variablesState._globalVariables.player_health._value;
+
     // Global tags - those at the top of the ink file
     // We support:
     //  # theme: dark
@@ -12,12 +19,12 @@
         for(var i=0; i<story.globalTags.length; i++) {
             var globalTag = story.globalTags[i];
             var splitTag = splitPropertyTag(globalTag);
-            
+
             // THEME: dark
             if( splitTag && splitTag.property == "theme" ) {
                 document.body.classList.add(splitTag.val);
             }
-            
+
             // author: Your Name
             else if( splitTag && splitTag.property == "author" ) {
                 var byline = document.querySelector('.byline');
@@ -29,6 +36,17 @@
     var storyContainer = document.querySelector('#story');
     var outerScrollContainer = document.querySelector('.outerContainer');
 
+    var days_passed = document.getElementById("days_passed");
+    var gold_el = document.getElementById("gold");
+    var health_el = document.getElementById("health");
+    var hp = document.getElementById("health_potions");
+
+    gold_el.innerHTML = gold + " gold";
+    days_passed.innerHTML = days + " days have passed";
+
+    // change the health value to heart images
+    transformHealth();
+
     // Kick off the start of the story!
     continueStory(true);
 
@@ -38,7 +56,7 @@
 
         var paragraphIndex = 0;
         var delay = 0.0;
-        
+
         // Don't over-scroll past new content
         var previousBottomEdge = firstTime ? 0 : contentBottomEdgeY();
 
@@ -48,7 +66,7 @@
             // Get ink to generate the next paragraph
             var paragraphText = story.Continue();
             var tags = story.currentTags;
-            
+
             // Any special tags included with this line
             var customClasses = [];
             for(var i=0; i<tags.length; i++) {
@@ -78,7 +96,7 @@
                 else if( tag == "CLEAR" || tag == "RESTART" ) {
                     removeAll("p");
                     removeAll("img");
-                    
+
                     // Comment out this line if you want to leave the header visible when clearing
                     setVisible(".header", false);
 
@@ -93,7 +111,7 @@
             var paragraphElement = document.createElement('p');
             paragraphElement.innerHTML = paragraphText;
             storyContainer.appendChild(paragraphElement);
-            
+
             // Add any custom classes derived from ink tags
             for(var i=0; i<customClasses.length; i++)
                 paragraphElement.classList.add(customClasses[i]);
@@ -106,11 +124,27 @@
         // Create HTML choices from ink choices
         story.currentChoices.forEach(function(choice) {
 
+
             // Create paragraph with anchor element
             var choiceParagraphElement = document.createElement('p');
             choiceParagraphElement.classList.add("choice");
             choiceParagraphElement.innerHTML = `<a href='#'>${choice.text}</a>`
             storyContainer.appendChild(choiceParagraphElement);
+
+            //console.log(choice.text);
+            if(choice.text == "Exit the inn") {
+                //choice.text
+                console.log(choiceParagraphElement);
+                choiceParagraphElement.querySelectorAll("a")[0].classList.add("red_text");
+
+                // function pausStory() {
+                    // prevent clicks on buttons,
+                //}
+            }
+
+
+
+
 
             // Fade choice in after a short delay
             showAfter(delay, choiceParagraphElement);
@@ -120,17 +154,34 @@
             var choiceAnchorEl = choiceParagraphElement.querySelectorAll("a")[0];
             choiceAnchorEl.addEventListener("click", function(event) {
 
-                // Don't follow <a> link
-                event.preventDefault();
 
-                // Remove all existing choices
-                removeAll("p.choice");
+            if(clickable) {
+                    if(choice.text == "Read") {
+                        document.querySelector("#box").style.display = "flex";
+                        clickable = false;
+                    }
 
-                // Tell the story where to go next
-                story.ChooseChoiceIndex(choice.index);
+                    transformHealth();
 
-                // Aaand loop
-                continueStory();
+                    // Don't follow <a> link
+                    event.preventDefault();
+
+                    // Remove all existing choices
+                    removeAll("p.choice");
+
+                    // Tell the story where to go next
+                    story.ChooseChoiceIndex(choice.index);
+
+                    // Aaand loop
+                    continueStory();
+                    days_passed.innerHTML = days + " days have passed";
+                    // updating every click is fine
+                    gold_el.innerHTML = story.variablesState._globalVariables.player_gold._value + " gold";
+                    // health_el.innerHTML = story.variablesState._globalVariables.player_health._value;
+                    console.log(gold);
+                    transformHealth();
+
+                }
             });
         });
 
@@ -153,6 +204,36 @@
         outerScrollContainer.scrollTo(0, 0);
     }
 
+    // call to transform health value to hearts
+    function transformHealth() {
+            // one el for each heart?
+            // console.log(health);
+            removeAllHealthImages();
+
+            console.log(story.variablesState._globalVariables.player_health._value);
+            for (var i = 1; i <= story.variablesState._globalVariables.player_health._value; i++) {
+
+                var heart = document.createElement('img');
+                health_el.appendChild(heart);
+                heart.src = "heart.png";
+                heart.style.width = "30px";
+                heart.style.display = "inline";
+                heart.style.margin = "0px 5px 0px 0px";
+            }
+            console.log(health_el.querySelectorAll("img"));
+    }
+
+    function removeAllHealthImages()
+    {
+        var allElements = health_el.querySelectorAll("img");
+        console.log(allElements);
+        for(var i=0; i<allElements.length; i++) {
+            var el = allElements[i];
+            el.parentNode.removeChild(el);
+        }
+    }
+
+
     // -----------------------------------
     // Various Helper functions
     // -----------------------------------
@@ -169,7 +250,7 @@
 
         // Line up top of screen with the bottom of where the previous content ended
         var target = previousBottomEdge;
-        
+
         // Can't go further than the very bottom of the page
         var limit = outerScrollContainer.scrollHeight - outerScrollContainer.clientHeight;
         if( target > limit ) target = limit;
@@ -201,6 +282,7 @@
     function removeAll(selector)
     {
         var allElements = storyContainer.querySelectorAll(selector);
+        console.log(allElements);
         for(var i=0; i<allElements.length; i++) {
             var el = allElements[i];
             el.parentNode.removeChild(el);
@@ -227,7 +309,7 @@
         var propertySplitIdx = tag.indexOf(":");
         if( propertySplitIdx != null ) {
             var property = tag.substr(0, propertySplitIdx).trim();
-            var val = tag.substr(propertySplitIdx+1).trim(); 
+            var val = tag.substr(propertySplitIdx+1).trim();
             return {
                 property: property,
                 val: val

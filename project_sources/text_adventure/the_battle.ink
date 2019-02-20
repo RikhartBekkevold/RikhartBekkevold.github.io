@@ -1,19 +1,14 @@
 == the_battle
-    The Battle # CLASS: test 
-    Final Chapter # CLASS: subheading
--> desc_monster
+The Giant of Mournstead # CLASS: test 
+    
+Your party of two set foot in the direction of west, towards the cave.
+        After an hour you reach the goal. You crouch behind a large rock. 
+You peak over the edge of the boulder, {ally_name} likewise, and assess the situation. 
 
-== desc_monster 
-//You sneak carefully through the forest. Between the trees. Listening for any sound as you go. You eventually reach a clearing, //and you see it. The monster. 
-//time_of_day
-//It's dark 
-
-You peak over the edge of the rock, {ally_name} likewise, and assess the situation. 
-
-In front of you stands /*or sleep*/ a huge creature, a few yards away. It becomes instantly clear to you why the reward was so unusually high. You have never seen a more threatening monster. It was hideous, large and with hands the size of buckets. Around its feet lay several dead goats. The remnants of its breakfast, no doubt. And, no doubt, taken from the village. 
+In front of you, a few yards away, stands /*or sleep*/ a huge creature. It becomes instantly clear to you why the reward was so unusually high. You have never seen a more threatening monster. It is hideous, large and with hands the size of buckets. Around its feet lay several dead goats. The remnants of its breakfast, no doubt. And, no doubt, taken from the village. 
 You feel your knees weaken, but you tell yourself to get a grip. No turning back now.  
-
-* [Continue] -> monster_1
+    * [Continue] 
+-> monster_1
 
 
 == monster_1
@@ -23,6 +18,7 @@ Both you and {ally_name} stand and stare for a second, before regaining your sen
 
 == fight_start
     The size of the monster is undeniable. Your head is about as far off the ground as the knees of the monster. You can only reach the legs.  
+
 
     * [You charge in to attack the left leg] 
         You attack the left leg with your {player_weapon}. Landing a few blows. {ally_name} attacks the right leg from a distance.
@@ -37,10 +33,11 @@ Both you and {ally_name} stand and stare for a second, before regaining your sen
      
     The monster turns its attention to you and strikes back at you with a quick swing of its enourmous hammer.           
            
-            // there isnt a sense that she changes the outcome... 
-            // must see that the world is changing and that the players action changes the world - even if just for fun
+    // there isnt a sense that she changes the outcome... 
+    // must see that the world is changing and that the players action changes the world - even if just for fun
             
     * [Parry] 
+         ~ player_health--
         You parry. The blow was powerful. Your arm hurts.  
         The parry allows you a chance to counter attack. You seize the opportunity and manage to land a successful blow deep in its leg. 
     * [Dodge] 
@@ -52,7 +49,7 @@ Both you and {ally_name} stand and stare for a second, before regaining your sen
     * [Continue to fight]
         The repeated blows and attacks from both of you finally brings the monster to its knees. 
         ** [Stab throat]
-            You take advantage of the lowered body to plunge your {player_weapon} into its throat with all your strength. The monster gurgle and falls over.
+            You take advantage of the lowered body to plunge your {player_weapon} into its throat with all your strength. The monster fell over with a wheezing sound.
         ** [Stab heart]
             You take advantage of the lowered body to plunge your {player_weapon} into its heart.
                 You miss the heart. What now? 
@@ -66,24 +63,47 @@ Both you and {ally_name} stand and stare for a second, before regaining your sen
         --
         Dead. 
     -
+    
+
+    // weapon is based on agressiveness? otherwise i cant make her charge inn? 
+    
     //[Recruit for later]
-* [End fight]
+* [Collect head]
     Panting, you walk over to each other. Tired, but happy.   
 -> fight_end
 
 
 == fight_end
+    
     It's over. You are victorious. 
     Still panting, you remember that you need to collect the head to recieve your reward.  
     You collect the head of the monster with difficulty, the neck is thick to cut through, but you manage. 
-    You both take a breather, but afterwards you walk back to the village to inform the residents. 
-    * [Continue] 
+    You both take a breather, but afterwards you walk back to the village { current_epilogue == -> ending_1 or current_epilogue == -> ending_2: to inform the residents of your victory.} {current_epilogue == -> ending_3: although there is no one to inform of your victory.}
+    * [Return to village] 
         Later that day you and {ally_name} part ways. You need to go back up north, while {ally_pronoun} is southbound.
     -
     * [Epilogue]
--> ending_1
+-> epilogue
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//   {
+        //- aggressiveness < 5:
+        //    {ally_name} lets you attack first. 
+      //  - else: 
+    //        {ally_name} charges into battle.
+  //  }    
 
 // Depeding on how the PT the ally fight differently. 
     // It should be a combination of PT difference and player action  
@@ -122,8 +142,9 @@ Both you and {ally_name} stand and stare for a second, before regaining your sen
     // have battles, events, and convoes that repeat in the middle? 
 
 
-
-
+    NPC model: 
+    race 
+    class 
 
 
 
@@ -254,32 +275,5 @@ when you fight it, you die, and all is revealed. or the locklet it has in pocekt
 your daughter then you are chasing a man instead
 
 
-== old 
-* [Attack one leg each] 
-    You attack the left leg with your {player_weapon}. {ally_name} attacks the right leg with her {ally_weapon}. 
-    
-{ 
-    // set var here to remove message above? 
-    
-    // weapon decides attack . and strategy choosen. 
 
-    - ally_race == "Dwarf":
-        The dwarf lunged at the beast. Axe in hand, striking repeatedly at the beast legs. 
-        You attacked the other leg. 
-    - else: 
-        The elf lunged at the beast. Axe in hand, striking repeatedly at the beast legs. 
-}
-
-* [Attack the same leg] 
-    You both charge at the same leg. Hacking and slashing. 
-
-
-* { ally_weapon == "bow" } [Distract it while {ally_name} shoots from a distance] 
-    You distract the monster while. {ally_name} shoots arrows from a distance until it dies. 
-
-
-* { time_of_day == "night" } [Sneak up on it] 
-    You sneak up on the monster. You land a few blows, but the skin is too thick to cause serious damage. The monster awakens immedately, but at least you got some damage in before it could.  
--
--> END
 

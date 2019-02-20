@@ -1,47 +1,90 @@
--> the_path
-
 == your_room_1
-You wake up abruptly and jolt yourself into a sitting position. 
-Next to your bed, on the night stand, lies a piece of parchement. You pick it up and read it for the umpteenth time. 
-* [Read] -> your_room_2 
+VIR DORUHL, THE NORTHERN KINGDOMS # CLASS: test 
+
+You wake up abruptly and jolt yourself into a sitting position. Another nightmare of a monster chasing you. You've had too many of these nightmares lately; you think to yourself.
+Next to your bed on the night stand, lies a piece of parchment. You pick it up and read it for the umpteenth time. 
+
+*  [Read]  
+-> your_room_2  
+
+// die  = enter fight with too little health
+// the vampires kills you
+// you never find out about the vamipres, and that the village 
+// was using the best to kill travelers 
+// get reward 
+// dont get reward. didnt collect head. 
+// interject thought into the reading process? 
 
 == your_room_2
 It reads: 
-"A beast has been terrorizing the village of Mournstead, killing the farmers sheep and attacking villagers. To investigate and dispatch of the problem the army herby offers the reward of 300 gold. Bring the head of the beast as proof. The head must be in good enough condition to identify by." // not good enough condition, so you dont get reward? 
-* [Continue]  -> your_room_3  
-// interject thought into the reading process? 
+
+"Word has been received by a messenger of a monster terrorizing the villagers of Mournstead, a village in the Southern Kingdoms. With the waging war, the army cannot afford to dispose of the problem personally. Any mercenary willing to dispatch of the problem in its stead will be rewarded with 300 gold pieces upon completion of the task. Due to its remoteness the state of the village is currently unknown, therefore, the urgency of the task must be stressed shall the villagers life be saved."
+
+
+
+//A beast has been terrorizing the village of Mournstead, killing the farmers sheep and attacking villagers. To investigate and dispatch of the problem a reward of 300 gold is herby offered. Bring the head of the beast, in identifiable condition, as proof.
+* [Fold]  -> your_room_3  
+
+
+
+     the state of hurry replaces the lack of details? although need it to show why you partnered. thats the unidentiefed state part? 
+       
+       ""Must hurry, the state of the village is unknown. time matters."
+       ""we recieve word from a messenger of a monster or beast. unidentified. the elderman has sent the messanger. the elderman is the last to die?
+        "you better hurry then. no time to loose. it could mean the death of many if you delayed."
+
+// tiemly reminders of hurrying.. and what can happen if you are to slow. 
+// "looks like you where to slow." you realise. if only you had made better decisions.  
+
 == your_room_3
-You roll your newest contract back up, as a mercenary, it's how you make your living. You had accepted the contract because of the good pay, twice of what was usually offered. Something was bugging you, however. The reward seemed too high for what you were tasked to do, and when you asked for details, they seemed reluctant to share.  
-* [Continue] -> weapon_choices 
+You roll your newest contract back up. As a mercenary, contracts like these are how you make your living.
+You had accepted the contract because of the good pay, twice of what was usually offered. The contract had stressed the importance of reaching the village as fast as possible, it was a matter of life or death for the villagers. No time to waste then, you thought. 
+
+*  [Stand up] -> gear_choices 
+
+
+== gear_choices
+You shake the morning grogginess off and stand up from bed to get dressed. 
+
+
+ * [You put on your leather armor] 
+    //..leather armor.
+    ~ player_gear = "leather armor"
+ * [You put on your plate armor]
+    //..plate armor.
+    ~ player_gear = "plate armor"
+ * [You put on your chainmail]
+    //..plate armor.
+    ~ player_gear = "chainmail"
+ -
+-> weapon_choices
 
 == weapon_choices
-You shake the bad feeling off, and stand up to get dressed. 
-You can hear the merry talk of the inn below you. You arrived here late last night. You dress yourself. Before you head downstair you also grab your:  
+You can hear the merry talk of the inn below you. You arrived here late last night. You dress yourself in your {player_gear}. Before you head downstairs you also grab your..  
 * [Axe]
     ~ player_weapon = "axe" 
-    Dressed, and with your {player_weapon} equipped, you..
+    .. {player_weapon} and
     * * ..head downstairs 
     -> the_inn 
-    #CLEAR
 
 * [Sword] 
     ~ player_weapon = "sword" 
-    Dressed, and with your {player_weapon} equipped, you..
+   .. {player_weapon} and
    * * ..head downstairs 
    -> the_inn 
-   #CLEAR
+   
 * [Polearm] 
     ~ player_weapon = "polearm" 
-    Dressed, and with your {player_weapon} equipped, you.. 
+    .. {player_weapon} and 
     * * ..head downstairs 
     -> the_inn 
-    # CLEAR
+
 * [Dagger]
     ~ player_weapon = "dagger" 
-    Dressed, and with your {player_weapon} equipped, you.. 
+    .. {player_weapon} and 
     * * ..head downstairs
     -> the_inn 
-    # CLEAR
+
 
 // clear here? so fresh start on "the inn"?
 // go for next? so that you can better control text amount? 
@@ -50,6 +93,7 @@ You can hear the merry talk of the inn below you. You arrived here late last nig
 // one option = next/progress story
 
 
+better describe the settings. the dusty road etc. create an image of the scene. 
 
 
 
