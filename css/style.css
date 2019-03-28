@@ -18,7 +18,6 @@
 
 
 
-
 /* HOME SECTION */
 #home {
     display: flex;
@@ -137,20 +136,13 @@
     max-width: 400px;
 }
 
-/* .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-} */
 
 form label,
 form input,
 form textarea,
 form select,
 form button {
-    width: 100%;
-    /* margin: 10px;
-    margin-bottom: 20px; */
+    width: 90%;
 }
 
 form input {
@@ -165,14 +157,78 @@ form textarea {
 }
 
 form button {
-    height: 30px;
     margin: 0px;
-    margin-bottom: 20px;
+}
+
+form button:hover {
+    cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+    color: #A39FA1;
+    font-family: Arial;
+    font-weight: 1em;
+
+}
+:-moz-placeholder {
+    color: #A39FA1;
+    font-weight: 1em;
+
+}
+::-moz-placeholder {
+    color: #A39FA1;
+    font-weight: 1em;
+
+}
+:-ms-input-placeholder {
+    color: #A39FA1;
+    font-weight: 1em;
+
+}
+
+textarea {
+
+      font-family: Arial;
+  font-weight: 1em;
+}
+
+textarea::-webkit-input-placeholder {
+    color: #A39FA1;
+      font-family: Arial;
+  font-weight: 1em;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+  color: #A39FA1;
+  font-family: Arial;
+  font-weight: 1em;
+
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+     color: #A39FA1;
+  font-family: Arial;
+  font-weight: 1em;
+
+}
+
+textarea:-ms-input-placeholder {
+     color: #A39FA1;
+  font-family: Arial;
+  font-weight: 1em;
+
+}
+
+textarea::placeholder {
+      color: #A39FA1;
+  font-family: Arial;
+  font-weight: 1em;
+
 }
 
 
 
-#contact .fa-facebook,
+/* #contact .fa-facebook,
 #contact .fa-linkedin,
 #contact .fa-github
 {
@@ -198,7 +254,7 @@ form button {
     margin-top: -7px;
     text-shadow: 0px 16px 10px rgba(0, 0, 0, 0.3);
     transform: translate(0, -8);
-}
+} */
 
 
 
@@ -231,10 +287,12 @@ footer .fa-linkedin {
     color: #0077B5;
 }
 
+footer .fa-youtube {
+    color: #282828;
+}
 
 
-
-
+/* forces the nav menu to go from 3 buttons on one row directly to 1 button for each row */
 @media screen and (max-width: 404px) {
     #home_btn, #project_btn, #contact_btn {
         text-align: center;

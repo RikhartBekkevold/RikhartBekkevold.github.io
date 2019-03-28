@@ -325,6 +325,7 @@ Game.prototype.destroySelf = function() {
  * @return undefined
  */
 Game.prototype.resetGame = function() {
+    // set game as ended so rec stops
     this.destroySelf();
     SM.currentScene = new Game(this.canvas);
     SM.currentScene.init(0);
@@ -371,6 +372,19 @@ Game.prototype.randomEvent = function() {
     // switch cards after randomly generated time
     setTimeout(() => {
             this.switchTwoCards();
-            this.randomEvent();
+            if(!gameEnd) {
+                this.randomEvent();
+            }
     }, randomTime);
+};
+
+
+// return before randomEvent
+
+/**
+ * Remember to call everytime game quits. Otherwise recursion never ends.
+ */
+Game.prototype.cancelRandomEvent = function () {
+
+
 };

@@ -7,7 +7,9 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/percentage_wheels.css">
@@ -241,8 +243,8 @@
 
 				<!-- DESCRIPTION -->
 				<div class="card_desc">
-					<a href="project_sources/vueditor/index.html"><h2>Form Editor</h2></a>
-					<p> A vue built form editor. Vuetify used for material design components and responsivt design.</p>
+					<a href="project_sources/pyMatch/VuEditor/index.html"><h2>Form Editor</h2></a>
+					<p> A webapp built with Vue and Vuetify. An editor to create forms. </p>
 				</div>
 
 				<!-- TAGS -->
@@ -265,7 +267,7 @@
 					</div>
 
 					<div style="padding: 10px">
-						<a href="project_sources/vueditor/index.html"><div class="tag btn">
+						<a href="project_sources/pyMatch/VuEditor/index.html"><div class="tag btn">
 						<i style="margin-right: 5px;" class="fas fa-globe"></i>WEBSITE</div></a>
 					</div>
 				</div>
@@ -273,7 +275,50 @@
 			</div>
 		</div>
 
+
 		<!-- FOURTH CARD -->
+		<div class="card">
+			<div class="card-image">
+
+					<img src="thumbnails/thumbclosure.png" alt="thumb" />
+
+			</div>
+			<div class="card_content">
+
+				<!-- DESCRIPTION -->
+				<div class="card_desc">
+					<h2>Tutorials</h2>
+					<p>
+					 	A collection of tutorials and blog posts I have written.
+					</p>
+				</div>
+
+
+				<!-- TAGS -->
+				<div class="tags_container">
+					<div class="tag white_tag">tutorials</div>
+					<div class="tag white_tag">graph DB</div>
+					<div class="tag white_tag">relational DB</div>
+				</div>
+
+
+				<!-- LINKS BUTTONS -->
+				<div class="buttons_container">
+					<div style="padding: 10px">
+						<a href="https://medium.com/p/b5b835fbf858/edit"><div class="tag btn">
+						<i style="margin-right: 5px;" class="fab fa-medium"></i>Closure</div></a>
+					</div>
+
+				<div style="padding: 10px">
+					<a href="https://medium.com/@ikhart.v.bekkevold/relational-or-graph-databases-which-one-to-choose-for-your-next-project-6fd31ae9cee"><div class="tag btn">
+					<i style="margin-right: 5px;" class="fab fa-medium"></i>Graph DB</div></a>
+				</div>
+				</div>
+			</div>
+		</div>
+
+
+
 
 	</div>
 
@@ -281,52 +326,25 @@
 	<!-- CONTACT CARD -->
 	<div style="color: #363636; text-align: center;" id="contact">
 		<div class="card">
-			<h2 style="font-family: 'Montserrat', sans-serif; font-size: 2em;">Contact me</h2>
+			<h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.9em;">Contact me</h2>
 			<div class="container">
 
-				<!-- <div style="display: flex; justify-content: center; flex-wrap: wrap;"> -->
-					<!-- <form method="post" action="mailto:ikhart.v.bekkevold@gmail.com"  enctype="text/plain"> -->
 
-						<!-- <label for="fname">First Name</label>
-						<input type="text" id="fname" name="firstname" placeholder="Your name..">
+				<form id="contact_form" method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com">
+					<!-- <label for="lname">Your Email</label> -->
+					<input id="email" autocomplete="off" style=" padding-left: 10px" type="email" name="email" placeholder="Your email adresse">
 
-						<label for="lname">Last Name</label>
-						<input type="text" id="lname" name="lastname" placeholder="Your last name..">
+					<!-- <label style="font-family: 'Montserrat', sans-serif;" for="lname">Subject</label> -->
+					<input id="subject" autocomplete="off" style="padding-left: 10px"  type="text" name="subject" placeholder="Subject">
 
-						<label for="lname">Your Email</label>
-						<input type="text" id="email" name="email" placeholder="Your email..">
+					<!-- <label for="lname">Message</label> -->
+					<textarea id="message" name="message" placeholder="Message" style="padding: 10px 0 0px 10px"></textarea>
 
-						<label for="country">Country</label>
-						<select id="country" name="country">
-						  <option value="australia">Australia</option>
-						  <option value="canada">Canada</option>
-						  <option value="usa">USA</option>
-						</select>
+					<button class="btn" type="submit" style="width: 40%">Send</button>
+					<button onclick="window.event.preventDefault()" class="btn" id="reset_btn" style="width: 40%; margin: 0px;">Reset</button>
 
 
-
-						<label for="subject">Subject</label>
-						<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-
-
-						<input type="submit" value="Submit"> -->
-
-
-						<form method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com">
-							<label for="lname">Your Email</label>
-							<input type="email" name="email">
-
-							<label for="lname">Subject</label>
-							<input type="email" name="subject">
-
-							<label for="lname">Message</label>
-							<textarea name="message"></textarea>
-
-							<button type="submit">Send</button>
-						</form>
-					<!-- </form> -->
-				<!-- </div> -->
+				</form>
 			</div>
 
 			<!-- <h2>Find me</h2>
@@ -348,43 +366,12 @@
 			<a href="https://github.com/RikhartBekkevold"><i class="icon fab fa-github"></i></a>
 			<a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
 			<a href="https://www.linkedin.com/"><i class="icon fab fa-linkedin"></i></a>
+			<a href="https://www.youtube.com/channel/UCb9Fe-HNoZipzdwGdAhM-eA?view_as=subscriber"><i class="icon fab fa-youtube"></i></a>
 		</div>
 	</footer>
 
 
-
 	<script src="main.js"></script>
 
-	<script>
-	// <div class="card">
-	// 	<div class="card-image">
-	// 		<a href="project_sources/pyMatch/index.html">
-	// 			<img src="thumbnails/thumbpymatch.png" alt="thumb" />
-	// 		</a>
-	// 	</div>
-	// 	<div class="card_content">
-	//
-	// 		<!-- DESCRIPTION -->
-	// 		<div class="card_desc">
-	// 			<a href="project_sources/pyMatch/index.html"><h2>PyMatch</h2></a>
-	// 			<p> A desktop game built with Python. Originally ran on the rasberry pie with floor tile input. Requires download to run. </p>
-	// 		</div>
-	//
-	// 		<!-- TAGS -->
-	// 		<div class="tags_container">
-	// 			<div class="tag white_tag">python</div>
-	// 			<div class="tag white_tag">rasberry pi</div>
-	// 		</div>
-	//
-	// 		<!-- LINK BUTTONS -->
-	// 		<div class="buttons_container">
-	// 			<div style="padding: 10px">
-	// 				<a href="https://github.com/RikhartBekkevold/PyMatch"><div class="tag btn github_btn">
-	// 				<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div></a>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// </div>
-</script>
 </body>
 </html>
