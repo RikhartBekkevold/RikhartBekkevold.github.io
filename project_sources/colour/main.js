@@ -183,10 +183,10 @@ button.addEventListener("click", function() {
     }
 
     show(++current_index);
-    const QUESTION = tasks[current_index].question; // next page/question/task
-    changeQuestion(QUESTION); // insert the text for the next question to display... do it in show? or after
+    const QUESTION = tasks[current_index].question;     // next page/question/task
+    changeQuestion(QUESTION);                           // insert the text for the next question to display... do it in show? or after
     resetAnswer();
-    answer_field.focus();
+    answer_field.focus();                               // focus the answer field automatically when moving to the next task
 });
 
 
