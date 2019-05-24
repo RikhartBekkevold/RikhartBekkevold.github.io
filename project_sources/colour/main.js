@@ -133,7 +133,7 @@ var button_text = "Start test";
 
 tasks.forEach(function(task, index) {
 
-    if(index > 0 && index < tasks.length - 1) {
+    if(index > 0 && index <= 4) {//< tasks.length - 1) {
         if (task.cc === "white")
             task.url = "img/task" + index + "/white" + ".png";
         else if (task.cc === "syntax")
@@ -142,6 +142,18 @@ tasks.forEach(function(task, index) {
             task.url = "img/task" + index + "/semantic" + ".png";
 
         insertImage(task, index); // still need this one though
+    }
+
+    if(index === 5 || index === 6) {
+        if (task.cc === "white")
+            task.url = "img/task" + index + "/white" + ".PNG";
+        else if (task.cc === "syntax")
+            task.url = "img/task" + index + "/syntax" + ".PNG";
+        else if (task.cc === "semantic")
+            task.url = "img/task" + index + "/semantic" + ".PNG";
+
+        insertImage(task, index); // still need this one though
+
     }
 });
 
