@@ -24,11 +24,24 @@
 		var game = new PIXI.Application(
 			document.body.clientWidth,
 			document.body.clientHeight,
-			{ backgroundColor : 0xddd }
+			{ backgroundColor : 0x1A1A1D }
 		);
 		document.body.appendChild(game.view);
 	</script>
-	<script src="js/dist/app.min.js"></script>
+	<script src="js/global_consts.js"></script>
+	<script src="js/sceneManager.js"></script>
+	<script src="js/userSettings.js"></script>
+	<script src="js/lib/utility.js"></script>
+	<script src="js/lib/animations.js"></script>
+	<script src="js/scenes/game.js"></script>
+	<script src="js/card.js"></script>
+	<script src="js/slider.js"></script>
+	<script src="js/checkmark.js"></script>
+	<script src="js/scenes/startscreen.js"></script>
+	<script src="js/scenes/endscreen.js"></script>
+	<script src="js/scenes/settingsscreen.js"></script>
+	<!-- <script src="js/app.min.js"></script>   -->
+	<!-- index.min.js, app, main, pixi (the name of app)-->
 	<script>
 		const SM = new SceneManager();
 	</script>
