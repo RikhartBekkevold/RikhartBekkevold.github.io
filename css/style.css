@@ -1,26 +1,60 @@
 /* NAVIGATION MENU */
-#nav_menu {
+#nav_menu, #sub_menu {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 10px;
-    /* color: #363636; */
 }
 
-#home_btn, #project_btn, #contact_btn {
+#about_me_btn, #projects_btn, #contact_btn, #big_btn, #small_btn {
     cursor: pointer;
     display: inline-block;
-    /* border-bottom: 1px solid #ddd; */
     padding: 5px;
     margin-right: 2.5px;
     margin-left: 2.5px;
 }
 
-
-
-/* HOME SECTION */
-#home {
+/* FILTER SELECT */
+#filter {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#filter select {
+    outline: none;
+    height: 35px;
+    width: 200px;
+    border: 2px solid #97A89C;
+    margin-right: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#filter option {
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+}
+
+#filter button {
+    /* cursor: pointer; */
+    background: #97A89C;
+    color: #fff;
+    /* border: 1px solid #97A89C; */
+    padding: 0 20px 0 20px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#filter button:focus {
+    outline: none;
+    /* border: 1px solid #97A89C; */
+}
+
+
+/* ABOUT SECTION */
+#about_me {
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
     color: #363636;
@@ -28,7 +62,7 @@
     min-height: 529px;
 }
 
-#home .card {
+#about_me .card {
     max-width: 500px;
     padding-bottom: 50px;
     line-height: 2em;
@@ -36,7 +70,7 @@
     font-size: 0.9em;
 }
 
-#home h2 {
+#about_me h2 {
     line-height: 1.5em;
     border-bottom: 1px solid #ddd;
     box-sizing: border-box;
@@ -44,8 +78,11 @@
     color: black;
 }
 
-#aboutme_img {
-    width: 100%;
+#tags_wrapper #skill_tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 
 #personal_info_wrapper, #edu_wrapper, #tags_wrapper {
@@ -59,19 +96,22 @@
 
 
 
-
-/* PROJECT SECTION */
-#project {
+/* projects SECTION */
+#projects {
     color: hsl(220, 14%, 71%);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    /* flex: 1; /*makes the cards equal height though, not content*/
 }
 
-#project .card {
+#projects .card {
     width: 400px;
     margin-bottom: 40px;
     padding-bottom: 0px;
+
+    /* min-height: inherit; */
+    /* use height of card_container.. make their minheight the same i guess.. so time it.. then fix tags spacing/rows? */
 }
 
 .card-image {
@@ -80,19 +120,9 @@
     overflow: hidden;
 }
 
-/*the project thumbnails*/
+/*the projects thumbnails*/
 .card-image img {
     width: 100%;
-}
-
-.card:hover .card-image img {
-    /* width: 110%; */
-    filter: grayscale(0);
-    cursor: pointer;
-}
-
-.card_content {
-
 }
 
 .card_desc {
@@ -100,9 +130,11 @@
     font-size: 0.86em;
     min-height: 150px;
     color: black;
+    text-align: center;
 }
 
 .tags_container {
+    text-align: center;
     font-size: 0.9em;
     min-height: 100px;
     padding: 0px 20px 0px 20px;
@@ -112,6 +144,7 @@
     padding: 20px 0px 20px 0px;
     background: white;
     margin: 0px;
+    /* min-height: 40px; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -121,13 +154,10 @@
 
 
 /* CONTACT SECTION */
-
-
 #contact {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 
 #contact .card {
@@ -168,93 +198,57 @@ form button:hover {
     color: #A39FA1;
     font-family: Arial;
     font-weight: 1em;
-
 }
+
 :-moz-placeholder {
     color: #A39FA1;
     font-weight: 1em;
-
 }
+
 ::-moz-placeholder {
     color: #A39FA1;
     font-weight: 1em;
-
 }
+
 :-ms-input-placeholder {
     color: #A39FA1;
     font-weight: 1em;
-
 }
 
 textarea {
-
-      font-family: Arial;
-  font-weight: 1em;
+    font-family: Arial;
+    font-weight: 1em;
 }
 
 textarea::-webkit-input-placeholder {
     color: #A39FA1;
-      font-family: Arial;
-  font-weight: 1em;
+    font-family: Arial;
+    font-weight: 1em;
 }
 
 textarea:-moz-placeholder { /* Firefox 18- */
-  color: #A39FA1;
-  font-family: Arial;
-  font-weight: 1em;
-
+    color: #A39FA1;
+    font-family: Arial;
+    font-weight: 1em;
 }
 
 textarea::-moz-placeholder {  /* Firefox 19+ */
      color: #A39FA1;
-  font-family: Arial;
-  font-weight: 1em;
-
+     font-family: Arial;
+     font-weight: 1em;
 }
 
 textarea:-ms-input-placeholder {
      color: #A39FA1;
-  font-family: Arial;
-  font-weight: 1em;
-
+     font-family: Arial;
+     font-weight: 1em;
 }
 
 textarea::placeholder {
-      color: #A39FA1;
-  font-family: Arial;
-  font-weight: 1em;
-
+    color: #A39FA1;
+    font-family: Arial;
+    font-weight: 1em;
 }
-
-
-
-/* #contact .fa-facebook,
-#contact .fa-linkedin,
-#contact .fa-github
-{
-    color: #3B5998;
-    font-size: 1.5em;
-    text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
-    transition: all ease-in-out 150ms;
-    margin: 0 20px 0 20px;
-}
-
-#contact .fa-linkedin {
-    color: #0077B5;
-}
-
-#contact .fa-github {
-    color: #211F1F;
-}
-
-#contact .fa-github:hover,
-#contact .fa-linkedin:hover,
-#contact .fa-facebook:hover
-{
-    margin-top: -7px;
-    text-shadow: 0px 16px 10px rgba(0, 0, 0, 0.3);
-    transform: translate(0, -8);
-} */
 
 
 
@@ -262,7 +256,7 @@ textarea::placeholder {
 /* FOOTER */
 footer {
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     color: hsl(220, 14%, 71%);
     text-align: center;
 }
@@ -277,24 +271,48 @@ footer {
 
 footer .fa-github {
     color: #211F1F;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 
 footer .fa-facebook {
     color: #3B5998;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 
 footer .fa-linkedin {
     color: #0077B5;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 
 footer .fa-youtube {
-    color: #282828;
+    color: #c4302b;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 
+footer .fa-github:hover,
+footer .fa-facebook:hover,
+footer .fa-linkedin:hover,
+footer .fa-youtube:hover {
+    -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0);
+}
+
+/* ANIMATIONS */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 
 /* forces the nav menu to go from 3 buttons on one row directly to 1 button for each row */
+/* flexbox manages the rest of the responsive design */
 @media screen and (max-width: 404px) {
-    #home_btn, #project_btn, #contact_btn {
+    #about_me_btn, #projects_btn, #contact_btn {
         text-align: center;
         width: 100%;
         margin-left: 30%;

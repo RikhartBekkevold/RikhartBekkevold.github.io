@@ -7,8 +7,6 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -16,423 +14,238 @@
 </head>
 
 <body>
-	<!-- MENU -->
-	<div id="nav_menu">
-		<h1 id="home_btn">About</h1>
-		<h1 id="project_btn">Projects</h1>
-		<h1 id="contact_btn">Contact</h1>
-	</div>
+	<div v-cloak id="app">
 
+		<div id="nav_menu">
+			<h1 id="about_me_btn">About</h1>
+			<h1 id="projects_btn">Projects</h1>
+			<h1 id="contact_btn">Contact</h1>
+		</div>
 
-	<!-- ABOUT ME CARD  -->
-	<div id="home">
-		<div class="card">
+		<div id="filter">
+			<select id="select" @change="filterProjects($event, this)">					<!-- computed prop instead? -->
+				<option value="All">All</option>
+				<optgroup label="Major tags">
+					<option v-for="option in filterSelect" :value="option">{{option.charAt(0).toUpperCase() + option.substring(1)}}</option>
+				</optgroup>
+				<optgroup label="Minor tags">
+					<option v-for="option in minorTagsSelect" :value="option">{{option.charAt(0).toUpperCase() + option.substring(1)}}</option>
+				</optgroup>
+			</select>
+			<button @click="reset()">Reset</button>
+		</div>
 
-			<!-- TOP IMAGE -->
-			<!-- <img id="aboutme_img" src="https://www.w3schools.com/w3images/team2.jpg" alt="John"> -->
+		<!-- ABOUT ME CARD  -->
+		<div id="about_me">
+			<div class="card">
 
-			<!-- PERSONAL INFO -->
-			<div id="personal_info_wrapper">
-				<h1>Rikhart Bekkevold</h1>
-				<span>Web Developer, Interaction Designer</span>
-				<div><i class="fas fa-map-marker-alt"></i> Gjøvik, Norway</div>
-			</div>
-
-			<!-- EDUCATION SECTION -->
-			<div id="edu_wrapper">
-				<h2>Education</h2>
-
-				<i class="fas fa-graduation-cap"></i>
-				<i>2014 - 2017</i>
-				<br>
-				<b>Bachelor in Web development</b>
-				<br>
-				Norwegian University of Science and Technology
-				<br>
-				<br>
-				<i class="fas fa-graduation-cap"></i>
-				<i>2017 -</i>
-				<br>
-				<b>Masters in Interaction Design</b>
-				<br>
-				Norwegian University of Science and Technology
-				<br>
-			</div>
-
-			<!-- TAGS SECTION -->
-			<div id="tags_wrapper">
-				<h2>Skills</h2>
-
-				<div style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 30px">
-					<div class="tag">Frontend</div>
-					<div class="tag">Backend</div>
-					<div class="tag">Javascript</div>
-					<div class="tag">PHP</div>
-					<div class="tag">Python</div>
-					<div class="tag">IxDesign</div>
-					<div class="tag">UX</div>
-					<div class="tag">Research</div>
-				</div>
-			</div>
-
-			 <!-- PERCENTAGE WHEELS -->
-			<div class="flex-wrapper" id="flex_wrapper">
-				<div class="single-chart">
-					<svg viewbox="0 0 36 36" class="circular-chart orange">
-						<path class="circle-bg"
-							d="M18 2.0845
-							a 15.9155 15.9155 0 0 1 0 31.831
-							a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-						<path class="circle"
-							stroke-dasharray="75, 100"
-							d="M18 2.0845
-							a 15.9155 15.9155 0 0 1 0 31.831
-							a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-						<text x="18" y="20.35" class="percentage">75%</text>
-					</svg>
-					<!-- <object type="image/svg+xml" data="test.svg"></object> -->
-					<span class="title">Frontend</span>
+				<!-- PERSONAL INFO -->
+				<div id="personal_info_wrapper">
+					<h1>Rikhart Bekkevold</h1>
+					<span>Web Developer, Interaction Designer</span>
+					<div><i class="fas fa-map-marker-alt"></i> Gjøvik, Norway</div>
 				</div>
 
-
-				<div class="single-chart">
-					<svg viewbox="0 0 36 36" class="circular-chart green">
-						<path class="circle-bg"
-							d="M18 2.0845
-							a 15.9155 15.9155 0 0 1 0 31.831
-							a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-						<path class="circle"
-							stroke-dasharray="25, 100"
-							d="M18 2.0845
-							a 15.9155 15.9155 0 0 1 0 31.831
-							a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-						<text x="18" y="20.35" class="percentage">25%</text>
-					</svg>
-					<!-- <object  type="image/svg+xml" data="test.svg"></object> -->
-
-					<span class="title">Backend</span>
+				<!-- EDUCATION SECTION -->
+				<div id="edu_wrapper">
+					<h2>Education</h2>
+					<i class="fas fa-graduation-cap"></i>
+					<i>2014 - 2017</i>
+					<br>
+					<b>Bachelor in Web development</b>
+					<br>
+					Norwegian University of Science and Technology
+					<br>
+					<br>
+					<i class="fas fa-graduation-cap"></i>
+					<i>2017 -</i>
+					<br>
+					<b>Masters in Interaction Design</b>
+					<br>
+					Norwegian University of Science and Technology
+					<br>
 				</div>
 
-				<div class="single-chart">
-					<svg viewbox="0 0 36 36" class="circular-chart blue">
-						<path class="circle-bg"
-							d="M18 2.0845
-							a 15.9155 15.9155 0 0 1 0 31.831
-							a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-						<path class="circle"
-							stroke-dasharray="50, 100"
-							d="M18 2.0845
-							a 15.9155 15.9155 0 0 1 0 31.831
-							a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-						<!-- <object  type="image/svg+xml" data="test.svg"></object> -->
+				<!-- TAGS SECTION -->
+				<div id="tags_wrapper">
+					<h2>Skills</h2>
+					<div id="skill_tags">
+						<div class="tag">Frontend</div>
+						<div class="tag">Backend</div>
+						<div class="tag">Javascript</div>
+						<div class="tag">PHP</div>
+						<div class="tag">Python</div>
+						<div class="tag">IxDesign</div>
+						<div class="tag">UX</div>
+						<div class="tag">Research</div>
+					</div>
+				</div>
 
-						<text x="18" y="20.35" class="percentage">50%</text>
-					</svg>
-					<span class="title">UX Design</span>
+				 <!-- PERCENTAGE WHEELS -->
+				<div class="flex-wrapper" id="flex_wrapper">
+					<div class="single-chart">
+						<svg viewbox="0 0 36 36" class="circular-chart orange">
+							<path class="circle-bg"
+								d="M18 2.0845
+								a 15.9155 15.9155 0 0 1 0 31.831
+								a 15.9155 15.9155 0 0 1 0 -31.831"
+							/>
+							<path class="circle"
+								stroke-dasharray="75, 100"
+								d="M18 2.0845
+								a 15.9155 15.9155 0 0 1 0 31.831
+								a 15.9155 15.9155 0 0 1 0 -31.831"
+							/>
+							<text x="18" y="20.35" class="percentage">75%</text>
+						</svg>
+
+						<span class="title">Frontend</span>
+					</div>
+
+
+					<div class="single-chart">
+						<svg viewbox="0 0 36 36" class="circular-chart green">
+							<path class="circle-bg"
+								d="M18 2.0845
+								a 15.9155 15.9155 0 0 1 0 31.831
+								a 15.9155 15.9155 0 0 1 0 -31.831"
+							/>
+							<path class="circle"
+								stroke-dasharray="25, 100"
+								d="M18 2.0845
+								a 15.9155 15.9155 0 0 1 0 31.831
+								a 15.9155 15.9155 0 0 1 0 -31.831"
+							/>
+							<text x="18" y="20.35" class="percentage">25%</text>
+						</svg>
+
+						<span class="title">Backend</span>
+					</div>
+
+					<div class="single-chart">
+						<svg viewbox="0 0 36 36" class="circular-chart blue">
+							<path class="circle-bg"
+								d="M18 2.0845
+								a 15.9155 15.9155 0 0 1 0 31.831
+								a 15.9155 15.9155 0 0 1 0 -31.831"
+							/>
+							<path class="circle"
+								stroke-dasharray="50, 100"
+								d="M18 2.0845
+								a 15.9155 15.9155 0 0 1 0 31.831
+								a 15.9155 15.9155 0 0 1 0 -31.831"
+							/>
+							<text x="18" y="20.35" class="percentage">50%</text>
+						</svg>
+						<span class="title">UX Design</span>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- CARD CONTAINER -->
-	<div id="project">
-		<!-- FIRST CARD -->
-		<div class="card" style=" padding-bottom: 0px;">
-			<div class="card-image">
-				<a href="project_sources/cardflip-game/index.html">
-					<img src="thumbnails/thumbcardflip.png" alt="thumb" />
-				</a>
-			</div>
-			<div class="card_content">
-
-				<!-- DESCRIPTION -->
-				<div class="card_desc">
-					<a href="project_sources/cardflip-game/index.html"><h2>Memoryflip</h2></a>
-					<p>A card flipping browser memorization game. Made with the help of Pixi.js. Not for mobile.</p>
+		<!-- PROJECTS -->
+		<div id="projects">
+			<div  style="min-height: 625px" class="card" v-for="project in projects" v-show="project.hidden == false" :key="project.title">
+				<div class="card-image">
+					<img :src="project.thumb" alt="thumbnail" />
 				</div>
 
-				<!-- TAGS -->
-				<div class="tags_container">
-					<div class="tag white_tag">frontend</div>
-					<div class="tag white_tag">javascript</div>
-					<div class="tag white_tag">pixi.js</div>
-				</div>
-
-				<!-- LINK BUTTONS -->
-				<div class="buttons_container">
-					<div style="padding: 10px">
-						<a  href="https://github.com/RikhartBekkevold/Memoryflip">
-
-							<div class="tag btn github_btn">
-							<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div>
-						</a>
+				<div class="card_menu" style="display: flex; flex-wrap: wrap; background: white; border-bottom: 1px solid #ddd">
+					<div style="width: 90%;">
+						<div class="long_desc_btn" style="width: 40%; background: white; color: black; padding: 10px; padding-left: 19px; user-select: none;"
+							 @click="project.view_state.content_hidden = !project.view_state.content_hidden">
+							{{ !project.view_state.content_hidden ? "Description" : "Overview" }}
+							<i v-if="!project.view_state.content_hidden" class="fas fa-caret-down"></i>
+							<i v-else="project.view_state.content_hidden" class="fas fa-caret-up"></i>
+						</div>
 					</div>
-
-					<div style="padding: 10px">
-						<a href="project_sources/cardflip-game/index.html"><div class="tag btn">
-						<i style="margin-right: 5px;" class="fas fa-globe"></i>WEBSITE</div></a>
+					<div style="color: black; padding-top: 10px">
+						<i style="" v-if="!project.group" class="fas fa-user"></i>  <!-- v-show instead? -->
+						<i style="" v-else="project.group" class="fas fa-user-friends"></i>
 					</div>
 				</div>
 
-			</div>
-		</div>
-
-		<!-- SECOND CARD -->
-		<div class="card">
-			<div class="card-image">
-				<a href="project_sources/colourexperiment/index.html">
-					<img src="thumbnails/thumbexperiment.png" alt="thumb" />
-				</a>
-	        </div>
-			<div class="card_content">
-
-				<!-- DESCRIPTION -->
-				<div class="card_desc">
-					<a href="project_sources/colourexperiment/index.html"><h2>Colour Experiment</h2></a>
-					<p>
-					A syntax highlighter experiment. The project include a website
-					used to conduct the experiment and an academic report on the findings.
-					</p>
-				</div>
-
-
-				<!-- TAGS -->
-				<div class="tags_container">
-					<div class="tag white_tag">frontend</div>
-					<div class="tag white_tag">javascript</div>
-					<div class="tag white_tag">research</div>
-					<div class="tag white_tag">interaction design</div>
-					<!-- <div class="tag white_tag">firebase</div> -->
-				</div>
-
-
-				<!-- LINKS BUTTONS -->
-				<div class="buttons_container">
-					<div style="padding: 10px">
-						<a href="https://github.com/RikhartBekkevold/colourexperiment"><div class="tag btn github_btn">
-						<i style="margin-right: 5px;" class="fab fa-github"></i>GITHUB</div></a>
-					</div>
-
-					<div style="padding: 10px">
-						<a href="project_sources/colourexperiment/paper.html"><div class="tag btn">
-						<i style="margin-right: 5px;" class="fas fa-file-pdf"></i>PAPER</div></a>
-					</div>
-
-					<div style="padding: 10px">
-						<a href="project_sources/colourexperiment/index.html"><div class="tag btn">
-						<i style="margin-right: 5px;" class="fas fa-globe"></i>WEBSITE</div></a>
+				<div class="card_content" v-show="project.view_state.content_hidden">
+					<div class="card_desc" style="min-height: 260px">
+						<h2>{{ project.title }}</h2>
+						<div style="text-align: left"><span v-html="project.long_desc"></span></div>
 					</div>
 				</div>
 
-			</div>
-		</div>
+				<div class="card_content" v-show="!project.view_state.content_hidden">
+					<div>
+						<!-- DESCRIPTION -->
+						<div class="card_desc">
+							<h2>{{ project.title }}</h2>
+							<p v-html="project.desc"></p> <!-- v-html = tags, mustach = pure js string -->
+						</div>
 
-		<!-- THIRD CARD -->
-		<div class="card">
-			<div class="card-image">
-				<a href="project_sources/vueditor/index.html">
-					<img src="thumbnails/thumbeditor.png" alt="thumb" />
-				</a>
-			</div>
-			<div class="card_content">
+						<!-- TAGS -->
+						<div class="tags_container">
+							<div>
+								<div class="tag white_tag"  v-for="tag in project.tags">{{ tag }}</div>
+							</div>
+							<div>
+								<div class="tag minor_tag" v-for="minortag in project.minortags">{{ minortag }}</div>
+							</div>
+						</div>
 
-				<!-- DESCRIPTION -->
-				<div class="card_desc">
-					<a href="project_sources/pyMatch/VuEditor/index.html"><h2>VuEditor</h2></a>
-					<p> A webapp built with Vue and Vuetify. An editor to create forms. </p>
-				</div>
-
-				<!-- TAGS -->
-				<div class="tags_container">
-					<div class="tag white_tag">frontend</div>
-					<div class="tag white_tag">backend</div>
-					<div class="tag white_tag">php</div>
-					<div class="tag white_tag">javascript</div>
-					<div class="tag white_tag">vue.js</div>
-					<div class="tag white_tag">vuetify.js</div>
-				</div>
-
-				<!-- LINK BUTTONS -->
-				<div class="buttons_container">
-					<div style="padding: 10px">
-						<a href="https://github.com/RikhartBekkevold/VuEditor">
-							<div class="tag btn github_btn">
-							<i style="margin-right: 5px;" class="fab fa-github"></i>Github</div>
-						</a>
-					</div>
-
-					<div style="padding: 10px">
-						<a href="project_sources/pyMatch/VuEditor/index.html"><div class="tag btn">
-						<i style="margin-right: 5px;" class="fas fa-globe"></i>Website</div></a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-
-
-		<!-- SOXTH CARD -->
-		<div class="card">
-			<div class="card-image">
-
-				<img src="thumbnails/thumbplayerframeauras.png" alt="thumb" />
-
-			</div>
-			<div class="card_content">
-
-				<!-- DESCRIPTION -->
-				<div class="card_desc">
-					<h2>PlayerFrameAuras</h2>
-					<p>
-						A world of warcraft addon.
-					</p>
-				</div>
-
-
-				<!-- TAGS -->
-				<div class="tags_container">
-					<div class="tag white_tag">lua</div>
-					<div class="tag white_tag">functional programming</div>
-					<div class="tag white_tag">addon</div>
-					<div class="tag white_tag">game</div>
-					<div class="tag white_tag">world of warcraft</div>
-				</div>
-
-
-				<!-- LINKS BUTTONS -->
-				<div class="buttons_container">
-					<div style="padding: 10px">
-						<a href="https://github.com/RikhartBekkevold/PlayerFrameAuras2">
-							<div class="tag btn github_btn">
-								<i style="margin-right: 5px;" class="fab fa-github"></i>Github</div>
-							</a>
+						<!-- LINKS BUTTONS -->
+						<div class="buttons_container">
+							<div style="padding: 10px" v-for="btn in project.buttons">
+								<a :href="btn.link">
+									<div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github' }">
+										<i style="margin-right: 5px;" :class="btn.icon"></i>{{ btn.text }}</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
 
-		<!-- FOURTH CARD -->
-		<div class="card">
-			<div class="card-image" style="border-bottom: 1px solid #ddd">
-				<a href="project_sources/vueditor/index.html">
-					<img src="thumbnails/thumbdatabases.png" alt="thumb" />
-				</a>
-			</div>
-			<div class="card_content">
+		<!-- CONTACT CARD -->
+		<div style="color: #363636; text-align: center;" id="contact">
+			<div class="card">
+				<h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.9em;">Contact me</h2>
+				<div class="container">
+					<form id="contact_form" method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com">
+						<!-- <label for="lname">Your Email</label> -->
+						<input id="email" autocomplete="off" style=" padding-left: 10px" type="email" name="email" placeholder="Your email adresse">
 
-				<!-- DESCRIPTION -->
-				<div class="card_desc">
-					<a href="project_sources/pyMatch/VuEditor/index.html"><h2>DB Tutorial</h2></a>
-					<p> An article comparing the pros and cons of Graph databases to Relational databases. </p>
+						<!-- <label style="font-family: 'Montserrat', sans-serif;" for="lname">Subject</label> -->
+						<input id="subject" autocomplete="off" style="padding-left: 10px"  type="text" name="subject" placeholder="Subject">
+
+						<!-- <label for="lname">Message</label> -->
+						<textarea id="message" name="message" placeholder="Message" style="padding: 10px 0 0px 10px"></textarea>
+
+						<button class="btn" type="submit" style="width: 40%">Send</button>
+						<button onclick="window.event.preventDefault()" class="btn" id="reset_btn" style="width: 40%; margin: 0px;">Reset</button>
+					</form>
 				</div>
-
-				<!-- TAGS -->
-				<div class="tags_container">
-					<div class="tag white_tag">tutorial</div>
-					<div class="tag white_tag">graph db</div>
-					<div class="tag white_tag">relational db</div>
-				</div>
-
-				<!-- LINK BUTTONS -->
-				<div class="buttons_container">
-					<div style="padding: 10px">
-						<a href="https://medium.com/@ikhart.v.bekkevold/relational-or-graph-databases-which-one-to-choose-for-your-next-project-6fd31ae9cee">
-							<div class="tag btn"><i style="margin-right: 5px;" class="fab fa-medium"></i>Mediun Post</div>
-						</a>
-					</div>
-				</div>
-
 			</div>
 		</div>
 
-		<!-- FIFTH CARD -->
-		<div class="card">
-			<div class="card-image" style="border-bottom: 1px solid #ddd">
 
-				<img src="thumbnails/thumbclosure.png"  alt="thumb" />
-
+		<!-- FOOTER -->
+		<footer>
+			<span id="copyright"></span>
+			<div id="footer_buttons_wrapper">
+				<a href="https://github.com/RikhartBekkevold"><i class="icon fab fa-github"></i></a>
+				<a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
+				<a href="https://www.linkedin.com/"><i class="icon fab fa-linkedin"></i></a>
+				<a href="https://www.youtube.com/channel/UCb9Fe-HNoZipzdwGdAhM-eA?view_as=subscriber"><i class="icon fab fa-youtube"></i></a>
 			</div>
-			<div class="card_content">
+		</footer>
 
-				<!-- DESCRIPTION -->
-				<div class="card_desc">
-					<h2>JS Closures</h2>
-					<p>
-						Tutorial on Javascript closures. In the style of a text adventure game.
-					</p>
-				</div>
+	</div> <!-- app -->
 
-
-				<!-- TAGS -->
-				<div class="tags_container">
-					<div class="tag white_tag">tutorial</div>
-					<div class="tag white_tag">javascript</div>
-					<div class="tag white_tag">closure</div>
-				</div>
-
-
-				<!-- LINKS BUTTONS -->
-				<div class="buttons_container">
-					<div style="padding: 10px">
-						<a href="#"><div class="tag btn">
-							<!-- TODO: add link to closure tutorial -->
-							<i style="margin-right: 5px;" class="fas fa-globe"></i>Tutorial</div></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-	</div>
-
-
-	<!-- CONTACT CARD -->
-	<div style="color: #363636; text-align: center;" id="contact">
-		<div class="card">
-			<h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.9em;">Contact me</h2>
-			<div class="container">
-
-				<form id="contact_form" method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com">
-					<!-- <label for="lname">Your Email</label> -->
-					<input id="email" autocomplete="off" style=" padding-left: 10px" type="email" name="email" placeholder="Your email adresse">
-
-					<!-- <label style="font-family: 'Montserrat', sans-serif;" for="lname">Subject</label> -->
-					<input id="subject" autocomplete="off" style="padding-left: 10px"  type="text" name="subject" placeholder="Subject">
-
-					<!-- <label for="lname">Message</label> -->
-					<textarea id="message" name="message" placeholder="Message" style="padding: 10px 0 0px 10px"></textarea>
-
-					<button class="btn" type="submit" style="width: 40%">Send</button>
-					<button onclick="window.event.preventDefault()" class="btn" id="reset_btn" style="width: 40%; margin: 0px;">Reset</button>
-
-				</form>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- FOOTER -->
-	<footer>
-		<span>&copy; Rikhart Bekkevold 2019</span>
-		<div id="footer_buttons_wrapper">
-			<a href="https://github.com/RikhartBekkevold"><i class="icon fab fa-github"></i></a>
-			<a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
-			<a href="https://www.linkedin.com/"><i class="icon fab fa-linkedin"></i></a>
-			<a href="https://www.youtube.com/channel/UCb9Fe-HNoZipzdwGdAhM-eA?view_as=subscriber"><i class="icon fab fa-youtube"></i></a>
-		</div>
-	</footer>
-
-
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
+    <script src="data.js"></script>
+	<script src="app.js"></script>
 	<script src="main.js"></script>
-
 </body>
 </html>
