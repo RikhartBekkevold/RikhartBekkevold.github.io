@@ -1,0 +1,186 @@
+* {
+  /* box-sizing */
+  font-family: 'Roboto', sans-serif;
+  color: white; /* use blakc instead as default?  */
+  /* defualt font also in template - main sections etc.. noone follows - screen readers? */
+}
+
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background: white; /*#0477BF whitsmoke, #ddd, f1vsf5?, vs white less white*/
+}
+
+header {
+    padding: 0;
+    margin:0;
+}
+
+/* reason to use nested? avoid conflict before happen?  */
+/* main not ment for styling? */
+main section {
+    color: black;
+    padding-bottom: 40px;
+    min-height: 800px;
+}
+
+footer {
+    background: #0477BF !important;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', serif;
+  /* verdana, helvetica
+  cross browser fonts */
+  color: black;
+  /* font-family: roboto, verdana, helvetica */
+}
+
+img {
+    color: black;
+}
+
+button {
+    background: #0477BF !important; /* BF213E #04BFAD important is necessary */
+}
+
+p {
+    color: black;
+}
+
+
+nav li {
+  width: 200px;
+  text-align: center;
+  /* whenuse the center aling it uses the text align anyway also? */
+  /* overrding always works and are easy, css or style, execpt for the color... */
+}
+
+/* must override in the cdn css files?  */
+.gray {
+  color: #ddd;
+}
+
+/* for alt attribute text  */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* kan kræsje med events og .hide? */
+.hidden {
+  display: none; /* !important;*/
+}
+
+.visible {
+  display: block;
+}
+
+/* insent enough to do after?
+is it becasue not after when not in file? */
+/* see the css file and look at nav and change it if downloaded
+min and use specific version or download and icons etc */
+.nav-wrapper {
+  background-color: #0477BF !important; /* !important is necessary */
+}
+
+.banner {
+
+  width: 100%;
+  height: 200px; /*percent*/
+  /* background: blue; */
+  /* font-family: 'Francois One', sans-serif; */
+  /* font-family: 'Overpass', sans-serif; */
+
+  /* border: 1px solid red; */
+}
+
+.info {
+  margin-right: 14px;
+  /* border: 1px solid green; */
+}
+
+.logo {
+  /* border: 1px solid red; */
+}
+
+input,
+textarea {
+    color: black;
+}
+
+
+/* empty fields not allowed also */
+input, textarea {
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    box-shadow: inset 0 0.0625em 0.125em rgba(10,10,10,.05) !important;
+}
+
+/* textarea {
+    border-radius: 4px !important;
+    border: 1px solid #ddd !important;
+    box-shadow: inset 0 0.0625em 0.125em rgba(10,10,10,.05) !important;
+} */
+
+/* border: 1px solid #0477BF !important; */
+/* textarea:focus {
+} */
+
+/* label color */
+ /* .input-field label {
+   color: #000;
+ } */
+ /* label focus color */
+ /* .input-field input[type=text]:focus + label {
+   color: #000;
+ } */
+ /* label underline focus color */
+ /* .input-field input[type=text]:focus {
+   border-bottom: 1px solid #000;
+   box-shadow: 0 1px 0 0 #000;
+ } */
+ /* valid color */
+ /* .input-field input[type=text].valid {
+   border-bottom: 1px solid #000;
+   box-shadow: 0 1px 0 0 #000;
+ } */
+ /* invalid color */
+ /* .input-field input[type=text].invalid {
+   border-bottom: 1px solid #000;
+   box-shadow: 0 1px 0 0 #000;
+ } */
+ /* icon prefix focus color */
+ /* .input-field .prefix.active {
+   color: #000;
+ } */
+
+b {color: black;}
+
+/* make the active element more clearly active. enhance existing class */
+.active {
+  /* border-bottom: 2px solid white; */
+}
+
+/* banner-text - fg - color adn font and size
+banner-bg
+make a class with color and apply to all relveant places
+apply the color css in the right element that targets all.. and not hav them override
+
+
+complex banner bg? not so boring .. godrays, pattern with logo  */
+
+/* mastermerke, font banner,  */
+/* logo headings */
+/* evosulsjone rlogo, og inidivudal pices, bg image by cutting a part from it  */
+/* dont move the icon down - text size or remove them or..?
+menu - smaller buttons, or hamburger? */

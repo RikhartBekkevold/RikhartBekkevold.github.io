@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+    <!-- <link href="bulma-0.8.0/css/bulma.css" rel="stylesheet"> -->
+
+    <link href="main.css" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+     <header>
+     <div class="banner" style=" background: white; width: 100%;"> <!--#0477BF; whitesmoke her og body -->
+         <!-- need to be better at utility classes i can use in my own projects - collect  -->
+         <div class="flex-container" style="justify-content: space-between">
+             <div class="logo">
+                 <img src="assets/logo.png" style="height: 200px;  -webkit-transform: scaleX(-1); transform: scaleX(-1);"></img>
+                 <!-- <img src="assets/Logo.png" style="height: 100px;  -webkit-transform: scaleX(-1); transform: scaleX(-1); transform: scaleY(-1);"></img> -->
+             </div>
+             <div class="info">
+                 <!-- 25 percent or 50 instead
+                 or margin auto ... only works if? container has px or percent all the way?  -->
+                 <!-- <h3 style="color: white">Rørleggerfirma</h3> -->
+                 <h5 style="margin-bottom: 0; padding-bottom: 0; color: black; font-family: 'Roboto Slab', serif;">
+                     Rørleggerfirma
+                 </h5>
+                 <h2 style="padding-top: 0; margin-top: 0; color: font-family: 'Roboto Slab', serif;">
+                     SKAUG & CHRISTOFFERSEN AS
+                 </h2>
+
+                 <h5 class="" style="color: black"> <!-- 994 59 574 /-->
+                     <i style="color: black" class="fas fa-phone"></i>&nbsp; 413 10 999 &nbsp; | &nbsp;
+                     <i style="color: black" class="far fa-envelope"></i>&nbsp; post@skaugogchristoffersen.no
+                     <!-- <i class="fas fa-phone"></i>&nbsp; 994 59 574 / 994 59 574 &nbsp; | &nbsp;
+                     <i class="far fa-envelope"></i>&nbsp; post@skaugogchristoffersen.no -->
+                 </h5>
+                <!-- text-darken-2                              grey-text text-lighten-1 -->
+             </div>
+             <div class="logo">
+                 <img src="assets/logo.png" style="height: 200px;" class=""></img>
+             </div>
+             <!-- -webkit-transform: scaleX(-1); -webkit-transform: scaleY(-1); transform: scaleX(-1); transform: scaleY(-1); -->
+
+         </div>
+      </div>
+<!-- defer <script async="" src="//www.google-analytics.com/analytics.js"></script> -->
+<!-- shoudl haev document ready.. or onload also? notjust closure? -->
+
+<!-- a js file with the project that appends all after compile/interpetation? -->
+
+<!-- waves-effect waves-light z-depth-0   z-depth-5 -->
+<!-- shadow on nav, or inset shadowon banner - creates same effect? -->
+      <!-- // bare nav here - 25% over hele, eller sentrert og store -->
+      <nav class="nav-center" role="navigation">
+        <div style="border-top: 1px solid #ddd" class=" nav-wrapper flex-container"> <!-- blue -->
+          <!-- <a href="#" class="brand-logo">Logo</a> -->
+          <!-- <div class="logo">
+              <img src="assets/logo.png" style="  -webkit-transform: scaleX(-1);
+transform: scaleX(-1); height: 100px;" ></img>
+          </div> -->
+          <!-- how to center: -->
+          <!-- container flex one element middle
+          then the nested element the same  -->
+
+          <!-- collapsed the border? -->
+          <!-- border top? -->
+          <!-- cant use col before made it into a row? must be exact parent? vuetify is like that i think. must also have a "container" class -->
+          <ul id="nav-mobile" class="" style="">
+              <!-- hide-on-med-and-down -->
+            <!-- <li><a href="#">SKAUG & CHRISTOFFERSEN AS</a></li>
+            <li><a href="#">TLF: 994 59 574</a></li> -->
+
+            <!-- set vent in one class
+            then other class reads the event class to see current events
+            event class is global  -->
+            <!-- timer class -->
+            <!-- prevent default - proptagation -event emmiter class -  -->
+            <li class="waves-effect waves-light active"><a id="hjem_btn"><i style="font-size: 0.9em" class="fas fa-home"></i>&nbsp; Hjem</a></li>
+            <li class="waves-effect waves-light"><a id="tjenester_btn"><i style="font-size: 0.9em" class="fas fa-cogs"></i>&nbsp; Tjenester</a></li>
+            <li class="waves-effect waves-light"><a id="om_oss_btn"><i style="font-size: 0.9em" class="fas fa-user-friends"></i>&nbsp; Om oss</a></li>
+            <li class="waves-effect waves-light"><a id="kontakt_btn"><i style="font-size: 0.9em" class="fas fa-phone"></i>&nbsp; Kontakt</a></li>
+            <!-- max width instead of more widht menu btns? -->
+
+            <!-- form = trim input
+            validate - deres tjeneste gjør det  -->
+
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+        <section>
+            <!-- <div class="logo">
+                <img src="assets/logo.png" style="  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); height: 100px; position: absolute; top -50; left: 50;" ></img>
+            </div> -->
+            <!-- make row? first? -->
+            <!-- string means the parser uses space to parse string and make classes.. calling the functions self  -->
+            <div id="hjem_side" class="container content visible">
+                <h2 class="">SKAUG & CHRISTOFFERSEN AS RØRLEGGER</h2>
+                <p class="">
+
+                </p>
+                <div class="">
+                    <!-- center is something else . margin: auto 0; or something -->
+                    <!-- left == float? try "::after" - be careful when using in menu etc? should auto cancel.. -->
+                    <p class="flow-text">
+                        Bilde. Slagord. Bedriften oppsummert, dens verdier og mål. Hovedtjenester.
+                        <!-- Nyheter?  -->
+                        <!-- slagordet over bilde? knapp oppå bilde for å gå til side?
+                        Slagord, misjon etc -->
+                    </p>
+                    <!-- <img src="test.png" class="" width="100" alt="test"> -->
+                    <!-- use the car.. picture of car? gjennkjenning?  -->
+                </div>
+            </div>
+
+            <!-- flex container will centre one element
+            or centre several and do lots more  -->
+
+            <!-- flex container = so handy with classes for every project - then see it in html though, not the css rule.. hmm -->
+            <div  id="om_oss_side" style="" class="container hidden">
+                <!-- container -->
+                <!-- must add flex-container to the parent/main section for it to always center all.. and then set widht to smaller than 100% ofc -->
+                <!-- margin auto needs fixed width?
+                when need fixed height? to use percent?  -->
+
+                <!-- min height for content -->
+                <!-- dynamic style, vue  -->
+                <!-- <div class="col1">
+                </div>
+                <div class="col1">
+                </div> -->
+                <div class="row">
+                    <div class="col l6 s12 gray">
+                        <h2 style="color: #0477BF">Om oss</h2>
+                        <p style="color: black;" class="flow-text; font-size: 1.4em">
+                            Skaug og Christoffersen er en rørlegger bedrift etablert i 2019 av Amund Skaug og Knut
+                            Christoffersen. Bedriften holder til i Ringerike kommune.
+                            <br>
+                            Med over 10 års erfaring i rørleggerfaget
+                            prosjekterer og utfører vi alle typer rørleggeroppdrag. Ring oss i dag
+                            for en uforpliktende befaring.
+
+
+                            <!-- bilder de vil ha med. for tjenester.. coppyright free  -->
+                            <!-- mestermerke -->
+
+                            <!--
+
+                            Vi satser på
+                            Vi står for
+                            Hvorfor velge - sneakily inform
+                            Testomomes
+
+
+                            Vikersundveien 447
+                            3533 TYRISTRAND
+
+                            Vi holder til på vikersund
+
+                            21.06.
+
+                            sammarbeid av de to
+
+                            Ansatte
+                            Knut Hovdegård Christoffersen
+                             Om erfaring
+                            Amund Bang Skaug
+                             Om erfaring
+
+                            rekkevidde?
+
+                            Kjapt, trygt, fremtidsrettet, billig
+
+                            vi står for
+                            vi gjør disse tingene
+
+                            deres mulighet for kontakt - kunder get
+                            og selge dere selv
+
+                            Ansatte - samme som tjenester - border: 1px solid #ddd;
+                            bilder og amund etc -->
+                        </p>
+                        <h2 style="color: #0477BF">Ansatte</h2>
+                        <div style="margin-top: 2px; border-bottom: 1px solid #ddd"></div>
+
+                        <div style="color: black">
+                            <h5>Knut Hovdegård Christoffersen</h5> <br>
+                            <b>Om / erfaring</b><br>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                             ut aliquip ex ea commodo consequat.
+                                <br>
+                                <br>
+                            <b>Kontakt:</b> <br>
+                            TLF: 994 59 574<br>
+                            EPOST: knut@skaugogchristoffersen.no<br><br>
+                            <hr>
+                            <h5>Amund Bang Skaug</h5> <br>
+                            <b>Om / erfaring:</b> <br>
+                            Fagskoleingeniør og rørleggermester <br><br>
+
+                            <b>Kontakt:</b><br>
+                            TLF: 413 10 999<br>
+                            EPOST: amund@skaugogchristoffersen.no<br>
+                        </div>
+
+
+                        <div class="col s12 m7">
+                            <!-- <h2 class="header">Horizontal Card</h2> -->
+                            <div class="card z-depth-0" style="border: 1px solid #ddd; width: 300px">
+                                <div class="card-image" style="width: 300px">
+                                    <img src="assets/stock1.jpg" width="20">
+                                </div>
+                                <div class="card-stacked" style="width: 300px">
+                                    <div class="card-content" style="width: 300px">
+                                        <p>I am a very simple card. I am good at containing small bits of information. ANSATTE SIDEN
+                                        SIDEN SIDEN SIDEN SIDENSI DENSID ENSIDE NSIDEN</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <!-- color prop, whymust be a?  -->
+                                        <a href="#" style="display: block">TLF: 413 10 999</a>
+                                        <a href="#" style="display: block">EPOST: amund@skaugogchristoffersen.no</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+<!-- lokalt, stolepå, same ppl  -->
+<!-- vi har lagt til noen ting annet enn spurt om - så si om vil ha det -->
+
+                    <div class="col l4 offset-l2 s12">
+                        <h2 style="color: #0477BF">Finn oss</h2> <!-- / Besøksadresse -->
+                        <!-- kart på norsk? -->
+                        <iframe style="border: 1px solid #ddd" class="z-depth-1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1184.7289232121148!2d10.032111638468303!3d60.040461155622985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4641029f38746297%3A0xc1b178f167c23fd6!2sVikersundveien%20447%2C%203533%20Tyristrand!5e0!3m2!1sen!2sno!4v1586376840995!5m2!1sen!2sno" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- merkelig at styl eikke overkjørte importnat -->
+            <!-- make row? first? -->
+            <div id="tjenester_side" style="color: black; width: 55%" class="content container col 6 offset-col-3 hidden">
+                <h2>Våre tjenester</h2>
+                <div style="margin-bottom: 10px; border-bottom: 1px solid #ddd"></div>
+
+
+                <!-- Vi er<br>
+                text aling-center - center and elft etc, fucked.. bare ike for text siden bruker diff prop.. bare ctrl f classen for å se syntax.. easy
+                Vi tilbyr<br>
+                Tjeneste content div
+                cards? leads to pages?
+                mixtureof spa and links?
+                i want to know how center class works, so dont uses float
+                <hr>
+                mer text align other way? -->
+
+                <!-- google link
+                twitter
+                insta
+                180 no
+                brrg -->
+                <!-- hvit background? -->
+                <!-- bil bilde i banner?
+                stylized red/god rays etc
+                plain blue/white
+                the logo somehow embedded, stylized etc inside/as part of?
+
+                forside: tjenester som bilder og klikke? knapp oppå?
+                dropdown i menu
+                ansatte i egen?
+                kontakt
+
+                robin - logo som er mer versatily? farger og form
+                banner med embedded logo?
+                font forslag?
+
+                bildene deres?
+                alt dere vil ha på sida
+                utdyp tjenester
+                misjon for forsiden / essensens av bedriften
+                kjenner igjen bedriften? fornøyd med design
+                more obviously rørlegger
+
+                trenger tjeneste når jeg har mailen deres?
+
+                small line at top red with info?
+
+                banner and mobile
+
+                download icons, and fonts and svg and libs
+
+                wordpress/templates - ille med bilder -->
+                <div class="row">
+                    <img src="assets/bad.png" class="left" width="500" alt="bad.png">
+                    <div id="tjeneste_beskrivelse" class="right">
+                        <h5 style="color:black">Totalrehabilitering av bad</h5>
+                        <p>
+                            Vi kan totalrehabilitere badet for deg.
+                            Ta kontakt for mer informasjon.
+                            litere badet for deg. Ta kontakt for mer informasjon.
+                            litere badet for deg. Ta kontakt for mer informasjon.
+                            litere badet for deg. Ta kontakt for mer informasjon.
+                            litere badet for deg. Ta kontakt for mer informasjon.
+                        </p>
+                        <button class="btn waves-effect waves-light z-depth-0">Les mer
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+
+                <div style="margin: 50px 0px 50px 0px; border-bottom: 1px solid #ddd"></div>
+
+
+                <div class="row">
+                    <!-- <div class="col s6"> -->
+
+                    flex box
+                    this colum
+                    left/right
+                    bulma flex
+                    try all versions
+
+                    <!-- tjeneste_beskrivelse:after {float: none;} -->
+                    <img src="assets/bad2.png" width="500" class="right" alt="bad.png">
+
+                    <div id="tjeneste_beskrivelse2" class="left" style="text-align: left; width: 200px">
+                        <h5 style="color:black">Service</h5>
+                        <p>Vi kan totalrehabilitere badet for deg. Ta kontakt for mer informasjon.</p>
+                    </div>
+                    <button class="btn waves-effect waves-light z-depth-0">Les mer
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <!-- <button class="btn waves-effect waves-light z-depth-0">Ring / bestill /kontakt
+                        <i class="material-icons right">send</i>
+                    </button> -->
+                </div>
+
+
+            </div>
+
+            <!-- hvis velger den tjenesten.. så fylles infoen i formen ut automatisk?  -->
+
+            <!-- cols, or cards? with flex in middle?
+            how i center in my website?
+            flat cards
+            going downwards for scrollin instead? -->
+
+            <!-- cant use hide for class name becasue already taken  -->
+            <!-- dont remove and apply, just remove the one for all elements except this  -->
+            <!-- bruk prosent for mobile og flex og margin auto  -->
+            <div id="kontakt_side" class="content container hidden" style="width: 50%;">
+            <!-- <div class="row"> -->
+            <div class="" style="margin-top: 50px">
+                <!-- <img src="assets/logo.png" style="position: absolute; left: 10; top: 20; height: 60px;  -webkit-transform: scaleX(-1); transform: scaleX(-1);"></img> -->
+                <h2 style="">Kontakt oss</h2>
+                <!-- <h2 style="display: inline">Kontakt oss</h2> -->
+                <!-- <img src="assets/logo.png" style="height: 60px;  -webkit-transform: scaleX(-1); transform: scaleY(-1);"></img> -->
+            </div>
+            <div style="margin-top: 10px; border-bottom: 1px solid #ddd"></div>
+            <!-- <div class="col 1">
+                <h2>KONTAKT OSS</h2>
+                <p class="flow-text">
+                    Fyll ut skjema og trykk send og vi vil motta en mail av deg. -->
+                <!-- kontakt -->
+                <!-- form? med email?
+                form sectoin in materilize
+                lots if code for js -->
+                <!-- Fyll it skjema og trykk send og en mail vil automatisk
+                send mail som svar for sett tilbake? -->
+
+            <!--    </p>
+
+            </div> -->
+            <!-- col1  -->
+            <!-- du kan kontakte oss på en av disse
+            eller fyllt ut skjema og trykk send -->
+
+            <!-- row
+            col
+            col  -->
+
+            <!-- row and col has padding? but kontakt etc i row? -->
+
+
+
+
+            <!-- on low res push down  -->
+            <!-- <div class="col"> -->
+                  <form class="col s12" style="margin-top: 50px;">
+                    <div class="row">
+                        <div class="input-field col s6 ">
+                            <input placeholder="" id="emne" type="text" class="validate" style="margin-top: 15px">
+                            <label for="emne" style="color: #575757; font-size: 1.5em; font-weight: bold;">Emne *</label>
+                            <!-- <label for="email">Din epost</label> -->
+                        </div>
+                      <div class="input-field col s6">
+                        <input placeholder="" id="email" type="email" class="validate" style="margin-top: 15px">
+                        <label for="email" style="color: #575757; font-size: 1.5em; font-weight: bold;">Din epost *</label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6 ">
+                            <input placeholder="" id="navn" type="text" class="validate" style="margin-top: 15px">
+                            <label for="navn" style="color: #575757; font-size: 1.5em; font-weight: bold;">Ditt navn</label>
+                            <!-- <label for="email">Din epost</label> -->
+                        </div>
+                        <div class="input-field col s6 ">
+                            <!-- <i class="material-icons prefix">phone</i> -->
+                            <input placeholder="" id="tlf" type="tel" class="validate" style="margin-top: 15px">
+                            <label for="tlf" style="color: #575757; font-size: 1.5em; font-weight: bold;">Telefonnummer</label>
+                            <!-- <label for="email">Din epost</label> -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea placeholder="" id="textarea1" style="min-height: 200px; margin-top: 15px" class=""></textarea>
+                            <label for="textarea1" style="color: #575757; font-size: 1.5em; font-weight: bold;">Melding</label>
+                            <!-- can use index notation to use dash in style prop name? -->
+                        </div>
+                    </div>
+
+                    <!-- flex and vuetofy default
+                    here i still need to specific how onlower with s12 etc  - or hide -->
+
+                    <!-- if all validate set.. check how?, website doc -->
+                    <button class="btn waves-effect waves-light z-depth-0" type="submit" name="action">Send
+                        <i class="material-icons right">send</i>
+                        <!-- i::after {float: none;} -->
+                        <!-- backup text! -->
+                    </button>
+                  </form>
+                <!-- </div> -->
+                </div>
+            <!-- </div> -->
+            <!-- <div class="logo">
+                <img src="assets/logo.png" style="  -webkit-transform: scaleX(1);
+  transform: scaleX(1); height: 200px" class=""></img>
+            </div> -->
+        </section>
+    </main>
+    <!-- sett middle and 70% - what i did with my container
+    margin
+    flex
+     z-depth-2
+-->
+     <footer class="page-footer">
+     <div class="container gray lighten-1">
+       <div class="row gray">
+         <div class="col l6 s12 gray">
+             <!-- these tags helps screen readers  -->
+             <!-- Kontakt oss, les mer..You can use rows and columns here to organize your footer content. -->
+             <h5 class="white-text">Kontakt oss</h5>
+
+           <p class="grey-text text-lighten-4"> <i class="far fa-envelope"></i>&nbsp; post@skaugogchristoffersen.no</p>
+           <p class="grey-text text-lighten-4"> <i class="fas fa-phone"></i>&nbsp; 413 10 999</p>
+         </div>
+         <div class="col l4 offset-l2 s12">
+           <!-- <h5 class="white-text">External Links</h5> -->
+           <h5 class="white-text">Følg oss</h5>
+           <ul>
+               <!-- icons - download? -->
+               <!-- when using col etc, its just applies style in css or js like width 50% etc etc? since just classes -->
+
+               <!-- col-12 border?  -->
+             <li><a class="grey-text text-lighten-3" href="#!"><i class="fab fa-facebook-square"></i>&nbsp; Facebook</a></li>
+             <!-- <li><a class="grey-text text-lighten-3" href="#!"><i class="fab fa-twitter"></i>&nbsp; Twitter</a></li> -->
+             <!-- <li><a class="grey-text text-lighten-3" href="#!">Email? pers.og bedrift (ansatte)</a></li>
+             <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li> -->
+           </ul>
+         </div>
+       </div>
+     </div>
+     <div class="footer-copyright">
+       <div class="container">
+       © 2020 Copyright SKAUG & CHRISTOFFERSEN AS
+       <!-- Webdesign Rikhart Bekkevold  -->
+       <!-- made by?  -->
+       <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+       </div>
+     </div>
+   </footer>
+
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   <script src=main.js type="text/javascript"></script>
+  </body>
+</html>
