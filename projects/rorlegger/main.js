@@ -1,4 +1,18 @@
 (function() {
+    var elem = null
+    var sidenav = null
+
+    document.addEventListener('DOMContentLoaded', function() {
+        elem = document.querySelector('.sidenav');
+        sidenav = M.Sidenav.init(elem);
+        // console.log(M);
+        // var instances = M.Sidenav.getInstance(elem);
+        // console.log(instance.isOpen);
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems, {hover: true, coverTrigger: false});
+    });
+
+
     // all children divs for selector all
     var om_oss_side     = document.querySelector("#om_oss_side")
     var kontakt_side    = document.querySelector("#kontakt_side")
@@ -19,6 +33,7 @@
         hide(om_oss_side)
         hide(tjenester_side)
         hide(kontakt_side)
+        hide(ansatte_side)
     })
 
     kontakt_btn.addEventListener("click", function() {
@@ -28,6 +43,7 @@
         hide(om_oss_side)
         hide(tjenester_side)
         hide(hjem_side)
+        hide(ansatte_side)
     })
 
     om_oss_btn.addEventListener("click", function() {
@@ -37,6 +53,7 @@
         hide(kontakt_side)
         hide(tjenester_side)
         hide(hjem_side)
+        hide(ansatte_side)
     })
 
     // replace click with pointer down?
@@ -47,6 +64,7 @@
         hide(om_oss_side)
         hide(kontakt_side)
         hide(hjem_side)
+        hide(ansatte_side)
     })
 
 
@@ -63,11 +81,117 @@
 
     function setActive(el) {
         // foreach support?
+        // nav_buttons.forEach((item) => {
+        //     item.classList.remove("active")
+        // });
+        removeAllActive()
+        el.classList.add("active")
+    }
+
+    function removeAllActive() {
         nav_buttons.forEach((item) => {
             item.classList.remove("active")
         });
-        el.classList.add("active")
     }
+
+
+    var mobile_hjem_btn         = document.querySelector("#mobile_hjem_btn")
+    var mobile_kontakt_btn      = document.querySelector("#mobile_kontakt_btn")
+    var mobile_om_oss_btn       = document.querySelector("#mobile_om_oss_btn")
+    var mobile_tjenester_btn    = document.querySelector("#mobile_tjenester_btn")
+
+    mobile_hjem_btn.addEventListener("click", function() {
+        event.preventDefault()
+        show(hjem_side)
+        // setActive(this.parentNode)
+        hide(om_oss_side)
+        hide(tjenester_side)
+        hide(kontakt_side)
+        hide(ansatte_side)
+
+        if (!null)
+            sidenav.close()
+
+
+            // sidenav slide animation
+            // dropdown menu
+
+            // var instances = M.Sidenav.getInstance(elem);
+        // instances.close()
+        // console.log(instance.close);
+         // var instance = M.Sidenav.getInstance(elem);
+         // console.log(instance);
+         // instance.close()
+    })
+
+
+    mobile_kontakt_btn.addEventListener("click", function() {
+        event.preventDefault()
+        show(kontakt_side)
+        // setActive(this.parentNode)
+        hide(om_oss_side)
+        hide(tjenester_side)
+        hide(hjem_side)
+        hide(ansatte_side)
+        if (!null)
+            sidenav.close()
+    })
+
+    mobile_om_oss_btn.addEventListener("click", function() {
+        event.preventDefault()
+        show(om_oss_side)
+        // setActive(this.parentNode)
+        hide(ansatte_side)
+        hide(kontakt_side)
+        hide(tjenester_side)
+        hide(hjem_side)
+        if (!null)
+            sidenav.close()
+    })
+
+    mobile_tjenester_btn.addEventListener("click", function() {
+        event.preventDefault()
+        show(tjenester_side)
+        // setActive(this.parentNode)
+        hide(ansatte_side)
+        hide(om_oss_side)
+        hide(kontakt_side)
+        hide(hjem_side)
+        if (!null)
+            sidenav.close()
+    })
+
+
+    // or [1], or
+    var ansatte_btn = document.querySelector("#dropdown1 #dropdown_ansatte_btn")
+    var ansatte_side = document.querySelector("#ansatte_side")
+    // var ansatte_btn = document.querySelectorAll("#dropdown1 li")
+
+
+    // wont give error
+    // and will just reapply
+    ansatte_btn.addEventListener("click", function() {
+        event.preventDefault()
+        show(ansatte_side)
+        removeAllActive()
+        hide(tjenester_side)
+        hide(om_oss_side)
+        hide(kontakt_side)
+        hide(hjem_side)
+    })
+
+    var dropdown_om_oss_btn = document.querySelector("#dropdown_om_oss_btn")
+
+    dropdown_om_oss_btn.addEventListener("click", function() {
+        event.preventDefault()
+        show(om_oss_side)
+        removeAllActive()
+        // hide all - hide all but -
+        hide(tjenester_side)
+        hide(ansatte_side)
+        hide(kontakt_side)
+        hide(hjem_side)
+    })
 
 
     function hideAll() {

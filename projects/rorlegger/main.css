@@ -20,7 +20,7 @@ body {
 
 header {
     padding: 0;
-    margin:0;
+    margin: 0;
 }
 
 /* reason to use nested? avoid conflict before happen?  */
@@ -54,7 +54,101 @@ button {
 
 p {
     color: black;
+    /* line-height: 1.7;  */
 }
+
+
+/* resizing container on media queries */
+/* alt: put in it own correct pos from start and hide - what is correct pos?  */
+@media only screen and (max-width: 992px) {
+    /* makes the menu left aligned so that the hamburger btn moves left  */
+    #menu {
+        justify-content: left;
+    }
+}
+
+
+/* also faster to build it so dont need to use queries? auto works? */
+
+/* move navinfo outwards to match lines
+remove padding from h2 - (make all h2) - so pics match text
+
+make meny info align on mobile better
+add hamburger menu for new meny
+
+tjenester distance
+tjenester media - flexbox
+add the tjenester text in a basic card?
+redesign om oss dropdown like his?
+
+sjekk ut hvordan de har designet sine "tjenester"
+innlandet eks
+
+fix om oss - texten tar mer plass
+kartet under? - hide on med and down? make smaller? do same for tjenester? nah, always room for one card at a time
+
+padding in downarrow dropdown smaller
+
+make 3 types of flexbos with img
+
+try media resposnive
+carousel
+breadcrumb
+
+
+prøve - fikse validation color and
+mobile resize bug?
+
+
+how to find the brekapoints? is it a px ref online? or can use a custome name? should be on the website.
+
+add - submenues in the sidenav
+
+sjekk alle sider for responsiveness
+delibartly try to err
+check all possible clicks - and combinations
+
+mobile nav info moves when smaller, so not aligned with hr
+
+
+jeg kan ikke ha små cards/prosjekter fordi jeg må sette propertien så de ikke blir samme høyde? - so set: align-items: flex-start?
+add dette prosjektet
+bedre organisring? layout.. sider?
+fancier? svg anim?
+
+use margin flex-becuse doenst count as part of el, so it will aliogne? vs padding
+
+høyden til den største, width til den største
+hvis jeg forandrer så de ikke blir stretch til hølyden til den største så kan jeg ha ulike størrelser
+
+kopier expand card for reading materlize css component for min side - eller i hvertfall animer benevgelsen
+legg til mer css transition animasjoner, trykk knapp etc, add and remove, eller bruk vue transitions - trooltip and dropwon anim.
+
+hvordan få tekst til å fylle? max widht? width percent? siden nå tar hele linja, blir større?
+set bildene/ansatte med perecnt also?
+dyttes ned funker fordi har heading?
+dyttes ned funker auto, blir bra for alle og bryter ikke layout, men widht etc må justeries noe og kanskje hide --med funker også med col som nå? hvis blir god col, kan ta avgjørelsen for design når adder classes
+
+horizontal desktop, vertical mobile becasue of scroll vs using lines and having to scroll
+therefore push down always good as default? tjeneste diven som example, når jump down visually makes sense to me
+
+better make use of the width = use percent?
+
+
+empty white space bug on med and low
+
+mp4 og filter
+
+try svg animations with the logo.. svg fy it
+
+remove #!
+preventDefault med event vs param
+
+aria
+minify
+mobile
+
+ */
 
 
 nav li {
@@ -69,11 +163,15 @@ nav li {
   color: #ddd;
 }
 
+.divider {}
+.big_divider {}
+
 /* for alt attribute text  */
 .flex-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
 }
 
 /* kan kræsje med events og .hide? */
@@ -82,7 +180,7 @@ nav li {
 }
 
 .visible {
-  display: block;
+  display: block;  /*this a problem? how to test?*/
 }
 
 /* insent enough to do after?
@@ -90,7 +188,9 @@ is it becasue not after when not in file? */
 /* see the css file and look at nav and change it if downloaded
 min and use specific version or download and icons etc */
 .nav-wrapper {
-  background-color: #0477BF !important; /* !important is necessary */
+  background-color: #0477BF !important;
+  /* !important is necessary */
+  /* background-color: whitesmoke !important; /* !important is necessary */
 }
 
 .banner {
@@ -113,18 +213,41 @@ min and use specific version or download and icons etc */
   /* border: 1px solid red; */
 }
 
-input,
-textarea {
-    color: black;
-}
-
-
 /* empty fields not allowed also */
 input, textarea {
+    color: black !important;
+    padding-left: 10px !important;
     border: 1px solid #ddd !important;
     border-radius: 6px !important;
     box-shadow: inset 0 0.0625em 0.125em rgba(10,10,10,.05) !important;
 }
+
+textarea {
+    padding-top: 10px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+/* minimalistisk stil på forsida med heading? no color nav? no banner? no img? */
+
+/* carrousel? tjenester */
+/* det enkle er det beste?  */
+
+/* outline / focus
+errior color */
+
+
+/* textarea:active {} */
+
+/*
+.row {
+    border: 1px solid blue !important;
+}
+.col {
+    border: 1px solid red !important;
+} */
 
 /* textarea {
     border-radius: 4px !important;
@@ -170,6 +293,17 @@ b {color: black;}
 .active {
   /* border-bottom: 2px solid white; */
 }
+
+/* .service_desc {
+    float: right;
+}
+
+.service_desc::after {
+    float: none;
+} */
+
+
+
 
 /* banner-text - fg - color adn font and size
 banner-bg
