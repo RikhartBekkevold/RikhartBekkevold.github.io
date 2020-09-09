@@ -4,13 +4,12 @@
 
 // if understand where err comes from, makes it so much easier..
 var customer = [
-    {
-        title: "Rørlegger nettside",
-        desc: "Challenges: no opinions, little info"
-    }
+  {
+    title: "Rørlegger nettside",
+    desc: "Challenges: no opinions, little info"
+  }
 ]
 
-// decuple metada - use json - decouple vue rela props?
 var projects = [
     {
         title: "Conductor Hero",
@@ -19,14 +18,13 @@ var projects = [
               "The course's requirement was to make a product involving VR technology, utilizing inter-disciplinary " +
               "teams. The goal of the course was to <i>learn how to work together in a team</i> and "+
               "then <i>reflect on the process.</i> I served mostly as designer and did some additional programming of the HUD.",
-               // find the reports - design documents left? one document atleast in discord
         thumb: "thumbnails/compressed/thumbconductorhero.png",
         tags: ["C#", "virtual reality", "interaction design"],
         minortags: ["game", "game design", "unity engine", "group project"],
         hidden: false,     /* {name: "virtual reality", color: "#000", bgColor: "#e91e63"} */
         public: true,
         client: false,
-        group: true,   // add icon here might be less confusing
+        group: true,
         view_state: {content_hidden: false},
         small: false,
         buttons: [
@@ -59,39 +57,24 @@ var projects = [
         minortags: ["js", "html", "css"],
         hidden: false,
         public: true,
-        client: true,   // if use "in" to check, instead of value, unless use undefine
-        group: true,   // add icon here might be less confusing
+        client: true,
+        group: true,
         view_state: {content_hidden: false},
         small: false,
         buttons: [
-            {
-                link: "https://skaugogchristoffersen.no/index.html",
-                icon: "fas fa-globe",
-                text: "Website"
-            }
+          {
+            link: "https://skaugogchristoffersen.no/index.html",
+            icon: "fas fa-globe",
+            text: "Website"
+          }
         ]
-    }, // launch in browser btn?
-    //Json parse wrapper that removs comments? strip them.. also add for // \n
-    // wrapper for print - feks obj
-    // remove comments when calling JSON.parse
-    // so can have comments in the file, but before its used its removes anyway
-    // add to packages with json parse?
-    // scss post parser
-    // extend css parser to scss?
-    // sunshadow
-    // oda project
-    // forum project
-    // remape yes to true or false
-    // export or static/instance?
-    // what fns to make?
-    // add electron apps
+    },
     {
         title: "Memoryflip",
         desc: "A card flipping browser memorization game. Made with the help of Pixi.js.",
         long_desc: "A browser game I made in order to play around with the <a style='color: #0000EE' href='https://www.pixijs.com/'>pixi.js</a> " +
                    "library, Javascript objects and prototypes. " +
                    "(Not well suited for smaller resolutions)",
-                   // parse html..
         thumb: "thumbnails/compressed/thumbcardflip.png",
         tags: ["javascript", "browser"],
         minortags: ["pixi.js", "game"],
@@ -102,37 +85,24 @@ var projects = [
         small: false,
         buttons: [
             {
-                link: "https://github.com/RikhartBekkevold/Memoryflip",
-                icon: "fab fa-github",
-                text: "Code"
+              link: "https://github.com/RikhartBekkevold/Memoryflip",
+              icon: "fab fa-github",
+              text: "Code"
             },
             {
-                link: "projects/cardflip-game/index.html",
-                icon: "fas fa-gamepad",
-                text: "Game"
+              link: "projects/cardflip-game/index.html",
+              icon: "fas fa-gamepad",
+              text: "Game"
             }
         ]
     },
-    {// sunshadow, VuEditor.. backend how? firebase? just link. no website needed - finish thouhg. my own personal generator thouhg. pkg
+    {
         title: "CSS parser",
         desc: "Parses CSS into an abstract syntax tree.",
-        long_desc: `A node program that can be run as a node module or as a cli.`, // insert html, not?
-        // Throws
-        // specify the error as detailed as possible
-        //  Diff: throws.  A node package. add to node modules, or whatver. exe as node. either as cli or node package.
-                   // parse html..
-
-                   // module export.. the thing thats exported
-                   // so when i am done, i wanna add only one thing to it to export from moduel
-                   // but during i want to add several internally?
-
-                   // can use witout ref exports
-                   // overwrite i mean
-                   // if dont have name, i have to use moduel as name. hence neame doent matter?
-
+        long_desc: `A CSS parser made in Javascript. A node program that can be run as a either a node module or as a cli.`,
         thumb: "thumbnails/thumbcssparser.png",
         tags: ["javascript", "CSS", "parsing", "node.js"],
-        minortags: [], // lucky that can use slice? dont need thouhg. but does for itration? try iterating?
+        minortags: ["module"], // lucky that can use slice? dont need thouhg. but does for itration? try iterating?
         hidden: false,
         public: true,
         client: false,  // this doesnt cause error in the others? if i show then yes?
@@ -229,7 +199,7 @@ var projects = [
         long_desc: "",
         thumb: "thumbnails/compressed/thumbelectronapp.png",
         tags: ["electron", "firebase"],
-        minortags: ["node", "websocket"],   // what is returned by js engine in expression is null, and that is not an array
+        minortags: ["node", "websocket"],     // what is returned by js engine in expression is null, and that is not an array
         hidden: false,                       // github, build system, cmd, npm
         public: false,
         client: false,
@@ -267,7 +237,7 @@ var projects = [
                 link: "https://github.com/RikhartBekkevold/Memoryflip",
                 icon: "fab fa-github",
                 text: "Proto"
-            },      // OFC there can be many instances.. fucntion object.. dooohh - components canbe used within a template though
+            },
             {
                 link: "projects/cardflip-game/index.html",
                 icon: "fas fa-globe",
@@ -279,21 +249,23 @@ var projects = [
         title: "Innovative Design",
         desc: "A creative design project with a working prototype to" +
               " promote health among the elderly. <br>",
+
+        // the spacing is ignored in html output anyway
         long_desc: `
-                     <b>Project requirements</b>
-                     <br>1. Observe the occupants of an elderly centre during their daily activity.
-                     <br>2. Design a technical prototype with raspberry pi that promotes both physical
-                     and mental health amongst the elderly.
-                     <br>
-                     <br>
-                     <b>The groups solution</b>
-                     <br>
-                     A prototype of a card flipping game, where the cards are flipped by
-                     stepping on ground tiles, requiring both mental and physical exercise
-                     in a fun way.
-                     <br>
-                     <br>
-                     Idea and design was done by all members. Creation of the technical prototype was done by me.`,
+               <b>Project requirements</b>
+               <br>1. Observe the occupants of an elderly centre during their daily activity.
+               <br>2. Design a technical prototype with raspberry pi that promotes both physical
+               and mental health amongst the elderly.
+               <br>
+               <br>
+               <b>The groups solution</b>
+               <br>
+               A prototype of a card flipping game, where the cards are flipped by
+               stepping on ground tiles, requiring both mental and physical exercise
+               in a fun way.
+               <br>
+               <br>
+               Idea and design was done by all members. Creation of the technical prototype was done by me.`,
         thumb: "thumbnails/compressed/thumbelderlyhealth.png",
         tags: ["ideation", "innovation", "prototyping", "IxD"],
         minortags: ["gamestorming", "python", "raspberry pi", "group project"],
@@ -478,3 +450,20 @@ var projects = [
         ]
     }
 ]
+// sunshadow, VuEditor.. backend how? firebase? just link. no website needed - finish thouhg. my own personal generator thouhg. pkg
+// atom launch in browser btn - dropdown added item - see how open terminal here works?
+//Json parse wrapper that removs comments? strip them.. also add for // \n
+// wrapper for print - feks obj
+// remove comments when calling JSON.parse
+// so can have comments in the file, but before its used its removes anyway
+// add to packages with json parse?
+// scss post parser
+// extend css parser to scss?
+// sunshadow
+// oda project
+// forum project
+// remape yes to true or false
+// export or static/instance?
+// what fns to make?
+// add electron apps
+// if use "in" to check, instead of value, unless use undefine
