@@ -38,14 +38,21 @@ li {
 
 /* UTILITY */
 .card {
-    -webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
-    /* text-align: left; */
-    margin-right: 20px;
-    margin-left: 20px;
-    display: inline-block;
-    background: white;
+  -webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+  /* text-align: left; */
+  margin-right: 20px;
+  margin-left: 20px;
+  display: inline-block;
+  background: white;
+  min-height: 625px;
+}
+
+/* to override the style for the "contact me" card, so that its not forced to
+have min height of 625px */
+#contact .card {
+  min-height: 0px;
 }
 
 
@@ -73,14 +80,6 @@ li {
     box-shadow: 0px 0px 7px -5px rgba(0,0,0,0.75); */
 }
 
-/* languages, disicpline, other  */
-/* make it stand out with boxshadow "above" the minor tags? */
-/* inset shadow on the minor? */
-/* "filter by minor or major tags" - not discipline etc*/
-/* apply css first since its loaded before js, to remove the popup effect  */
-/* <!-- jump to class css def --> */
-/* body must have px or % */
-
 .minor_tag {
     font-size: 0.6em;
     padding: 7px;
@@ -93,27 +92,52 @@ box-shadow: inset 0px 0px 15px -12px rgba(0,0,0,0.75); */
 
 .btn {
     font-size: 0.8em;
-    border-radius: 5px;
+    border-radius: 0px;
     padding: 10px;
-    background: white;
-    color: #87A890;
     border: 1px solid #87A890;
     background: white;
+    color: #87A890;
     transition: 0.5s ease;
+    /* transition: background 0.5s; /*what is s called? unit s? */ */
 }
 
+/* width doesnt change, its the show/visible. so must force it to be small?  */
+
+/* .dark  */
+
+
 .btn:hover {
-    background: #87A890;
-    color: white;
+  background: #87A890;
+  color: white;
 }
 
 .icon {
-    margin: 0 10px 0 5px;
-    font-size: 1.2em;
-    color: black;
+  margin: 0 10px 0 5px;
+  font-size: 1.2em;
+  color: black;
 }
 
 .long_desc_btn:hover {
-    /* border: 1px solid red;  */
-    cursor: pointer;
+  /* border: 1px solid red;  */
+  cursor: pointer;
 }
+
+.border {
+  border: 1px solid black;
+}
+
+.subheading_section {
+  display: flex;
+  justify-content: center;
+}
+
+.subheading_section h2 {
+  margin: 0;
+  padding: 0px 10px 10px 10px;
+  display: inline;
+}
+/* changing the style of the meterilze input elements are easy. overrdie with impo. but alos easy to do in code */
+/* use css animation and selector for this site? play with animationa dn transiton when button click   */
+
+/* give all the same class, then auto hides it, instead of using id? then dont need to change the logic */
+/* animation when clicjing show desc - the same as materlize? */

@@ -1,5 +1,16 @@
 //var img_src = "thumbnails/compressed/"; // not needed with find tool?=
+// var globalstate
+// var appstate = desc opem - filter
 
+// if understand where err comes from, makes it so much easier..
+var customer = [
+    {
+        title: "Rørlegger nettside",
+        desc: "Challenges: no opinions, little info"
+    }
+]
+
+// decuple metada - use json - decouple vue rela props?
 var projects = [
     {
         title: "Conductor Hero",
@@ -14,8 +25,10 @@ var projects = [
         minortags: ["game", "game design", "unity engine", "group project"],
         hidden: false,     /* {name: "virtual reality", color: "#000", bgColor: "#e91e63"} */
         public: true,
+        client: false,
         group: true,   // add icon here might be less confusing
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/Per-Morten/imt4310_conductor_hero",
@@ -35,6 +48,44 @@ var projects = [
         ]
     },
     {
+        title: "Amundsen and Skaug AS",
+        desc: "A website for a local plumbers service.",
+        long_desc: "A website made for a local plumbers service. "+
+                   "The main challenge was designing a solution despite the clients lack of opinion and somewhat "+
+                   "anonymous company profile.",
+               // find the reports - design documents left? one document atleast in discord
+        thumb: "thumbnails/thumbrorlegger.png", // PNG. png.
+        tags: ["website", "frontend", "browser"],
+        minortags: ["js", "html", "css"],
+        hidden: false,
+        public: true,
+        client: true,   // if use "in" to check, instead of value, unless use undefine
+        group: true,   // add icon here might be less confusing
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://skaugogchristoffersen.no/index.html",
+                icon: "fas fa-globe",
+                text: "Website"
+            }
+        ]
+    }, // launch in browser btn?
+    //Json parse wrapper that removs comments? strip them.. also add for // \n
+    // wrapper for print - feks obj
+    // remove comments when calling JSON.parse
+    // so can have comments in the file, but before its used its removes anyway
+    // add to packages with json parse?
+    // scss post parser
+    // extend css parser to scss?
+    // sunshadow
+    // oda project
+    // forum project
+    // remape yes to true or false
+    // export or static/instance?
+    // what fns to make?
+    // add electron apps
+    {
         title: "Memoryflip",
         desc: "A card flipping browser memorization game. Made with the help of Pixi.js.",
         long_desc: "A browser game I made in order to play around with the <a style='color: #0000EE' href='https://www.pixijs.com/'>pixi.js</a> " +
@@ -46,7 +97,9 @@ var projects = [
         minortags: ["pixi.js", "game"],
         hidden: false,
         public: true,
+        client: false,
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/RikhartBekkevold/Memoryflip",
@@ -60,6 +113,40 @@ var projects = [
             }
         ]
     },
+    {// sunshadow, VuEditor.. backend how? firebase? just link. no website needed - finish thouhg. my own personal generator thouhg. pkg
+        title: "CSS parser",
+        desc: "Parses CSS into an abstract syntax tree.",
+        long_desc: `A node program that can be run as a node module or as a cli.`, // insert html, not?
+        // Throws
+        // specify the error as detailed as possible
+        //  Diff: throws.  A node package. add to node modules, or whatver. exe as node. either as cli or node package.
+                   // parse html..
+
+                   // module export.. the thing thats exported
+                   // so when i am done, i wanna add only one thing to it to export from moduel
+                   // but during i want to add several internally?
+
+                   // can use witout ref exports
+                   // overwrite i mean
+                   // if dont have name, i have to use moduel as name. hence neame doent matter?
+
+        thumb: "thumbnails/thumbcssparser.png",
+        tags: ["javascript", "CSS", "parsing", "node.js"],
+        minortags: [], // lucky that can use slice? dont need thouhg. but does for itration? try iterating?
+        hidden: false,
+        public: true,
+        client: false,  // this doesnt cause error in the others? if i show then yes?
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+              link: "https://github.com/RikhartBekkevold/css-parser",
+              icon: "fab fa-github",
+              text: "Code"
+            }
+        ]
+    },
+    // electron app, chat and
     {  //slect click doe snot check for hidden before draw
         title: "Electron chat app",
         desc: "A desktop chat app with <a href='https://www.electronjs.org/'>Electron</a> as frontend, and " +
@@ -70,7 +157,84 @@ var projects = [
         minortags: ["node", "websocket"],   // what is returned by js engine in expression is null, and that is not an array
         hidden: false,                       // github, build system, cmd, npm
         public: false,
+        client: false,
         view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/cardflip-game/index.html",
+                icon: "fas fa-globe",  // download or electron icon?
+                text: "App"             // host src to to download - must package final product and then host.. website need to add download btn
+            }
+        ]
+    },
+    {  //slect click doe snot check for hidden before draw
+        title: "JS document creator",
+        desc: "A window cli tool to automatically create documents from javascript comments.",
+        long_desc: "",
+        thumb: "thumbnails/compressed/thumbelectronapp.png",
+        tags: ["python", "cli"],
+        minortags: ["automatization"],   // what is returned by js engine in expression is null, and that is not an array
+        hidden: false,                       // github, build system, cmd, npm
+        public: false,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/cardflip-game/index.html",
+                icon: "fas fa-globe",  // download or electron icon?
+                text: "App"             // host src to to download - must package final product and then host.. website need to add download btn
+            }
+        ]
+    },
+    {  //slect click doe snot check for hidden before draw
+        title: "Android - sunshadow",
+        desc: "",
+        long_desc: "Keywords: <br><br>package electron app/exe<br>",
+        thumb: "thumbnails/compressed/thumbelectronapp.png",
+        tags: ["electron", "firebase"],
+        minortags: ["node", "websocket"],   // what is returned by js engine in expression is null, and that is not an array
+        hidden: false,                       // github, build system, cmd, npm
+        public: false,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/cardflip-game/index.html",
+                icon: "fas fa-globe",  // download or electron icon?
+                text: "App"             // host src to to download - must package final product and then host.. website need to add download btn
+            }
+        ]
+    },
+    {
+        title: "VuEditor",
+        desc: "A form editor in vue and vuetify.",
+        long_desc: "",
+        thumb: "thumbnails/compressed/thumbelectronapp.png",
+        tags: ["electron", "firebase"],
+        minortags: ["node", "websocket"],   // what is returned by js engine in expression is null, and that is not an array
+        hidden: false,                       // github, build system, cmd, npm
+        public: false,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/RikhartBekkevold/Memoryflip",
@@ -94,8 +258,10 @@ var projects = [
         minortags: ["prototyping", "interview", "focus group", "research"], //"affinity analysis", "hierustics analysis", "group project"],
         hidden: false,
         public: false,
+        client: false,
         group: true,  // determines if icon is group icon or indivi.
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/RikhartBekkevold/Memoryflip",
@@ -113,30 +279,34 @@ var projects = [
         title: "Innovative Design",
         desc: "A creative design project with a working prototype to" +
               " promote health among the elderly. <br>",
-        long_desc: `A group project in 'IMT 4313 Design, Creativity and Innovation' where we went to an elderly centre to observe their daily life
-                    and then had to create
-                    a technical prototype for a product, utilizing either raspberry pi or arduino, that would promote health amongst the elderly.
-                    In the creative process we used gamestorming and other ideation methods to come
-                    up with a creative solution which resulted in a game running on raspberry pi that used tiles on the floor that flipped
-                    the cards in game by stepping on them.
-                    Making the elderly both move and have fun at the same time.
-                    Idea and design was done by all. Creation of the technical prototype was done by me.`,
+        long_desc: `
+                     <b>Project requirements</b>
+                     <br>1. Observe the occupants of an elderly centre during their daily activity.
+                     <br>2. Design a technical prototype with raspberry pi that promotes both physical
+                     and mental health amongst the elderly.
+                     <br>
+                     <br>
+                     <b>The groups solution</b>
+                     <br>
+                     A prototype of a card flipping game, where the cards are flipped by
+                     stepping on ground tiles, requiring both mental and physical exercise
+                     in a fun way.
+                     <br>
+                     <br>
+                     Idea and design was done by all members. Creation of the technical prototype was done by me.`,
         thumb: "thumbnails/compressed/thumbelderlyhealth.png",
         tags: ["ideation", "innovation", "prototyping", "IxD"],
         minortags: ["gamestorming", "python", "raspberry pi", "group project"],
         hidden: false,  // one tag for discpline and then language.. icon that shows group project intead?
         public: true,
+        client: false,
         // "learning outcomes" menu btn
         // (And giving them a chance to play witht he children that
         // sometimes visited.)
         group: true,
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
-            // {
-            //     link: "projects/elderly_health/paper.html",
-            //     icon: "fas fa-file-pdf",
-            //     text: "Process"
-            // },
             {
                 link: "projects/elderly_health/paper.html",
                 icon: "fas fa-file-pdf",
@@ -165,7 +335,9 @@ var projects = [
         minortags: ["automatization tool", "atom texteditor package"],
         hidden: false,
         public: true,
+        client: false,
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/RikhartBekkevold/js-object-notation-converter",
@@ -191,7 +363,9 @@ var projects = [
         minortags: ["firebase", "colour theory"],
         hidden: false,
         public: true,
+        client: false,
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/RikhartBekkevold/syntax-highlighting-experiment",
@@ -220,7 +394,9 @@ var projects = [
         minortags: ["addon", "game", "world of warcraft"],
         hidden: false,
         public: true,
+        client: false,
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/RikhartBekkevold/PlayerFrameAuras",
@@ -240,7 +416,9 @@ var projects = [
         minortags: ["tutorial", "graph db", "relational db"],
         hidden: false,
         public: true,
+        client: false,
         view_state: {content_hidden: false},
+        small: true,
         buttons: [
             {
                 link: "https://medium.com/@ikhart.v.bekkevold/relational-or-graph-databases-which-one-to-choose-for-your-next-project-6fd31ae9cee",
@@ -266,7 +444,9 @@ var projects = [
         minortags: [],
         hidden: false,
         public: true,
+        client: false,
         view_state: {content_hidden: false},
+        small: true,
         buttons: [
             {
                 link: "projects/misc/portfolio.html",
@@ -286,7 +466,9 @@ var projects = [
         minortags: ["addon", "game", "world of warcraft"],
         hidden: false,
         public: true,
+        client: false,
         view_state: {content_hidden: false},
+        small: false,
         buttons: [
             {
                 link: "https://github.com/RikhartBekkevold/BetterWeakenedSoul",

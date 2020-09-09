@@ -4,9 +4,10 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 10px;
+    user-select: none;
 }
 
-#about_me_btn, #projects_btn, #contact_btn, #big_btn, #small_btn {
+#about_me_btn, #projects_btn, #contact_btn, #client_btn, #big_btn, #small_btn {
     cursor: pointer;
     display: inline-block;
     padding: 5px;
@@ -95,9 +96,8 @@
 
 
 
-
 /* projects SECTION */
-#projects {
+#projects, #clients {
     color: hsl(220, 14%, 71%);
     display: flex;
     justify-content: center;
@@ -105,7 +105,7 @@
     /* flex: 1; /*makes the cards equal height though, not content*/
 }
 
-#projects .card {
+#projects .card, #clients .card {
     width: 400px;
     margin-bottom: 40px;
     padding-bottom: 0px;
@@ -114,13 +114,51 @@
     /* use height of card_container.. make their minheight the same i guess.. so time it.. then fix tags spacing/rows? */
 }
 
+
+.card_menu {
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    border-bottom: 1px solid #ddd
+}
+
+.card_menu .left_menu {
+    width: 70%;
+    color: black;
+    /* border: 1px solid blue; */
+    box-sizing: border-box;
+}
+
+.card_menu .long_desc_btn {
+    padding: 10px;
+    padding-left: 19px;
+    user-select: none;
+    /* width: 100%;  */
+    /* border: 1px solid red; */
+    /* min-width: 100%; */
+    box-sizing: border-box;
+}
+
+.right_menu {
+    width: 25%;
+    color: black;
+    /* border: 1px solid green; */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+
+
 .card-image {
     /* height: 205px; */
     position: relative;
     overflow: hidden;
 }
 
-/*the projects thumbnails*/
+/* the projects thumbnails*/
 .card-image img {
     width: 100%;
 }
@@ -142,16 +180,21 @@
 
 .buttons_container {
     padding: 20px 0px 20px 0px;
-    background: white;
+    /* background: white; */
     margin: 0px;
     /* min-height: 40px; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    /* border-top: 1px solid #ddd; */
 }
 
-
-
+/* USE? more confusing? */
+.normal_flex {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 /* CONTACT SECTION */
 #contact {
@@ -161,7 +204,7 @@
 }
 
 #contact .card {
-    padding: 20px 30px 60px 30px;
+    padding: 40px 30px 90px 30px;
     margin-bottom: 40px;
     max-width: 400px;
 }
@@ -311,11 +354,28 @@ footer .fa-youtube:hover {
 
 /* forces the nav menu to go from 3 buttons on one row directly to 1 button for each row */
 /* flexbox manages the rest of the responsive design */
-@media screen and (max-width: 404px) {
-    #about_me_btn, #projects_btn, #contact_btn {
+@media screen and (max-width: 421px) {
+    #about_me_btn, #projects_btn, #contact_btn, #client_btn {
         text-align: center;
         width: 100%;
         margin-left: 30%;
         margin-right: 30%;
     }
+}
+
+/* <!-- with dynamic vue rendering, must use id --> */
+/* must set height all the way up to html - but width is normally correct from start,
+to use %, then can use relative, asolute etc  */
+
+/* vue */
+.small_card {
+    /* max-height: 200px;  */
+    max-height: 50px;
+    max-width: 100px;
+    /* style vs css
+    order in css file thouhg! */
+}
+
+.small_card_img {
+    border: 1px solid red;
 }

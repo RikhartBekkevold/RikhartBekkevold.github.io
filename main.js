@@ -10,45 +10,85 @@ const contact             =   document.getElementById('contact');
 const github_buttons      =   document.querySelectorAll('.github_btn');
 const filter              =   document.getElementById('filter');
 
-
-// set initial state of navigation menu
+// hide all content except projects
 about_me.style.display 			  = 'none';
 contact.style.display 			  = 'none';
+clients.style.display 			  = 'none';
+
+// set initial state of navigation menu
 projects_btn.style.borderBottom   = '2px solid #97A89C';
+
 
 // add listeners for navigation menu
 projects_btn.addEventListener('pointerdown', function() {
     projects_container.style.display 	= 'flex';
     about_me.style.display 	= 'none';
     contact.style.display 	= 'none';
+    clients.style.display 	= 'none'; // not flex?
     filter.style.display 	= 'flex';
 
+    client_btn.style.borderBottom  = '0px solid #ddd';
     projects_btn.style.borderBottom 	= '2px solid #97A89C';
     about_me_btn.style.borderBottom 	= '0px solid #ddd';
-    contact_btn.style.borderBottom 	    = '0px solid #ddd';
+    contact_btn.style.borderBottom 	  = '0px solid #ddd';
 });
 
 about_me_btn.addEventListener('pointerdown', function() {
     about_me.style.display 	= 'block';
     projects_container.style.display 	= 'none';
     contact.style.display 	= 'none';
+    clients.style.display 	= 'none'; // not flex?
     filter.style.display 	= 'none';
 
+    client_btn.style.borderBottom  = '0px solid #ddd';
     projects_btn.style.borderBottom 	= '0px solid #ddd';
     about_me_btn.style.borderBottom 	= '2px solid #97A89C';
-    contact_btn.style.borderBottom 	    = '0px solid #ddd';
+    contact_btn.style.borderBottom 	  = '0px solid #ddd';
 });
 
 contact_btn.addEventListener('pointerdown', function() {
     contact.style.display 	= 'block';
     about_me.style.display 	= 'none';
+    clients.style.display 	= 'none'; // not flex?
+    projects_container.style.display 	= 'none';
+    filter.style.display 	= 'none';
+
+    projects_btn.style.borderBottom  = '0px solid #ddd';
+    client_btn.style.borderBottom  = '0px solid #ddd';
+    about_me_btn.style.borderBottom  = '0px solid #ddd';
+    contact_btn.style.borderBottom   = '2px solid #97A89C';
+});
+
+client_btn.addEventListener('pointerdown', function() {
+    clients.style.display 	= 'flex'; // not flex?
+    about_me.style.display 	= 'none';
+    contact.style.display 	= 'none';
     projects_container.style.display 	= 'none';
     filter.style.display 	= 'none';
 
     projects_btn.style.borderBottom  = '0px solid #ddd';
     about_me_btn.style.borderBottom  = '0px solid #ddd';
-    contact_btn.style.borderBottom   = '2px solid #97A89C';
+    contact_btn.style.borderBottom   = '0px solid #ddd';
+    client_btn.style.borderBottom    = '2px solid #97A89C';
 });
+
+// show
+//   hide all other - so array?
+//
+//   push all to array
+//   hide all
+//   show the one matches
+//
+//   if hide all then dont need array
+//
+//   use vue anyway?
+
+// is this waht vue acutally helps with? makes it easier to add new?
+
+// so dont need to nest for hiding all without specific targeting all, can also just apply the same class. and diff clases for style.
+// use diff for event handler. and class for setting same border, then target specifc and add border? etc
+// container for all. or section. btn for rest. query all. not thios? filter same class - projects
+// good way witout wrapping
 
 // add "loading" feedback for when user clicks github links - imp: not based on server respons, can be confusing
 github_buttons.forEach(function(btn) {
@@ -68,86 +108,9 @@ github_buttons.forEach(function(btn) {
     });
 });
 
-
-// increase the size of the line in either direction and decrease in opposite.
-// some slowdown and acceleration, with some smoothing/tween?
-
-// var sel = document.createElement("select")
-// // document.getElementById("app").insertBefore(sel, document.getElementById("about_me"))
-// document.getElementById("filter").appendChild(sel)
-// // get all tags
-// sel.style.height = 25 + "px";
-// //
-// // var tags = ["All", "Game", "Interaction Design"]
-// //
-// // for (var i = 0; i < tags.length; i++) {
-// //     var option = document.createElement("option");
-// //     option.value = tags[i];
-// //     option.text = tags[i];
-// //     sel.appendChild(option);
-// // }
-// var inserted = [];
-// projects.forEach(function(projects_container) {
-//     projects_container.tags.forEach(function(tag) {
-//         if(inserted.indexOf(tag) == -1) {
-//             var option = document.createElement("option");
-//             option.value = tag;
-//             option.text = tag;
-//             sel.appendChild(option);
-//             inserted.push(tag)
-//         }
-//     })
-// })
-
-// onclick select get value and .. need to setup link with vue instead, filter hich means style.hidden for specific elements.. add it to data
-//
-// clikc handler
-//     get value
-//     loop all projects_container boxes .class
-//     if value == any of the tags whihc i find how?
-
-
-// vue events and vue...
-
-// make select
-// when the page loads/globally
-// get the cards and tags when the el have loaded
-// populate the select with the non duplicated values
-
-// on click/change handler for select
-// inside get the value at change
-// get the cards and tags
-// check if the tags match for each card with the value (with projects_container.childre.foreach)
-// if the card does then set the style = none
-
-// for(i = 0; ) {
-//
-// }
-
-// for (var i = 0; i < array.length; i++) {
-//     array[i]
-// }
-
-// marks and sets caret two places, and then 3 places, see how they did it in package
-
-
-
-
-// fetch(function(response){console.log()})
-//
-// function fetch(callback) {
-//     //do things, get value from db
-//
-//     callback(db_value)
-// }
-
-// vue components like drop down menu
-// or bootstrap - dont need functionality, just looks
-
 document.getElementById('reset_btn').addEventListener('pointerdown', function() {
-    document.getElementById('contact_form').reset();
+  document.getElementById('contact_form').reset();
 });
-
 
 // insert copyright year in footer programmatically instead of statically having to update
 // uses system clock, not server, so can show wrong year if users OS clock is wrong

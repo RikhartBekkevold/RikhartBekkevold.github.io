@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
-
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/percentage_wheels.css">
@@ -19,17 +18,26 @@
 		<div id="nav_menu">
 			<h1 id="about_me_btn">About</h1>
 			<h1 id="projects_btn">Projects</h1>
+			<h1 id="client_btn">Clients</h1>
 			<h1 id="contact_btn">Contact</h1>
 		</div>
+    <!-- <div class="subheading_section">
+        <h2>Personal</h2>
+        <h2>Clients</h2>
+    </div> -->
 
 		<div id="filter">
 			<select id="select" @change="filterProjects($event, this)">					<!-- computed prop instead? -->
-				<option value="All">All</option>
+				<option value="All">Filter</option>
 				<optgroup label="Major tags">
-					<option v-for="option in filterSelect" :value="option">{{option.charAt(0).toUpperCase() + option.substring(1)}}</option>
+					<option v-for="option in filterSelect" :value="option">
+						{{ option.charAt(0).toUpperCase() + option.substring(1) }}
+					</option>
 				</optgroup>
 				<optgroup label="Minor tags">
-					<option v-for="option in minorTagsSelect" :value="option">{{option.charAt(0).toUpperCase() + option.substring(1)}}</option>
+					<option v-for="option in minorTagsSelect" :value="option">
+						{{ option.charAt(0).toUpperCase() + option.substring(1) }}
+					</option>
 				</optgroup>
 			</select>
 			<button @click="reset()">Reset</button>
@@ -43,7 +51,7 @@
 				<div id="personal_info_wrapper">
 					<h1>Rikhart Bekkevold</h1>
 					<span>Web Developer, Interaction Designer</span>
-					<div><i class="fas fa-map-marker-alt"></i> Gjøvik, Norway</div>
+					<div><i class="fas fa-map-marker-alt"></i> Hønefoss, Norway</div>
 				</div>
 
 				<!-- EDUCATION SECTION -->
@@ -143,28 +151,63 @@
 			</div>
 		</div>
 
-		<!-- PROJECTS -->
+
+    <!-- PROJECTS -->
 		<div id="projects">
-			<div  style="min-height: 625px" class="card" v-for="project in projects" v-show="project.hidden == false" :key="project.title">
-				<div class="card-image">
-					<img :src="project.thumb" alt="thumbnail" />
+      <!-- own container, above. 100%. then the card thing in its own container. then make that flex. or above porjects? make own containe? then wont
+      show auto -->
+      <!-- <div class="border">
+          <h2>asda</h2>
+          <h2>asda</h2>
+      </div> -->
+				<!-- :class="{ small_card: project.small }" -->
+			<div class="card"
+     			 v-for="project in projects"
+				   v-show="project.hidden == false"
+  			   :key="project.title">
+
+				  <!-- :class="{ small_card_img: project.small }" -->
+				<div class="card-image">	 <!-- pass in js object? in :class/:style, then can check js file, v-model  -->
+					<img
+						:src="project.thumb"
+						alt="thumbnail"
+					/>
 				</div>
 
-				<div class="card_menu" style="display: flex; flex-wrap: wrap; background: white; border-bottom: 1px solid #ddd">
-					<div style="width: 90%;">
-						<div class="long_desc_btn" style="width: 40%; background: white; color: black; padding: 10px; padding-left: 19px; user-select: none;"
-							 @click="project.view_state.content_hidden = !project.view_state.content_hidden">
+				<div class="card_menu">
+					<div class="left_menu">
+						<div class="long_desc_btn" @click="project.view_state.content_hidden = !project.view_state.content_hidden">
 							{{ !project.view_state.content_hidden ? "Description" : "Overview" }}
 							<i v-if="!project.view_state.content_hidden" class="fas fa-caret-down"></i>
 							<i v-else="project.view_state.content_hidden" class="fas fa-caret-up"></i>
 						</div>
 					</div>
-					<div style="color: black; padding-top: 10px">
+					<div class="right_menu"> <!-- padding: 10px; add for all, not just one -->
+						<!-- <div class="tag white_tag" >
+							{{ project.small ? "tiny" : "large" }}
+						</div> -->
 						<i style="" v-if="!project.group" class="fas fa-user"></i>  <!-- v-show instead? -->
 						<i style="" v-else="project.group" class="fas fa-user-friends"></i>
 					</div>
 				</div>
 
+
+
+				<!-- fixed desc arrow - icon jump down
+				fixed menu jump on small res.
+				made buttons more clearly separated from tags
+				rewrote the innovative design desc
+
+				btns even clearer
+				ixd tag
+
+				add line for button
+				changed the name all to filter
+
+			-->
+
+
+				<!-- hidden by default -->
 				<div class="card_content" v-show="project.view_state.content_hidden">
 					<div class="card_desc" style="min-height: 260px">
 						<h2>{{ project.title }}</h2>
@@ -172,6 +215,12 @@
 					</div>
 				</div>
 
+				<!-- vue style colors  -->
+				<!-- musstach text  -->
+				<!-- event listeners -->
+				<!-- seti "extension" for vue -->
+
+				<!-- visible -->
 				<div class="card_content" v-show="!project.view_state.content_hidden">
 					<div>
 						<!-- DESCRIPTION -->
@@ -195,7 +244,10 @@
 							<div style="padding: 10px" v-for="btn in project.buttons">
 								<a :href="btn.link">
 									<div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github' }">
-										<i style="margin-right: 5px;" :class="btn.icon"></i>{{ btn.text }}</div>
+										<!-- <img src="atom.svg" width="16"> -->
+										<i style="margin-right: 5px;" :class="btn.icon"></i>
+										{{ btn.text }}
+									</div>
 								</a>
 							</div>
 						</div>
@@ -203,6 +255,76 @@
 				</div>
 			</div>
 		</div>
+
+
+    <!-- wrap in vue show transistion? -->
+    <div id="clients">
+      <div class="card"
+           v-for="project in client_projects"
+           v-show="project.hidden == false"
+           :key="project.title">
+        <div class="card-image">
+          <img
+            :src="project.thumb"
+            alt="thumbnail"
+          />
+        </div>
+
+        <div class="card_menu">
+          <div class="left_menu">
+            <div class="long_desc_btn" @click="project.view_state.content_hidden = !project.view_state.content_hidden">
+              {{ !project.view_state.content_hidden ? "Description" : "Overview" }}
+              <i v-if="!project.view_state.content_hidden" class="fas fa-caret-down"></i>
+              <i v-else="project.view_state.content_hidden" class="fas fa-caret-up"></i>
+            </div>
+          </div>
+          <div class="right_menu">
+            <i style="" v-if="!project.group" class="fas fa-user"></i>  <!-- v-show instead? -->
+            <i style="" v-else="project.group" class="fas fa-user-friends"></i>
+          </div>
+        </div>
+
+        <div class="card_content" v-show="project.view_state.content_hidden">
+          <div class="card_desc" style="min-height: 260px">
+            <h2>{{ project.title }}</h2>
+            <div style="text-align: left"><span v-html="project.long_desc"></span></div>
+          </div>
+        </div>
+
+        <div class="card_content" v-show="!project.view_state.content_hidden">
+          <div>
+            <!-- DESCRIPTION -->
+            <div class="card_desc">
+              <h2>{{ project.title }}</h2>
+              <p v-html="project.desc"></p> <!-- v-html = tags, mustach = pure js string -->
+            </div>
+
+            <!-- TAGS -->
+            <div class="tags_container">
+              <div>
+                <div class="tag white_tag"  v-for="tag in project.tags">{{ tag }}</div>
+              </div>
+              <div>
+                <div class="tag minor_tag" v-for="minortag in project.minortags">{{ minortag }}</div>
+              </div>
+            </div>
+
+            <!-- LINKS BUTTONS -->
+            <div class="buttons_container">
+              <div style="padding: 10px" v-for="btn in project.buttons">
+                <a :href="btn.link">
+                  <div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github' }">
+                    <i style="margin-right: 5px;" :class="btn.icon"></i>
+                    {{ btn.text }}
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
 		<!-- CONTACT CARD -->
