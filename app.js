@@ -64,7 +64,7 @@ var app = new Vue({
     }
   }
 })
-// dividing this would be easy? 
+// dividing this would be easy?
 
 // console.log(app)
 // hideProject({ prop })

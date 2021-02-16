@@ -124,7 +124,7 @@ var projects = [
         long_desc: "Keywords: <br><br>package electron app/exe<br>",
         thumb: "thumbnails/compressed/thumbelectronapp.png",
         tags: ["electron", "firebase"],
-        minortags: ["node", "websocket"],   // what is returned by js engine in expression is null, and that is not an array
+        minortags: ["node", "websocket"],    // what is returned by js engine in expression is null, and that is not an array
         hidden: false,                       // github, build system, cmd, npm
         public: false,
         client: false,
@@ -132,14 +132,14 @@ var projects = [
         small: false,
         buttons: [
             {
-                link: "https://github.com/RikhartBekkevold/Memoryflip",
-                icon: "fab fa-github",
-                text: "Code"
+              link: "https://github.com/RikhartBekkevold/Memoryflip",
+              icon: "fab fa-github",
+              text: "Code"
             },
             {
-                link: "projects/cardflip-game/index.html",
-                icon: "fas fa-globe",  // download or electron icon?
-                text: "App"             // host src to to download - must package final product and then host.. website need to add download btn
+              link: "projects/cardflip-game/index.html",
+              icon: "fas fa-globe",  // download or electron icon?
+              text: "App"             // host src to to download - must package final product and then host.. website need to add download btn
             }
         ]
     },
@@ -443,9 +443,9 @@ var projects = [
         small: false,
         buttons: [
             {
-                link: "https://github.com/RikhartBekkevold/BetterWeakenedSoul",
-                icon: "fab fa-github",
-                text: "Code"
+              link: "https://github.com/RikhartBekkevold/BetterWeakenedSoul",
+              icon: "fab fa-github",
+              text: "Code"
             }
         ]
     }

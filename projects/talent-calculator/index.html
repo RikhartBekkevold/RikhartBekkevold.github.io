@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WoW Classic Talent Calculator</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+      <div id="tooltip">
+        <div id="title">
+          <h3></h3>
+          <span></span>
+        </div>
+        <div class="gray">Talent</div>
+        <div class="flex-space">
+          <div class="manacost"></div>
+          <div class="range"></div>
+        </div>
+        <div class="flex-space">
+          <div class="casttime"></div>
+          <div class="cooldown"></div>
+        </div>
+        <div></div>
+        <div class="desc prev yellow"></div>
+        <div class="desc yellow"></div>
+        <p class='red' id="points_requirement"></p>
+        <p class='red' id="talent_requirement"></p>
+      </div>
+
+
+      <div id="classes">
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_druid.jpg" title="druid"  id="druid" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_hunter.jpg" title="hunter" id="hunter" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_mage.jpg" title="mage" id="mage" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_paladin.jpg" title="paladin" id="paladin" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_priest.jpg" class="selected" title="druid" id="priest" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_rogue.jpg"  title="rogue" id="rogue" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_shaman.jpg" title="shaman" id="shaman" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_warlock.jpg" title="warlock" id="warlock" />
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/class_warrior.jpg" title="warrior" id="warrior" />
+      </div>
+
+
+      <div class="flex-center">
+        <div id="treeinfo">
+          <span></span>
+          <span id="points"></span>
+          <span id="required-level"></span>
+          <span></span>
+          <button name="button" onclick="resetAll()">Reset All</button>
+        </div>
+      </div>
+
+
+      <div id="container">
+        <div class="branch-container">
+            <div class="branch" id="branch1">
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+            </div>
+            <div class="branch-info-footer">
+            <div>
+              <div class="branchname"></div>
+            </div>
+            <div class="pointsspent"></div>
+            <div>
+              <button name="button">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="branch-container">
+          <div class="branch" id="branch2">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+          </div>
+          <div class="branch-info-footer">
+            <div>
+              <div class="branchname"></div>
+            </div>
+            <div class="pointsspent"></div>
+            <div>
+              <button name="button">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="branch-container">
+          <div class="branch" id="branch3">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+          </div>
+          <div class="branch-info-footer">
+            <div>
+              <div class="branchname"></div>
+            </div>
+            <div class="pointsspent"></div>
+            <div>
+              <button name="button">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <script src="data/talents.js"></script>
+      <script src="js/objects/tooltip.js"></script>
+      <script src="js/objects/hiddenNode.js"></script>
+      <script src="js/objects/node.js"></script>
+      <script src="js/objects/branch.js"></script>
+      <script type="text/javascript">
+        var classesButtons = document.querySelector("#classes")
+        for (var i = 0; i < classesButtons.children.length; i++) {
+          classesButtons.children[i].addEventListener("mouseup", function(evt) {
+            for (var i = 0; i < classesButtons.children.length; i++)
+            classesButtons.children[i].classList.remove("selected")
+            this.classList.add("selected")
+            classes = this.getAttribute("id")
+          })
+        }
+      </script>
+      <script type="text/javascript">
+        // disable context menu on right click
+        document.body.addEventListener("contextmenu", (evt) => {
+          evt.preventDefault();
+        })
+      </script>
+      <script src="js/main.js"></script>
+    </body>
+</html>

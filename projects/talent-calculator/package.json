@@ -1,0 +1,14 @@
+{
+  "name": "TalentCalculator",
+  "version": "0.1.0",
+  "created": "6/2/2021",
+  "description": "WoW classic talent calculator",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": ["vue", "wow", "browser", "dom"],
+  "minor": ["css", "html", "flexbox"],
+  "author": "Rikhart Bekkevold",
+  "repository": "",
+  "license": "MIT"
+}
