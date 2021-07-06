@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
       <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
-      <link rel="stylesheet" href="css/global.css">
+      <!-- <link rel="stylesheet" href="css/global.css"> -->
       <link rel="stylesheet" href="css/style.css">
 
       <link rel="stylesheet" href="css/hl.css">
@@ -375,10 +375,20 @@ increment() // returns the number 20</code></pre>
    <!-- basically. it just uses assign (=) on allproperties src = target  -->
 
    <!-- also link to dist: "build.min.js" - only one file?  -->
-   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-   <script src="js/hl.js" charset="utf-8"></script>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+   <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
+   <!-- specific version and minified  -->
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+   <!-- <script src="js/hl.js" charset="utf-8"></script>
    <script src="js/menu.js" charset="utf-8"></script>
    <script src="js/app.js" charset="utf-8"></script>
-   <script src="js/scroll.js" charset="utf-8"></script>
+   <script src="js/scroll.js" charset="utf-8"></script> -->
+
+   <script src="dist/hl.js" charset="utf-8"></script>
+   <script src="dist/menu.js" charset="utf-8"></script>
+   <script src="dist/app.js" charset="utf-8"></script>
+   <script src="dist/scroll.js" charset="utf-8"></script>
+
  </body>
 </html>
