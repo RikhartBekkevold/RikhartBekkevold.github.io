@@ -1,0 +1,384 @@
+<!-- load only a few at a time - lazy load -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title></title>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+      <link rel="icon" href="../resources/final_logo_dark.svg">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+      <link rel="stylesheet" href="css/global.css">
+      <link rel="stylesheet" href="css/style.css">
+
+      <link rel="stylesheet" href="css/hl.css">
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/dark.css">
+
+   </head>
+   <body :class="{dark: isDark}">
+     <div :class="{dark: isDark}" id="app" v-cloak>
+
+       <div id="nav_menu" :class="{ dark: isDark }">
+         <div id="mobileMenu">
+           <i id="mobileMenuIcon" class="fas fa-bars" @mousedown="showNav"></i>
+         </div>
+
+         <div id="logo_container">
+            <a href="../index.html">
+              <img id="logo" :src="!isDark ? '../resources/final_logo.svg' : '../resources/final_logo_dark.svg'" alt="">
+            </a>
+            <a href="../index.html">
+              <div id="nav_owner_name">Rikhart Bekkevold</div>
+            </a>
+         </div>
+
+         <div id="menu_btns">
+           <div id="about_me_btn"><a href="../index.html">Home</a></div>
+           <div id="dropdown" style="position: relative;" @mouseenter="showNavTT = true" @mouseleave="showNavTT = false">
+             <div style="" id="projects_btn">
+               Projects <i class="fas fa-caret-down"></i>
+             </div>
+             <transition name="fade">
+             <div id="projects_dropdown_menu" @click="showNavTT = false" v-show="showNavTT">
+               <a :class="{ dark: isDark }" href="../index.html#personal_projects"><div id="proj_personal_btn">Personal</div></a>
+               <a :class="{ dark: isDark }" href="../index.html#client_projects"><div id="proj_clients_btn">Clients</div></a>
+             </div>
+           </transition>
+           </div>
+           <div  id="blog_btn"><a  href="../index.html#blogs">Blog</a></div>
+           <div  id="contact_btn"><a href="../index.html#contact">Contact</a></div>
+         </div>
+
+         <div id="theme_btn" :class="{ dark: isDark }">
+           <div id="theme_icon" class="tag btn" :class="{ dark: isDark }"
+                                        @click="switchMode()" :title="'Toggle ' + (!isDark ? 'dark' : 'light') + ' theme'">
+           <div class="material-icons">
+             {{ isDark ? "light_mode" : "brightness_4" }}
+           </div>
+         </div>
+       </div>
+     </div>
+
+
+    <div class="menu" :class="{dark: isDark}">
+      <h4 class="title"></h4>
+      <div class="pub_date">
+        Date published: 04.06.2021
+      </div>
+      <h5 class="toc">Table of Contents</h5>
+      <ul :class="{dark: isDark}">
+      </ul>
+    </div>
+
+    <transition name="slide">
+      <div class="sidemenu" v-focus tabindex="1" v-if="showSideNav" @blur.prevent="blurNav()" :class="{dark: isDark}">
+        <h4 class="title"></h4>
+        <div class="pub_date">
+          Date published: 04.06.2021
+        </div>
+        <h5 class="toc">Table of Contents</h5>
+        <ul :class="{dark: isDark}">
+        </ul>
+      </div>
+    </transition>
+
+
+   <div class="content">
+    <div class="article" :class="{dark: isDark}">
+      <h1 id="how-to-set-default-parameter-values-in-javascript-functions">How to set default parameter values in JavaScript functions: an overview</h1>
+      <p>
+        When creating a function we often want to make sure that the values (called arguments) passed to the function when called
+        has default values in case the user does not provide one, or provides the wrong one.
+      </p>
+      <p>There are many ways to set default values, but here are five common ways:</p>
+      <ol>
+         <li><a href="#if-statement">If statement</a></li>
+         <li><a href="#tenary-expression">Tenary expression</a></li>
+         <li><a href="#short-circuit">Short-circuit evaluation</a></li>
+         <li><a href="#object-assign">Object.assign</a></li>
+         <li><a href="#default-parameters">ECMAScript 2015 (ES2015) default parameters</a></li>
+      </ol>
+      <p>When we call a function without passing a value for one of the parameters (the names used when declaring a function) JavaScript will instead pass the value <code>undefined</code> as a default value for this parameter.</p>
+      <p>The three first methods overrides the JS default value with our own default value by detecting this <code style="padding: 5px">undefined</code> value inside the function, and instead replacing it with a new value, while the last two sets their own default values initially instead of relying on the JS <code>undefined</code>.</p>
+      <p><br></p>
+      <h2 id="if-statement">If statement (method 1)</h2>
+      <p>The first and perhaps most intuitive way to set default values is with a simple <code>if</code> statement.</p>
+      <p>The syntax should be familiar.</p>
+      <pre><code class="lang-js">if (test expression)
+  statement
+</code></pre>
+      <p>Using this we can set a default value for a variable like so:</p>
+<pre><code>function increment(num) {
+  if (!num) { num = 0 }
+  return ++num
+}
+</code></pre>
+      <pre><code class="lang-js">increment()   // returns 1 since "num" is set to 0 before incrementation
+increment(22) // returns 23
+</code></pre>
+      <p>If no value is passed for the <code>num</code> parameter, <code>num</code> will be set to the number <code>0</code>.</p>
+      <p>If the value of <code style="padding: 5px">num</code> is set to <code>undefined</code> if no value is passed for <code>num</code>, then why do we write <code>if(!num)</code> instead of <code>if (num === undefined)</code>? The answer is that they both work, its just that <code>!num</code> is shorter and faster to write, so we prefer it for this reason. This does come at a cost though. <code>num === undefined</code> would <em>only</em> allow the value <code>undefined</code> to enter the <code>if</code>, setting the default value only in the case the value is <code>undefined</code>, while <code>!num</code> allows any value that is seen as false (called falsy value) by JS to enter the <code>if</code> and set the default value. This makes the value <code>undefined</code> enter the if, but also  make values like <code>0</code>, <code>&quot;&quot;</code>, <code>NaN</code> enter the if and set default value, since they are all also seen as falsy values. If we do not want these values to be replaced by a default value, we must use <code>num === undefined</code> instead.
+      </p>
+      <p><b>Tip:</b>
+         If you want to know which values are seen as false (read: converted too) by JS, you can do so with either <code>!!value</code> or <code>Boolean(value)</code>.
+      </p>
+      <pre><code class="lang-js">Boolean(20)         // true
+!!20                // true
+
+Boolean(0)          // false
+!!0                 // false
+</code></pre>
+      <p>We can make the code a bit less verbose by skipping the brackets.</p>
+      <pre><code class="lang-js">function increment(num) {
+  if (!num) num = 0
+  return ++num
+}
+</code></pre>
+      <p>This works because brackets are only necessary when we have several statements inside the <code>if</code> statement. Brackets denote a block statement - a statement used to group other statements.</p>
+      <!-- **Pros**
+         - If test expression is true can skip re-assigning the passed value
+         More efficient because we dont need to reassign the argument value to itself if
+         it is true. We assign ONLY if no values/valid value is passed. not always decide to do it.
+         -->
+      <p><br></p>
+      <h2 id="tenary-expression">Tenary expression (method 2)</h2>
+      <p>The second method, a tenary expression, can be used to set default values the same way as an <code>if</code> statement.</p>
+      <p>The syntax of a tenary expression looks like this:</p>
+      <pre><code class="lang-js">test expression ? value expression : value expression
+</code></pre>
+      <p>If the test expression evaluates to true, the lefthand side of the semicolon is returned,
+         else the righthand side value is returned.
+      </p>
+      <p>The <code>if</code> statement example we used above can be re-written as a tenary expression instead.</p>
+      <pre><code class="lang-js">function increment(num) {
+  num = num ? num : 0
+  return ++num
+}
+</code></pre>
+      <p>If we pass a value for <code>num</code> (a value not seen as falsy), <code>num</code> will be assigned itself, else <code>num</code> will be assigned <code>0</code>.</p>
+      <p>In this way, the left side of <code>:</code> equals the <code>if</code> statement and the right side equals the <code>else</code> statement in an <code>if else</code> statement.</p>
+      <p>To better exemplify this relationship: this tenary expression and if statement is identical in behaviour.</p>
+      <pre><code class="lang-js">num = num ? num : 0
+</code></pre>
+      <pre><code class="lang-js">if (num) {
+  num = num
+}
+else {
+  num = 0
+}
+</code></pre>
+      <p>Tenary expressions do not create less code than an <code>if</code> statement. However, when used as a replacement for an <code>if else</code> statement, it creates shorter syntax, and also fits a single line better.</p>
+      <p>The bottom line is that an <code>if</code> statement can achieve everything a tenary expression can, and the choice between the two mostly comes down to which feels more eloquent
+         in the given situation and the preference of the programmer. For this reason, you <em>will</em> encounter tenary expressions used, so its necessary to know them even if you don&#39;t use them personally.
+      </p>
+      <p><br></p>
+      <h2 id="short-circuit">Short-circuit evaluation (method 3)</h2>
+      <p>A third method for assigning default values to parameters is called short-circuit evaluation. They are expressions
+        , just like tenary expressions.
+          These expressions make use of the <code>||</code> operator
+         and how this operator is seen and evaluated by JavaScript.
+      </p>
+      <p>The syntax for such an expression is simple and looks like this:</p>
+      <pre><code class="lang-js">value expression || value expression
+</code></pre>
+      <p>To use the <code>||</code> operator to set default values we can do as in the following code snippet.</p>
+      <pre><code class="lang-js">function increment(num) {
+  num = num || 0
+  return ++num
+}
+</code></pre>
+      <p>Just like in the previous examples, this assigns the default value <code>0</code> to <code>num</code> if <code>num</code> is undefined (or any value seen as falsy).</p>
+      <h3 id="how-it-works">How it works</h3>
+      <p>First, JS converts the value on the lefthand side to a boolean. If the result of this conversion is the boolean <code>true</code> JS returns the <em>value</em> on the <em>left</em>. If, however, the result of this conversion is the Boolean <code>false</code>, it returns the value on the righthand side instead.</p>
+      <p>From this we gather two important points:</p>
+      <ol>
+         <li>The expression does not return a <em>bool</em>. It returns the <em>value</em> on either the left or right side. The boolean is only used for evaluation purposes.</li>
+         <li>The result is always just <em>one</em> of the values of either side</li>
+      </ol>
+      <p>The name short-circuit comes from the second point. If the lefthand side converts to <code>true</code> the expression &quot;short-circuits&quot;, meaning it never goes to the right side.</p>
+      <p><b>Note:</b>
+         Using the &amp;&amp; operator also works for selectively returning one of the sides. However, it does not work for assigning default values. This is because
+         the righthand side (the default) value would be applied when the argument is true, not false, meaning everytime the argument is actually passed, not when it&#39;s <em>not</em> passed.
+      </p>
+      <h3 id="a-flaw">A flaw</h3>
+      <p>It&#39;s tempting to use short-circuit evaluation due to its very short and easy syntax. Unfortunately, though, the reason
+         for this short syntax, is also the cause of a problem. In a short-circuit expression <b>the test and return value is intrinsically
+         tied together.</b>
+      </p>
+      <pre><code class="lang-js">both test expression and returned value || returned value
+</code></pre>
+<p>By contrast, in a tenary expression, we can see that these are separate, and that the value that the test expression evaluates to, does not affect the value returned.</p>
+      <pre><code class="lang-js">test expression ? returned value : returned value
+</code></pre>
+      <p>The consequence of this tying together is that we cannot change the lefthand side from e.g. <code>arg || 0</code> to <code>arg === &quot;number&quot; || 0</code>, since this would return a boolean if true instead of the value stored in <code>arg</code>. In other words, the argument test and the returned value needs to be the same.</p>
+      <p>So in short. Short-circuit expressions are only useful when we want to assign the argument itself or a default value. Not, for instance, when we want to check if the value is a <em>specific</em> value (<code>arg === undefined</code>) or of a specific datatype (<code>typeof arg === &quot;number&quot;</code>), before choosing to assign a default value. In that case we need to use another method, like so: <code>typeof arg === &quot;number&quot; ? arg : 0</code>.</p>
+      <p><br></p>
+      <h2 id="object-assign">Object.assign (method 4)</h2>
+      <p><code>Object.assign</code> is a function that exists in many environments (e.g. chrome, firefox, node.js).</p>
+      <pre><code class="lang-js">Object.assign(targetObject, sourceObject1, sourceObject2, etc..)
+</code></pre>
+      <p>It assigns the properties of one or many objects (source objects), to a target object.</p>
+      <h3 id="how-it-works2">How it works</h3>
+      <p>What rules does the function follow when assigning to the target object?</p>
+      <p>In short what happens is that:</p>
+
+      <!-- It is very easy - it uses assign (show example, loops props in one and assigns) - this result sin the following behaviour when used:  -->
+      <!-- so we can achieve the same effect by just looping and assigning. this forces us to have to create defualts first. its a diff pattern of
+      assigning default. not if/when we have to, but always by default  -->
+
+      <ul>
+         <li>If the property exists in the target object and source object, it replaces the value of the target object property.</li>
+         <li>If the property exists in the source object only, it creates/adds it, with the value, to the target.</li>
+         <li>If the property does not exists in source, we dont do anything.</li>
+      </ul>
+      <p>The following code illustrates all of these rules in effect:</p>
+      <pre><code class="lang-js">  // create the object we want to assign TO
+  var target = {name: "Ben", age: 29}
+  // create the object we want to assign FROM
+  var source = {name: "Hans", lastname: "Gruber"}
+  // assign the properties of source to target
+  Object.assign(target, source)
+
+
+  // This changes the target object from
+  // {
+  //   name: "Ben",
+  //   age: 29
+  // }
+  //
+  // to:
+  // {
+  //   name: "Hans",           // same key, but new value
+  //   age: 29,                // same key and value
+  //   lastname: "Gruber"      // a new property entirely
+  // }
+</code></pre>
+      <p>As you might have noticed, if the user provides an (source/config) object with properties not present in the <code>target</code> object those properties are added to the defualt object as well, however, this does not cause an issue, since any unnecessary properties added is not referenced anywhere in the function, causing them to just be treated like they dont exists.</p>
+      <h3 id="setting-default-values-with-object-assign">Setting default values with Object.assign</h3>
+      <p>A common use-case for <code>assign</code> is when we want to set default configuration. If a function
+         executes a process and we want to customize how this process is run, we create a default object in
+         the function which controls this process and then we override any values of the default config object with the user provided object.
+      </p>
+      <p>We can illustrate the use of <code>Object.assign</code> to set default values by creating a tooltip that is displayed a certain way, but lets the user (function caller) have the final say in how it&#39;s displayed.</p>
+      <pre><code class="lang-js">function showTooltip(user_config) {
+  // create values that will be used by default if no values are passed
+  var default_config = {
+    direction: "topleft",
+    backgroundColor: "#000"
+  }
+
+  // override some of the values in the default_config object
+  // with user preferences (user_config)
+  Object.assign(default_config, user_config)
+
+  // some imaginary function that displays a tooltip using the
+  // values in default_config
+  displayTooltip(default_config)
+}
+
+// shows a tooltip, using the default direction ("topleft"),
+// but user preferred background color ("#ddd")
+showTooltip({backgroundColor: "#ddd"})
+</code></pre>
+      <p>The difference with this method compared to the others, is that we need to predefine default values from the get go,
+         and then we <em>replace</em> the values if need be. In the other methods we only applied the new values <em>if</em> the user
+         did not provide a value, or a wrong value. Using this method we <em>assume</em> values will not be passed, in the others we <em>assumed</em> they will.
+      </p>
+      <h3 id="your-own-version">Your own version</h3>
+      <p>Using <code>Object.assign</code> depends on whether it exists in
+         the environment that you are using (chrome, node etc), and the environments version (10, 11 etc).
+      </p>
+      <p>If <code>Object.assign</code> is not available you can make your own:</p>
+      <pre><code class="lang-js">function assign(target, varArgs) {
+  var obj = Object(target)
+
+  for (var index = 1; index < arguments.length; index++) {
+    var nextSource = arguments[index];
+
+    if (nextSource !== null &amp;&amp; nextSource !== undefined) {
+      for (var nextKey in nextSource) {
+        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+         obj[nextKey] = nextSource[nextKey];
+        }
+      }
+    }
+  }
+
+  return obj
+}
+</code></pre>
+      <p>This is a simplified version of <code>Object.assign</code> that does not emulate its exact behavior, but does the trick most of the time. If you want a more elaborate version that behaves identically to <code>Object.assign</code>, you can copy the function found <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#polyfill">here</a> into your own code.</p>
+      <p><b>Note:</b> To create a function with the exact same behaviour as <code>Object.assign</code> (called a polyfill) it&#39;s necessary to use another function called  <code>Object.defineProperty</code>.
+         This function does not exists in some older browsers (and cannot be polyfilled itself), this means that, even though the linked function is superior to the simplified function in that it has identical behaviour to <code>Object.assign</code>, it works in less browsers than the aforementioned. This is not really a big deal though since the support is still pretty good, and the simplified version does not work in all version either, even though it has better support.
+      </p>
+      <p><br></p>
+      <h2 id="default-parameters">ECMAScript 2015 (ES2015) default parameters (method 5)</h2>
+      <p>Since the JavaScript version released in 2015 another method for setting default parameters values have existed simply named &quot;default parameters&quot;.</p>
+      <p>The previous methods set default values <em>inside</em> the function. They let JavaScript pass <code>undefined</code> as the default value to the function, and then we used an if statement, tenary or short-circuit expression to override the <code>undefined</code> value to whatever we wanted instead.</p>
+      <p>With default parameters, however, we decide what value will be passed instead of <code>undefined</code>, so we dont need to override the value
+         inside the function.
+      </p>
+      <p>The syntax for setting default parameter values looks like this:</p>
+      <pre><code class="lang-js">function fn(param1 = value expression, param2 = value expression, etc...) {
+  // ... code
+}
+</code></pre>
+      <p>Using this syntax we can set default values for parameters like this:</p>
+      <pre><code class="lang-js">function add(a = 0, b = 10 - 10) {
+  return a + b
+}
+</code></pre>
+      <p>
+         If nothing is passed for either <code>a</code> or <code>b</code> (or the value passed is <code>undefined</code>), both <code>a</code> and <code>b</code> will
+         be set to the number <code>0</code> (b = 10 - 10 = 0), resulting in <code>return 0 + 0</code>.
+       </p><p>Default values can also be stored in variables:</p><pre><code class="lang-js">var age = 20
+function increment(num = age) {
+  return ++num
+}
+increment() // returns the number 20</code></pre>
+
+      <p>In summary, using this more modern method is a very easy way to set default values. However, it isn&#39;t that commonly encountered; due to a combination of less browser support, slow adoptation by developers and the fact that much of the JavaScript code you encounter is already transpiled by babel (transformed into an older JavaScript version for better browser support) before you read it.</p>
+      <p><br></p>
+      <h2 id="conclusion">Conclusion</h2>
+      <p>We have explored five ways to set default function values if the function caller does not provide, or provides the wrong, value.</p>
+      <p>Each method has its own strengths and weaknesses. For instance, using an if statement would offer the best readability, but the short-circuit
+        method would produce the shortest syntax - tempting for when you set default values often, but insufficient if you need to explicitly check what the
+        passed value is before choosing to assign a default value.
+      </p>
+      <p>In the end though, which one you choose is mostly down to preference, since each option will do the job in most scenarios.</p>
+    </div>
+   </div>
+
+
+   <div class="ads" :class="{dark: isDark}"></div>
+   <!-- footer?  -->
+ </div>
+ <!-- this serves to illustrate how it works.
+ dont work the same. only one object. but very esily shows how it works! -->
+ <!-- function assign(target) {
+   var obj = Object(target)
+   for (var nextKey in nextSource) {
+     if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+      obj[nextKey] = nextSource[nextKey];
+     }
+   }
+   return obj
+ } -->
+   <!-- basically. it just uses assign (=) on allproperties src = target  -->
+
+   <!-- also link to dist: "build.min.js" - only one file?  -->
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="js/hl.js" charset="utf-8"></script>
+   <script src="js/menu.js" charset="utf-8"></script>
+   <script src="js/app.js" charset="utf-8"></script>
+   <script src="js/scroll.js" charset="utf-8"></script>
+ </body>
+</html>

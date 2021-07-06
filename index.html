@@ -4,164 +4,138 @@
 	<title>Rikhart Bekkevold</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
-	<link rel="stylesheet" href="css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link rel="icon" href="resources/final_logo_dark.svg">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/percentage_wheels.css">
+	<link rel="stylesheet" href="css/dark.css">
 </head>
 
 <body>
-	<div v-cloak id="app">
+	<div v-cloak id="app" :class="{dark: isDark}">
+    <div class="main_content" :class="{dark: isDark}">
+      <transition name="slide">
+        <div id="sidenav" :class="{dark: isDark}" v-focus tabindex="1" v-if="showSideNav" @blur="blurNav(this)">
+          <ul style="padding: 0; margin: 0; list-style: none; ">
+            <li :class="{dark: isDark}" @mousedown="showPage('home', $event)" ref="sidenav_home">Home</li>
+            <li :class="{dark: isDark}" class="heading">Projects</li>
+            <ul style="list-style: none; padding: 0px 20px;">
+              <li :class="{dark: isDark}" @mousedown="showPage('personal_projects', $event)" ref="sidenav_personal_projects">Personal</li>
+              <li :class="{dark: isDark}" @mousedown="showPage('client_projects', $event)" ref="sidenav_client_projects">Clients</li>
+            </ul>
+            <li :class="{dark: isDark}" @mousedown="showPage('blogs', $event)" ref="sidenav_blogs">Blog</li>
+            <li :class="{dark: isDark}" @mousedown="showPage('contact', $event)" ref="sidenav_contact">Contact</li>
+          </ul>
+        </div>
+      </transition>
 
-		<div id="nav_menu">
-			<h1 id="about_me_btn">About</h1>
-			<h1 id="projects_btn">Projects</h1>
-			<h1 id="client_btn">Clients</h1>
-			<h1 id="contact_btn">Contact</h1>
+
+      <div id="nav_menu" :class="{ dark: isDark }">
+        <div id="mobileMenu">
+          <i id="mobileMenuIcon" class="fas fa-bars" @mousedown="showNav"></i>
+        </div>
+
+        <div id="logo_container">
+           <img id="logo" :src="!isDark ? 'resources/final_logo.svg' : 'resources/final_logo_dark.svg'" alt="">
+           <div id="nav_owner_name">Rikhart Bekkevold</div>
+        </div>
+
+        <div id="menu_btns">
+          <div style="height: auto;" id="about_me_btn" @mousedown="showPage2('home_section')">Home</div>
+            <div id="dropdown" style="height: auto; position: relative;" @mouseenter="showNavTT = true" @mouseleave="showNavTT = false">
+              <div style="" id="projects_btn">
+                Projects <i class="fas fa-caret-down"></i>
+              </div>
+              <transition name="fade">
+                <div id="projects_dropdown_menu" @click="showNavTT = false" v-show="showNavTT">
+                  <div id="proj_personal_btn" @mousedown="showPage2('personal_projects_section')">Personal</div>
+                  <div id="proj_clients_btn" @mousedown="showPage2('client_projects_section')">Clients</div>
+                </div>
+              </transition>
+            </div>
+
+          <div style="height: auto;" id="blog_btn" @mousedown="showPage2('blogs_section')">Blog</div>
+          <div style="height: auto;" id="contact_btn" @mousedown="showPage2('contact_section')">Contact</div>
+        </div>
+
+
+        <div id="theme_btn" style=" " :class="{ dark: isDark }">
+          <div id="theme_icon" @click="switchMode()" class="tag btn" :class="{ dark: isDark }" :title="'Toggle ' + (!isDark ? 'dark' : 'light') + ' theme'" >
+          <div class="material-icons" >
+            {{ isDark ? "light_mode" : "brightness_4" }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+		<div id="about_me" ref="home">
+      <div class="about_me_content">
+        <div id="profilepic">
+          <img :src="!isDark ? 'resources/final_logo.svg' : 'resources/final_logo_dark.svg'" alt="">
+        </div>
+        <div id="description" :class="{dark: isDark}">
+          <span class="text-hl" :class="{dark: isDark}">Hiya</span><br>I'm Rikhart<br>
+          <br>
+          Web developer
+          <br>
+          Interaction Designer
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+
+        <div id="buttons">
+          <a href="https://github.com/RikhartBekkevold/">
+            <div class="btn tag" :class="{dark: isDark}">
+              <i class='fab fa-github'></i> Github
+            </div>
+          </a>
+          <a href="#" id="call_to_action_projects" >
+            <div class="btn tag" :class="{dark: isDark}">
+              <i class="fas fa-clipboard-list"></i> Projects
+            </div>
+          </a>
+        </div>
+      </div>
 		</div>
-    <!-- <div class="subheading_section">
-        <h2>Personal</h2>
-        <h2>Clients</h2>
-    </div> -->
-
-		<div id="filter">
-			<select id="select" @change="filterProjects($event, this)">					<!-- computed prop instead? -->
-				<option value="All">Filter</option>
-				<optgroup label="Major tags">
-					<option v-for="option in filterSelect" :value="option">
-						{{ option.charAt(0).toUpperCase() + option.substring(1) }}
-					</option>
-				</optgroup>
-				<optgroup label="Minor tags">
-					<option v-for="option in minorTagsSelect" :value="option">
-						{{ option.charAt(0).toUpperCase() + option.substring(1) }}
-					</option>
-				</optgroup>
-			</select>
-			<button @click="reset()">Reset</button>
-		</div>
-
-		<!-- ABOUT ME CARD  -->
-		<div id="about_me">
-			<div class="card">
-
-				<!-- PERSONAL INFO -->
-				<div id="personal_info_wrapper">
-					<h1>Rikhart Bekkevold</h1>
-					<span>Web Developer, Interaction Designer</span>
-					<div><i class="fas fa-map-marker-alt"></i> Hønefoss, Norway</div>
-				</div>
-
-				<!-- EDUCATION SECTION -->
-				<div id="edu_wrapper">
-					<h2>Education</h2>
-					<i class="fas fa-graduation-cap"></i>
-					<i>2014 - 2017</i>
-					<br>
-					<b>Bachelor in Web development</b>
-					<br>
-					Norwegian University of Science and Technology
-					<br>
-					<br>
-					<i class="fas fa-graduation-cap"></i>
-					<i>2017 -</i>
-					<br>
-					<b>Masters in Interaction Design</b>
-					<br>
-					Norwegian University of Science and Technology
-					<br>
-				</div>
-
-				<!-- TAGS SECTION -->
-				<div id="tags_wrapper">
-					<h2>Skills</h2>
-					<div id="skill_tags">
-						<div class="tag">Frontend</div>
-						<div class="tag">Backend</div>
-						<div class="tag">Javascript</div>
-						<div class="tag">PHP</div>
-						<div class="tag">Python</div>
-						<div class="tag">IxDesign</div>
-						<div class="tag">UX</div>
-						<div class="tag">Research</div>
-					</div>
-				</div>
-
-				 <!-- PERCENTAGE WHEELS -->
-				<div class="flex-wrapper" id="flex_wrapper">
-					<div class="single-chart">
-						<svg viewbox="0 0 36 36" class="circular-chart orange">
-							<path class="circle-bg"
-								d="M18 2.0845
-								a 15.9155 15.9155 0 0 1 0 31.831
-								a 15.9155 15.9155 0 0 1 0 -31.831"
-							/>
-							<path class="circle"
-								stroke-dasharray="75, 100"
-								d="M18 2.0845
-								a 15.9155 15.9155 0 0 1 0 31.831
-								a 15.9155 15.9155 0 0 1 0 -31.831"
-							/>
-							<text x="18" y="20.35" class="percentage">75%</text>
-						</svg>
-
-						<span class="title">Frontend</span>
-					</div>
-
-
-					<div class="single-chart">
-						<svg viewbox="0 0 36 36" class="circular-chart green">
-							<path class="circle-bg"
-								d="M18 2.0845
-								a 15.9155 15.9155 0 0 1 0 31.831
-								a 15.9155 15.9155 0 0 1 0 -31.831"
-							/>
-							<path class="circle"
-								stroke-dasharray="25, 100"
-								d="M18 2.0845
-								a 15.9155 15.9155 0 0 1 0 31.831
-								a 15.9155 15.9155 0 0 1 0 -31.831"
-							/>
-							<text x="18" y="20.35" class="percentage">25%</text>
-						</svg>
-
-						<span class="title">Backend</span>
-					</div>
-
-					<div class="single-chart">
-						<svg viewbox="0 0 36 36" class="circular-chart blue">
-							<path class="circle-bg"
-								d="M18 2.0845
-								a 15.9155 15.9155 0 0 1 0 31.831
-								a 15.9155 15.9155 0 0 1 0 -31.831"
-							/>
-							<path class="circle"
-								stroke-dasharray="50, 100"
-								d="M18 2.0845
-								a 15.9155 15.9155 0 0 1 0 31.831
-								a 15.9155 15.9155 0 0 1 0 -31.831"
-							/>
-							<text x="18" y="20.35" class="percentage">50%</text>
-						</svg>
-						<span class="title">UX Design</span>
-					</div>
-				</div>
-			</div>
-		</div>
-
 
     <!-- PROJECTS -->
-		<div id="projects">
-      <!-- own container, above. 100%. then the card thing in its own container. then make that flex. or above porjects? make own containe? then wont
-      show auto -->
-      <!-- <div class="border">
-          <h2>asda</h2>
-          <h2>asda</h2>
-      </div> -->
-				<!-- :class="{ small_card: project.small }" -->
+    <!-- tabs, click one of them to get client or personal? -->
+		<div id="projects" ref="personal_projects">
+      <div class="" >
+        <div id="filter">
+          <select id="select" style=" height: 40px;" :class="{dark: isDark}" @change="filterProjects($event, this)">					<!-- computed prop instead? -->
+            <option value="All">Filter</option>
+            <optgroup label="Major tags">
+              <option v-for="option in filterSelect" :value="option">
+                {{ option.charAt(0).toUpperCase() + option.substring(1) }}
+              </option>
+            </optgroup>
+            <optgroup label="Minor tags">
+              <option v-for="option in minorTagsSelect" :value="option">
+                {{ option.charAt(0).toUpperCase() + option.substring(1) }}
+              </option>
+            </optgroup>
+          </select>
+          <div id="reset_btn" @click="reset()" style="padding-left: 13px; padding-right: 13px;" @click="switchMode()" class="tag btn" :class="{ dark: isDark }">
+            <i class="fas fa-undo"></i>
+          </div>
+        </div>
+
+
+
+    <div class="" style="display: flex; justify-content: center; flex-wrap: wrap;  ">
 			<div class="card"
+           :class="{dark: isDark}"
      			 v-for="project in projects"
 				   v-show="project.hidden == false"
   			   :key="project.title">
@@ -174,7 +148,7 @@
 					/>
 				</div>
 
-				<div class="card_menu">
+				<div class="card_menu" :class="{dark: isDark}">
 					<div class="left_menu">
 						<div class="long_desc_btn" @click="project.view_state.content_hidden = !project.view_state.content_hidden">
 							{{ !project.view_state.content_hidden ? "Description" : "Overview" }}
@@ -191,51 +165,29 @@
 					</div>
 				</div>
 
-
-
-				<!-- fixed desc arrow - icon jump down
-				fixed menu jump on small res.
-				made buttons more clearly separated from tags
-				rewrote the innovative design desc
-
-				btns even clearer
-				ixd tag
-
-				add line for button
-				changed the name all to filter
-
-			-->
-
-
-				<!-- hidden by default -->
-				<div class="card_content" v-show="project.view_state.content_hidden">
-					<div class="card_desc" style="min-height: 260px">
-						<h2>{{ project.title }}</h2>
+				<div class="card_content"  v-show="project.view_state.content_hidden">
+					<div class="card_desc" :class="{dark: isDark}" style="min-height: 260px">
+						<h2 :class="{dark: isDark}">{{ project.title }}</h2>
 						<div style="text-align: left"><span v-html="project.long_desc"></span></div>
 					</div>
 				</div>
 
-				<!-- vue style colors  -->
-				<!-- musstach text  -->
-				<!-- event listeners -->
-				<!-- seti "extension" for vue -->
 
-				<!-- visible -->
 				<div class="card_content" v-show="!project.view_state.content_hidden">
 					<div>
 						<!-- DESCRIPTION -->
-						<div class="card_desc">
-							<h2>{{ project.title }}</h2>
+						<div class="card_desc" :class="{dark: isDark}">
+							<h2 :class="{dark: isDark}">{{ project.title }}</h2>
 							<p v-html="project.desc"></p> <!-- v-html = tags, mustach = pure js string -->
 						</div>
 
 						<!-- TAGS -->
 						<div class="tags_container">
 							<div>
-								<div class="tag white_tag"  v-for="tag in project.tags">{{ tag }}</div>
+								<div class="tag white_tag" :class="{dark: isDark}"  v-for="tag in project.tags">{{ tag }}</div>
 							</div>
 							<div>
-								<div class="tag minor_tag" v-for="minortag in project.minortags">{{ minortag }}</div>
+								<div class="tag minor_tag" :class="{dark: isDark}" v-for="minortag in project.minortags">{{ minortag }}</div>
 							</div>
 						</div>
 
@@ -243,7 +195,7 @@
 						<div class="buttons_container">
 							<div style="padding: 10px" v-for="btn in project.buttons">
 								<a :href="btn.link">
-									<div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github' }">
+									<div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github', dark: isDark }">
 										<!-- <img src="atom.svg" width="16"> -->
 										<i style="margin-right: 5px;" :class="btn.icon"></i>
 										{{ btn.text }}
@@ -254,12 +206,31 @@
 					</div>
 				</div>
 			</div>
+    </div>
+    </div>
 		</div>
 
 
     <!-- wrap in vue show transistion? -->
-    <div id="clients">
+    <div id="clients" ref="client_projects">
+      <div>
+      <!-- <div id="filter"  style="visibility: hidden;  ">
+        <select id="select" style=" height: 40px;" :class="{dark: isDark}" @change="filterProjects($event, this)">
+          <option value="All">Filter</option>
+          <optgroup label="Major tags">
+            <option v-for="option in filterSelect" :value="option">
+              {{ option.charAt(0).toUpperCase() + option.substring(1) }}
+            </option>
+          </optgroup>
+        </select>
+        <div id="reset_btn" @click="reset()" style="padding-left: 13px; padding-right: 13px; " @click="switchMode()" class="tag btn" :class="{ dark: isDark }">
+          <i class="fas fa-undo"></i>
+        </div>
+      </div> -->
+
+
       <div class="card"
+          :class="{dark: isDark}"
            v-for="project in client_projects"
            v-show="project.hidden == false"
            :key="project.title">
@@ -270,7 +241,7 @@
           />
         </div>
 
-        <div class="card_menu">
+        <div class="card_menu" :class="{dark: isDark}">
           <div class="left_menu">
             <div class="long_desc_btn" @click="project.view_state.content_hidden = !project.view_state.content_hidden">
               {{ !project.view_state.content_hidden ? "Description" : "Overview" }}
@@ -285,8 +256,8 @@
         </div>
 
         <div class="card_content" v-show="project.view_state.content_hidden">
-          <div class="card_desc" style="min-height: 260px">
-            <h2>{{ project.title }}</h2>
+          <div class="card_desc" :class="{dark: isDark}" style="min-height: 260px">
+            <h2 :class="{dark: isDark}">{{ project.title }}</h2>
             <div style="text-align: left"><span v-html="project.long_desc"></span></div>
           </div>
         </div>
@@ -294,18 +265,18 @@
         <div class="card_content" v-show="!project.view_state.content_hidden">
           <div>
             <!-- DESCRIPTION -->
-            <div class="card_desc">
-              <h2>{{ project.title }}</h2>
+            <div class="card_desc" :class="{dark: isDark}">
+              <h2 :class="{dark: isDark}">{{ project.title }}</h2>
               <p v-html="project.desc"></p> <!-- v-html = tags, mustach = pure js string -->
             </div>
 
             <!-- TAGS -->
             <div class="tags_container">
               <div>
-                <div class="tag white_tag"  v-for="tag in project.tags">{{ tag }}</div>
+                <div class="tag white_tag" :class="{dark: isDark}"  v-for="tag in project.tags">{{ tag }}</div>
               </div>
               <div>
-                <div class="tag minor_tag" v-for="minortag in project.minortags">{{ minortag }}</div>
+                <div class="tag minor_tag" :class="{dark: isDark}" v-for="minortag in project.minortags">{{ minortag }}</div>
               </div>
             </div>
 
@@ -313,7 +284,7 @@
             <div class="buttons_container">
               <div style="padding: 10px" v-for="btn in project.buttons">
                 <a :href="btn.link">
-                  <div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github' }">
+                  <div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github', dark: isDark }">
                     <i style="margin-right: 5px;" :class="btn.icon"></i>
                     {{ btn.text }}
                   </div>
@@ -323,51 +294,75 @@
           </div>
         </div>
       </div>
+      </div>
     </div>
 
+    <div id="blogs" ref="blogs" >
+      <div class="centered_content">
+        <div class="blog"  :class="{ dark: isDark }">
+          <a class="title" href="blogs/tutorials.html">
+            <h3 :class="{ dark: isDark }">Default function parameters in Javascript</h3>
+          </a>
+          <p :class="{ dark: isDark }">
+            An overview of how to set default parameter values in JavaScript.
+          <p class="pub_date" :class="{ dark: isDark }">Date published: 04.06.2021</p> <!-- (autoamtically gotten?) timezone? -->
+          <a class="read_more" href="blogs/tutorials.html">Read more &raquo;</a>
+        </div>
+      </div>
+    </div>
 
+		<!-- CONTACT -->
+    <!-- email adresse, discord, fb, phone,  -->
+		<div id="contact" ref="contact">
+      <div style="  max-width: 500px;">
+        <div style="  width: 450px; margin-top: 150px; min-height: 625px;">
+          <h2 :class="{dark: isDark}">Contact me</h2>
+          <form id="contact_form" method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com">
+            <input :class="{dark: isDark}" v-model="mail" id="email"  autocomplete="off" type="email" name="email" placeholder="Your email adresse">
+            <input :class="{dark: isDark}" v-model="subject" id="subject" autocomplete="off" type="text" name="subject" placeholder="Subject">
+            <textarea :class="{dark: isDark}" v-model="msg" id="message" name="message" placeholder="Message"></textarea>
 
-		<!-- CONTACT CARD -->
-		<div style="color: #363636; text-align: center;" id="contact">
-			<div class="card">
-				<h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.9em;">Contact me</h2>
-				<div class="container">
-					<form id="contact_form" method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com">
-						<!-- <label for="lname">Your Email</label> -->
-						<input id="email" autocomplete="off" style=" padding-left: 10px" type="email" name="email" placeholder="Your email adresse">
-
-						<!-- <label style="font-family: 'Montserrat', sans-serif;" for="lname">Subject</label> -->
-						<input id="subject" autocomplete="off" style="padding-left: 10px"  type="text" name="subject" placeholder="Subject">
-
-						<!-- <label for="lname">Message</label> -->
-						<textarea id="message" name="message" placeholder="Message" style="padding: 10px 0 0px 10px"></textarea>
-
-						<button class="btn" type="submit" style="width: 40%">Send</button>
-						<button onclick="window.event.preventDefault()" class="btn" id="reset_btn" style="width: 40%; margin: 0px;">Reset</button>
-					</form>
-				</div>
-			</div>
+            <div id="contact_form_actions">
+              <button :class="{dark: isDark}" id="send_btn" class="btn" type="submit">
+                Send <i class="fas fa-share"></i></button>
+              <button  :class="{dark: isDark}" id="reset_btn" title="reset all fields" class="btn" @click.prevent="resetForm">
+                Reset <i class="fas fa-undo"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
 		</div>
+  </div>
 
+	<!-- FOOTER -->
+	<footer :class="{dark: isDark}">
+    <div class="footer_content">
+      <!-- will get style of both classes. will just override becaue of specificty -->
+      <!-- <div id="footer_buttons_wrapper">
+        <a href="https://github.com/RikhartBekkevold"><i class="icon fab fa-github"></i></a>
+        <a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/"><i class="icon fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/channel/UCb9Fe-HNoZipzdwGdAhM-eA?view_as=subscriber"><i class="icon fab fa-youtube"></i></a>
+      </div> -->
+			<div id="owner">&copy; Rikhart Bekkevold. All rights reserved.</div>
+      <!-- <div id="copyright">2017 - present</div> -->
+    </div>
+	</footer>
 
-		<!-- FOOTER -->
-		<footer>
-			<span id="copyright"></span>
-			<div id="footer_buttons_wrapper">
-				<a href="https://github.com/RikhartBekkevold"><i class="icon fab fa-github"></i></a>
-				<a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
-				<a href="https://www.linkedin.com/"><i class="icon fab fa-linkedin"></i></a>
-				<a href="https://www.youtube.com/channel/UCb9Fe-HNoZipzdwGdAhM-eA?view_as=subscriber"><i class="icon fab fa-youtube"></i></a>
-			</div>
-		</footer>
+	</div>
 
-	</div> <!-- app -->
+  <!-- link the BUIILD/DIST FILES. the download/change vue host. specific version. -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
+  <!-- <script src="src/data.js"></script>
+  <script src="src/router.js"></script>
+	<script src="src/app.js"></script>
+	<script src="src/main.js"></script> -->
 
-    <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
-    <script src="data.js"></script>
-	<script src="app.js"></script>
-	<script src="main.js"></script>
+  <!-- minfies html too. which also uses dist scripts?   -->
+  <script src="dist/data.js"></script>
+  <script src="dist/router.js"></script>
+	<script src="dist/app.js"></script>
+	<script src="dist/main.js"></script>
 </body>
 </html>

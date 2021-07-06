@@ -1,56 +1,306 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v88/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+/*  #415659,,98c379, #FF8C40;, 363636, 21252b, 3c424d  */
+
+/* layout.css
+nav
+page1
+page2  */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 22px; /*25px*/
+  /* line-height: 1;
+  letter-spacing: normal; */
+  text-transform: none;
+  /* display: inline-block; */
+  /* white-space: nowrap;
+  word-wrap: normal; */
+  /* direction: ltr; */
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+/* .parent > * - target all first children regardless of element type */
+
+
+
 /* NAVIGATION MENU */
 #nav_menu, #sub_menu {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    background: white;
+    color: black;
+    /* align-self: center; */
+
+    /* justify-content: center; */
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
     margin-bottom: 10px;
     user-select: none;
+    position: fixed;
+    width: 100%; /* psotion fixed and inside another flex container. its must to make it 100%. if outside container, div is auto 100%? */
+    z-index: 1001;
+    padding: 10px 0 10px 0;
+    /* -webkit-box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.30); */
+     /* -moz-box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.30); */
+     /* box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.30); */
+    border-bottom: 1px solid #ddd;
 }
 
-#about_me_btn, #projects_btn, #contact_btn, #client_btn, #big_btn, #small_btn {
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px;
-    margin-right: 2.5px;
-    margin-left: 2.5px;
+/* adding nav menu makes sure less chance of conflicts later, also tells me where it belongs on a glance, but is slower? more specific. */
+#nav_menu #logo, #nav_menu #nav_owner_name {
+  cursor: pointer;
 }
+
+
+
+
+/* material-icons */
+#nav_menu .tag {
+  background: white !important; /* made sure nothing can override? thats how it works? if there are later? later imporant override thouhg. so why we need for bs? */
+  /* border: red !important; */
+}
+
+#nav_menu .tag:hover {
+  /* border: red !important; */
+}
+/* does this override? */
+
+/* these and btn/tag  */
+#nav_menu .btn {
+  /* border: 1px solid white; */
+  background: #21252b;
+  color: black;
+}
+
+#nav_menu .btn:hover {
+  background: #ddd !important; /* made sure nothing can override? thats how it works? if there are later? later imporant override thouhg. so why we need for bs? */
+  background: white;
+  color: #21252b;
+}
+/* dark overrides anyway, because the class is added later? order dont matter? */
+
+
+
+
+#about_me_btn, #projects_btn, #contact_btn, #client_btn, #big_btn, #small_btn, #blog_btn {
+  /* border: 1px solid red; */
+
+  /* margin instead of padding?  */
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
+  /* 5px 0 5px; */
+  margin-right: 12px;
+  margin-left: 12px;
+  font-family: 'Poppins', sans-serif;
+  /* font-weight: bold; */
+  font-weight: #363636;
+}
+
+#about_me_btn:hover,
+#projects_btn:hover,
+#contact_btn:hover,
+#client_btn:hover,
+#blog_btn:hover {
+   /* bar on hover
+  diff text color */
+  color: #FF8C40;
+}
+
+#projects_btn {
+  cursor: default;
+}
+
+#projects_dropdown_menu {
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
+  /* border-top: 1px solid #FF8C40; */
+  z-index: 2001;
+  position: absolute; top: 35px; left: 12px;
+  background: #21252b;
+  background: #FF8C40;
+  background: #3c424d;
+  background: #415659;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9em;
+}
+
+#dropdown #projects_dropdown_menu:first-child {
+  /* border-bottom: 2px solid whitesmoke; */
+}
+
+#dropdown #projects_dropdown_menu div {
+  /* padding: 10px; */
+  /* border-bottom: 1px solid #ddd; */
+  /* border-left: 2px solid green; */
+}
+
+#dropdown #projects_dropdown_menu div:hover {
+  background: #ddd;
+  cursor: pointer;
+}
+
+/* override, vs apply for the one, last */
+#proj_clients_btn, #proj_personal_btn {
+  background: whitesmoke;
+  color: #363636;
+  padding: 13px 80px 13px 13px;
+}
+
+#proj_clients_btn {
+  border-top: 1px solid #ddd;
+}
+
+
+/* so not sub divs - alt: firstchild*/
+#clients > div {
+  margin-top: 140px;
+}
+
+
+
+#blogs {
+  display: none;
+  justify-content: center;
+  /* margin: 0;
+  padding: 0; */
+  /* padding-bottom: 20px; */
+
+  /* flex-wrap: wrap; */
+  /* 100 relative */
+  /* align-items: flex-end; */
+    /* border: 1px solid red;
+  margin-bottom: 100px; */
+  /* height: 100%; */
+}
+
+/* just make a div, and apply flex-centered-items container? */
+.centered_content {
+  max-width: 500px;
+  margin-top: 120px;
+}
+
+.blog {
+  border-bottom: 1px solid #ABABAB;
+  padding: 30px 0px 30px 0px;
+}
+
+/* override, or ? */
+.blog:last-child {
+  /* border: none; */
+}
+/* "if not only one". js? */
+
+.blog h3 {
+  font-size: 1.2em;
+  color: #85A68E;
+  /* d63200 - f1f1f1 - f8f8f8 - use f8 instead of white bg? or sidemeny? */
+  font-family: 'Poppins', sans-serif;
+  /* letter-spacing: 2px; */
+  /* em dont work since it will be text size? aka 16px */
+}
+
+.blog p {
+  color: #363636;
+    font-family: 'Poppins', sans-serif;
+      /* font-family: 'Roboto', sans-serif; */
+}
+
+#blogs .title:hover {
+  text-decoration: underline solid #85A68E 2px;
+}
+
+#app.dark .title:hover {
+  text-decoration: underline solid rgb(255, 140, 64) 2px;
+}
+
+.read_more {
+  display: block;
+  text-align: right;
+}
+
+
+.read_more:hover {
+  text-decoration: underline;
+}
+
+/* safety, most darkmode details etc they wont notice? */
+
+/* consider gray main text also  */
+
+.blog .pub_date {
+  font-size: 0.9em;
+  color: #363636;
+}
+
+
+
+/* interesting deisgn with A PIC
+and many lines, icons etc?  */
+
+/* space inside. no space. on.
+thats why attbiture space after input also matter?  */
+
 
 /* FILTER SELECT */
 #filter {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-top: 140px;
+  padding-bottom: 30px;
 }
 
 #filter select {
-    outline: none;
-    height: 35px;
-    width: 200px;
-    border: 2px solid #97A89C;
-    margin-right: 5px;
-    font-family: 'Roboto', sans-serif;
+  outline: none;
+  height: 35px;
+  width: 200px;
+  border: 1px solid #98c379;
+  margin-right: 5px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  padding-left: 10px;
+
+}
+#filter #reset_btn {
+  color: black;
+
+  margin: 0px;
+  border: 1px solid #98c379;
+  background: white;
+  cursor: pointer;
 }
 
 #filter option {
-    font-size: 1.2em;
-    font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  font-family: 'Roboto', sans-serif;
 }
 
 #filter button {
-    /* cursor: pointer; */
-    background: #97A89C;
-    color: #fff;
-    /* border: 1px solid #97A89C; */
-    padding: 0 20px 0 20px;
-    font-family: 'Roboto', sans-serif;
-
+  /* cursor: pointer; */
+  background: #97A89C;
+  color: #fff;
+  /* border: 1px solid #97A89C; */
+  padding: 0 20px 0 20px;
+  /* font-family: 'Roboto', sans-serif; */
+  cursor: pointer;
 }
 
 #filter button:focus {
-    outline: none;
-    /* border: 1px solid #97A89C; */
+  outline: none;
+  /* border: 1px solid #97A89C; */
 }
+
 
 
 /* ABOUT SECTION */
@@ -60,16 +310,30 @@
     flex-wrap: wrap;
     color: #363636;
     text-align: center;
-    min-height: 529px;
-}
+    min-height: 100%;
+    /* border: 1px solid green; */
+    /* min-height: 529px; */
+    /* min-padding:; */
+    /* padding-bottom: 100px; */
 
-#about_me .card {
+}
+/* cant add padding because it makes container larger. and app dont expand past 100% */
+/* they both higher?  they shouldnt expand either+ thye have to? its the prop of body and min height?
+
+add height to container div instead? or body?
+what happened to padidng of other+ - contact has none,
+need to subtract foote rheight  */
+
+/* 24px height utnill add icons agian - support for calc?  */
+
+
+/* #about_me .card {
     max-width: 500px;
     padding-bottom: 50px;
     line-height: 2em;
     margin-bottom: 40px;
     font-size: 0.9em;
-}
+} */
 
 #about_me h2 {
     line-height: 1.5em;
@@ -79,11 +343,102 @@
     color: black;
 }
 
+#about_me #profilepic {
+  /* border: 1px solid red;  */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 110px; margin-top: 20px;
+  /* margin: 50px;  */
+}
+
+#profilepic img {
+
+  /* border-radius: 5px 25px 5px 5px; */
+  width: 350px; /*300 - old: 289 */
+}
+
+#about_me #description {
+  color: #363636;
+}
+
+
+.about_me_content {
+  /* border: 1px solid red; */
+  width: 289px;
+  font-size: 1.4em;
+  text-align: left;
+  margin-top: 130px;
+  padding-bottom: 190px;
+  color: whitesmoke;
+}
+/* 12130F
+5B9279
+8FCB9B
+EAE6E5
+8F8073 */
+
+/* if remove, but still there. selector higher/parent oerrides? or set in style? */
+/* parent and one child override vs both children - which is better? */
+
+
+.text-hl {
+  font-family: 'Poppins', sans-serif;
+  /* color: #87A890; */
+  color: #FF8C40;
+  font-size: 1.5em;
+}
+/* text-align center ok if has little text? just not for paras? */
+/* repalce the text with some other representation? */
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#call_to_action_projects {
+  /* cursor: pointer;
+  color: black; */
+}
+
+/* the conceptual model of css/layout is good! improve it. visualize it better for development? a framework u enable while dev?
+or as chrome addon? border and what else flex/reposnsvie visualization? can disable border if want */
+
+/* #buttons .btn.tag { */
+#buttons .btn {
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3); */
+  border: 1px solid #363636;
+  background: white;
+  color: #363636;
+    /* font-family: 'Poppins', sans-serif; */
+  font-size: 16px;
+  padding: 17px 15px;
+}
+
+#buttons .btn:hover {
+  border: 1px solid #FF8C40;
+  background: #FF8C40;
+  color: white;
+}
+
+/* jsutify spacing on nav = equal spacing  */
+
+/* tutorials right on the front page?  */
+
+
+
+
+/* OLD? */
 #tags_wrapper #skill_tags {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
     margin-bottom: 30px;
+}
+
+#tags_wrapper #skill_tags .tag {
+  /* padding: 20px; */
+  flex: 1 0 20%;
 }
 
 #personal_info_wrapper, #edu_wrapper, #tags_wrapper {
@@ -91,18 +446,22 @@
 }
 
 #flex_wrapper {
-    padding: 0 30px 30px 30px;
+  padding: 0 30px 30px 30px;
 }
-
-
 
 /* projects SECTION */
 #projects, #clients {
     color: hsl(220, 14%, 71%);
-    display: flex;
+    display: none;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* matters when it comes to falling down to left? */
     /* flex: 1; /*makes the cards equal height though, not content*/
+    /* max-width: 1000px; to not make it infitatly big on large screens? */
+    padding-bottom: 100px;
+}
+
+#clients {
+  display: none;
 }
 
 #projects .card, #clients .card {
@@ -114,53 +473,60 @@
     /* use height of card_container.. make their minheight the same i guess.. so time it.. then fix tags spacing/rows? */
 }
 
+/* decreease text sisze because u expect screen size to be closer */
+
 
 .card_menu {
-    display: flex;
-    flex-wrap: wrap;
-    background: white;
-    border-bottom: 1px solid #ddd
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+  color: black;
+  border-bottom: 1px solid #ddd;
 }
 
 .card_menu .left_menu {
-    width: 70%;
-    color: black;
-    /* border: 1px solid blue; */
-    box-sizing: border-box;
+  width: 70%;
+  /* color: black; */
+  /* border: 1px solid blue; */
+  box-sizing: border-box;
 }
 
 .card_menu .long_desc_btn {
-    padding: 10px;
-    padding-left: 19px;
-    user-select: none;
-    /* width: 100%;  */
-    /* border: 1px solid red; */
-    /* min-width: 100%; */
-    box-sizing: border-box;
+  padding: 10px;
+  padding-left: 19px;
+  user-select: none;
+  /* width: 100%;  */
+  /* border: 1px solid red; */
+  /* min-width: 100%; */
+  box-sizing: border-box;
 }
 
 .right_menu {
-    width: 25%;
-    color: black;
-    /* border: 1px solid green; */
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  width: 25%;
+  /* color: black; */
+  /* border: 1px solid green; */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 
 
 
 .card-image {
-    /* height: 205px; */
-    position: relative;
-    overflow: hidden;
+  /* height: 205px; */
+  position: relative;
+  overflow: hidden;
 }
 
 /* the projects thumbnails*/
 .card-image img {
-    width: 100%;
+  width: 100%;
+}
+
+.card_desc h2 {
+  font-family: 'Poppins', sans-serif;
 }
 
 .card_desc {
@@ -169,6 +535,11 @@
     min-height: 150px;
     color: black;
     text-align: center;
+      /* font-family: 'Roboto', sans-serif;
+      roboto, mono instead? now its fira mono
+     */
+font-family: 'Source Sans Pro', sans-serif;
+  font-size: 17px;
 }
 
 .tags_container {
@@ -176,6 +547,8 @@
     font-size: 0.9em;
     min-height: 100px;
     padding: 0px 20px 0px 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+      font-size: 17px;
 }
 
 .buttons_container {
@@ -189,25 +562,33 @@
     /* border-top: 1px solid #ddd; */
 }
 
-/* USE? more confusing? */
-.normal_flex {
-    display: none;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+
+
 
 /* CONTACT SECTION */
 #contact {
-    display: none;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: none;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* green border on light mode? */
+
+#contact h2 {
+  color: #363636;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #c1c1c1;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.9em;
+  /* text-align: center; */
 }
 
-#contact .card {
-    padding: 40px 30px 90px 30px;
-    margin-bottom: 40px;
-    max-width: 400px;
-}
+
+/* #contact .card {
+  padding: 40px 30px 90px 30px;
+  margin-bottom: 40px;
+  max-width: 400px;
+} */
 
 
 form label,
@@ -215,27 +596,85 @@ form input,
 form textarea,
 form select,
 form button {
-    width: 90%;
+  width: 100%;
+}
+
+form input, form textarea {
+  color: black;
+  background: white;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  /* border-radius: 0 10px 0 0; */
+  border: 1px solid #aaa;
+  /* outline instead of border? defualt focus behaviour. (cant style outline? make it as shadow?) */
+  outline: none;
+  margin-bottom: 25px;
 }
 
 form input {
-    height: 30px;
-    margin-bottom: 20px;
+  height: 50px;
+  padding-left: 10px;
 }
 
 form textarea {
-    height: 100px;
-    margin-bottom: 20px;
-    resize: none;
+  height: 100px;
+  padding: 10px 0px 0px 10px;
+  min-height: 150px;
+  resize: none;
+  margin-bottom: 50px;
+  height: 200px;
+}
+
+form textarea:focus,
+form input:focus {
+  /* background: whitesmoke; */
+  border: 2px solid #87A890; /*1px solid #FF8C40*/
+}
+
+
+/* we are repeating alow - either use , list or class */
+#contact #contact_form_actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* , and space inside nosapce a part of  (longer selector) */
+
+
+/* every color fits with white/black? so can pick any? the green doent drag attention thouhg. so pick another. or one that does.  */
+
+
+/* id when i actually want it to be unik */
+
+#contact p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: black;
+  margin: 30px 0 50px 0;
 }
 
 form button {
-    margin: 0px;
+  margin: 0px;
+  width: 30%;
+  cursor: pointer;
 }
 
-form button:hover {
-    cursor: pointer;
+#contact #send_btn {
+  /* border-radius: 0 10px 0 0; */
+  margin-right: 15px;
 }
+
+#contact #reset_btn {
+  /* border-radius: 0 10px 0 0; */
+  margin-left: 15px;
+}
+
+#contact_form_actions button i {
+  margin-left: 7px;
+}
+
 
 ::-webkit-input-placeholder {
     color: #A39FA1;
@@ -298,70 +737,519 @@ textarea::placeholder {
 
 /* FOOTER */
 footer {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    color: hsl(220, 14%, 71%);
-    text-align: center;
+  /* font-family: 'Source Sans Pro', sans-serif; */
+  font-size: 14px;
+  /* text-align: center; */
+  /* background: #2B3038; */
+  /* padding: 20px 0; */
+  display: flex;
+  justify-content: center;
+  background: white;
+  /* F7F7F7 */
+
+  /* border creates scrollbar  */
+  border-top: 1px solid #ddd;
+  color: #303030;
 }
 
-#footer_buttons_wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    opacity: 0.6;
-    font-size: 1.2em;
+
+footer.dark {
+  background: #1F2329;
+  color: hsl(220, 14%, 71%);
+  border: none;
+  border-top: 1px solid #343B45;
 }
+
+footer .footer_content {
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
+  width: 100%;
+  /* margin: auto;
+  width: 500px; */
+  padding: 5px 0;
+
+  /* 23282E , 1F2329, 141414 */
+  /* border-top: 1px solid #343B45; */
+  font-family: 'Source Sans Pro', sans-serif;
+
+  /* min-height: calc(100% - 24px); */
+  /* set height of footer and main_content to 100% combined */
+}
+
+
+
+footer .footer_content > * {
+  margin: 0 30px;
+}
+
+footer #owner {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#copyright {
+  padding-bottom: 14px;
+}
+
+/* dont set footer to top set min height of container/body to 100% or 100%-footer height */
+/* all the way to one side? or in middle like widht of menu?  */
+/* ligther or darker footer color? border top? */
+/* body or cotnent seem to be more than minheioght 100%. in which container should footer be? outside? we want not outside screen if less than 100 */
+/* change the flex layout to make it work for text on one line?  */
+/* with relative top and left, i dont need to do innerhtml/body height etc. i just use bottom instead.  */
+/* calc footer height - use perectn to sub minheight 99percent? while footer 1 percent?*/
+#footer_buttons_wrapper {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 10px; */
+  opacity: 0.7;
+  /* font-size: 1.2em; */
+}
+
+/* on hover, cant trigger the other? witout js? */
+
+/* google analytics */
+
+
+
+
+/* if scrolltop == container height
+  force [lenght-1] to be hl'ed  */
+
+  /* be first on google match */
 
 footer .fa-github {
-    color: #211F1F;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
+  color: #211F1F;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 
 footer .fa-facebook {
-    color: #3B5998;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
+  color: #3B5998;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 
 footer .fa-linkedin {
-    color: #0077B5;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
+  color: #0077B5;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 
 footer .fa-youtube {
-    color: #c4302b;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
+  color: #c4302b;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 
 footer .fa-github:hover,
 footer .fa-facebook:hover,
 footer .fa-linkedin:hover,
 footer .fa-youtube:hover {
-    -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0);
+  -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0);
 }
 
-/* ANIMATIONS */
+
+
+
+#menu_btns {
+  /* border: 1px solid red; */
+  height: 36px;
+  margin-top: 8px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+#mobileMenu {
+  flex: 1;
+  display: none;
+  justify-content: flex-start;
+  /* border: 1px solid red; */
+}
+
+
+/* alt to using flex 1 is to mnauylly set 33 percnt for ecah OR to set same width (eg 200px) for each
+and then use justify: space-between?
+setting middle two flex: 2 works still?
+if diff size, will be more space bewtten small element and middle   */
+
+#mobileMenuIcon {
+   font-size: 20px; cursor: pointer; width: 60px;
+   display: flex;
+   align-items: center; justify-content: center;
+   margin-left: 5px;
+   padding-top: 2px;
+   /* border: 1px solid red; */
+}
+
+#logo_container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  /* border: 1px solid red; */
+}
+
+#logo {
+  width: 50px;
+  padding-left: 20px;
+}
+/* all white except content? content is the color.  */
+
+#theme_icon {
+  border: none;
+  margin-right: 25px;
+  cursor: pointer;
+  border: none;
+  /* margin-top: 3px; */
+    /* border: 1px solid green; */
+    /* margin-top: 0px; */
+}
+
+#theme_btn {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  /* border: 1px solid red; */
+  border: none;
+
+}
+
+/* vue only one breakpoint. and replace entire nav */
+/* added before search bar? */
+/* also seems to inicate that the ham menu is ALWYS there. in the html. so not condi rend? */
+/* hide text earlier? */
+
+#nav_owner_name {
+  padding: 13px 0 0 15px; font-family: 'Poppins'; font-size: 1em;
+}
+
+/* nav shoudl ahve text color, not vondiaoansl, same woth body. als white? then dark easyt?  */
+/* just design two bars and select between them. small and large versions. simplicty = better */
+/* repalce with new bar? make width smaller logo and icon and icon */
+
+@media screen and (max-width: 1430px) { /* increase to hide earlier, hide above, or just remove from html */
+  #nav_owner_name {
+    display: none;
+  }
+}
+
+/* media dont overrules style. why not bg color then? specificty caused by .dark? or addd after? */
+@media screen and (max-width: 1100px) {
+      #mobileMenu {
+        display: flex;
+      }
+
+      #logo_container {
+        justify-content: center;
+        /* flex: 2;  */
+        /* display: none; */
+      }
+
+      #logo {
+        padding-left: 0px;
+        width: 37px;
+        /* display: none; */
+      }
+
+      /* make nav smaller for tablet/mobile */
+      #nav_menu {
+        margin-bottom: 0px;
+        padding: 2px 0;
+      }
+
+      /* on mboile, show a new, displ bock with meida? or js?
+      not, on mobile, transform prop/change props of existsing.
+      desing both. conditionally choose to show. easy peasy */
+
+      /* then i only need to style icon for mobile, not each version */
+
+        /* dont show icon middle?
+        thin bar later? mobiel bar later? 900 is mobile?
+        text hide eariler? then 3 bars, now we 4 */
+
+
+        /* dark does seem to override media */
+
+        /* BS dont follow trends that well? behind? */
+
+    /* keep the ul menu with the nav item, then cond show it. its top abs anyway. always do this. what about lightboxes?
+    check links for BS?  */
+
+    /* gallery easy to make self? layout yes, that other thing also yes */
+
+    /* cant override style. switch to css. make sure not more specific than this selector */
+    /* order of media matter? dark applied, media applied timing */
+
+    /* always vs switch in media */
+    /* forntpage fotn to large?  */
+    #menu_btns {
+      /* flex: 2; */
+      display: none;
+      /* same as flex 0, except that atually has the btns inserted into flow. just takes as little sapc as possible, dotn allocate */
+      /* it can always be 2 since small content in the others. make sure not add more? */
+    }
+
+    /* buggy overlap?
+    cant have as many items? if i add later? then
+    it works now on flex 2, but not later? so flex 1 is better? */
+
+    /* simply inc number, not the other, like percent. */
+     /* make it larger  */
+}
+/* darkmode overrideing might be a problem */
+/* <link mobile */
+
+
+#sidenav {
+  /* box shadow but lower prio than nav? then dont need to adjust shadow */
+  /* -webkit-box-shadow: 3px 13px 20px 6px #303030;
+  box-shadow: 3px 13px 20px 6px #303030; */
+  background: whitesmoke;
+  /* use scrollbar and we can see easy. or boxshadow? */
+  padding: 30px 30px 0 20px;
+  color: black;
+  /* border-top: 1px solid #ddd; */
+   /* min-width: 200px; */
+  height: 100%; position: fixed; top: 49px; left: 0;
+   z-index: 1000; /* underneath nav, but above main content (everything else). creates the effect of being underneath nav becaue of border bottom.
+    same as box shadow would  */
+   overflow-y: auto;
+   width: 200px;
+   /* opacity: 1; */
+   /* transition: all .3s; */
+   border-right: 1px solid #ddd;
+   border-top: 1px solid #ddd;
+}
+
+#sidenav.dark {
+  background: #282c34;
+  border: none;
+  color: #ddd;
+}
+
+#sidenav ul li.dark {
+  border-bottom: 2px solid #282c34;
+}
+
+#sidenav ul li.dark:hover {
+  border-color: #FF8C40;
+}
+
+#sidenav .heading.dark:hover {
+  border-bottom: 2px solid #282c34;
+}
+/* need to be on exact element? or can be on ul? !important after always wins. important beats style. execmplify with code */
+/* if set color on nav, all elements will be it. but the problem is dont work if i override on li, or nav el. only work becaue i dont change
+them, so they get the nav color */
+
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform .3s ease;
+}
+
+.slide-enter, .slide-leave-to {
+  transform: translateX(-250px);
+}
+
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: all .3s ease;
+  max-height: 400px;
+  overflow: hidden;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter, .fade-leave-to {
+  transition: all .0s ease;
+  max-height: 0px;
+}
+
+
+/* id = easy targeting
+id = no-reusable?  */
+
+/* opacity and disp none. when hover set opactiy and disp. projects_dropdown_menu has transiton: opactity 1.2s prop   */
+
+
+/* .fade-enter-active, .fade-leave-active {
+  transition: transform .3s ease;
+}
+
+.fade-enter, .fade-leave-to {
+  transform: translateX(-250px);
+} */
+
+/* filters, unlike all? */
+/* .fade-enter-active, .fade-leave-active {
+  transition: transform .3s ease;
+  transition: opacity .3s ease;
+}
+
+.fade-enter, .fade-leave-to {
+  transform: translateX(-250px);
   opacity: 0;
+  width: 0px;
+} */
+
+/* go to not opacity 1? start we can decide. but end? yes, if we split the two clasees.. since the last is current to end */
+/* that doesnt tell use where start ends.. only where end ends, which can be diff from start. we need the el to have diff prop value?
+since that where it goes. thats why it goes to 1. because its the defualt value, set by us or browser. not becaue vue know 1 is end for
+opacity. this will also then, apply after animation/transiton has happend, that is, its perma/thats the end state. it aniamtes from
+the valeu the .fade-enter class has set, and the value the el has. works for enter since end is to show (visible/display), but for leave, the state is always to
+eventually hide the elemnt */
+
+
+/* .slide-fade-enter-active {
+  transition: all .3s ease;
 }
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+} */
+/* split this to animate different _props_? split the above to use diff _transition effects_ */
+
+/* learned about simplicty. 2 meida bars. 2 bars both drawn. only one shown. */
+/* nav should also have smalelr text and navbar */
+
+/* make light box, dialog
+make gallery with inspect  */
+
+/* focus on enter/show, el.focus() inside the ham fn that shows, not not fn . blur. click body, evt for body. when click, propagate, hide sidnav if (showing)  */
+/* nav menu. bordr hidden makes it so i can click? only on hover is it inlien block! block when not hover,
+so i can click if not hovered over it. which is on border? when i hover, i get the border showing */
+
+/* vue topnav is above sidenav - border or boxshadow? diff for mobile bar! */
+#sidenav:focus {
+  outline: none;
+}
+
+/* icons same size, smae method. container has the height. standardization. creates consistency */
+
+
+#sidenav ul li {
+  border-bottom: 2px solid whitesmoke;
+  /* border: 2px solid red; */
+  padding-bottom: 3px;
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  /* margin-top: 5px; */
+  font-family: "Poppins";
+
+}
+
+/* if "project" override hover to cursor none and no borde rcolor = bg? */
+#sidenav ul li:hover {
+  cursor: pointer;
+
+  /* background-color: #ddd; */
+  border-color: #FF8C40;
+  box-sizing: border-box;
+  display: inline-block;
+  /* works. safe. now spacing works too */
+
+  /* click must work
+  active must work */
+  /* no orange on project. its heading - expand?  */
+
+
+  /* -webkit-font-smoothing: antialiased; */
+
+  /* sketchy? only one i hover that is small. switch to underline?
+  vue on click. vs setting style in the fn? */
+
+  /* text-decoration: underline;
+  text-decoration-color: #FF8C40; */
+   /*inline = span, inline wraps around content, but dotn allow more on same row? */
+}
+/* fix itself here? how to see mistakes */
+/* dynamically expanding tabs, no reliant on ids */
+/* wasnt orde rproblem, but spcieificty! */
+#sidenav .heading:hover {
+  /* specificy beats order? not same, since heading/class */
+  border-bottom: 2px solid whitesmoke;
+  cursor: text;
+  cursor: default;
+  /* src sanse pro */
+  /* no event handler, so cant click */
+  /* use onclick as third method. works exactly the same?
+  use stopProp and preventDefault there on blur and not in fn */
+
+  /* on click item, make it stay? even when hide?  */
+}
+/* auto make things available from html in js document. same as css - just ref by window name? id? all ids added? newletter? */
+
+/* copy paste error
+forgot i did something - arrow fn api call, vue trnasition, forgot empty vue fn further down
+
+ask programmer what is metric? liek for user req - since api is fine my own camelcase?
+
+send not red? focus not red? dont remove msg? dont remove url? dont redirect?
+
+style order - two attri, last is done?
+media and style attri
+
+many custom dts - langs - purpsose of lang - if needed, slow exe, download - best at that one thing
+fastest way to mani dt - built in, not fn, should be able to, with syntax and other fns
+fns? syntax for dt */
 
 /* forces the nav menu to go from 3 buttons on one row directly to 1 button for each row */
 /* flexbox manages the rest of the responsive design */
+@media screen and (max-width: 671px) {
+  /* arrow down breakpoint */
+  /* remove logo and set flex 2? dont need to if remove */
+  /* just make hammen here? replace logo with it - transform logo? */
+
+  /* nav needs media, since siply uisng flex dont work well? percent need to be 33 -> 100 etc? */
+  /* and replace content */
+  /* #logo_container {
+    display: none;
+  } */
+  #logo {
+    display: none;
+  }
+
+
+
+
+
+  /* ham need event handler, new, also, so better to design the element as its own */
+
+
+  /* less paddig left or hamburger?  */
+  /* disp non for each element? then disp for hambuvber which is aways tere? */
+  /* hide nav menu container, show ham container? displ none and disp flexinlienlbock, with already flex 2 for the other?
+  dont transform container. show new - so make a new one and place it now  */
+  /* hide btns, dont hide logo, replace with vue the img? */
+  /* just replace entire nav bar? with a new one? conditional rendering? css media? */
+
+}
+
+
+
+/* style also bad for media. so avoid?  */
+
+/* when hammen and lightmode in it? */
+
+/* vue 900 - only two versions */
+
+/* many versions = better fit for each screen, but more confusing if view on many devices, look different for many devices */
+
+/* order if medias matter? LOWEST MUST BE LAST! if only max and not min to max */
 @media screen and (max-width: 421px) {
     #about_me_btn, #projects_btn, #contact_btn, #client_btn {
-        text-align: center;
-        width: 100%;
-        margin-left: 30%;
-        margin-right: 30%;
+      text-align: center;
+      width: 100%;
+      margin-left: 30%;
+      margin-right: 30%;
     }
 }
+
 
 /* <!-- with dynamic vue rendering, must use id --> */
 /* must set height all the way up to html - but width is normally correct from start,
@@ -379,3 +1267,14 @@ to use %, then can use relative, asolute etc  */
 .small_card_img {
     border: 1px solid red;
 }
+
+/* // click button apply dark attri */
+
+
+/* same vueitfy does - with css we dont apply attri? we execute different body code instead? */
+
+/* // detect if preference
+// body.dark
+// add js
+
+apply body.dark - make css here  */

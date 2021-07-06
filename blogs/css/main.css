@@ -1,0 +1,304 @@
+/*  #415659,,98c379, #FF8C40;, 363636, 21252b, 3c424d  */ /* #304455 */
+/* this is? from cmder
+5c6370
+text nav
+9da5b4
+nav bg
+21252b
+font
+abb2bf
+editor bg?
+282c34
+comments?
+5c6370 */
+/* d63200 - vue red/orange */
+/* rename to lib.css? util?  */
+/* layout.css - the main? */
+/* all items that has same, should use class from here. so can apply same in same place. witoyt using #dja, #kda */
+[v-cloak] {
+  display: none;
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: #363636;
+}
+
+h2 {
+  color: #a89898;
+  color: hsl(220, 14%, 71%);
+  color: #363636;
+  /* hmm? */
+  font-family: 'Fira Mono', monospace;
+  font-weight: bold;
+}
+
+h3 {
+  padding-top: 200px;
+  /* will be overriden? so use padding? */
+}
+
+a {
+  text-decoration: none;
+  color: hsl(220, 14%, 71%);
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+.tag {
+  color: black;
+  background: white;
+  padding: 3px;
+  font-size: 0.86em;
+  margin: 2.5px;
+  border-radius: 7px;
+  display: inline-block;
+  border: 1px solid #ddd;
+}
+
+.btn {
+  font-size: 0.8em;
+  border-radius: 0px;
+  padding: 10px;
+  border: 1px solid #87A890;
+  background: white;
+  color: #87A890;
+  transition: 0.5s ease;
+}
+
+.btn:hover {
+  background: #87A890;
+  color: white;
+}
+
+
+#app {
+  padding-bottom: 20px;
+  min-height: 100%;
+}
+#app .hl {
+  color: #d63200;
+}
+
+#menu_btns > div {
+  height: auto;
+}
+
+#menu_btns #blog_btn a {
+  border-bottom: 1px solid #FF8C40;
+  padding-bottom: 6px;
+}
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Fira Mono', monospace;
+  background: white;
+  color: #a89898;
+  overflow-y: scroll;
+  overflow-y: auto;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
+body {
+  background-color: white;
+  color: whitesmoke;
+  color: #abb2bf;
+  color: #303030;
+  /*1.6? em doesnt work? */
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.menu, .sidemenu, .content, .ads {
+  line-height: 2em;
+  font-size: 16px;
+}
+
+/* h5, h6*/
+h1, h2, h3, h4 {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+.content {
+  height: 100%;
+}
+
+.menu, .sidemenu {
+  overflow-x: auto;
+  overflow-y: auto;
+  width: 300px;
+  height: 100%;
+  border-right: 1px solid #ddd;
+  position: fixed;
+  top: 68px;
+  left: 0px;
+  background: white;
+  line-height: 1.8em;
+}
+
+.sidemenu {
+  top: 52px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+}
+
+.pub_date {
+  margin: 0px 15px 35px 15px;
+  padding: 0;
+}
+
+.menu  .title, .sidemenu .title {
+  margin-bottom: 0;
+  border: none;
+}
+
+.toc {
+  margin-bottom: 0;
+}
+
+.sidemenu:focus {
+  outline: none;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform .3s ease;
+}
+
+.slide-enter, .slide-leave-to {
+  transform: translateX(-350px);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all .3s ease;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.fade-enter, .fade-leave-to {
+  transition: all .0s ease;
+  max-height: 0px;
+}
+
+.article {
+  margin: 0 auto;
+  max-width: 700px;
+  padding-top: 125px;
+  padding-bottom: 100px;
+}
+
+.ads {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+.menu ul, .sidemenu ul {
+ list-style: none;
+ padding: 0px 15px;
+}
+
+li {
+  margin: 8px 0;
+}
+
+a {
+ text-decoration: none;
+ color: #ddd;
+ color: #303030;
+}
+
+@media screen and (max-width: 1370px) {
+  .ads {
+    display: none;
+  }
+  .article {
+    margin-left: 350px;
+    margin-right: 50px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  /* body {
+    font-size: 14.5px;
+  } */
+  .article {
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 125px;
+    font-size: 14.5px;
+  }
+  .menu {
+    display: none;
+  }
+}
+
+.menu a:hover, .sidemenu a:hover {
+  color: #d63200;
+}
+
+.menu li:hover, .sidemenu li:hover {
+ color: #d63200;
+}
+
+.menu h2, .menu h3, .menu h4,
+.menu h5, .menu h6,
+.sidemenu h2, .sidemenu h3,
+.sidemenu h4, .sidemenu h5, .sidemenu h6
+{
+ margin-left: 15px; margin-right: 15px;
+ padding-bottom: 5px;
+ border-bottom: 1px solid #ddd;
+}
+
+.menu h3, .sidemenu h3  {
+ border: none;
+}
+
+.article a {
+ color: blue;
+}
+
+.article li a {
+ color: #303030;
+}
+
+/* adjusts the headings to have their size
+higher than visually, to fix href click being being nav */
+.article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
+  padding-top: 110px;
+  margin-top: -110px;
+}
+
+code {
+  font-size: 0.85em;
+  padding: 5px;
+  background-color: #f8f8f8;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial;
+  color: #d63200;
+  color: #000;
+}
+
+pre code {
+  color: #000;
+  display: block;
+  padding: 20px;
+  font-family: "Roboto Mono", Monaco, courier, monospace;
+  font-size: 0.85em;
+  background-color: #f8f8f8;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial;
+  overflow-x: auto;
+ }

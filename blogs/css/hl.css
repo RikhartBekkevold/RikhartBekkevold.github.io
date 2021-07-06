@@ -1,0 +1,28 @@
+/* #56b6c2, 303030, 363636, f8f8f8, f1f1f1, f5f5f5, ddd,  */
+.comment-hl {
+ color: #A6A6A6;
+}
+
+.keyword-hl, .operator-hl {
+ color: #a626a4;
+}
+
+.operator-hl {
+ color: #0184bc;
+}
+
+.fnName-hl {
+ color: #4078f2;
+}
+
+.bool-hl, .number-hl, .bottomvalue-hl {
+ color: #b76b01;
+}
+
+.string-hl {
+ color: #50a14f;
+}
+
+.fnObj-hl {
+ color: #e06c75;
+}

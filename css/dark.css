@@ -1,0 +1,344 @@
+/* overrides the colors of els when dark class is applies to el */
+/* dont need to be applied last, because class is added after load? */
+/* make sure selector as specific as default */
+
+/* 415659 - card green */
+/* 3c424d - app
+21252b - nav  */
+/* ABB2BF */
+
+/* will apply the gray for any divs in body
+it did for the icon <div class="material-icons"> */
+/* body > div.dark { */
+/* this is how vueitfy applies style to all children?  */
+#app.dark {
+  color: white;
+}
+
+.main_content.dark {
+  background: #21252b;
+}
+
+.card.dark {
+  background-color: #282c34;
+}
+
+.card_desc.dark {
+  color: #f1f1f1;
+  background: #282c34;
+}
+
+.card_desc h2.dark {
+  color: whitesmoke;
+}
+
+.card_menu.dark {
+  background: #282c34;
+  color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.tag.dark {
+  color: white;
+  background: #21252b;
+  border: 1px solid #ddd;
+}
+
+.white_tag.dark {
+  color: whitesmoke;
+  background: #282c34;
+}
+
+.minor_tag.dark {
+  color: whitesmoke;
+  background: #282c34;
+}
+
+#filter select.dark {
+  background: #21252b;
+  color: white;
+  border: 2px solid white;
+}
+
+#filter #reset_btn.dark {
+  color: #fff;
+  margin: 0px;
+  border: 2px solid white;
+  background: #21252b;
+  cursor: pointer;
+}
+/* will override prio, but not style? */
+
+#filter #reset_btn.dark:hover {
+  background: #434B57;
+   /* hsl(218.8,12.4%,15.9%); */
+}
+
+
+#nav_menu.dark {
+  background: #21252b;
+  color: white;
+  /* -webkit-box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.30);
+  -moz-box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.30);
+  box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.30); */
+  border: none;
+  border-bottom: 1px solid #343B45;
+  /* border-bottom: 1px solid #ddd; */
+}
+
+
+#theme_btn.dark {
+  background: #21252b;
+}
+
+#theme_icon.dark {
+  background: #21252b !important;
+}
+
+#nav_menu .btn.dark {
+  /* border: 1px solid white; */
+  background: #21252b;
+  background: #21252b !important;
+  color: white;
+}
+
+#nav_menu .btn.dark:hover {
+  color: white;
+  background: #353B45 !important;
+}
+
+
+.btn.dark {
+  border: none;
+   /* 1px solid #FF8C40; */
+  background: #282c34;
+  color: #FF8C40;
+}
+/* 282c34 */
+
+/* also for those in nav-mehu. so nav menu must be last? */
+.btn.dark:hover {
+  /* background: white; */
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+#contact h2.dark {
+  color: white;
+}
+
+#contact p.dark {
+  color: white;
+}
+
+#contact textarea.dark,
+#contact input.dark  {
+  color: white;
+
+  background: #21252b;
+
+  outline: none;
+  box-sizing: border-box;
+  transition: .5s ease;
+}
+
+#contact textarea.dark {
+  /* border: 1px solid white; */
+  padding: 10px 0 0px 10px;
+  min-height: 150px;
+}
+
+
+/* box shadow? and bordr?  */
+#contact input.dark {
+  /* border: 1px solid white; */
+  padding-left: 10px;
+  color: white;
+}
+
+/* styel override fpcus?? */
+/* specificty. order. */
+#contact textarea.dark:focus,
+#contact input.dark:focus  {
+   border: 1px solid white;
+   /* background: #333942; */
+    /*lighter instead?*/
+}
+
+input.dark::-webkit-input-placeholder {
+    color: #DEDEDE;
+    font-weight: 1em;
+}
+
+input.dark:-moz-placeholder {
+    color: #DEDEDE;
+    font-weight: 1em;
+}
+
+input.dark::-moz-placeholder {
+    color: #DEDEDE;
+    font-weight: 1em;
+}
+
+input.dark:-ms-input-placeholder {
+    color: #DEDEDE;
+    font-weight: 1em;
+}
+
+
+textarea.dark::-webkit-input-placeholder {
+    color: #DEDEDE;
+    font-family: Arial;
+    font-weight: 1em;
+}
+
+textarea.dark:-moz-placeholder { /* Firefox 18- */
+    color: #DEDEDE;
+    font-family: Arial;
+    font-weight: 1em;
+}
+
+textarea.dark::-moz-placeholder {  /* Firefox 19+ */
+     color: #DEDEDE;
+     font-family: Arial;
+     font-weight: 1em;
+}
+
+textarea.dark:-ms-input-placeholder {
+     color: #DEDEDE;
+     font-family: Arial;
+     font-weight: 1em;
+}
+
+textarea.dark::placeholder {
+    color: #DEDEDE;
+    font-family: Arial;
+    font-weight: 1em;
+}
+
+
+
+
+/* #contact #contact_form input.dark:focus {
+  border: 4px solid #98c379;
+  background: red;
+  outline: none;
+} */
+
+
+#contact button.dark {
+  /* border: 1px solid black; */
+  border: 1px solid white;
+  background: white;
+   /* hsl(218.8,12.4%,15.9%); */
+  color: black;
+}
+
+#contact button.dark:hover {
+  background: #3c424d;
+  color: white;
+}
+
+
+/* // dont need border always? dont shift. */
+/* .active {
+  border-bottom: 1px solid #FF8C40;
+}
+
+.active.dark {
+  border-bottom: 1px solid #FF8C40;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+} */
+
+.selected {
+  border-bottom: 2px solid #97A89C;
+}
+
+.selected.dark {
+  border-bottom: 2px solid #98c379;
+}
+
+
+
+/* BLOG  */
+.blog.dark {
+  border-bottom: 1px solid #ABABAB;
+}
+
+.blog h3.dark {
+  color: rgb(255, 140, 64);
+}
+
+/* class here is more eff? */
+.blog p.dark {
+  color: #f5f5f5;
+}
+
+/* override */
+.blog .pub_date.dark {
+  color: #ddd;
+}
+
+
+
+
+/* FP */
+
+.text-hl.dark {
+  color: #FF8C40;
+}
+
+/* can do #about_me.dark #description also prob */
+#about_me #description.dark {
+  color: whitesmoke;
+  color: #ddd;
+}
+
+/* logo farger:
+697A99
+878D99 */
+
+/* need two colors? interesign shaps?
+now it fits, but is extremely boring. vibrant colors? */
+/* use the green, just more vibrant version? orange? blue? */
+
+/* can be seen, harmonizes within, vibrant - white/dark is anon anyway. just need to look good on its own. and be dicerneble. */
+
+/* #buttons .btn.tag { */
+#buttons .btn.dark {
+  color: #ddd; /*white*/
+  background: #21252b;
+  border: 1px solid #ddd; /*white*/
+  box-shadow: none;
+  /* wierd how it overrides, and only color */
+  /* darkmode = override */
+
+    /* border: 1px solid #FF8C40;
+    background: #3c424d;
+    color: #FF8C40; */
+}
+
+#buttons .btn.dark:hover {
+  background: #FF8C40;
+}
+
+/* body bg color in darkmode is to
+dark for black gh icon, so make it gray instead */
+footer.dark .fa-github {
+  color: #717171;
+}

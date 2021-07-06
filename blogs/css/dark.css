@@ -1,0 +1,161 @@
+/* this is? from cmder
+5c6370
+
+text nav
+9da5b4
+nav bg
+21252b
+
+font
+abb2bf
+editor bg?
+282c34
+comments?
+5c6370 */
+/*  #415659,,98c379, #FF8C40;, 363636, 21252b, 3c424d  */
+/* 303030, 363636, f8f8f8, f1f1f1, f5f5f5, ddd,  */
+/* specific selector, but add dark as high as poss. while selector is low as pos? */
+/* #d19a66 - yel
+#e06c75 - red
+#abb2bf - text
+#61afef - blue
+#98c379 - green
+#c678dd - purple */
+.menu.dark h2, .menu.dark h3, .menu.dark h4, .menu.dark h5, .menu.dark h6,
+.sidemenu.dark h2, .sidemenu.dark h3, .sidemenu.dark h4, .sidemenu.dark h5, .sidemenu.dark h6 {
+  border-bottom: 1px solid #343B45;
+}
+
+/* increase margin top for article headings?  */
+.menu h3, .sidemenu h3  {
+ border: none;
+}
+
+#app.dark .hl {
+  color: #d63200;
+}
+
+#app.dark {
+  color: whitesmoke;
+  background: #21252b;
+}
+
+#nav_menu.dark {
+  background: #21252b;
+  color: white;
+  border: none;
+  border-bottom: 1px solid #343B45;
+}
+
+#nav_menu.dark a {
+  color: white;
+}
+
+#theme_btn.dark {
+  background: #21252b;
+}
+
+#theme_icon.dark {
+  background: #21252b !important;
+}
+
+#nav_menu .btn.dark {
+  background: #21252b !important;
+  color: white;
+}
+
+#nav_menu .btn.dark:hover {
+  color: white;
+  background: #353B45 !important;
+}
+
+.btn.dark {
+  border: none;
+  background: #415659;
+  color: #FF8C40;
+}
+
+.btn.dark:hover {
+  color: black;
+  color: #FF8C40;
+}
+
+/* change this query to exclude projects_dropdown_menu */
+#menu_btns a:hover {
+  color: #FF8C40;
+}
+
+/* removes orange applied by above to submenu items */
+#projects_dropdown_menu a:hover {
+  color: inherit;
+}
+
+.menu.dark, .sidemenu.dark {
+  background: #282c34;
+  color: #D1D1D1;
+  border-right: 1px solid #343B45;
+}
+
+.menu.dark .title, .sidemenu.dark .title {
+  border: none;
+}
+
+ul.dark a {
+ color: #D1D1D1;
+}
+
+/* is this neceesarry given the selector 2 above? */
+.article.dark > * {
+  color: #D1D1D1;
+}
+
+.article.dark code {
+  background-color: #282c34;
+  color: #d63200;
+  color: whitesmoke;
+  color: #D1D1D1;
+}
+
+.article.dark a {color: lightblue;}
+.article.dark li a {color: #D1D1D1;}
+
+.article.dark pre code {
+  background-color: #282c34;
+  color: #D1D1D1;
+}
+
+.article.dark .comment-hl {
+  color: #5c6370;
+}
+
+.article.dark .keyword-hl, .article.dark  .operator-hl {
+  color: #c678dd;
+}
+
+.article.dark .fnName-hl {
+  color: #61afef;
+}
+
+.article.dark .bool-hl,
+.article.dark .number-hl,
+.article.dark .bottomvalue-hl {
+  color: #d19a66;
+}
+
+.article.dark .string-hl {
+  color: #98c379;
+}
+
+.article.dark .operator-hl {
+ color: rgb(86, 182, 194);
+}
+
+
+/* recommended reading instead? info about: pub/updated and title? */
+.ads.dark {
+  color: red;
+}
+
+#projects_dropdown_menu > div a.dark {
+  color: black;
+}

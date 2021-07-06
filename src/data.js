@@ -1,4 +1,4 @@
-//var img_src = "thumbnails/compressed/"; // not needed with find tool?=
+//var img_src = "resources/thumbnails/compressed/"; // not needed with find tool?=
 // var globalstate
 // var appstate = desc opem - filter
 
@@ -15,10 +15,10 @@ var projects = [
         title: "Conductor Hero",
         desc: "A virtual reality rythm game centered around being a musical conductor.",
         long_desc: "Conductor Hero is my group's idea and final product in the masters course, 'Experts in Team'. " +
-              "The course's requirement was to make a product involving VR technology, utilizing inter-disciplinary " +
+              "The requirement of the course was to make a product involving VR technology, utilizing inter-disciplinary " +
               "teams. The goal of the course was to <i>learn how to work together in a team</i> and "+
               "then <i>reflect on the process.</i> I served mostly as designer and did some additional programming of the HUD.",
-        thumb: "thumbnails/compressed/thumbconductorhero.png",
+        thumb: "resources/thumbnails/compressed/thumbconductorhero.png",
         tags: ["C#", "virtual reality", "interaction design"],
         minortags: ["game", "game design", "unity engine", "group project"],
         hidden: false,     /* {name: "virtual reality", color: "#000", bgColor: "#e91e63"} */
@@ -52,7 +52,7 @@ var projects = [
                    "The main challenge was designing a solution despite the clients lack of opinion and somewhat "+
                    "anonymous company profile.",
                // find the reports - design documents left? one document atleast in discord
-        thumb: "thumbnails/thumbrorlegger.png", // PNG. png.
+        thumb: "resources/thumbnails/thumbrorlegger.png", // PNG. png.
         tags: ["website", "frontend", "browser"],
         minortags: ["js", "html", "css"],
         hidden: false,
@@ -75,7 +75,7 @@ var projects = [
         long_desc: "A browser game I made in order to play around with the <a style='color: #0000EE' href='https://www.pixijs.com/'>pixi.js</a> " +
                    "library, Javascript objects and prototypes. " +
                    "(Not well suited for smaller resolutions)",
-        thumb: "thumbnails/compressed/thumbcardflip.png",
+        thumb: "resources/thumbnails/compressed/thumbcardflip.png",
         tags: ["javascript", "browser"],
         minortags: ["pixi.js", "game"],
         hidden: false,
@@ -100,7 +100,7 @@ var projects = [
         title: "CSS parser",
         desc: "Parses CSS into an abstract syntax tree.",
         long_desc: `A CSS parser made in Javascript. A node program that can be run as a either a node module or as a cli.`,
-        thumb: "thumbnails/thumbcssparser.png",
+        thumb: "resources/thumbnails/thumbcssparser.png",
         tags: ["javascript", "CSS", "parsing", "node.js"],
         minortags: ["module"], // lucky that can use slice? dont need thouhg. but does for itration? try iterating?
         hidden: false,
@@ -122,7 +122,7 @@ var projects = [
         desc: "A desktop chat app with <a href='https://www.electronjs.org/'>Electron</a> as frontend, and " +
                     "firebase as backend.",
         long_desc: "Keywords: <br><br>package electron app/exe<br>",
-        thumb: "thumbnails/compressed/thumbelectronapp.png",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
         tags: ["electron", "firebase"],
         minortags: ["node", "websocket"],    // what is returned by js engine in expression is null, and that is not an array
         hidden: false,                       // github, build system, cmd, npm
@@ -147,7 +147,7 @@ var projects = [
         title: "JS document creator",
         desc: "A window cli tool to automatically create documents from javascript comments.",
         long_desc: "",
-        thumb: "thumbnails/compressed/thumbelectronapp.png",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
         tags: ["python", "cli"],
         minortags: ["automatization"],   // what is returned by js engine in expression is null, and that is not an array
         hidden: false,                       // github, build system, cmd, npm
@@ -172,7 +172,7 @@ var projects = [
         title: "Android - sunshadow",
         desc: "",
         long_desc: "Keywords: <br><br>package electron app/exe<br>",
-        thumb: "thumbnails/compressed/thumbelectronapp.png",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
         tags: ["electron", "firebase"],
         minortags: ["node", "websocket"],   // what is returned by js engine in expression is null, and that is not an array
         hidden: false,                       // github, build system, cmd, npm
@@ -197,7 +197,7 @@ var projects = [
         title: "VuEditor",
         desc: "A form editor in vue and vuetify.",
         long_desc: "",
-        thumb: "thumbnails/compressed/thumbelectronapp.png",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
         tags: ["electron", "firebase"],
         minortags: ["node", "websocket"],     // what is returned by js engine in expression is null, and that is not an array
         hidden: false,                       // github, build system, cmd, npm
@@ -223,8 +223,8 @@ var projects = [
         desc: `The design of a service (website) and product (weight scale) utilizing user-centered design methods.`,
         long_desc: `The course required the design of a website for drone users (service), and the re-imagining the traditional weight scale (a product).
                     The goal was to design based on user needs by utilizing user-centered design methods like: interviews, focus groups, card sorting etc.`,
-        thumb: "thumbnails/compressed/thumbcardflip.png",
-        tags: ["service design", "IxD", "design methods"],
+        thumb: "resources/thumbnails/compressed/thumbcardflip.png",
+        tags: ["service design", "interaction design", "design methods"],
         minortags: ["prototyping", "interview", "focus group", "research"], //"affinity analysis", "hierustics analysis", "group project"],
         hidden: false,
         public: false,
@@ -266,8 +266,8 @@ var projects = [
                <br>
                <br>
                Idea and design was done by all members. Creation of the technical prototype was done by me.`,
-        thumb: "thumbnails/compressed/thumbelderlyhealth.png",
-        tags: ["ideation", "innovation", "prototyping", "IxD"],
+        thumb: "resources/thumbnails/compressed/thumbelderlyhealth.png",
+        tags: ["ideation", "innovation", "prototyping", "interaction design"],
         minortags: ["gamestorming", "python", "raspberry pi", "group project"],
         hidden: false,  // one tag for discpline and then language.. icon that shows group project intead?
         public: true,
@@ -302,7 +302,7 @@ var projects = [
                        "<br>2. Try some basic transpiling" +
                        "<br>3. Deepen my understanding of the Atom environment" +
                    "<div>",
-        thumb: "thumbnails/compressed/thumbatompackage.png",
+        thumb: "resources/thumbnails/compressed/thumbatompackage.png",
         tags: ["javascript"],
         minortags: ["automatization tool", "atom texteditor package"],
         hidden: false,
@@ -330,7 +330,7 @@ var projects = [
                     determine what benefit, in terms of time to read and understand code, such highlighters have,
                     as well as a much less explored type of highlighter, semantic highlighters.
                     `,
-        thumb: "thumbnails/compressed/thumbexperiment.png",
+        thumb: "resources/thumbnails/compressed/thumbexperiment.png",
         tags: ["research",  "javascript", "interaction design"],
         minortags: ["firebase", "colour theory"],
         hidden: false,
@@ -361,7 +361,7 @@ var projects = [
         desc: "A retail World of Warcraft addon.",
         long_desc: `My first WoW addon and use of Lua. Mimicks the Blizzard created default auras on the enemy frame by
                     doing the same for the player's frame.`,
-        thumb: "thumbnails/compressed/thumbplayerframeauras.png",
+        thumb: "resources/thumbnails/compressed/thumbplayerframeauras.png",
         tags: ["lua"],
         minortags: ["addon", "game", "world of warcraft"],
         hidden: false,
@@ -383,7 +383,7 @@ var projects = [
         long_desc: `A medium post written as a tutorial for an 'Information Architecture' course. I used the assignment as an excuse to learn
                     about graph databases (already knew relational) and then tied it to IA, even though it is more related to other
                     fields.`,
-        thumb: "thumbnails/compressed/thumbdatabases.png",
+        thumb: "resources/thumbnails/compressed/thumbdatabases.png",
         tags: ["database"],
         minortags: ["tutorial", "graph db", "relational db"],
         hidden: false,
@@ -411,7 +411,7 @@ var projects = [
                     4. Colour palette<br>
                     5. Semantic and affective use of colour<br>
                     6. Colour used in Interaction Design<br>`,
-        thumb: "thumbnails/compressed/thumbcolourportfolio.png",
+        thumb: "resources/thumbnails/compressed/thumbcolourportfolio.png",
         tags: ["colour theory", "interaction design"],
         minortags: [],
         hidden: false,
@@ -429,11 +429,11 @@ var projects = [
     },
     {
         title: "Better Weakened Soul",
-        desc: "A tiny classic World of Warcraft addon.",
+        desc: "A tiny addon for World of Warcraft Classic.",
         long_desc: "An addon for the game 'World Of Warcraft Classic' that solves a common problem. When priests shield themselves a debuff is applied, this debuff is " +
                    "quite hard to see in the heat of the action because of its location. The addon tries to solve the problem by giving the user the ability to choose the position " +
                    "of the debuff to somewhere that makes it easier for them to see. It also enables other possible user preferences.",
-        thumb: "thumbnails/compressed/thumbbiggerweakenedsoul.png",
+        thumb: "resources/thumbnails/compressed/thumbbiggerweakenedsoul.png",
         tags: ["lua"],
         minortags: ["addon", "game", "world of warcraft"],
         hidden: false,
