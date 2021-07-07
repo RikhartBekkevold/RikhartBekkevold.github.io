@@ -1296,10 +1296,11 @@ fns? syntax for dt */
     margin-bottom: 5px;
   }
 
-  #projects .btn, #clients .btn  {
+  /* #projects .btn, #clients .btn  {
     font-size: 0.8em;
     padding: 0px 10px;
-  }
+  } */
+
 
 /* json has html not plain text. then i can add html tags unik for each card  */
 /* use padding instead of min-height. then use flex prop to make sure align based on biggest/grow */
