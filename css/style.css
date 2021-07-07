@@ -186,7 +186,8 @@ page2  */
 /* just make a div, and apply flex-centered-items container? */
 .centered_content {
   max-width: 500px;
-  margin-top: 120px;
+  margin: 120px 20px 0px 20px;
+  /* width: 90%;  */
 }
 
 .blog {
@@ -464,6 +465,8 @@ or as chrome addon? border and what else flex/reposnsvie visualization? can disa
   display: none;
 }
 
+
+
 #projects .card, #clients .card {
     width: 400px;
     margin-bottom: 40px;
@@ -472,9 +475,7 @@ or as chrome addon? border and what else flex/reposnsvie visualization? can disa
     /* min-height: inherit; */
     /* use height of card_container.. make their minheight the same i guess.. so time it.. then fix tags spacing/rows? */
 }
-
 /* decreease text sisze because u expect screen size to be closer */
-
 
 .card_menu {
   display: flex;
@@ -567,11 +568,26 @@ font-family: 'Source Sans Pro', sans-serif;
 
 /* CONTACT SECTION */
 #contact {
+  /* border: 1px solid red; */
   display: none;
   justify-content: center;
-  flex-wrap: wrap;
 }
-/* green border on light mode? */
+
+/* set margin here? and merge the two? */
+#contact > div {
+  max-width: 500px;
+  /* border: 1px solid red; */
+  /* width: 100%; */
+}
+
+#contact > div > div {
+  width: 450px;
+  margin-top: 150px;
+  min-height: 625px;
+  /* border: 1px solid red; */
+  width: 100%;
+}
+
 
 #contact h2 {
   color: #363636;
@@ -580,16 +596,7 @@ font-family: 'Source Sans Pro', sans-serif;
   border-bottom: 1px solid #c1c1c1;
   font-family: 'Poppins', sans-serif;
   font-size: 1.9em;
-  /* text-align: center; */
 }
-
-
-/* #contact .card {
-  padding: 40px 30px 90px 30px;
-  margin-bottom: 40px;
-  max-width: 400px;
-} */
-
 
 form label,
 form input,
@@ -618,7 +625,6 @@ form input {
 }
 
 form textarea {
-  height: 100px;
   padding: 10px 0px 0px 10px;
   min-height: 150px;
   resize: none;
@@ -993,6 +999,10 @@ if diff size, will be more space bewtten small element and middle   */
       /* it can always be 2 since small content in the others. make sure not add more? */
     }
 
+
+
+
+
     /* buggy overlap?
     cant have as many items? if i add later? then
     it works now on flex 2, but not later? so flex 1 is better? */
@@ -1214,12 +1224,85 @@ fns? syntax for dt */
     display: none;
   }
 
+  #about_me #profilepic {
+    margin-bottom: 60px; margin-top: 0px;
+  }
+
+  #about_me .about_me_content #profilepic img {
+    /* width: 250px; */
+    width: 100%;
+  }
+
+  #about_me .about_me_content #description {
+    font-size: 0.8em;
+  }
+
+  #contact > div {
+    /* can i remove max widht? or use imp?  */
+    max-width: 90%;
+    width: 90%;
+  }
 
 
+  #contact > div > div {
+    margin-top: 100px;
+    min-height: 625px;
+  }
+
+  /* less margin top
+  smaller text
+  change read more? - left? more margin top?  */
+  .centered_content {
+    max-width: 500px;
+    margin: 60px 20px 0px 20px;
+    /* width: 90%;  */
+    font-size: 0.8em;
+  }
+
+  /* shrink img/card witdth and text size? of card perma? */
+
+  #projects .card, #clients .card {
+    width: 300px;
+    font-size: 0.9em;
+  }
 
 
-  /* ham need event handler, new, also, so better to design the element as its own */
+  .card_desc h2 {
+    font-family: 'Poppins', sans-serif;
+  }
 
+  .card_desc {
+    padding: 0px 20px 0px 20px;
+    font-size: 0.86em;
+    min-height: 120px;
+    text-align: center;
+    font-size: 14px;
+  }
+  /* relative to parent, so if sibling, will have same if same em  */
+
+  .tags_container {
+    text-align: center;
+    font-size: 0.9em;
+    min-height: 60px;
+    /* inherit or auto? or change to 50 ot make consistent? cant see that downwards anyway? */
+    padding: 0px 10px 0px 10px;
+    font-size: 17px;
+  }
+
+  .buttons_container {
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  #projects .btn, #clients .btn  {
+    font-size: 0.8em;
+    padding: 0px 10px;
+  }
+
+/* json has html not plain text. then i can add html tags unik for each card  */
+/* use padding instead of min-height. then use flex prop to make sure align based on biggest/grow */
 
   /* less paddig left or hamburger?  */
   /* disp non for each element? then disp for hambuvber which is aways tere? */
@@ -1241,14 +1324,16 @@ fns? syntax for dt */
 /* many versions = better fit for each screen, but more confusing if view on many devices, look different for many devices */
 
 /* order if medias matter? LOWEST MUST BE LAST! if only max and not min to max */
-@media screen and (max-width: 421px) {
+
+/* REMOVE? dont make sense anymore? */
+/* @media screen and (max-width: 421px) {
     #about_me_btn, #projects_btn, #contact_btn, #client_btn {
       text-align: center;
       width: 100%;
       margin-left: 30%;
       margin-right: 30%;
     }
-}
+} */
 
 
 /* <!-- with dynamic vue rendering, must use id --> */
@@ -1267,8 +1352,6 @@ to use %, then can use relative, asolute etc  */
 .small_card_img {
     border: 1px solid red;
 }
-
-/* // click button apply dark attri */
 
 
 /* same vueitfy does - with css we dont apply attri? we execute different body code instead? */

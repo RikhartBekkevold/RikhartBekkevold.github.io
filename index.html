@@ -12,10 +12,13 @@
   <link rel="icon" href="resources/final_logo_dark.svg">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-  <link rel="stylesheet" href="css/global.css">
+  <!-- <link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/percentage_wheels.css">
-	<link rel="stylesheet" href="css/dark.css">
+	<link rel="stylesheet" href="css/dark.css"> -->
+
+  <link rel="stylesheet" href="dist/css/global.css">
+	<link rel="stylesheet" href="dist/css/style.css">
+	<link rel="stylesheet" href="dist/css/dark.css">
 </head>
 
 <body>
@@ -314,8 +317,8 @@
 		<!-- CONTACT -->
     <!-- email adresse, discord, fb, phone,  -->
 		<div id="contact" ref="contact">
-      <div style="  max-width: 500px;">
-        <div style="  width: 450px; margin-top: 150px; min-height: 625px;">
+      <div>
+        <div>
           <h2 :class="{dark: isDark}">Contact me</h2>
           <form id="contact_form" method="POST" action="https://formspree.io/ikhart.v.bekkevold@gmail.com">
             <input :class="{dark: isDark}" v-model="mail" id="email"  autocomplete="off" type="email" name="email" placeholder="Your email adresse">

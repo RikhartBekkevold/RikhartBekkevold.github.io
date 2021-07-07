@@ -379,7 +379,7 @@ var projects = [
     },
     {
         title: "DB Tutorial",
-        desc: "An article comparing the pros and cons of Graph databases to Relational databases. Made for the course 'Information Architecture'.",
+        desc: "An article comparing the pros and cons of Graph databases to Relational databases.",
         long_desc: `A medium post written as a tutorial for an 'Information Architecture' course. I used the assignment as an excuse to learn
                     about graph databases (already knew relational) and then tied it to IA, even though it is more related to other
                     fields.`,
@@ -401,8 +401,7 @@ var projects = [
     },
     {
         title: "Colour Theory",
-        desc: `A document showing various concepts in colour theory (colour mixing, colour harmony etc),
-               part of 'Colour in Interface Design - IMT 4315'.`,
+        desc: `A document showing various concepts in colour theory (colour mixing, colour harmony etc).`,
         long_desc: `Done for the masters course 'Colour in Interface Design - IMT 4315', as a way to learn about and
                     showcase the understanding of the colour topics:<br><br>
                     1. Color vision<br>

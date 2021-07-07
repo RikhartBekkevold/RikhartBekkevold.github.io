@@ -64,10 +64,11 @@ li {
   -moz-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
   margin-right: 20px;
+  /* margin is why white? */
   margin-left: 20px;
   display: inline-block;
   background: white;
-  min-height: 625px;
+  /* min-height: 625px; */
 }
 
 .tag {

@@ -287,12 +287,3 @@
     display: none;
   }
 }
-
-@media screen and (max-width: 421px) {
-    #about_me_btn, #projects_btn, #contact_btn, #client_btn {
-      text-align: center;
-      width: 100%;
-      margin-left: 30%;
-      margin-right: 30%;
-    }
-}

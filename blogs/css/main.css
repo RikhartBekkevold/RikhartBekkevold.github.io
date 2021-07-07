@@ -1,17 +1,3 @@
-/*  #415659,,98c379, #FF8C40;, 363636, 21252b, 3c424d  */ /* #304455 */
-/* this is? from cmder
-5c6370
-text nav
-9da5b4
-nav bg
-21252b
-font
-abb2bf
-editor bg?
-282c34
-comments?
-5c6370 */
-/* d63200 - vue red/orange */
 /* rename to lib.css? util?  */
 /* layout.css - the main? */
 /* all items that has same, should use class from here. so can apply same in same place. witoyt using #dja, #kda */
@@ -132,6 +118,7 @@ h1, h2, h3, h4 {
 
 .content {
   height: 100%;
+
 }
 
 .menu, .sidemenu {
@@ -191,7 +178,7 @@ h1, h2, h3, h4 {
 
 .article {
   margin: 0 auto;
-  max-width: 700px;
+  width: 700px;
   padding-top: 125px;
   padding-bottom: 100px;
 }
@@ -228,7 +215,27 @@ a {
     margin-right: 50px;
   }
 }
+code {
+  font-size: 0.85em;
+  padding: 5px;
+  background-color: #f8f8f8;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial;
+  color: #d63200;
+  color: #000;
+}
 
+pre code {
+  color: #000;
+  display: block;
+  padding: 20px;
+  font-family: "Roboto Mono", Monaco, courier, monospace;
+  font-size: 0.85em;
+  background-color: #f8f8f8;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial;
+  overflow-x: auto;
+ }
 @media screen and (max-width: 1100px) {
   /* body {
     font-size: 14.5px;
@@ -238,11 +245,20 @@ a {
     padding: 20px;
     padding-top: 125px;
     font-size: 14.5px;
+    width: 90%;
   }
   .menu {
     display: none;
   }
+
+  /* to make it bigger now that article text is smaller */
+  pre code, code {
+    font-size: 0.9em;
+  }
 }
+/* meida LAWYAS last. after element */
+
+/* height auto. so since font small. ham and sun small?  */
 
 .menu a:hover, .sidemenu a:hover {
   color: #d63200;
@@ -280,25 +296,3 @@ higher than visually, to fix href click being being nav */
   padding-top: 110px;
   margin-top: -110px;
 }
-
-code {
-  font-size: 0.85em;
-  padding: 5px;
-  background-color: #f8f8f8;
-  -webkit-font-smoothing: initial;
-  -moz-osx-font-smoothing: initial;
-  color: #d63200;
-  color: #000;
-}
-
-pre code {
-  color: #000;
-  display: block;
-  padding: 20px;
-  font-family: "Roboto Mono", Monaco, courier, monospace;
-  font-size: 0.85em;
-  background-color: #f8f8f8;
-  -webkit-font-smoothing: initial;
-  -moz-osx-font-smoothing: initial;
-  overflow-x: auto;
- }
