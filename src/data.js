@@ -9,7 +9,9 @@ var customer = [
     desc: "Challenges: no opinions, little info"
   }
 ]
-
+// alternate file copies for languages, instead of mustach
+// determine lang in brower by? then choose which?
+// how does website impl diff lang 
 var projects = [
     {
         title: "Conductor Hero",

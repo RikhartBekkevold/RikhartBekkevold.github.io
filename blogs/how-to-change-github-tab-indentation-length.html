@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+      <!-- How to change Github tab indentation length -->
+      <!-- github tab length
+      github indentation
+      change github indentation -->
+
+       <!-- <meta charset="utf-8"> -->
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     	 <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="description" content="How to change Github tab indentation length">
+
+       <title>How to change Github tab indentation length</title>
+
+       <link rel="preconnect" href="https://fonts.gstatic.com">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap">
+       <link rel="icon" href="../resources/final_logo_dark.svg">
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+       <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+
+       <!-- how to sep spas? do i have to divide into files and use prefect? how else can i seo my frontpage? -->
+
+       <!-- <link rel="stylesheet" href="css/style.css">
+       <link rel="stylesheet" href="css/hl.css">
+       <link rel="stylesheet" href="css/main.css">
+       <link rel="stylesheet" href="css/dark.css"> -->
+
+       <link rel="stylesheet" href="dist/css/style.css">
+       <link rel="stylesheet" href="dist/css/hl.css">
+       <link rel="stylesheet" href="dist/css/main.css">
+       <link rel="stylesheet" href="dist/css/dark.css">
+
+    </head>
+    <body :class="{dark: isDark}">
+      <div :class="{dark: isDark}" id="app" v-cloak>
+
+        <div id="nav_menu" :class="{ dark: isDark }">
+          <div id="mobileMenu">
+            <i id="mobileMenuIcon" class="fas fa-bars" @mousedown="showNav"></i>
+          </div>
+
+          <div id="logo_container">
+             <a href="../index.html">
+               <img id="logo" :src="!isDark ? '../resources/final_logo.svg' : '../resources/final_logo_dark.svg'" alt="logo">
+             </a>
+             <a href="../index.html">
+               <div id="nav_owner_name">Rikhart Bekkevold</div>
+             </a>
+          </div>
+
+          <div id="menu_btns">
+            <div id="about_me_btn"><a href="../index.html">Home</a></div>
+            <div id="dropdown" style="position: relative;" @mouseenter="showNavTT = true" @mouseleave="showNavTT = false">
+              <div style="" id="projects_btn">
+                Projects <i class="fas fa-caret-down"></i>
+              </div>
+              <transition name="fade">
+              <div id="projects_dropdown_menu" @click="showNavTT = false" v-show="showNavTT">
+                <a :class="{ dark: isDark }" href="../index.html#personal_projects"><div id="proj_personal_btn">Personal</div></a>
+                <a :class="{ dark: isDark }" href="../index.html#client_projects"><div id="proj_clients_btn">Clients</div></a>
+              </div>
+            </transition>
+            </div>
+            <div  id="blog_btn"><a  href="../index.html#blogs">Blog</a></div>
+            <div  id="contact_btn"><a href="../index.html#contact">Contact</a></div>
+          </div>
+
+          <div id="theme_btn" :class="{ dark: isDark }">
+            <div id="theme_icon" class="tag btn" :class="{ dark: isDark }"
+                                         @click="switchMode()" :title="'Toggle ' + (!isDark ? 'dark' : 'light') + ' theme'">
+            <div class="material-icons">
+              {{ isDark ? "light_mode" : "brightness_4" }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+     <div class="menu" :class="{dark: isDark}">
+       <h4 class="title"></h4>
+       <div class="pub_date">
+         Date published: 02.12.2021
+       </div>
+       <h5 class="toc">Table of Contents</h5>
+       <ul :class="{dark: isDark}">
+       </ul>
+     </div>
+
+     <transition name="slide">
+       <div class="sidemenu" v-focus tabindex="1" v-if="showSideNav" @blur.prevent="blurNav()" :class="{dark: isDark}">
+         <h4 class="title"></h4>
+         <div class="pub_date">
+           Date published: 04.06.2021
+         </div>
+         <h5 class="toc">Table of Contents</h5>
+         <ul :class="{dark: isDark}">
+         </ul>
+       </div>
+     </transition>
+
+
+    <div class="content">
+     <div class="article" :class="{dark: isDark}">
+
+
+<!-- rel="alternate" how to determine which to use? -->
+<!-- does link to headings on same page affect seo? -->
+<!-- stackoerflow surely must auto generate its metadata based on headings/titles etc?
+but external links to a forum is easy?  -->
+<!-- desc not too long. wont show entire then -->
+<!-- img filenames is used. same for html files?  -->
+<!-- this needs to contain the keywords too -->
+<h1 id="how-to-change-github-tab-indentation-length">How to change Github tab indentation length</h1>
+<p>For tab characters Github, by default, uses an indentation length that equals the width of 8 space characters. This is not always desired, but luckily, you can change the way Github displays this indentation, both for your own code or for others code.</p>
+<h2 id="your-own-code">Your own code</h2>
+<p>If you want to change how <em>your</em> code is displayed by Github you need to tell your text editor to insert <em>space</em> characters instead of
+tab characters whenever you press the tab key. Changing the <em>display length of tab characters</em> will not work, since
+Github will still see it as a tab character, and apply its own logic for how these should be displayed, different from your text editor. By inserting a space you force Github to apply the rules for how
+it displays space instead, which is the same as your editor (if you didn&#39;t mess with settings).</p>
+<h3 id="atom-text-editor">In Atom text editor</h3>
+<p>To permanently change how Github displays your code indentation if you use the Atom text editor, follow these steps:</p>
+<ol>
+<li>Go to &quot;Settings&quot; (ctrl + comma)</li>
+<li>Select &quot;Editor&quot; from menu</li>
+<li>Scroll to bottom</li>
+<li>Under the &quot;Tab Type&quot; heading select &quot;soft&quot; in dropdown</li>
+</ol>
+<p>PS: You can also tweak how many spaces is inserted when you press tab by changing the value in the textfield under &quot;Tab length&quot;
+(the setting directly above &quot;Tab Type&quot;).</p>
+<h2 id="others-code">Others code</h2>
+<p>If you do not have access to the file directly because the code is not yours, e.g. when you
+view public code/repositories, you can still change the indentation by passing data to the browser URL.</p>
+<p>Add <code>?ts=length</code> to the url, <code>length</code> being any number between 1 and 12, like so: <a>https://github.com/somelibrary/src/main.js?ts=2</a></p>
+<p>This is not permanent, however, and needs to be done each time you visit a new page/file.</p>
+
+
+
+   <div class="ads" :class="{dark: isDark}"></div>
+   <!-- keep reading -->
+   <!-- footer? more links, sell stuff, internal links to main etc  -->
+ </div>
+ <!-- this serves to illustrate how it works.
+ dont work the same. only one object. but very esily shows how it works! -->
+ <!-- function assign(target) {
+   var obj = Object(target)
+   for (var nextKey in nextSource) {
+     if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+      obj[nextKey] = nextSource[nextKey];
+     }
+   }
+   return obj
+ } -->
+   <!-- basically. it just uses assign (=) on allproperties src = target  -->
+
+   <!-- also link to dist: "build.min.js" - only one file?  -->
+   <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+   <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
+   <!-- specific version and minified  -->
+   <!-- i wont check what newest version is when done, so use this always? -->
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+   <!-- <script src="js/hl.js" charset="utf-8"></script>
+   <script src="js/menu.js" charset="utf-8"></script>
+   <script src="js/app.js" charset="utf-8"></script>
+   <script src="js/scroll.js" charset="utf-8"></script> -->
+
+   <script src="dist/hl.js" charset="utf-8"></script>
+   <script src="dist/menu.js" charset="utf-8"></script>
+   <script src="dist/app.js" charset="utf-8"></script>
+   <script src="dist/scroll.js" charset="utf-8"></script>
+
+
+</body>
+</html>

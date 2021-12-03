@@ -32,7 +32,7 @@ add id/name of html file to link and when we click we add the data to url and re
 must be a node - md to html api/lib?
 
       hl certain projects and make others smaller
-      on frontpage? 
+      on frontpage?
 json = {
   name: urlname
   text: ``?""
