@@ -11,7 +11,7 @@ var customer = [
 ]
 // alternate file copies for languages, instead of mustach
 // determine lang in brower by? then choose which?
-// how does website impl diff lang 
+// how does website impl diff lang
 var projects = [
     {
         title: "Conductor Hero",
@@ -294,92 +294,6 @@ var projects = [
         ]
     },
     {
-        title: "JS Object Converter",
-        desc: "An atom text editor package that " +
-              "converts between object literal notation and function (constructor) notation.",
-        long_desc: "My first attempt at learning how to make an Atom package. " +
-                   "With this project I wanted to achieve: "+
-                   "<br><br><div>" +
-                       "1. Get better at using Regex's" +
-                       "<br>2. Try some basic transpiling" +
-                       "<br>3. Deepen my understanding of the Atom environment" +
-                   "<div>",
-        thumb: "resources/thumbnails/compressed/thumbatompackage.png",
-        tags: ["javascript"],
-        minortags: ["automatization tool", "atom texteditor package"],
-        hidden: false,
-        public: true,
-        client: false,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/js-object-notation-converter",
-                icon: "fab fa-github",
-                text: "Code"
-            },
-            {
-                link: "https://atom.io/packages/js-object-notation-converter",
-                icon: "fas fa-cloud-download-alt",
-                text: "Package"
-            }
-        ]
-    },
-    {
-        title: "Colour Experiment",
-        desc: "A syntax highlighter experiment for the 'Colour in Interface Design - IMT 4315' course.",
-        long_desc: `Syntax highlighters are used by most programmers today. This research tries to
-                    determine what benefit, in terms of time to read and understand code, such highlighters have,
-                    as well as a much less explored type of highlighter, semantic highlighters.
-                    `,
-        thumb: "resources/thumbnails/compressed/thumbexperiment.png",
-        tags: ["research",  "javascript", "interaction design"],
-        minortags: ["firebase", "colour theory"],
-        hidden: false,
-        public: true,
-        client: false,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/syntax-highlighting-experiment",
-                icon: "fab fa-github",
-                text: "Code"
-            },
-            {
-                link: "projects/colour/paper.html",
-                icon: "fas fa-file-pdf",
-                text: "Paper"
-            },
-            {
-                link: "projects/colour/index.html",
-                icon: "fas fa-globe",
-                text: "Experiment"
-            }
-        ]
-    },
-    {
-        title: "Player Frame Auras",
-        desc: "A retail World of Warcraft addon.",
-        long_desc: `My first WoW addon and use of Lua. Mimicks the Blizzard created default auras on the enemy frame by
-                    doing the same for the player's frame.`,
-        thumb: "resources/thumbnails/compressed/thumbplayerframeauras.png",
-        tags: ["lua"],
-        minortags: ["addon", "game", "world of warcraft"],
-        hidden: false,
-        public: true,
-        client: false,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/PlayerFrameAuras",
-                icon: "fab fa-github",
-                text: "Code"
-            }
-        ]
-    },
-    {
         title: "DB Tutorial",
         desc: "An article comparing the pros and cons of Graph databases to Relational databases.",
         long_desc: `A medium post written as a tutorial for an 'Information Architecture' course. I used the assignment as an excuse to learn
@@ -428,6 +342,53 @@ var projects = [
             }
         ]
     },
+    // add WebMin?
+    {
+        title: "Talent Calculator",
+        desc: "A website emulating the in-game World of Warcraft classic talent tree.",
+        long_desc: "Emulates the World of Warcraft in-game talent tree, allowing players to theorycraft talent builds without in-game consequences.",
+        thumb: "resources/thumbnails/thumbtalentcalc.png",
+        tags: ["javascript"],
+        minortags: ["website"],
+        hidden: false,
+        public: true,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Classic-talent-calculator",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/talent-calculator/index.html",
+                icon: "fas fa-globe",
+                text: "App"
+            }
+        ]
+    },
+    {
+        title: "Player Frame Auras",
+        desc: "A retail World of Warcraft addon.",
+        long_desc: `My first WoW addon and use of Lua. Mimicks the Blizzard created default auras on the enemy frame by
+                    doing the same for the player's frame.`,
+        thumb: "resources/thumbnails/compressed/thumbplayerframeauras.png",
+        tags: ["lua"],
+        minortags: ["addon", "game", "world of warcraft"],
+        hidden: false,
+        public: true,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/PlayerFrameAuras",
+                icon: "fab fa-github",
+                text: "Code"
+            }
+        ]
+    },
     {
         title: "Better Weakened Soul",
         desc: "A tiny addon for World of Warcraft Classic.",
@@ -447,6 +408,71 @@ var projects = [
               link: "https://github.com/RikhartBekkevold/BetterWeakenedSoul",
               icon: "fab fa-github",
               text: "Code"
+            }
+        ]
+    },
+    {
+        title: "Colour Experiment",
+        desc: "A syntax highlighter experiment for the 'Colour in Interface Design - IMT 4315' course.",
+        long_desc: `Syntax highlighters are used by most programmers today. This research tries to
+                    determine what benefit, in terms of time to read and understand code, such highlighters have,
+                    as well as a much less explored type of highlighter, semantic highlighters.
+                    `,
+        thumb: "resources/thumbnails/compressed/thumbexperiment.png",
+        tags: ["research",  "javascript", "interaction design"],
+        minortags: ["firebase", "colour theory"],
+        hidden: false,
+        public: true,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/syntax-highlighting-experiment",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/colour/paper.html",
+                icon: "fas fa-file-pdf",
+                text: "Paper"
+            },
+            {
+                link: "projects/colour/index.html",
+                icon: "fas fa-globe",
+                text: "Experiment"
+            }
+        ]
+    },
+    {
+        title: "JS Object Converter",
+        desc: "An atom text editor package that " +
+              "converts between object literal notation and function (constructor) notation.",
+        long_desc: "My first attempt at learning how to make an Atom package. " +
+                   "With this project I wanted to achieve: "+
+                   "<br><br><div>" +
+                       "1. Get better at using Regex's" +
+                       "<br>2. Try some basic transpiling" +
+                       "<br>3. Deepen my understanding of the Atom environment" +
+                   "<div>",
+        thumb: "resources/thumbnails/compressed/thumbatompackage.png",
+        tags: ["javascript"],
+        minortags: ["automatization tool", "atom texteditor package"],
+        hidden: false,
+        public: true,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/js-object-notation-converter",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "https://atom.io/packages/js-object-notation-converter",
+                icon: "fas fa-cloud-download-alt",
+                text: "Package"
             }
         ]
     }

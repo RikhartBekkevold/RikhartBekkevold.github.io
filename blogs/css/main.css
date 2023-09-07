@@ -61,7 +61,7 @@ li {
 
 
 #app {
-  padding-bottom: 20px;
+  padding-bottom: 20px;reparation from abuse
   min-height: 100%;
 }
 #app .hl {
@@ -176,7 +176,11 @@ h1, h2, h3, h4 {
   max-height: 0px;
 }
 
+
 .article {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 2.25em;
   margin: 0 auto;
   width: 700px;
   padding-top: 125px;
