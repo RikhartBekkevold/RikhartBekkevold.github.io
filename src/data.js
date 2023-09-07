@@ -347,7 +347,7 @@ var projects = [
         title: "Talent Calculator",
         desc: "A website emulating the in-game World of Warcraft classic talent tree.",
         long_desc: "Emulates the World of Warcraft in-game talent tree, allowing players to theorycraft talent builds without in-game consequences.",
-        thumb: "resources/thumbnails/thumbtalentcalc.png",
+        thumb: "resources/thumbnails/compressed/thumbtalentcalc.png",
         tags: ["javascript"],
         minortags: ["website"],
         hidden: false,
