@@ -98,26 +98,6 @@ var projects = [
             }
         ]
     },
-    {
-        title: "CSS parser",
-        desc: "Parses CSS into an abstract syntax tree.",
-        long_desc: `A CSS parser made in Javascript. A node program that can be run as a either a node module or as a cli.`,
-        thumb: "resources/thumbnails/thumbcssparser.png",
-        tags: ["javascript", "CSS", "parsing", "node.js"],
-        minortags: ["module"], // lucky that can use slice? dont need thouhg. but does for itration? try iterating?
-        hidden: false,
-        public: true,
-        client: false,  // this doesnt cause error in the others? if i show then yes?
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-              link: "https://github.com/RikhartBekkevold/css-parser",
-              icon: "fab fa-github",
-              text: "Code"
-            }
-        ]
-    },
     // electron app, chat and
     {  //slect click doe snot check for hidden before draw
         title: "Electron chat app",
@@ -220,6 +200,9 @@ var projects = [
             }
         ]
     },
+
+    // IA article and IA design document. they dotn know its bad. summer.
+
     {
         title: "User-centered Design",
         desc: `The design of a service (website) and product (weight scale) utilizing user-centered design methods.`,
@@ -294,6 +277,54 @@ var projects = [
         ]
     },
     {
+        title: "CSS parser",
+        desc: "Parses CSS into an abstract syntax tree.",
+        long_desc: `A CSS parser made in Javascript. A node program that can be run as a either a node module or as a cli.`,
+        thumb: "resources/thumbnails/thumbcssparser.png",
+        tags: ["javascript", "CSS", "parsing", "node.js"],
+        minortags: ["module"], // lucky that can use slice? dont need thouhg. but does for itration? try iterating?
+        hidden: false,
+        public: true,
+        client: false,  // this doesnt cause error in the others? if i show then yes?
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+              link: "https://github.com/RikhartBekkevold/css-parser",
+              icon: "fab fa-github",
+              text: "Code"
+            }
+        ]
+    },
+    // try add new category for all. even if dont use yet.
+    // frontend/browser? ux design, misch/programming/other langs
+    // native app
+    // webdev, webprog, website
+    // backend?
+    // make single card use entire length on mobile?
+    // ability to link individual projects - replicate my page
+    {
+        title: "WebMin",
+        desc: "A CSS minifier written in JS.",
+        long_desc: "Uses CSS parser as a fundament for the parsing step.",
+        thumb: "resources/thumbnails/thumbwebmin.png",
+        tags: ["javascript", "transpilation"],
+        minortags: ["module", "CLI"],
+        hidden: false,
+        // category: "lib/module", // use this to filter instead - have an ALL? and then link to a filterered version from external sources? need to mani url.
+        public: true,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/WebMin",
+                icon: "fab fa-github",
+                text: "Code"
+            }
+        ]
+    },
+    {
         title: "DB Tutorial",
         desc: "An article comparing the pros and cons of Graph databases to Relational databases.",
         long_desc: `A medium post written as a tutorial for an 'Information Architecture' course. I used the assignment as an excuse to learn
@@ -342,7 +373,6 @@ var projects = [
             }
         ]
     },
-    // add WebMin?
     {
         title: "Talent Calculator",
         desc: "A website emulating the in-game World of Warcraft classic talent tree.",

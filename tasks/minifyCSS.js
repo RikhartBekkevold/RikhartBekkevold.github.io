@@ -2,7 +2,7 @@
 // console.log("minified html via api fn call");
 // console.log("changed script src paths in output files/minified files");
 
-
+console.log("\nStart minification of CSS");
 
 // apply own config to the api call config obj via assign!
 // make paths geneelizable too for diff project folders

@@ -48,7 +48,8 @@
 
         <div id="logo_container">
            <img id="logo" :src="!isDark ? 'resources/final_logo.svg' : 'resources/final_logo_dark.svg'" alt="">
-           <div id="nav_owner_name">Rikhart Bekkevold</div>
+           <div id="nav_owner_name"></div>
+           <!-- <div id="nav_owner_name">Rikhart Bekkevold</div> -->
         </div>
 
         <div id="menu_btns">
@@ -118,7 +119,7 @@
       <div class="" >
         <div id="filter">
           <select id="select" style=" height: 40px;" :class="{dark: isDark}" @change="filterProjects($event, this)">					<!-- computed prop instead? -->
-            <option value="All">Filter</option>
+            <option value="All">All</option>
             <optgroup label="Major tags">
               <option v-for="option in filterSelect" :value="option">
                 {{ option.charAt(0).toUpperCase() + option.substring(1) }}
@@ -155,7 +156,7 @@
 				<div class="card_menu" :class="{dark: isDark}">
 					<div class="left_menu">
 						<div class="long_desc_btn" @click="project.view_state.content_hidden = !project.view_state.content_hidden">
-							{{ !project.view_state.content_hidden ? "Description" : "Overview" }}
+							{{ !project.view_state.content_hidden ? "Details" : "Overview" }}
 							<i v-if="!project.view_state.content_hidden" class="fas fa-caret-down"></i>
 							<i v-else="project.view_state.content_hidden" class="fas fa-caret-up"></i>
 						</div>
