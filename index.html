@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- web dev, interaction designer, make websites - I make websites, you can see some here (preview?) -->
 	<title>Rikhart Bekkevold</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
   <link rel="icon" href="resources/final_logo_dark.svg">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-  <!-- <link rel="stylesheet" href="css/global.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/dark.css"> -->
-
+  <!-- <link rel="stylesheet" href="css/global.css"> -->
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
+	<!-- <link rel="stylesheet" href="css/dark.css"> -->
   <link rel="stylesheet" href="dist/css/global.css">
 	<link rel="stylesheet" href="dist/css/style.css">
 	<link rel="stylesheet" href="dist/css/dark.css">
@@ -73,7 +70,7 @@
 
         <div id="theme_btn" style=" " :class="{ dark: isDark }">
           <div id="theme_icon" @click="switchMode()" class="tag btn" :class="{ dark: isDark }" :title="'Toggle ' + (!isDark ? 'dark' : 'light') + ' theme'" >
-          <div class="material-icons" >
+          <div class="material-icons">
             {{ isDark ? "light_mode" : "brightness_4" }}
           </div>
         </div>
@@ -114,11 +111,10 @@
 		</div>
 
     <!-- PROJECTS -->
-    <!-- tabs, click one of them to get client or personal? -->
 		<div id="projects" ref="personal_projects">
       <div class="" >
         <div id="filter">
-          <select id="select" style=" height: 40px;" :class="{dark: isDark}" @change="filterProjects($event, this)">					<!-- computed prop instead? -->
+          <select id="select" style=" height: 40px;" :class="{dark: isDark}" @change="filterProjects($event, this)">
             <option value="All">All</option>
             <optgroup label="Major tags">
               <option v-for="option in filterSelect" :value="option">
@@ -144,9 +140,7 @@
      			 v-for="project in projects"
 				   v-show="project.hidden == false"
   			   :key="project.title">
-
-				  <!-- :class="{ small_card_img: project.small }" -->
-				<div class="card-image">	 <!-- pass in js object? in :class/:style, then can check js file, v-model  -->
+				<div class="card-image">
 					<img
 						:src="project.thumb"
 						alt="thumbnail"
@@ -161,12 +155,10 @@
 							<i v-else="project.view_state.content_hidden" class="fas fa-caret-up"></i>
 						</div>
 					</div>
-					<div class="right_menu"> <!-- padding: 10px; add for all, not just one -->
-						<!-- <div class="tag white_tag" >
-							{{ project.small ? "tiny" : "large" }}
-						</div> -->
-						<i style="" v-if="!project.group" class="fas fa-user"></i>  <!-- v-show instead? -->
-						<i style="" v-else="project.group" class="fas fa-user-friends"></i>
+					<div class="right_menu">
+            <img v-for="lang in project.language" style="width: 22px; margin-right: 10px;" :src="lang" />
+						<i v-if="!project.group" class="fas fa-user"></i>
+						<i v-else="project.group" class="fas fa-user-friends"></i>
 					</div>
 				</div>
 
@@ -183,7 +175,7 @@
 						<!-- DESCRIPTION -->
 						<div class="card_desc" :class="{dark: isDark}">
 							<h2 :class="{dark: isDark}">{{ project.title }}</h2>
-							<p v-html="project.desc"></p> <!-- v-html = tags, mustach = pure js string -->
+							<p v-html="project.desc"></p>
 						</div>
 
 						<!-- TAGS -->
@@ -201,7 +193,6 @@
 							<div style="padding: 10px" v-for="btn in project.buttons">
 								<a :href="btn.link">
 									<div class="tag btn" :class="{ github_btn: btn.icon == 'fab fa-github', dark: isDark }">
-										<!-- <img src="atom.svg" width="16"> -->
 										<i style="margin-right: 5px;" :class="btn.icon"></i>
 										{{ btn.text }}
 									</div>
@@ -216,7 +207,6 @@
 		</div>
 
 
-    <!-- wrap in vue show transistion? -->
     <div id="clients" ref="client_projects">
       <div>
       <!-- <div id="filter"  style="visibility: hidden;  ">
@@ -255,7 +245,7 @@
             </div>
           </div>
           <div class="right_menu">
-            <i style="" v-if="!project.group" class="fas fa-user"></i>  <!-- v-show instead? -->
+            <i style="" v-if="!project.group" class="fas fa-user"></i>
             <i style="" v-else="project.group" class="fas fa-user-friends"></i>
           </div>
         </div>
@@ -272,7 +262,7 @@
             <!-- DESCRIPTION -->
             <div class="card_desc" :class="{dark: isDark}">
               <h2 :class="{dark: isDark}">{{ project.title }}</h2>
-              <p v-html="project.desc"></p> <!-- v-html = tags, mustach = pure js string -->
+              <p v-html="project.desc"></p>
             </div>
 
             <!-- TAGS -->
@@ -327,11 +317,8 @@
       </div>
     </div>
 
-    <!-- read folder with tuts on server. then send back based on filename and desc filemetadata? when go to blog url get or
-    router -->
-
 		<!-- CONTACT -->
-    <!-- email adresse, discord, fb, phone,  -->
+    <!-- email adresse, discord, phone, linkedin -->
 		<div id="contact" ref="contact">
       <div>
         <div>
@@ -362,6 +349,7 @@
         <a href="https://www.facebook.com/rikhart.bekkevold"><i class="icon fab fa-facebook"></i></a>
         <a href="https://www.linkedin.com/"><i class="icon fab fa-linkedin"></i></a>
         <a href="https://www.youtube.com/channel/UCb9Fe-HNoZipzdwGdAhM-eA?view_as=subscriber"><i class="icon fab fa-youtube"></i></a>
+        <a href="https://www.discord.com/"><i class="icon fab fa-discord"></i></a>
       </div> -->
 			<div id="owner">&copy; Rikhart Bekkevold. All rights reserved.</div>
       <!-- <div id="copyright">2017 - present</div> -->
@@ -370,8 +358,6 @@
 
 	</div>
 
-  <!-- link the BUIILD/DIST FILES. the download/change vue host. specific version. -->
-  <!-- CHANGE TOO - grunt/npm scripts? -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
@@ -381,7 +367,6 @@
 	<script src="src/app.js"></script>
 	<script src="src/main.js"></script> -->
 
-  <!-- minfies html too. which also uses dist scripts?   -->
   <script src="dist/data.js"></script>
   <script src="dist/router.js"></script>
 	<script src="dist/app.js"></script>

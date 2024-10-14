@@ -22,22 +22,17 @@ var app = new Vue({
     isDark: localStorage.getItem('isDark') === null
               ? window.matchMedia('(prefers-color-scheme: dark)').matches
               : JSON.parse(localStorage.getItem('isDark'))
-    // use order? id str?
-    // navButtons: [{dispMustach: "Projects", id: "projects"}, {"About_me"}],
-    // pages: [{}, {}] // pages indicate router
-
-    // btn and page linked by string
   },
   mounted() {
+    // add a tag to select element only once
     this.projects.forEach(project => {
       project.tags.forEach(tag => {
-        if (this.filterSelect.indexOf(tag) == -1) {  // if not found
+        if (this.filterSelect.indexOf(tag) == -1) {
           this.filterSelect.push(tag)
         }
       })
-      // pushes only for those that is still in projects. so automatically removes the client one!
       project.minortags.forEach(tag => {
-        if (this.minorTagsSelect.indexOf(tag) == -1) { // if not found - includes()
+        if (this.minorTagsSelect.indexOf(tag) == -1) {
           this.minorTagsSelect.push(tag)
         }
       })
@@ -68,30 +63,19 @@ var app = new Vue({
       this.mousedown = true
       this.showSideNav = !this.showSideNav
     },
-    // can use dom to alter - but then its not applied again
-    // querySelector("script").getAttribute("src") == "newpath-slice first-generlizable cmd to apply to many projects. atom cli/cli instead of npm?"
-    // so need readFile?
+
     switchMode() {
-      // either do ducment.apply classlist or remove/toogle
-      // or change variable - revert
-      this.isDark = !this.isDark // reactivity should handle it
-      // we dont need to do vueitfy defualt. need to set our own
-      // save new preference in LS
-      localStorage.setItem('isDark', this.isDark) // implicit DOMString conversion, same way as String()
+      this.isDark = !this.isDark
+      localStorage.setItem('isDark', this.isDark)
     },
 
-    // add data to els with attri to find. faster?
     resetForm(evt) {
-      // dont need ref, when we have event with fn call
-      // contact should be one compo. then the props makes more sense
       this.mail = this.subject = this.msg = ""
     },
 
     reset() {
       this.showAllProjects()
-      // manually set the select value since you are clicking a btn not the select
-      // use v-model on select?
-      document.getElementById("select").value = "All" // save select in data? set v-model prop instead?
+      document.getElementById("select").value = "All"
     },
 
     hideAllProjects() {
@@ -108,30 +92,28 @@ var app = new Vue({
 
     showProjectsWithTag(tag) {
       this.projects.forEach(function(project) {
-      project.tags.forEach(function(project_tag) {
-        if (project_tag == tag) project.hidden = false
-      })
-      project.minortags.forEach(function(project_tag) {
-        if (project_tag == tag) project.hidden = false
+        project.tags.forEach(function(project_tag) {
+          if (project_tag == tag) project.hidden = false
+        })
+        project.minortags.forEach(function(project_tag) {
+          if (project_tag == tag) project.hidden = false
         })
       })
     },
 
     filterProjects(evt, el) {
       var tag = evt.target.value
-      // if "All" was clicked, show all projects
-      // this why we cant use the same hidden prop for drawing to view
-      if(tag == "All") {
-        this.showAllProjects()
-        return
-      }
+      if (tag == "All")
+        return this.showAllProjects()
       this.hideAllProjects()
       this.showProjectsWithTag(tag)
     },
 
     jumpToTop() {
-      document.body.scrollTop = 0;              // Safari
-      document.documentElement.scrollTop = 0;   // Chrome, Firefox, IE and Opera
+      // safari
+      document.body.scrollTop = 0
+      // chrome, firefox, IE and opera
+      document.documentElement.scrollTop = 0
     }
   }
 })
