@@ -90,130 +90,31 @@ var projects = [
         ]
     },
     {
-        title: "Electron chat app",
-        desc: "A desktop chat app with <a href='https://www.electronjs.org/'>Electron</a> as frontend, and " +
-                    "firebase as backend.",
-        long_desc: "Keywords: <br><br>package electron app/exe<br>",
-        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
-        tags: ["electron", "firebase"],
-        minortags: ["node", "websocket"],
+        title: "WebMin",
+        desc: "A CSS minifier written in JS.",
+        long_desc: "Uses CSS parser as a fundament for the parsing step.",
+        thumb: "resources/thumbnails/image.png",
+        language: [
+          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg",
+          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg"
+        ],
+        tags: ["javascript", "transpilation", "CSS"],
+        minortags: ["module", "CLI"],
         hidden: false,
-        public: false,
+        public: true,
         client: false,
         view_state: {content_hidden: false},
         small: false,
         buttons: [
             {
-              link: "https://github.com/RikhartBekkevold/Memoryflip",
-              icon: "fab fa-github",
-              text: "Code"
-            },
-            {
-              link: "projects/cardflip-game/index.html",
-              icon: "fas fa-globe",
-              text: "App"
-            }
-        ]
-    },
-    {
-        title: "JS document creator",
-        desc: "A window cli tool to automatically create documents from javascript comments.",
-        long_desc: "",
-        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
-        tags: ["python", "cli"],
-        minortags: ["automatization"],
-        hidden: false,
-        public: false,
-        client: false,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                link: "https://github.com/RikhartBekkevold/WebMin",
                 icon: "fab fa-github",
                 text: "Code"
             },
             {
-                link: "projects/cardflip-game/index.html",
-                icon: "fas fa-globe",
-                text: "App"
-            }
-        ]
-    },
-    {
-        title: "Android - sunshadow",
-        desc: "",
-        long_desc: "Keywords: <br><br>package electron app/exe<br>",
-        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
-        tags: ["electron", "firebase"],
-        minortags: ["node", "websocket"],
-        hidden: false,
-        public: false,
-        client: false,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/Memoryflip",
-                icon: "fab fa-github",
-                text: "Code"
-            },
-            {
-                link: "projects/cardflip-game/index.html",
-                icon: "fas fa-globe",
-                text: "App"
-            }
-        ]
-    },
-    {
-        title: "VuEditor",
-        desc: "A form editor in vue and vuetify.",
-        long_desc: "",
-        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
-        tags: ["electron", "firebase"],
-        minortags: ["node", "websocket"],
-        hidden: false,
-        public: false,
-        client: false,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/Memoryflip",
-                icon: "fab fa-github",
-                text: "Code"
-            },
-            {
-                link: "projects/cardflip-game/index.html",
-                icon: "fas fa-globe",
-                text: "App"
-            }
-        ]
-    },
-    {
-        title: "User-centered Design",
-        desc: `The design of a service (website) and product (weight scale) utilizing user-centered design methods.`,
-        long_desc: `The course required the design of a website for drone users (service), and the re-imagining the traditional weight scale (a product).
-                    The goal was to design based on user needs by utilizing user-centered design methods like: interviews, focus groups, card sorting etc.`,
-        thumb: "resources/thumbnails/compressed/thumbcardflip.png",
-        tags: ["service design", "interaction design", "design methods"],
-        minortags: ["prototyping", "interview", "focus group", "research"],
-        hidden: false,
-        public: false,
-        client: false,
-        group: true,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/Memoryflip",
-                icon: "fab fa-github",
-                text: "Proto"
-            },
-            {
-                link: "projects/cardflip-game/index.html",
-                icon: "fas fa-globe",
-                text: "Medium"
+                link: "projects/webmin/index.html",
+                icon: "fas fa-gamepad",
+                text: "Try"
             }
         ]
     },
@@ -271,7 +172,7 @@ var projects = [
         tags: ["javascript", "CSS", "parsing", "node.js"],
         minortags: ["module"],
         hidden: false,
-        public: true,
+        public: false,
         client: false,
         view_state: {content_hidden: false},
         small: false,
@@ -280,30 +181,6 @@ var projects = [
               link: "https://github.com/RikhartBekkevold/css-parser",
               icon: "fab fa-github",
               text: "Code"
-            }
-        ]
-    },
-    {
-        title: "WebMin",
-        desc: "A CSS minifier written in JS.",
-        long_desc: "Uses CSS parser as a fundament for the parsing step.",
-        thumb: "resources/thumbnails/thumbwebmin.png",
-        language: [
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg",
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg"
-        ],
-        tags: ["javascript", "transpilation", "CSS"],
-        minortags: ["module", "CLI"],
-        hidden: false,
-        public: true,
-        client: false,
-        view_state: {content_hidden: false},
-        small: false,
-        buttons: [
-            {
-                link: "https://github.com/RikhartBekkevold/WebMin",
-                icon: "fab fa-github",
-                text: "Code"
             }
         ]
     },
@@ -491,6 +368,134 @@ var projects = [
                 link: "https://atom.io/packages/js-object-notation-converter",
                 icon: "fas fa-cloud-download-alt",
                 text: "Package"
+            }
+        ]
+    },
+    {
+        title: "Electron chat app",
+        desc: "A desktop chat app with <a href='https://www.electronjs.org/'>Electron</a> as frontend, and " +
+                    "firebase as backend.",
+        long_desc: "Keywords: <br><br>package electron app/exe<br>",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
+        tags: ["electron", "firebase"],
+        minortags: ["node", "websocket"],
+        hidden: false,
+        public: false,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+              link: "https://github.com/RikhartBekkevold/Memoryflip",
+              icon: "fab fa-github",
+              text: "Code"
+            },
+            {
+              link: "projects/cardflip-game/index.html",
+              icon: "fas fa-globe",
+              text: "App"
+            }
+        ]
+    },
+    {
+        title: "JS document creator",
+        desc: "A window cli tool to automatically create documents from javascript comments.",
+        long_desc: "",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
+        tags: ["python", "cli"],
+        minortags: ["automatization"],
+        hidden: false,
+        public: false,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/cardflip-game/index.html",
+                icon: "fas fa-globe",
+                text: "App"
+            }
+        ]
+    },
+    {
+        title: "Android - sunshadow",
+        desc: "",
+        long_desc: "Keywords: <br><br>package electron app/exe<br>",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
+        tags: ["electron", "firebase"],
+        minortags: ["node", "websocket"],
+        hidden: false,
+        public: false,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/cardflip-game/index.html",
+                icon: "fas fa-globe",
+                text: "App"
+            }
+        ]
+    },
+    {
+        title: "VuEditor",
+        desc: "A form editor in vue and vuetify.",
+        long_desc: "",
+        thumb: "resources/thumbnails/compressed/thumbelectronapp.png",
+        tags: ["electron", "firebase"],
+        minortags: ["node", "websocket"],
+        hidden: false,
+        public: false,
+        client: false,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                icon: "fab fa-github",
+                text: "Code"
+            },
+            {
+                link: "projects/cardflip-game/index.html",
+                icon: "fas fa-globe",
+                text: "App"
+            }
+        ]
+    },
+    {
+        title: "User-centered Design",
+        desc: `The design of a service (website) and product (weight scale) utilizing user-centered design methods.`,
+        long_desc: `The course required the design of a website for drone users (service), and the re-imagining the traditional weight scale (a product).
+                    The goal was to design based on user needs by utilizing user-centered design methods like: interviews, focus groups, card sorting etc.`,
+        thumb: "resources/thumbnails/compressed/thumbcardflip.png",
+        tags: ["service design", "interaction design", "design methods"],
+        minortags: ["prototyping", "interview", "focus group", "research"],
+        hidden: false,
+        public: false,
+        client: false,
+        group: true,
+        view_state: {content_hidden: false},
+        small: false,
+        buttons: [
+            {
+                link: "https://github.com/RikhartBekkevold/Memoryflip",
+                icon: "fab fa-github",
+                text: "Proto"
+            },
+            {
+                link: "projects/cardflip-game/index.html",
+                icon: "fas fa-globe",
+                text: "Medium"
             }
         ]
     }

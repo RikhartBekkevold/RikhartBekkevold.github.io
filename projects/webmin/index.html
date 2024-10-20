@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Webmin</title>
+    <style>
+      * {
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+        background-color: #232529;
+        background-color: #0d1117;
+      }
+      #output_stats, #input_stats {
+        font-family: "Roboto", sans-serif;
+        color: #ecedef;
+      }
+      label {
+        margin-left: 10px;
+        font-family: "Roboto Slab", serif;
+        font-family: "Roboto", sans-serif;
+        vertical-align: middle;
+      }
+      .wrapper {
+        margin-top: 10px;
+      }
+      input[type="checkbox"] {
+        height: 17px;
+        width: 17px;
+        vertical-align: middle;
+      }
+      button {
+        background-color: #14161a;
+        color: #ecedef;
+        border: 2px solid #30363d;
+        font-family: "Roboto Slab", serif;
+      }
+      button:hover {
+        background-color: #414754;
+        cursor: pointer;
+      }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.36.2/css/ace.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- padding-bottom: 80px; -->
+    <div style="display: flex; width: 100%; height: 100%; padding: 20px; ">
+      <div style="flex: 2 1 0; display: flex; flex-direction: column; ">
+        <div style="display: flex; align-items: end; height: 70px; padding-bottom:10px;"><div id="input_stats"></div></div>
+        <div id="error_view" style="color: red;"></div>
+        <div id="inEditor" style="  border: 1px solid gray; width: 100%;
+            height: 100%;
+            margin: 0;">
+        </div>
+      </div>
+
+      <div style="color: #ecedef; flex: 1 1 0; display: flex; flex-direction: column;">
+        <button id="run" style="width: 100px; padding: 15px; margin: auto; margin-top: 67px;" type="button" name="button">MINIFY</button>
+        <div style="flex: 1 1 0; padding-top: 30px; margin: 0 auto; display: flex; flex-direction: column;" id="cont"></div>
+      </div>
+
+      <div style="flex: 2 1 0; display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: end; height: 70px; padding-bottom: 10px;"><div id="output_stats"></div></div>
+        <div tabindex="-1" disabled id="outEditor" style="border: 1px solid gray; width: 100%;
+            height: 100%;
+            margin: 0;">
+        </div>
+      </div>
+    </div>
+
+    <script
+     src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/ace.js"
+     integrity="sha512-yjhIcftV1KZyd3rLPujicRV6NpFEuCqQaOBBdrey6vFdU1zVkJYgJf9a+15YrOuzzSXYNV2GU4xdQ8Xy9Zj/fA=="
+     crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <script src="webmin.umd.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var input = document.getElementById("input")
+      var output = document.getElementById("output")
+      var btn = document.getElementById("run")
+      var error = document.getElementById("error_view")
+      var cont = document.getElementById("cont")
+      var output_stats = document.getElementById("output_stats")
+      var input_stats = document.getElementById("input_stats")
+
+      var inEditor = ace.edit("inEditor");
+      inEditor.setTheme("ace/theme/one_dark");
+      // inEditor.setTheme("ace/theme/cloud_editor_dark");
+      // disable hl completely. disable only for one editor?
+      inEditor.setOptions({
+        tabSize: 2,
+        useSoftTabs: true,
+        showPrintMargin: false,
+        fontSize: 19,
+        useWorker: false
+      })
+      inEditor.session.setMode("ace/mode/css");
+
+      inEditor.setValue(
+        "body {\n" +
+        "  margin: 2px;\n" +
+        "  margin: 2px 20px;\n" +
+        "  width: calc(50px - 20px);\n" +
+        "}\n\n" +
+
+        "#app {\n" +
+        "  padding: 20px 20px 20px 20px;\n" +
+        "  margin: 40px 20px 40px 20px;\n" +
+        "  background-color: #000000;\n" +
+        "}\n\n" +
+
+        ".card {\n" +
+        "  color: whitesmoke;\n" +
+        "  font-family: arial;\n" +
+        "}\n"
+        , -1
+      )
+
+      inEditor.focus()
+      inEditor.selection.moveCursorFileEnd()
+
+      inEditor.on('change', function() {
+        input_stats.textContent = "Characters: " + inEditor.getValue().length
+      })
+
+      input_stats.textContent = "Characters: " + inEditor.getValue().length
+
+      var outEditor = ace.edit("outEditor");
+      outEditor.setTheme("ace/theme/one_dark");
+      // outEditor.setTheme("ace/theme/cloud_editor_dark");
+      outEditor.setOptions({
+        showPrintMargin: false,
+        wrap: true,
+        fontSize: 19,
+        useWorker: false,
+        readOnly: true
+      })
+      outEditor.session.setMode("ace/mode/css");
+
+      btn.addEventListener("click", function() {
+        error.textContent = ""
+
+        try {
+          var css = inEditor.getValue()
+          var min = minify(css, options).css
+          outEditor.setValue(min, -1)
+          output_stats.innerHTML =
+            "Characters: " + min.length + " (-" + (css.length - min.length) + ")" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+            // "Reduction: " + Math.round(((css.length-min.length) / css.length) * 100) + "%" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+            // "Size of input: " + Math.round((min.length / css.length) * 100) + "%" +
+            "Size: " + Math.round((min.length / css.length) * 100) + "% (-" + Math.round(((css.length-min.length) / css.length) * 100) + "%)"
+        }
+        catch(e) {
+          error.textContent = e.message
+        }
+      })
+
+      var options = {
+        keepFirstComment: false,
+        removeEmptyAtRules: true,
+        removeEmptyStyleRules: true,
+        mergeIdenticalStyleRules: true,
+        removeCharset: false,
+        keepImportantInKeyframes: false,
+        optimizeShorthandProperties: true,
+        removeOverridenDeclarations: true,
+        longhandToShorthand: false,
+        resolveExpressions: true,
+        skipTrailingZero: true,
+        removeExcessUnits: true,
+        useShortestColorValue: true,
+        mangleSelectorNames: false,
+        mangleKeyframeNames: true,
+        mangleNamespaceNames: false,
+        mangleVariables: false,
+        resolveVariables: false,
+      }
+
+      Object.keys(options).forEach((key, i) => {
+        var wrapper = document.createElement("div")
+        wrapper.setAttribute("class", "wrapper")
+        var el = document.createElement("input")
+        el.setAttribute("type", "checkbox")
+        el.setAttribute("name", key)
+        el.setAttribute("value", options[key])
+        if (options[key] === true)
+          el.setAttribute("checked", true)
+        wrapper.appendChild(el)
+        var el2 = document.createElement("label")
+        el2.setAttribute("for", key)
+        el2.innerHTML = key
+        wrapper.appendChild(el2)
+        cont.appendChild(wrapper)
+
+        el.addEventListener("change", function(evt) {
+          options[this.name] = this.checked
+        })
+      })
+    </script>
+  </body>
+</html>
