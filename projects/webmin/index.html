@@ -155,8 +155,6 @@
           outEditor.setValue(min, -1)
           output_stats.innerHTML =
             "Characters: " + min.length + " (-" + (css.length - min.length) + ")" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
-            // "Reduction: " + Math.round(((css.length-min.length) / css.length) * 100) + "%" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
-            // "Size of input: " + Math.round((min.length / css.length) * 100) + "%" +
             "Size: " + Math.round((min.length / css.length) * 100) + "% (-" + Math.round(((css.length-min.length) / css.length) * 100) + "%)"
         }
         catch(e) {

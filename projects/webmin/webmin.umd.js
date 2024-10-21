@@ -8,25 +8,36 @@
 		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 	}
 
-	var config;
-	var hasRequiredConfig;
+	var config$1 = {};
 
-	function requireConfig () {
-		if (hasRequiredConfig) return config;
-		hasRequiredConfig = 1;
-		config = {
+	var hasRequiredConfig$1;
+
+	function requireConfig$1 () {
+		if (hasRequiredConfig$1) return config$1;
+		hasRequiredConfig$1 = 1;
+		config$1.internalParserConfig = {
+		  removeComments: true,
+		  removeSpace: false,
+		  addSpecificity: false,
+		  addLocationData: false
+		};
+
+		// all options exposed to user of minifier
+		config$1.defaultConfig = {
 		  // prepended either at start of file, or after charset rule. need to include "/**/". prepends always regardless of truthfulness of other comment config
 		  prependComment: "",
 		  keepFirstComment: false,
-		  // removeComments: true,
+		  removeCharset: false,
+		  keepImportantInKeyframes: false,
+
+
 		  removeEmptyAtRules: true,
 		  // stylerules containing comments are kept - removes if in media/at rules?
 		  removeEmptyStyleRules: true,
 		  // if two identical stylerules, removes the last - what if many?
 		  mergeIdenticalStyleRules: true, // removeLastIdenticalStyleRule
 		  // charset rule ignored in modern css implememtations. we remove misplaced always since invalid.
-		  removeCharset: false,
-		  keepImportantInKeyframes: false,
+
 		  // attempts to shorten a shorthand property (e.g. border, margin) by either re-arranging the values to require less divisional space (border:#fff solid; -> border:solid#fff;), or by removing unecessary values (margin: 20px 20px;  ->  margin: 20px;)
 		  optimizeShorthandProperties: true,
 		  removeOverridenDeclarations: true,
@@ -48,11 +59,9 @@
 		    selectors:  {},
 		    variables:  {},
 		    namespaces: {}
-		  },
-		  addSpecificity: true,
-		  addLocationData: false
+		  }
 		};
-		return config;
+		return config$1;
 	}
 
 	var tokenize = {};
@@ -742,7 +751,7 @@
 		if (hasRequiredPredicates) return predicates;
 		hasRequiredPredicates = 1;
 		const pp = requireParser$1().Parser.prototype;
-		const { removeCharset, keepImportantInKeyframes }  = requireConfig();
+		const { removeCharset, keepImportantInKeyframes }  = requireConfig$1();
 		const tokens = requireTokens();
 
 		pp.isDeclarationEnd = function() {
@@ -2417,21 +2426,23 @@
 		  return str.trim().length === 0
 		}
 
+		/**
+		 * Assign source object's properties to target.
+		 * If target already has properties. Updates the value.
+		 */
 		function assignOverlap(source, target) {
 		  Object.keys(target).forEach(function(key) {
 		    target[key] = source[key] || target[key];
-		    // if user adds prop we dont want, they can override. depends on assign for user and default min
-		    // prevent user from adding removeSpace and it overriding parser config. should be ignored.
-		    // hide all parser configs? we dont want loc etc in minifier?
-
-
-		    // only assign user prop to min default if exist in both. try add to not default, but via api fn.
 		  });
 		  return target
 		}
 
+		/**
+		 * Merge two config objects, if either
+		 * not provided, prevent error.
+		 */
 		function mergeConfig(user, _default) {
-		  return assignOverlap(user || {}, _default)
+		  return assignOverlap(user || {}, _default || {})
 		}
 
 		util$1 = {
@@ -2442,6 +2453,30 @@
 		  mergeConfig
 		};
 		return util$1;
+	}
+
+	var config;
+	var hasRequiredConfig;
+
+	function requireConfig () {
+		if (hasRequiredConfig) return config;
+		hasRequiredConfig = 1;
+		config = {
+		  // tokenize
+		  keepFirstComment: false,
+		  removeComments: true,
+		  removeSpace: true,
+
+		  // parse
+		  prependComment: "",
+		  addSpecificity: true,
+		  addLocationData: false,
+
+		  // predicates
+		  removeCharset: false,
+		  keepImportantInKeyframes: false
+		};
+		return config;
 	}
 
 	var parser;
@@ -2455,15 +2490,22 @@
 		requirePredicates();
 		requireParse();
 		const { isString, defined, isEmpty, mergeConfig } = requireUtil$1();
-		// const { parserConfig } = require('./config.js')
+		var config = requireConfig();
 
-		parser = function (input, config) {
+		parser = function (input, userConfig) {
 		  if (!defined(input))  throw new Error("Input not defined")
 		  if (!isString(input)) throw new Error("Input must be string")
 		  if (isEmpty(input))   throw new Error("Input file/string is empty")
 
-		  console.log(config);
-		  // config = mergeConfig(config, parserConfig)
+
+		  Object.assign(config, userConfig);
+		  // can read org required? mutated? but we pass, so copy..
+		  // console.log(userConfig);
+		  // config = mergeConfig(userConfig, config)
+		  // config = mergeConfig(config, userConfig)
+		  // makes more sense to be passed the correct config, instead of filter? min should filter user add and min added?
+		  console.log("final parser config:", config);
+
 		  const tokenizer =   new Tokenizer(input, config);
 		  const tokens    =   tokenizer.tokenize();
 		  const parser    =   new Parser(tokens, config);
@@ -4441,8 +4483,8 @@
 		    ////////////////////////////////////////////////
 		    SelectorPattern: {
 		        enter(node, parent, index, visitedSelectorPatterns, arr, parentArr, ancestors) {
-		          if (config.mergeIdenticalStyleRules && parent.type !== "Scope")
-		            mergeDuplicateSelectors(node, visitedSelectorPatterns, parent);
+		          // if (config.mergeIdenticalStyleRules && parent.type !== "Scope")
+		          //   mergeDuplicateSelectors(node, visitedSelectorPatterns, parent)
 		        },
 		        exit(node, parent, index, visitedSelectorPatterns, arr, parentArr, ancestors) {
 		          if (parent.type !== "Scope") {
@@ -4686,12 +4728,18 @@
 
 		      ////////////////////////////////////////////////
 		      Percentage: {
-		        enter(node) {
+		        enter(node, parent, index) {
 		          if (config.skipTrailingZero)
 		            node.val = trimRedundantZeros(node.val);
 
+		          // removes 0(px)
 		          if (config.removeExcessUnits && node.val === "0")
-		            replaceNodeAt(parent.parts, index, createNumberNode(0));
+		            // Value
+		            if (parent.parts)
+		              replaceNodeAt(parent.parts, index, createNumberNode(0));
+		            // Function
+		            else if (parent.arguments)
+		              replaceNodeAt(parent.arguments, index, createNumberNode(0));
 		        }
 		      },
 
@@ -4712,9 +4760,14 @@
 
 		          // removes 0(px)
 		          if (config.removeExcessUnits && node.val === "0")
-		            replaceNodeAt(parent.parts, index, createNumberNode(0));
+		            // Value
+		            if (parent.parts)
+		              replaceNodeAt(parent.parts, index, createNumberNode(0));
+		            // Function
+		            else if (parent.arguments)
+		              replaceNodeAt(parent.arguments, index, createNumberNode(0));
 
-		          // leading zeros, (000)1, auto removed by JS parser
+		          // leading zeros, (000)1, auto removed by JS
 		        }
 		      }
 		  });
@@ -5282,6 +5335,18 @@
 		    map: opti.map
 		  }
 		};
+
+		// passed to the config, names inside though. assumptions.
+
+		// min config, vs parser/parse config
+		// fn, read internal map, assigned to outside? extract the two?
+
+		// user/def config obj/merge outside, apply own here (instead of this fn, assign fn again), works in rest/overrides its own def
+		// split 3 obj in outer, pass config.parse, config.opti
+
+		// keep props outside, and always merge into exposed
+
+		// add default config obj for opti and print too?
 		return src;
 	}
 
@@ -5292,9 +5357,15 @@
 		if (hasRequiredWebMin) return WebMin;
 		hasRequiredWebMin = 1;
 		WebMin = function minify(css, userConfig) {
-		  var config = requireConfig();
-		  Object.assign(config, userConfig);
-		  console.log(config);
+		  var { defaultConfig, internalParserConfig } = requireConfig$1();
+		  // let user config overwrite default, but internal overwrite user config
+		  // res: user can change all exposed configs, but not predefined parser config
+		  // have this fn output 3 objects? pass them, then clean and can limit whats passed.
+		  // output 2, just for parser.
+		  var config = Object.assign(defaultConfig, userConfig, internalParserConfig); // use spread?
+
+		  console.log("minify merged:", config);
+
 		  var compile = requireSrc();
 		  return compile(css, config)
 		};
@@ -5302,8 +5373,8 @@
 	}
 
 	var WebMinExports = requireWebMin();
-	var index$1 = /*@__PURE__*/getDefaultExportFromCjs(WebMinExports);
+	var index = /*@__PURE__*/getDefaultExportFromCjs(WebMinExports);
 
-	return index$1;
+	return index;
 
 }));

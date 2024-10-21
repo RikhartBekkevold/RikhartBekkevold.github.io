@@ -18,13 +18,21 @@ what does css impl do on - values?
 run against test, to see if css works in a browser? so know which version settings compatible with? allow browser
 version setting like vite?  
 
-how to fill cv?
+how to fill cv? pad cv. 
+
+
+// utilize html pass info, or boolean to allow mangle
+// utilize fact js and html exe after? and css only once, to perform transforms anyway?
+
 
       // will webpack/rollup put nod emodules as part of single file bundle?
 
 would import work if i make esm bundle, add as script tag, then import in diff script, even if script is in internal to html file?
 
 npm http dev server module
+
+Remove legacy features. removes features like charset that are ignored by any semi modern browsers anyway.
+  removeCharset
 
  padding: 20px; padding-bottom: 40px; results in only overwriting bottom...
 
