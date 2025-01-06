@@ -18,7 +18,9 @@ what does css impl do on - values?
 run against test, to see if css works in a browser? so know which version settings compatible with? allow browser
 version setting like vite?  
 
-how to fill cv? pad cv. 
+how to fill cv? pad cv.
+
+ace, monaco, Prism code editor, codemirror  
 
 
 // utilize html pass info, or boolean to allow mangle

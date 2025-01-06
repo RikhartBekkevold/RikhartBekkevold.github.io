@@ -94,6 +94,8 @@
 
       var inEditor = ace.edit("inEditor");
       inEditor.setTheme("ace/theme/one_dark");
+      // use setValue alternative. remove selection.
+      // hl active line
       // inEditor.setTheme("ace/theme/cloud_editor_dark");
       // disable hl completely. disable only for one editor?
       inEditor.setOptions({
@@ -101,7 +103,8 @@
         useSoftTabs: true,
         showPrintMargin: false,
         fontSize: 19,
-        useWorker: false
+        useWorker: false,
+        // highlightActiveLine: false
       })
       inEditor.session.setMode("ace/mode/css");
 
@@ -144,8 +147,14 @@
         wrap: true,
         fontSize: 19,
         useWorker: false,
-        readOnly: true
+        readOnly: true,
+        highlightActiveLine: false,
+        // showGutter: false
       })
+      // style line hl, gutter or editor, directly
+      // remove gutter hl
+
+
       outEditor.session.setMode("ace/mode/css");
 
       btn.addEventListener("click", function() {
